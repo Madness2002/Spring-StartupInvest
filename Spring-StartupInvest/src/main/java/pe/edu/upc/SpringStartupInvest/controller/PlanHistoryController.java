@@ -43,12 +43,12 @@ public class PlanHistoryController {
 		return null;
 	}
 
-	@PostMapping("newPlan")
+	@PostMapping("newPlanHistory")
 	public String insertar(Model model, @Valid @ModelAttribute("planHistory") PlanHistory planHistory) {
 		try {
 
-			PlanHistory planSaved = planHistoryService.create(plan);
-			model.addAttribute("plan", planSaved);
+			PlanHistory planHistorySaved = planHistoryService.create(planHistory);
+			model.addAttribute("planHistory", planHistorySaved);
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -59,9 +59,9 @@ public class PlanHistoryController {
 	@PostMapping("{id}/edit")
 	public void actualizar(Model model, @PathVariable("id") Integer id) {
 		try {
-			if (planService.existsById(id)) {
-				Optional<Plan> optional = planService.findById(id);
-				model.addAttribute("editPlan", optional);
+			if (planHistoryService.existsById(id)) {
+				Optional<PlanHistory> optional = planHistoryService.findById(id);
+				model.addAttribute("editPlanHistory", optional);
 			}
 
 		} catch (Exception e) {
@@ -71,29 +71,29 @@ public class PlanHistoryController {
 	}
 
 	@PostMapping("saveEdit")
-	public String saveEdit(Model model, @ModelAttribute("plan") Plan plan) {
+	public String saveEdit(Model model, @ModelAttribute("planHistory") PlanHistory planHistory) {
 		try {
-			planService.update(plan);
+			planHistoryService.update(planHistory);
 
 		} catch (Exception e) {
 			e.getMessage();
 		}
 
-		return "redirect:/startupinvest/plans";
+		return "redirect:/startupinvest/plansHistory";
 	}
 
 	@GetMapping("{id}/del")
 	public String delete(@PathVariable("id") Integer id) {
 
 		try {
-			if (planService.existsById(id)) {
-				planService.deleteById(id);
+			if (planHistoryService.existsById(id)) {
+				planHistoryService.deleteById(id);
 
 			}
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return "redirect:/startupinvest/plans";
+		return "redirect:/startupinvest/plansHistory";
 	}
 	
 }
