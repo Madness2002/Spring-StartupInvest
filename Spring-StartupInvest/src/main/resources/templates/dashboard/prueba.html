@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: frag-header"></header>
+
+	<main>
+
+
+		<form th:action="@{/startupinvest/categories/newCategory}"
+			th:object="${category}" method="post" enctype="multipart/form-data">
+			<div class="mb-3">
+				<label for="name" class="form-label">Nombre de la categoria</label>
+				<input type="text" class="form-control" th:field="*{name}">
+			</div>
+
+		
+
+			<button type="submit" class="btn btn-primary">Agregar</button>
+		</form>
+
+
+
+
+		<div class="card" style="width: 18rem;"
+			th:each="category: ${categories}">
+			<div class="card-body">
+				<h5 class="card-title" th:text="${category.name}">name</h5>
+				<p class="card-text">funcoooooo</p>
+				<a href="#" class="btn btn-primary">Go somewhere</a>
+				<a th:href="${'/startupinvest/categories/'+category.id+'/del'}" class="btn btn-warning">delete</a>
+			</div>
+		</div>
+
+	</main>
+
+
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

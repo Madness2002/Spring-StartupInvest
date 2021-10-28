@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Rapid Bootstrap Template</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
+
+<!-- Favicons -->
+<link th:href="@{/index/img/favicon.png}" rel="icon">
+<link th:href="@{/index/img/apple-touch-icon.png}" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link
+	th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700}"
+	rel="stylesheet">
+
+<!-- Bootstrap CSS File -->
+<link th:href="@{/index/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+<!-- Libraries CSS Files -->
+<link th:href="@{/index/lib/font-awesome/css/font-awesome.min.css}"
+	rel="stylesheet">
+<link th:href="@{/index/lib/animate/animate.min.css}" rel="stylesheet">
+<link th:href="@{/index/lib/ionicons/css/ionicons.min.css}" rel="stylesheet">
+<link th:href="@{/index/lib/owlcarousel/assets/owl.carousel.min.css}"
+	rel="stylesheet">
+<link th:href="@{/index/lib/lightbox/css/lightbox.min.css}" rel="stylesheet">
+
+<!-- Main Stylesheet File -->
+<link th:href="@{/index/css/style.css}" rel="stylesheet">
+
+<!-- =======================================================
+    Theme Name: Rapid
+    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+	<!--==========================
+  Header
+  ============================-->
+	<header id="header">
+
+		<div id="topbar">
+			<div class="container">
+				<div class="social-links">
+					<a class="twitter"><i class="fa fa-twitter"></i></a> <a
+						class="facebook"><i class="fa fa-facebook"></i></a> <a
+						class="instagram"><i class="fa fa-instagram"></i></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+
+			<div class="logo float-left">
+				<!-- Uncomment below if you prefer to use an image logo -->
+				<h1 class="text-light">
+					<a href="#intro" class="scrollto"><span>Startup Invest</span></a>
+				</h1>
+				<!-- <a th:href="#header" class="scrollto"><img th:src="img/logo.png" alt="" class="img-fluid"></a> -->
+			</div>
+
+			<nav class="main-nav float-right d-none d-lg-block">
+				<ul>
+					<li class="active"><a href="#intro">Home</a></li>
+					<li><a href="#about">Nosotros</a></li>
+					<li><a href="#services">Startups</a></li>
+					<li><a href="#portfolio">Portafolio</a></li>
+					<li><a href="#team">Equipo</a></li>
+					<!--  <li class="drop-down"><a >Drop Down</a>
+            <ul>
+              <li><a >Drop Down 1</a></li>
+              <li class="drop-down"><a >Drop Down 2</a>
+                <ul>
+                  <li><a >Deep Drop Down 1</a></li>
+                  <li><a >Deep Drop Down 2</a></li>
+                  <li><a >Deep Drop Down 3</a></li>
+                  <li><a >Deep Drop Down 4</a></li>
+                  <li><a >Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a >Drop Down 3</a></li>
+              <li><a >Drop Down 4</a></li>
+              <li><a >Drop Down 5</a></li>
+            </ul>
+          </li> -->
+					<li><a href="#footer">Contáctanos</a></li>
+				</ul>
+			</nav>
+			<!-- .main-nav -->
+
+		</div>
+	</header>
+	<!-- #header -->
+
+	<!--==========================
+    Intro Section
+  ============================-->
+	<section id="intro" class="clearfix">
+		<div class="container d-flex h-100">
+			<div class="row justify-content-center align-self-center">
+				<div class="col-md-6 intro-info order-md-first order-last">
+					<h2>
+						Analiza e invierte en las mejores <br> <span>Startups</span>
+					</h2>
+					<div>
+						<a th:href="@{/startupinvest/home}" class="btn-get-started scrollto">Get Started</a>
+					</div>
+				</div>
+
+				<div class="col-md-6 intro-img order-md-last order-first">
+					<img th:src="@{/index/img/IMG1.png}" alt="" class="img-fluid">
+				</div>
+			</div>
+
+		</div>
+	</section>
+	<!-- #intro -->
+
+	<main id="main">
+
+		<!--==========================
+      Sobre Nosotros Section
+    ============================-->
+		<section id="about">
+
+			<div class="container">
+				<div class="row">
+
+					<div class="col-lg-5 col-md-6">
+						<div class="about-img">
+							<img th:src="@{/index/img/Caracteristicas.svg}" alt="">
+						</div>
+					</div>
+
+					<div class="col-lg-7 col-md-6">
+						<div class="about-content">
+							<h2>Sobre Nosotros</h2>
+							<h3>Invertir en startups nunca fue tan fácil.</h3>
+							<p>Somos una plataforma digital que tiene como objetivo
+								ofrecer una forma rápida y fácil de invertir en Startups.</p>
+							<ul>
+								<li><i class="ion-android-checkmark-circle"></i> Fácil de
+									usar</li>
+								<li><i class="ion-android-checkmark-circle"></i> Variedad
+									de emprendimientos</li>
+								<li><i class="ion-android-checkmark-circle"></i> Análisis
+									del mercado</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+		<!-- #about -->
+
+
+		<!--==========================
+      STARTUPS Section
+    ============================-->
+		<section id="services" class="section-bg">
+			<div class="container">
+
+				<header class="section-header">
+					<h3>STARTUPS</h3>
+					<p>Analiza, decide e invierte en diversas startups registradas
+						en nuestra plataforma.</p>
+				</header>
+
+				<div class="row">
+
+					<div class="col-md-6 col-lg-4 wow bounceInUp"
+						data-wow-duration="1.4s">
+						<div class="box">
+							<img th:src="@{/index/img/kambista.png}" alt="" width="200" height="200">
+							<p class="description">Una plataforma de cambio que permite a
+								los usuarios cambiar dólares y soles en tres simples pasos:
+								cotizar, transferir y recibir tu dinero.</p>
+
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 wow bounceInUp"
+						data-wow-duration="1.4s">
+						<div class="box">
+							<img th:src="@{/index/img/Nanovida.jpg}" alt="" width="200" height="200">
+							<p class="description">Un proyecto biotech desarrollado por
+								ex estudiantes de la Universidad Católica de Santa María (UCSM)
+								y ganador de StartUp Perú 2019.</p>
+
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s"
+						data-wow-duration="1.4s">
+						<div class="box">
+							<h4 class="title">
+								<a>PIXED</a>
+							</h4>
+							<img th:src="@{/index/img/PIXED.png}" alt="" width="200" height="200">
+							<p class=" unix">Un proyecto biotech dedicado al desarrollo
+								de tecnologías inclusivas como prótesis y herramientas que
+								ayudan a personas con discapacidad.</p>
+
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s"
+						data-wow-duration="1.4s">
+						<div class="box">
+							<h4 class="title">
+								<a>VERONICA CORE</a>
+							</h4>
+							<img th:src="@{/index/img/VERONICA CORE.png}" alt="" width="200"
+								height="170">
+							<p class="description">Es una Startup que proporciona una
+								plataforma inteligente que tiene el objetivo de mejorar la
+								seguridad máxima en toda Lima.</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s"
+						data-wow-duration="1.4s">
+						<div class="box">
+							<h4 class="title">
+								<a>VIPA</a>
+							</h4>
+							<img th:src="@{/index/img/VIPA.png}" alt="" width="200" height="130">
+							<p class="description">Una app que permite a ciudadanos
+								reportar malos comportamientos en las calles. Vipa se presenta
+								como un posible aliado para lograr una convivencia más empática.
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s"
+						data-wow-duration="1.4s">
+						<div class="box">
+							<h4 class="title">
+								<a>NEXOS PERU</a>
+							</h4>
+							<img th:src="@{/index/img/Nexos Peru.png}" alt="" width="200"
+								height="130">
+							<p class="description">Desarrolla productos innovadores y
+								proyectos de construcciones modulares para industrias que
+								requieren un establecimiento temporal, como la minería o la
+								construcción.</p>
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+		</section>
+		<!-- #services -->
+
+		<!--==========================
+      Why Us Section
+    ============================-->
+		<section id="why-us" class="wow fadeIn">
+			<div class="container-fluid">
+
+				<header class="section-header2">
+					<h3>¿Por qué escogernos?</h3>
+					<p>Somos una empresa peruana que quiere ayudar a dar el pequeño
+						paso a las empresas peruanas mediante startups y de a pocos ayudar
+						a formalizar el Perú</p>
+				</header>
+
+				<div class="row">
+
+					<div class="col-lg-6">
+						<div class="why-us-img">
+							<img th:src="@{/index/img/why-us.jpg}" alt="" class="img-fluid">
+						</div>
+					</div>
+
+					<div class="col-lg-6">
+						<div class="why-us-content">
+
+							<div class="features wow bounceInUp clearfix">
+								<i class="fa fa-diamond" style="color: #1bb1dc;"></i>
+								<h4>La comunicacón es lo más importante!</h4>
+								<p>Te mantenemos al tanto de los gastos, novedades y
+									noticias en general de las empresas en las que estás
+									invirtiendo, de esta manera te sentirás siempre seguro!</p>
+							</div>
+
+							<div class="features wow bounceInUp clearfix">
+								<i class="fa fa-object-group" style="color: #1bb1dc;"></i>
+								<h4>Flexibilidad ante todo!</h4>
+								<p>Tenemos convenios con muchas startups con distintos
+									márgenes de ganancia, lo cual te permite escoger la que más te
+									beneficie dependiendo de la cantidad invertida.</p>
+							</div>
+
+							<div class="features wow bounceInUp clearfix">
+								<i class="fa fa-language" style="color: #1bb1dc;"></i>
+								<h4>Países alrededor del mundo en la palma de tu mano</h4>
+								<p>La barrera lingüística no será problema! Tenemos
+									traducciones de varios idiomas al idioma español.</p>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="container">
+				<div class="row counters">
+
+					<div class="col-lg-3 col-6 text-center">
+						<span data-toggle="counter-up">3294</span>
+						<p>Inversores</p>
+					</div>
+
+					<div class="col-lg-3 col-6 text-center">
+						<span data-toggle="counter-up">130</span>
+						<p>Startups</p>
+					</div>
+
+					<div class="col-lg-3 col-6 text-center">
+						<span data-toggle="counter-up">58,391</span>
+						<p>Dinero invertido en soles</p>
+					</div>
+
+					<div class="col-lg-3 col-6 text-center">
+						<span data-toggle="counter-up">18</span>
+						<p>Países Incluidos</p>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+		<!--==========================
+      Call To Action Section
+    ============================-->
+		<section id="call-to-action" class="wow fadeInUp">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9 text-center text-lg-left">
+						<h3 class="cta-title">Únete a la familia</h3>
+						<p class="cta-text">En esta aplicación podrás hacer siempre
+							inversiones inteligentes, sin tener miedo a perder el dinero.
+							Nuestras empresas son apoyadas por grandes fondos de dinero tanto
+							por parte de nuestros inversores como una ayuda extra de la
+							aplicación, la tasa de éxito es más del 95%.</p>
+					</div>
+					<div class="col-lg-3 cta-btn-container text-center">
+						<a class="cta-btn align-middle" >Unirse</a>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<!-- #call-to-action -->
+
+		<!--==========================
+      Features Section
+    ============================-->
+		<section id="features">
+			<div class="container">
+
+				<div class="row feature-item">
+					<div class="col-lg-6 wow fadeInUp">
+						<img th:src="@{/index/img/money.png}" class="img-fluid" alt=""
+							width="400" height="auto">
+					</div>
+					<div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+						<h4>¡ESTAMOS CRECIENDO!</h4>
+						<p>Gran cantidad de personas extranjeras se están interesando
+							cada día más en nuestra aplicación, la versatilidad de poder
+							encontrar la empresa que más te guste, con los mayores beneficios
+							personales para ha llamado mucho la atención de países vecinos.</p>
+					</div>
+				</div>
+
+
+
+			</div>
+		</section>
+		<!-- #about -->
+
+		<!--==========================
+      Portfolio Section
+    ============================-->
+		<section id="portfolio" class="section-bg">
+			<div class="container">
+
+				<header class="section-header">
+					<h3 class="section-title">Nuestra app</h3>
+				</header>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<ul id="portfolio-flters">
+							<li data-filter="*" class="filter-active">Todos</li>
+							<li data-filter=".filter-app">Interfaz amigable</li>
+							<li data-filter=".filter-card">Seguridad monetaria</li>
+							<li data-filter=".filter-web">Startups interesados</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="row portfolio-container">
+
+					<div class="col-lg-4 col-md-6 portfolio-item filter-app">
+						<div class="portfolio-wrap">
+							<img th:src="@{/index/img/portfolio/mockup1.png}" class="img-fluid"
+								alt="">
+							<div class="portfolio-info">
+								<h4>
+									<a>App 1</a>
+								</h4>
+								<p>App</p>
+								<div>
+									<a th:href="@{/index/img/portfolio/mockup1.png}"
+										data-lightbox="portfolio" data-title="" class="link-preview"
+										title="Preview"><i class="ion ion-eye"></i></a> <a 
+										class="link-details" title="More Details"><i
+										class="ion ion-android-open"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 portfolio-item filter-web"
+						data-wow-delay="0.1s">
+						<div class="portfolio-wrap">
+							<img th:src="@{/index/img/portfolio/mockup2.png}" class="img-fluid"
+								alt="">
+							<div class="portfolio-info">
+								<h4>
+									<a>Web 3</a>
+								</h4>
+								<p>Web</p>
+								<div>
+									<a th:href="@{/index/img/portfolio/mockup2.png}" class="link-preview"
+										data-lightbox="portfolio" data-title="" title="Preview"><i
+										class="ion ion-eye"></i></a> <a class="link-details"
+										title="More Details"><i class="ion ion-android-open"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 portfolio-item filter-app"
+						data-wow-delay="0.2s">
+						<div class="portfolio-wrap">
+							<img th:src="@{/index/img/portfolio/mockup3.png}" class="img-fluid"
+								alt="">
+							<div class="portfolio-info">
+								<h4>
+									<a >App 2</a>
+								</h4>
+								<p>App</p>
+								<div>
+									<a th:href="@{/index/img/portfolio/mockup3.png}" class="link-preview"
+										data-lightbox="portfolio" data-title="" title="Preview"><i
+										class="ion ion-eye"></i></a> <a class="link-details"
+										title="More Details"><i class="ion ion-android-open"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 portfolio-item filter-card">
+						<div class="portfolio-wrap">
+							<img th:src="@{/index/img/portfolio/mockup4.png}" class="img-fluid"
+								alt="">
+							<div class="portfolio-info">
+								<h4>
+									<a>Card 2</a>
+								</h4>
+								<p>Card</p>
+								<div>
+									<a th:href="@{/index/img/portfolio/mockup4.png}" class="link-preview"
+										data-lightbox="portfolio" data-title="" title="Preview"><i
+										class="ion ion-eye"></i></a> <a class="link-details"
+										title="More Details"><i class="ion ion-android-open"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 portfolio-item filter-web"
+						data-wow-delay="0.1s">
+						<div class="portfolio-wrap">
+							<img th:src="@{/index/img/portfolio/mockup5.png}" class="img-fluid"
+								alt="">
+							<div class="portfolio-info">
+								<h4>
+									<a>Web 2</a>
+								</h4>
+								<p>Web</p>
+								<div>
+									<a th:href="@{/index/img/portfolio/mockup5.png}" class="link-preview"
+										data-lightbox="portfolio" data-title="" title="Preview"><i
+										class="ion ion-eye"></i></a> <a class="link-details"
+										title="More Details"><i class="ion ion-android-open"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 portfolio-item filter-app"
+						data-wow-delay="0.2s">
+						<div class="portfolio-wrap">
+							<img th:src="@{/index/img/portfolio/mockup6.png}" class="img-fluid"
+								alt="">
+							<div class="portfolio-info">
+								<h4>
+									<a>App 3</a>
+								</h4>
+								<p>App</p>
+								<div>
+									<a th:href="@{/index/img/portfolio/mockup6.png}" class="link-preview"
+										data-lightbox="portfolio" data-title="" title="Preview"><i
+										class="ion ion-eye"></i></a> <a class="link-details"
+										title="More Details"><i class="ion ion-android-open"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 portfolio-item filter-card">
+						<div class="portfolio-wrap">
+							<img th:src="@{/index/img/portfolio/mockup7.png}" class="img-fluid"
+								alt="">
+							<div class="portfolio-info">
+								<h4>
+									<a >Card 1</a>
+								</h4>
+								<p>Card</p>
+								<div>
+									<a th:href="@{/index/img/portfolio/mockup7.png}" class="link-preview"
+										data-lightbox="portfolio" data-title="" title="Preview"><i
+										class="ion ion-eye"></i></a> <a  class="link-details"
+										title="More Details"><i class="ion ion-android-open"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 portfolio-item filter-card"
+						data-wow-delay="0.1s">
+						<div class="portfolio-wrap">
+							<img th:src="@{/index/img/portfolio/link.png}" class="img-fluid" alt="">
+							<div class="portfolio-info">
+								<h4>
+									<a >Card 3</a>
+								</h4>
+								<p>Card</p>
+								<div>
+									<a th:href="@{/index/img/portfolio/link.png}" class="link-preview"
+										data-lightbox="portfolio" data-title="LINK DE MOCKUPS"
+										title="Preview"><i class="ion ion-eye"></i></a> <a
+										th:href="@{https://www.figma.com/file/uQhDszfRFSHB3mRn3Vblab/Startup-Invest?node-id=0%3A1}"
+										class="link-details" title="More Detailss"><i
+										class="ion ion-android-open"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <img th:src="img/portfolio/web1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4><a >Web 1</a></h4>
+                <p>Web</p>
+                <div>
+                  <a th:href="img/portfolio/web1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a  class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+				</div>
+
+			</div>
+		</section>
+		<!-- #portfolio -->
+
+		<!--==========================
+      Clients Section
+    ============================-->
+		<section id="testimonials">
+			<div class="container">
+
+				<header class="section-header">
+					<h3>Comentarios variados</h3>
+				</header>
+
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+
+						<div class="owl-carousel testimonials-carousel wow fadeInUp">
+
+							<div class="testimonial-item">
+								<img th:src="@{/index/img/testimonial-1.jpg}" class="testimonial-img"
+									alt="">
+								<h3>Jorge Luna</h3>
+								<h4>Fundador de PIXED</h4>
+								<p>Esta aplicación potencia la idea que teníamos pensada
+									desde la creación del negocio, lo sugiero ampliamente a todas
+									las personas que deseen empezar un startup.</p>
+							</div>
+
+							<div class="testimonial-item">
+								<img th:src="@{/index/img/testimonial-2.jpg}" class="testimonial-img"
+									alt="">
+								<h3>Sara Wilsson</h3>
+								<h4>Co-Fundador de VIPA</h4>
+								<p>Startup Invest nos ha ayudado a llegar a personas de
+									países que ni siquiera tuvimos pensados que podíamos siquiera
+									contactar! Realmente nos ayudó a salir adelante.</p>
+							</div>
+
+							<div class="testimonial-item">
+								<img th:src="@{/index/img/testimonial-3.jpg}" class="testimonial-img"
+									alt="">
+								<h3>Jena Karlis</h3>
+								<h4>Inversora</h4>
+								<p>He encontrado varios startups interesantes que me
+									gustarían que salgan a la luz, con esta aplicación puedo
+									hacerlo posible!</p>
+							</div>
+
+							<div class="testimonial-item">
+								<img th:src="@{/index/img/testimonial-4.jpg}" class="testimonial-img"
+									alt="">
+								<h3>Matt Brandon</h3>
+								<h4>Inversor</h4>
+								<p>No se me hubiera ocurrido antes invertir en Startups,
+									pero con Startup Invest te da confianza y flexibilidad en los
+									negocios que desees apoyar.</p>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+
+			</div>
+		</section>
+		<!-- #testimonials -->
+
+		<!--==========================
+      Team Section
+    ============================-->
+		<section id="team" class="section-bg">
+			<div class="container">
+				<div class="section-header">
+					<h3>Equipo de trabajo</h3>
+					<p>Las personas que han hecho posible que este negocio exista y
+						sea sostenible</p>
+				</div>
+
+				<div class="row">
+
+					<div class="col-lg-3 col-md-6 wow fadeInUp">
+						<div class="member">
+							<img th:src="@{/index/img/team-1.jpg}" class="img-fluid" alt="">
+							<div class="member-info">
+								<div class="member-info-content">
+									<h4>Alvaro Reyes</h4>
+									<span> El  cejon</span>
+									<div class="social">
+										<a ><i class="fa fa-twitter"></i></a> <a ><i
+											class="fa fa-facebook"></i></a> <a ><i
+											class="fa fa-google-plus"></i></a> <a ><i
+											class="fa fa-linkedin"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+						<div class="member">
+							<img th:src="@{/index/img/team-2.jpg}" class="img-fluid" alt="">
+							<div class="member-info">
+								<div class="member-info-content">
+									<h4>Sergio Sanchez</h4>
+									<div class="social">
+										<a ><i class="fa fa-twitter"></i></a> <a ><i
+											class="fa fa-facebook"></i></a> <a ><i
+											class="fa fa-google-plus"></i></a> <a ><i
+											class="fa fa-linkedin"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+						<div class="member">
+							<img th:src="@{/index/img/team-3.jpg}" class="img-fluid" alt="">
+							<div class="member-info">
+								<div class="member-info-content">
+									<h4>Franco Casanova</h4>
+									<div class="social">
+										<a ><i class="fa fa-twitter"></i></a> <a ><i
+											class="fa fa-facebook"></i></a> <a><i
+											class="fa fa-google-plus"></i></a> <a ><i
+											class="fa fa-linkedin"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+						<div class="member">
+							<img th:src="@{/index/img/team-4.jpg}" class="img-fluid" alt="">
+							<div class="member-info">
+								<div class="member-info-content">
+									<h4>Fernando Mori</h4>
+									<div class="social">
+										<a ><i class="fa fa-twitter"></i></a> <a ><i
+											class="fa fa-facebook"></i></a> <a ><i
+											class="fa fa-google-plus"></i></a> <a ><i
+											class="fa fa-linkedin"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+						<div class="member">
+							<img th:src="@{/index/img/team-5.jpg}" class="img-fluid" alt="">
+							<div class="member-info">
+								<div class="member-info-content">
+									<h4>Walther Saldaña</h4>
+									<div class="social">
+										<a ><i class="fa fa-twitter"></i></a> <a ><i
+											class="fa fa-facebook"></i></a> <a ><i
+											class="fa fa-google-plus"></i></a> <a ><i
+											class="fa fa-linkedin"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+				</div>
+
+			</div>
+		</section>
+		<!-- #team -->
+
+		<!--==========================
+      Clients Section
+    ============================-->
+		<section id="clients" class="wow fadeInUp">
+			<div class="container">
+
+				<header class="section-header">
+					<h3>Our Clients</h3>
+				</header>
+
+				<div class="owl-carousel clients-carousel">
+					<img th:src="@{/index/img/kambista.png}" alt=""> <img
+						th:src="@{/index/img/Nanovida.png}" alt=""> <img
+						th:src="@{/index/img/Nexos Peru.png}" alt=""> <img
+						th:src="@{/index/img/PIXED.png}" alt=""> <img
+						th:src="@{/index/img/VERONICA CORE.png}" alt=""> <img
+						th:src="@{/index/img/VIPA.png}" alt=""> <img
+						th:src="@{/index/img/clients/client-7.png}" alt=""> <img
+						th:src="@{/index/img/clients/client-8.png}" alt="">
+				</div>
+
+			</div>
+		</section>
+		<!-- #clients -->
+
+
+
+	</main>
+	<!--==========================
+    Footer
+  ============================-->
+	<footer id="footer" class="section-bg">
+		<div class="footer-top">
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-lg-6">
+
+						<div class="row">
+
+							<div class="col-sm-6">
+
+								<div class="footer-info">
+									<h3>Startup Invest</h3>
+									<p>Nuestra misión es lograr que más personas peruanas y
+										extranjeras inviertan en compañías Startup peruanas para poder
+										hacer creer un negocio formal y sostenible a lo largo de todo
+										el Perú.</p>
+								</div>
+
+
+							</div>
+
+							<div class="col-sm-6">
+								<div class="footer-links">
+									<h4>Links útiles</h4>
+									<ul>
+										<li><a >Home</a></li>
+										<li><a >Nosotros</a></li>
+										<li><a >Startups</a></li>
+										<li><a >Portafolio </a></li>
+										<li><a >Drop Down</a></li>
+									</ul>
+								</div>
+
+								<div class="footer-links">
+									<h4>Contáctanos</h4>
+									<p>
+										Calle Porta 567 <br> Lima, Miraflores <br> Perú <br>
+										<strong>Teléfono:</strong> +1 5589 55488 55<br> <strong>Correo:</strong>
+										Startupinvest@gmail.com<br>
+									</p>
+								</div>
+
+								<div class="social-links">
+									<a  class="twitter"><i class="fa fa-twitter"></i></a>
+									<a  class="facebook"><i class="fa fa-facebook"></i></a>
+									<a  class="instagram"><i class="fa fa-instagram"></i></a>
+									<a  class="linkedin"><i class="fa fa-linkedin"></i></a>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col-lg-6">
+
+						<div class="form">
+
+							<h4>Contáctanos</h4>
+							<p>Por favor si tienes alguna duda sobre como funciona esta
+								aplicación ingresa tus datos en la parte de abajo y te
+								responderemos en la menor brevedad posible.</p>
+							<form action="" method="post" role="form" class="contactForm">
+								<div class="form-group">
+									<input type="text" name="name" class="form-control" id="name"
+										placeholder="Tu nombre " data-rule="minlen:4"
+										data-msg="Por favor ingresa por lo menos 4 caracteres" />
+									<div class="validation"></div>
+								</div>
+								<div class="form-group">
+									<input type="email" class="form-control" name="email"
+										id="email" placeholder="Tu correo" data-rule="email"
+										data-msg="Por favor ingresa un email válido" />
+									<div class="validation"></div>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" name="subject"
+										id="subject" placeholder="Tema" data-rule="minlen:4"
+										data-msg="Por favor ingresa al menos 8 caracteres" />
+									<div class="validation"></div>
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" name="mensaje" rows="5"
+										data-rule="required" data-msg="Please write something for us"
+										placeholder="Mensaje"></textarea>
+									<div class="validation"></div>
+								</div>
+
+								<div id="sendmessage">Tu mensaje se ha enviado, gracias!</div>
+								<div id="errormessage"></div>
+
+								<div class="text-center">
+									<button type="submit" title="Send Message">Enviar
+										mensaje</button>
+								</div>
+							</form>
+						</div>
+
+					</div>
+
+
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="copyright">
+				&copy; Copyright <strong>Startup</strong>. Todos los derechos
+				reservados
+			</div>
+			<div class="credits">
+				<!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Rapid
+        -->
+			</div>
+		</div>
+	</footer>
+	<!-- #footer -->
+
+	<a  class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+	<!-- Uncomment below i you want to use a preloader -->
+	<!-- <div id="preloader"></div> -->
+
+	<!-- JavaScript Libraries -->
+	<script th:src="@{/index/lib/jquery/jquery.min.js}"></script>
+	<script th:src="@{/index/lib/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/index/lib/jquery/jquery-migrate.min.js}"></script>
+	<script th:src="@{/index/lib/easing/easing.min.js}"></script>
+	<script th:src="@{/index/lib/mobile-nav/mobile-nav.js}"></script>
+	<script th:src="@{/index/lib/wow/wow.min.js}"></script>
+	<script th:src="@{/index/lib/waypoints/waypoints.min.js}"></script>
+	<script th:src="@{/index/lib/counterup/counterup.min.js}"></script>
+	<script th:src="@{/index/lib/owlcarousel/owl.carousel.min.js}"></script>
+	<script th:src="@{/index/lib/isotope/isotope.pkgd.min.js}"></script>
+	<script th:src="@{/index/lib/lightbox/js/lightbox.min.js}"></script>
+	<!-- Contact Form JavaScript File -->
+	<script th:src="@{/index/contactform/contactform.js}"></script>
+
+	<!-- Template Main Javascript File -->
+	<script th:src="@{/index/js/main.js}"></script>
+</body>
+</html>
