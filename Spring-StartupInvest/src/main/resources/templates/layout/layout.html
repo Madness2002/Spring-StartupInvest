@@ -1,39 +1,107 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="frag-header">
+<head th:fragment="frag-head">
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="ISO-8859-1">
-<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-<link th:href="@{/css/fontawesome.min.css}" rel="stylesheet">
-<link th:href="@{/css/solid.min.css}" rel="stylesheet">
-<link th:href="@{/css/style.css}" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	th:href="@{/dashboard-investor/Bootstrap/css/bootstrap.css}" />
+<link rel="stylesheet"
+	th:href="@{/dashboard-investor/Bootstrap/css/Dashboard-investor.css}" />
 
-<title>StartupInvest</title>
+<!--Font-Awsome-->
+
+<link rel="stylesheet"
+	th:href="@{/dashboard-investor/Bootstrap/css/all.css}">
+
+<link th:href="@{/dashboard-investor/Bootstrap/css/fontawesome.css}"
+	rel="stylesheet">
+<link th:href="@{/dashboard-investor/Bootstrap/css/brands.css}"
+	rel="stylesheet">
+<link th:href="@{/dashboard-investor/Bootstrap/css/solid.css}"
+	rel="stylesheet">
+
+
+<script defer th:src="@{/your-path-to-fontawesome/js/brands.js}"></script>
+<script defer th:src="@{/your-path-to-fontawesome/js/solid.js}"></script>
+<script defer th:src="@{/your-path-to-fontawesome/js/fontawesome.js}"></script>
+
+<title>StartupInvest|Dashboards</title>
 </head>
 <body>
+
+	<header th:fragment="frag-header">
+
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" th:href="@{/startupinvest/home}"> <img
+					th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+					alt="StartupInvest" width="36" height="30"
+					class="d-inline-block align-text-top" /> StartupInvest
+				</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav position-relative">
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" th:href="@{/startupinvest/home}">Inicio</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Noticias</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#">Planes</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#">Startup</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#">Administrador</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+	</header>
+
 
 
 
 
 	<footer th:fragment="frag-footer">
-		<script th:src="@{/index/lib/jquery/jquery.min.js}"></script>
-		<script th:src="@{/index/lib/bootstrap/js/bootstrap.bundle.min.js}"></script>
-		<script th:src="@{/index/lib/jquery/jquery-migrate.min.js}"></script>
-		<script th:src="@{/index/lib/easing/easing.min.js}"></script>
-		<script th:src="@{/index/lib/mobile-nav/mobile-nav.js}"></script>
-		<script th:src="@{/index/lib/wow/wow.min.js}"></script>
-		<script th:src="@{/index/lib/waypoints/waypoints.min.js}"></script>
-		<script th:src="@{/index/lib/counterup/counterup.min.js}"></script>
-		<script th:src="@{/index/lib/owlcarousel/owl.carousel.min.js}"></script>
-		<script th:src="@{/index/lib/isotope/isotope.pkgd.min.js}"></script>
-		<script th:src="@{/index/lib/lightbox/js/lightbox.min.js}"></script>
-		<!-- Contact Form JavaScript File -->
-		<script th:src="@{/index/contactform/contactform.js}"></script>
+		<script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"></script>
+		<script
+			th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js}"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous"></script>
+		<script
+			th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"></script>
 
-		<!-- Template Main Javascript File -->
-		<script th:src="@{/index/js/main.js}"></script>
+
+		<script type="text/javascript"
+			th:src=" @{https://cdn.jsdelivr.net/jquery/latest/jquery.min.js}"></script>
+		<script type="text/javascript"
+			th:src="@{https://cdn.jsdelivr.net/momentjs/latest/moment.min.js}"></script>
+		<script type="text/javascript"
+			th:src="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js}"></script>
+		<link rel="stylesheet" type="text/css"
+			th:href="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css}" />
+
+		<script>
+    $(function() {
+      $('input[name="birthday"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: 1901,
+        maxYear: parseInt(moment().format('YYYY'),10)
+      });
+    });
+    </script>
+
+		<script th:src="@{/dashboard-investor/Bootstrap/js/bootstrap.min.js}"></script>
 	</footer>
 
 </body>
