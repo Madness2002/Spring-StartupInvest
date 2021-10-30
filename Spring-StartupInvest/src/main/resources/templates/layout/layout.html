@@ -8,7 +8,8 @@
 	th:href="@{/dashboard-investor/Bootstrap/css/bootstrap.css}" />
 <link rel="stylesheet"
 	th:href="@{/dashboard-investor/Bootstrap/css/Dashboard-investor.css}" />
-
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css}" />
 <link
 	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
 	rel="icon">
@@ -71,15 +72,10 @@
 
 
 	<footer th:fragment="frag-footer">
-		<script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"
-			
-			></script>
+		<script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"></script>
+
 		<script
-			th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js}"
-			></script>
-		<script
-			th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"
-			></script>
+			th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
 
 
 		<script type="text/javascript"
@@ -87,7 +83,12 @@
 		<script type="text/javascript"
 			th:src="@{https://cdn.jsdelivr.net/momentjs/latest/moment.min.js}"></script>
 		<script type="text/javascript"
+			th:src="@{https://cdn.jsdelivr.net/jquery/latest/jquery.min.js}"></script>
+		<script type="text/javascript"
+			th:src="@{https://cdn.jsdelivr.net/momentjs/latest/moment.min.js}"></script>
+		<script type="text/javascript"
 			th:src="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js}"></script>
+
 
 		<script>
     $(function() {

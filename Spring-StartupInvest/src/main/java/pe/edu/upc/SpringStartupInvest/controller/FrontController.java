@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import ch.qos.logback.core.pattern.Converter;
 import pe.edu.upc.SpringStartupInvest.model.entity.Category;
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
