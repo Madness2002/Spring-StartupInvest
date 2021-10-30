@@ -1,9 +1,11 @@
 package pe.edu.upc.SpringStartupInvest.service.crud.impl;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import pe.edu.upc.SpringStartupInvest.model.entity.Category;
 import pe.edu.upc.SpringStartupInvest.model.repository.CategoryRepository;
@@ -13,7 +15,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
+	
 
+	
 	@Autowired
 	private CategoryRepository categoryRepository;
 
@@ -33,5 +37,6 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryRepository.findByName(name);
 	}
 
-
+	
+	
 }

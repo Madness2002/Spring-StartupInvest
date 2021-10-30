@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import lombok.var;
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,7 +23,17 @@ public interface StartupRepository extends JpaRepository<Startup, Integer> {
 
 	@Query("select a from Startup a where a.registerDate between :date1 and :date2")
 	List<Startup> findByDateBetween(Date date1, Date date2) throws Exception; // Filtrar startups entre fechas de
-																				// registro
+
+	@Query(value = "select p.* from prueba p", nativeQuery = true)
+	List<Startup> listStartupsWithTopAndAmount() throws Exception;
+
+	@Query(value = "select p.amounth from viewStartupPositionAmounth p where p.startup_id=?1", nativeQuery = true)
+	double getAmounthInvestedById(int id) throws Exception;
+
+	@Query(value = "select p.position from viewStartupPositionAmounth p where p.startup_id=?1", nativeQuery = true)
+	Integer getPositionStartupById(int id) throws Exception;
+
+	// registro
 	/*
 	 * @Query("") List<Startup> findByPopular()throws Exception; // Buscar Startups
 	 * mas populares FALTA EL TOP

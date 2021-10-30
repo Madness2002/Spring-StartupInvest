@@ -49,9 +49,26 @@ public class StartupServiceImpl implements StartupService {
 		return startupRepository.findByDateBetween(date1, date2);
 	}
 
-	/*@Override
-	public List<Startup> findByPopular() throws Exception {
-		return startupRepository.findByPopular();
+	@Override
+	public List<Startup> listStartupsWithTopAndAmount() throws Exception {
+
+		return startupRepository.listStartupsWithTopAndAmount();
 	}
-*/
+
+	@Override
+	public double getAmounthInvestedById(int id) throws Exception {
+
+		return startupRepository.getAmounthInvestedById(id);
+	}
+
+	@Override
+	public Integer getPositionStartupById(int id) throws Exception {
+
+		return startupRepository.getPositionStartupById(id);
+	}
+
+	/*
+	 * @Override public List<Startup> findByPopular() throws Exception { return
+	 * startupRepository.findByPopular(); }
+	 */
 }

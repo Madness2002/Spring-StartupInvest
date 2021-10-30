@@ -19,6 +19,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -84,6 +85,12 @@ public class Startup {
 	@Column(name = "startup_description", length = 400, nullable = false)
 	private String description;
 	
+	@Transient
+	private Integer position;
+	
+	@Transient
+	private Double amounthTotalInvest;
+	
 	@OneToMany(mappedBy = "startup", fetch = FetchType.LAZY)
 	private List<Publication> publications;
 
@@ -99,9 +106,18 @@ public class Startup {
 		investmentRequests = new ArrayList<InvestmentRequest>();
 	}
 
-	public Startup(Integer id, Category category, String name, String email, String image, Boolean state, String ruc,
-			Date registerDate, String password, String description, List<Publication> publications,
-			List<PlanHistory> plansHistory, List<InvestmentRequest> investmentRequests) {
+	
+
+	public Startup(Integer id, Category category,
+			@NotBlank(message = "El nombre no debe estar en blanco") @NotNull(message = "El nombre debe contener valor") @Size(max = 50, message = "El tamaño no debe ser mayor a 50") String name,
+			@NotBlank(message = "El email no debe estar en blanco") @NotNull(message = "El email debe contener valor") @Size(max = 50, message = "El tamaño no debe ser mayor a 50") String email,
+			@Size(max = 500, message = "El tamaño no debe ser mayor a 500") String image, Boolean state,
+			@NotBlank(message = "El ruc no debe estar en blanco") @NotNull(message = "El ruc debe contener valor") @Size(max = 11, message = "El tamaño no debe ser mayor a 11") String ruc,
+			@NotNull(message = "La fecha de registro debe contener valor") @NotBlank(message = "La fecha de registro no debe estar en blanco") Date registerDate,
+			@NotBlank(message = "El password no debe estar en blanco") @NotNull(message = "El password debe contener valor") @Size(max = 500, message = "El tamaño no debe ser mayor a 500") String password,
+			@NotBlank(message = "La descripción no debe estar en blanco") @NotNull(message = "La descripción debe contener valor") @Size(max = 400, message = "El tamaño no debe ser mayor a 400") String description,
+			Integer position, Double amounthTotalInvest, List<Publication> publications, List<PlanHistory> plansHistory,
+			List<InvestmentRequest> investmentRequests) {
 		super();
 		this.id = id;
 		this.category = category;
@@ -113,10 +129,38 @@ public class Startup {
 		this.registerDate = registerDate;
 		this.password = password;
 		this.description = description;
+		this.position = position;
+		this.amounthTotalInvest = amounthTotalInvest;
 		this.publications = publications;
 		this.plansHistory = plansHistory;
 		this.investmentRequests = investmentRequests;
 	}
+
+
+
+	public Integer getPosition() {
+		return position;
+	}
+
+
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+
+
+
+	public Double getAmounthTotalInvest() {
+		return amounthTotalInvest;
+	}
+
+
+
+	public void setAmounthTotalInvest(Double amounthTotalInvest) {
+		this.amounthTotalInvest = amounthTotalInvest;
+	}
+
+
 
 	public Integer getId() {
 		return id;

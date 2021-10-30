@@ -32,6 +32,11 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 
+	@ModelAttribute("category")
+	public Category populateForm() {
+		return new Category();
+	}
+
 	@GetMapping
 	public String list(Model model) {
 
@@ -48,27 +53,26 @@ public class CategoryController {
 	}
 
 	@PostMapping("newCategory")
-	public String insertar(Model model, @Valid @ModelAttribute("category") Category category) {
-
+	public String insertar(Model model, @Valid @ModelAttribute("category") Category category,
+			@RequestParam("file") MultipartFile imagen) throws Exception {
 		try {
-			/*
-			 * Path directorioImagenes= Paths.get("src//main//resources//static/images");
-			 * String rutaAbsoluta= directorioImagenes.toFile().getAbsolutePath(); byte[]
-			 * bytesImg = imagen.getBytes(); Path rutaCompleta =
-			 * Paths.get(rutaAbsoluta+"//"+imagen.getOriginalFilename());
-			 * Files.write(rutaCompleta,bytesImg);
-			 */
-//			category.setImage(imagen.getOriginalFilename());
+			//Path directorioImagenes = Paths.get("src//main//resources//static/images/categories");
+			String rutaAbsoluta ="C://Users//Usuario//Desktop//Programacion_en_web//Sstartup-invest_test//images//categories";
+			byte[] bytesImg = imagen.getBytes();
+			Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
+			Files.write(rutaCompleta, bytesImg);
+
+			category.setImage(imagen.getOriginalFilename());
 
 			category.setState(true);
-			category.setImage(null);
+			category.setImage(imagen.getOriginalFilename());
 			Category categorySaved = categoryService.create(category);
 			model.addAttribute("category", categorySaved);
 		} catch (Exception e) {
 			e.getMessage();
 		}
 
-		return "dashboard/dashboard";
+		return "redirect:/ga";
 	}
 
 	@PostMapping("{id}/edit")
@@ -108,7 +112,7 @@ public class CategoryController {
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		return "redirect:/startupinvest/categories";
+		return "redirect:/ga";
 	}
 
 }

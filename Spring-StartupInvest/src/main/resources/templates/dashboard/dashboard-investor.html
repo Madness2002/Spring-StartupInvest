@@ -180,41 +180,22 @@
 						<div class="popular-startups-cards">
 							<a href="#">
 								<div class=" card-portafolio startups-cards"
-									style="width: 13rem; height: 6em;">
+									style="width: 13rem; height: 6em; color: #0085B6;"
+									th:each="startup:${startups}">
 									<div class="img-startup-portafolio">
-										<img
-											th:src="@{/dashboard-investor/Bootstrap/img/Nanovida.jpg}"
-											class="" alt="...">
+										<img th:src="@{'/images/'+'startups/'+${startup.image}}">
 									</div>
+
 									<div class="text-startup-portafolio popular-text-startup">
 										<div class="place">
-											<p>1°</p>
+											<p th:text="${startup.position}+'°'">posición</p>
 										</div>
 										<div class="name">
-											<p class="card-text">Nanovida</p>
+											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest">
-											<p>50,000.00$</p>
-										</div>
-									</div>
-								</div>
-							</a> <a href="#">
-								<div class=" card-portafolio startups-cards"
-									style="width: 13rem; height: 6em;">
-									<div class="img-startup-portafolio">
-										<img
-											th:src="@{/dashboard-investor/Bootstrap/img/kambista.png}"
-											class="" alt="...">
-									</div>
-									<div class="text-startup-portafolio popular-text-startup">
-										<div class="place">
-											<p>2°</p>
-										</div>
-										<div class="name">
-											<p class="card-text">Kambista</p>
-										</div>
-										<div class="total-invest">
-											<p>10,000.00$</p>
+											<p th:text="'$'+${startup.amounthTotalInvest}">Monto
+												invertido</p>
 										</div>
 									</div>
 								</div>
@@ -230,7 +211,7 @@
 						<div class="popular-startups-cards">
 							<a href="#">
 								<div class=" card-portafolio startups-cards"
-									style="width: 13rem; height: 6em;">
+									style="width: 13rem; height: 6em; color: #0085B6;">
 									<div class="img-startup-portafolio">
 										<img
 											th:src="@{/dashboard-investor/Bootstrap/img/Nanovida.jpg}"
@@ -245,26 +226,6 @@
 										</div>
 										<div class="total-invest">
 											<p>50,000.00$</p>
-										</div>
-									</div>
-								</div>
-							</a> <a href="#">
-								<div class=" card-portafolio startups-cards"
-									style="width: 13rem; height: 6em;">
-									<div class="img-startup-portafolio">
-										<img
-											th:src="@{/dashboard-investor/Bootstrap/img/kambista.png}"
-											class="" alt="...">
-									</div>
-									<div class="text-startup-portafolio popular-text-startup">
-										<div class="place">
-											<p>2°</p>
-										</div>
-										<div class="name">
-											<p class="card-text">Kambista</p>
-										</div>
-										<div class="total-invest">
-											<p>10,000.00$</p>
 										</div>
 									</div>
 								</div>
@@ -302,7 +263,7 @@
 							<div class="card-body-startup">
 								<h5 class="card-title">Nanovida</h5>
 								<div class="boton-card">
-									<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									<a href="#" class="btn " style="width: 100%;">Conócenos</a>
 								</div>
 							</div>
 						</div>

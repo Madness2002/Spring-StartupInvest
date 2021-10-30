@@ -37,6 +37,7 @@ public class StartupController {
 		try {
 			List<Startup> lista = new ArrayList<>();
 			lista = startupService.getAll();
+			
 			model.addAttribute("Startup", lista);
 		} catch (Exception e) {
 			e.getMessage();
