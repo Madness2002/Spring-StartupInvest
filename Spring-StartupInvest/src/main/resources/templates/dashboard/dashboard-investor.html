@@ -181,7 +181,7 @@
 							<a href="#">
 								<div class=" card-portafolio startups-cards"
 									style="width: 13rem; height: 6em; color: #0085B6;"
-									th:each="startup:${startups}">
+									th:each="startup:${startupsMostPopular}">
 									<div class="img-startup-portafolio">
 										<img th:src="@{'/images/'+'startups/'+${startup.image}}">
 									</div>
@@ -194,7 +194,7 @@
 											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest">
-											<p th:text="'$'+${startup.amounthTotalInvest}">Monto
+											<p th:text="'$'+${startup.amounthTotalInvest}" style="font-size: 14px;" >Monto
 												invertido</p>
 										</div>
 									</div>
@@ -211,7 +211,8 @@
 						<div class="popular-startups-cards">
 							<a href="#">
 								<div class=" card-portafolio startups-cards"
-									style="width: 13rem; height: 6em; color: #0085B6;">
+									style="width: 13rem; height: 6em; color: #0085B6;"
+									th:each="startup:${startupsRecently}">
 									<div class="img-startup-portafolio">
 										<img
 											th:src="@{/dashboard-investor/Bootstrap/img/Nanovida.jpg}"
@@ -219,13 +220,14 @@
 									</div>
 									<div class="text-startup-portafolio popular-text-startup">
 										<div class="place">
-											<p>1°</p>
+											<p th:text="${startup.position} +'°'">position</p>
 										</div>
 										<div class="name">
-											<p class="card-text">Nanovida</p>
+											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
-										<div class="total-invest">
-											<p>50,000.00$</p>
+										<div class="total-invest" style="font-size: 14px;"
+											th:text="'$'+${startup.amounthTotalInvest}">
+											<p>Monto invertido/p>
 										</div>
 									</div>
 								</div>
@@ -248,6 +250,9 @@
 							<div class="img-list-card-startup">
 								<img th:src="@{/dashboard-investor/Bootstrap/img/kambista.png}" />
 							</div>
+							<div id="barra"></div>
+							
+							
 							<div class="card-body-startup">
 								<h5 class="card-title">Kambista</h5>
 								<div class="boton-card">

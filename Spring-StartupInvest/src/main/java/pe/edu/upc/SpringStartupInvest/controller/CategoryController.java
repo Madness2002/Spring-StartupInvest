@@ -57,7 +57,7 @@ public class CategoryController {
 			@RequestParam("file") MultipartFile imagen) throws Exception {
 		try {
 			//Path directorioImagenes = Paths.get("src//main//resources//static/images/categories");
-			String rutaAbsoluta ="C://Users//Usuario//Desktop//Programacion_en_web//Sstartup-invest_test//images//categories";
+			String rutaAbsoluta ="C://Users//Usuario//Desktop//Programacion_en_web//Sstartup-invest_test//imagenes//categories";
 			byte[] bytesImg = imagen.getBytes();
 			Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
 			Files.write(rutaCompleta, bytesImg);

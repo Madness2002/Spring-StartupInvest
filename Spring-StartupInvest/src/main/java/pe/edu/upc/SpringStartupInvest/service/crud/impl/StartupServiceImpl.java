@@ -50,12 +50,6 @@ public class StartupServiceImpl implements StartupService {
 	}
 
 	@Override
-	public List<Startup> listStartupsWithTopAndAmount() throws Exception {
-
-		return startupRepository.listStartupsWithTopAndAmount();
-	}
-
-	@Override
 	public double getAmounthInvestedById(int id) throws Exception {
 
 		return startupRepository.getAmounthInvestedById(id);
@@ -65,6 +59,11 @@ public class StartupServiceImpl implements StartupService {
 	public Integer getPositionStartupById(int id) throws Exception {
 
 		return startupRepository.getPositionStartupById(id);
+	}
+
+	@Override
+	public List<Startup> listStartupsMostPopular() throws Exception {
+		return startupRepository.listStartupsMostPopular();
 	}
 
 	/*

@@ -35,20 +35,31 @@ public class FrontController {
 
 		try {
 			List<Category> categories = new ArrayList<>();
-			List<Startup> startups = new ArrayList<>();
+			List<Startup> startupsMostPopular, startupsRecently = new ArrayList<>();
 			categories = categoryService.findByState(true);
-			startups = startupService.getAll();
-			for (Startup startup : startups) {
+			startupsMostPopular = startupService.listStartupsMostPopular();
+			startupsRecently = startupService.findByDateRecently();
+			// Lista de las startups más populares (TOP 5)
+			for (Startup startup : startupsMostPopular) {
 				int id = startup.getId();
 				double amounth = startupService.getAmounthInvestedById(id);
 				Integer position = startupService.getPositionStartupById(id);
 				startup.setAmounthTotalInvest(amounth);
 				startup.setPosition(position);
 			}
-
-			Collections.sort(startups, new CompareAmounth());
+//Lista de las startups recientes
+			for (Startup startup1 : startupsRecently) {
+				int id1 = startup1.getId();
+				double amounth1 = startupService.getAmounthInvestedById(id1);
+				Integer position1 = startupService.getPositionStartupById(id1);
+				startup1.setAmounthTotalInvest(amounth1);
+				startup1.setPosition(position1);
+			}
+			Collections.sort(startupsMostPopular, new CompareAmounth());
+			Collections.sort(startupsRecently, new CompareAmounth());
 			model.addAttribute("categories", categories);
-			model.addAttribute("startups", startups);
+			model.addAttribute("startupsRecently", startupsRecently);
+			model.addAttribute("startupsMostPopular", startupsMostPopular);
 		} catch (Exception e) {
 
 		}
