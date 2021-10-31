@@ -39,7 +39,7 @@
 			th:each="category: ${categories}">
 			<div class="card-body">
 				<img class="img-thumbnail rounded float-left"
-					th:src="@{'/imagenes/'+'categories/'+${category.image}}"
+					th:src="@{'/images/categories/'+${category.image}}"
 					style="max-width: 100%;">
 
 				<h5 class="card-title" th:text="${category.name}">name</h5>

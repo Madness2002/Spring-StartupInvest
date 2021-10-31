@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h5 th:text="'No se han encontrado resultados al buscar usando la palabra '+${word}">Más
+							Startups</h5>
+					</div>
+
+					
+					
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>

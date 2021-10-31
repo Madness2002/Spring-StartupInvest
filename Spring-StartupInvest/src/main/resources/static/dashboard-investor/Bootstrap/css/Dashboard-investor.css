@@ -178,7 +178,7 @@
 
 .box-portafolio .card-portafolio .img-startup-portafolio {
 	width: 54.86px;
-	height: 54px;
+	height: 100%;
 	left: 54px;
 	top: 10px;
 	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -218,8 +218,6 @@
 }
 
 .img-startup-portafolio img {
-	width: 36px;
-	height: 36px;
 	border-radius: 10px;
 }
 
@@ -257,7 +255,7 @@
 }
 
 .center-search {
-	width: 30em;
+	width: 34em;
 }
 
 .icon-cog {
@@ -279,7 +277,6 @@
 	font-weight: 900;
 	font-style: normal;
 	line-height: 25px;
-	
 }
 
 .popular-startups-cards a {
@@ -313,11 +310,13 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	height: 100%;
 }
 
 .startups-cards .img-startup-portafolio img {
-	width: 5.9em;
-	height: auto;
+	width: 5rem;
+	height: 100%;
+	resize: both;
 }
 
 .popular-text-startup {
@@ -357,31 +356,22 @@
 	width: 19rem;
 	height: auto;
 	border: solid 0, 2px grey;
-    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
-	
+	box-shadow: 0.5px 5px 15px rgb(0 0 0/ 25%);
 }
 
-.list-startups .list-card-startup:hover{
-	
+.list-startups .list-card-startup:hover {
 	border: solid 0, 7px grey;
 	transition: 0.5s;
 	box-shadow: 50px 15px 15px rgba(0, 0, 0, 0.25);
-	
-transform: scale(1.1);
-            
-            
+	transform: scale(1.1);
 }
 
-.list-startups .list-card-startup:not(:hover){
-	
-	
+.list-startups .list-card-startup:not(:hover) {
 	border: solid 0, 1px grey;
-    transition: 0.5s;
-    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
-    
-     width: 19rem;
+	transition: 0.5s;
+	box-shadow: 0.5px 5px 15px rgb(0 0 0/ 25%);
+	width: 19rem;
 }
-
 
 .list-startups img {
 	background-color: black;
@@ -397,14 +387,13 @@ transform: scale(1.1);
 	width: 13em;
 	border-radius: 4px;
 	margin-left: 19px;
-	margin-right:19px;
+	margin-right: 19px;
 	height: 18em;
 	margin-bottom: 20px;
 	border-color: transparent;
 }
 
-h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1{
-	
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 	margin-bottom: 4rem;
 }
 
@@ -420,3 +409,69 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1{
 	color: white;
 }
 
+.d-flex {
+	display: relative;
+	width: 100%;
+}
+
+.input-group {
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+.form-control:focus+button {
+	transition: 0.5s;
+	transform: scale(1.1);
+	margin-right: 2rem;
+	box-shadow: 6px 15px 15px rgba(0, 0, 0, 0.55);
+	
+}
+
+.form-control:not(:focus)+button {
+	transition: 0.5s;
+	box-shadow: 6px 15px 15px rgba(0, 0, 0, 0.05);
+
+	
+}
+
+.form-control:focus{
+	transition: 0.5s;
+	transform: scale(1.1);
+	margin-right: 2rem;
+	box-shadow: 6px 15px 15px rgba(0, 0, 0, 0.55);
+	border: 3px solid #0dcaf0;
+	
+}
+
+
+.form-control:not(:focus) {
+transition: 0.5s;
+	box-shadow: 6px 15px 15px rgba(0, 0, 0, 0.05);
+	border-top-right-radius: 0rem;
+	border-bottom-right-radius: 0rem;
+	border-top-right-radius: 0rem;
+	border-right: 0rem;
+	
+}
+
+.input-group .btn {
+	right: 0.3rem;
+}
+
+.btn-outline-primary {
+	border: transparent;
+	border-bottom-left-radius: 0rem;
+	border-top-left-radius: 0rem;
+	border-left: transparent;
+	box-shadow: 6px 15px 15px rgba(0, 0, 0, 0.05);
+	transition: 0.5s;
+	border-top-left-radius: 0rem;
+	background-color:#495057;
+	color:white;
+	
+}
+
+.btn-outline-primary:hover{
+	color:black;
+	background-color: aqua;
+}

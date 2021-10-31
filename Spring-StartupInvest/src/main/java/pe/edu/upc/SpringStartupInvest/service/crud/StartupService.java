@@ -14,7 +14,7 @@ public interface StartupService extends CrudService<Startup, Integer> {
 	List<Startup> findByState(Boolean state) throws Exception;
 
 	@Transactional(readOnly = true)
-	List<Startup> findByDateRecently() throws Exception; // Startups registradas recientemente
+	List<Startup> findByDateRecently() throws Exception;// Startups registradas recientemente
 
 	@Transactional(readOnly = true)
 	List<Startup> findByDateBetween(Date date1, Date date2) throws Exception; // Filtrar startups entre fechas de
@@ -23,10 +23,14 @@ public interface StartupService extends CrudService<Startup, Integer> {
 	List<Startup> listStartupsMostPopular() throws Exception;
 	// registro
 
+	
+	
+	
 	double getAmounthInvestedById(int id) throws Exception;
 
 	Integer getPositionStartupById(int id) throws Exception;
 
+	List<Startup> findByNameStartup(String name);
 	// List<Startup> findByPopular() throws Exception; // Buscar Startups mas
 	// populares FALTA EL TOP
 

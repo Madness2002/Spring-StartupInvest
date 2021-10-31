@@ -29,10 +29,13 @@ public interface StartupRepository extends JpaRepository<Startup, Integer> {
 
 	@Query(value = "select p.amounth from viewStartupPositionAmounth p where p.startup_id=?1", nativeQuery = true)
 	double getAmounthInvestedById(int id) throws Exception;
-
+	
 	@Query(value = "select p.position from viewStartupPositionAmounth p where p.startup_id=?1", nativeQuery = true)
 	Integer getPositionStartupById(int id) throws Exception;
 
+	 @Query(value="select*from startups where upper(startup_name) like upper(CONCAT('%',?1,'%'))",nativeQuery=true)
+	 List<Startup> findByNameStartup(String name);
+	
 	// registro
 	/*
 	 * @Query("") List<Startup> findByPopular()throws Exception; // Buscar Startups
