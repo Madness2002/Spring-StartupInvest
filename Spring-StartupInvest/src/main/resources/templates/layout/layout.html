@@ -168,10 +168,12 @@
 						<input type="search" class="form-control rounded"
 							placeholder="Busca una startup..." aria-label="Search"
 							aria-describedby="search-addon" th:field="*{name}">
-							
-						<button type="submit" class="btn btn-outline-primary"><i class="fab fa-searchengin"></i></button>
 
-						
+						<button type="submit" class="btn btn-outline-primary">
+							<i class="fab fa-searchengin"></i>
+						</button>
+
+
 
 					</form>
 
@@ -185,51 +187,51 @@
 						</button>
 
 					</div>
+					
+						<div class="modal fade" id="exampleModal" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalLabel"
+							aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Filtro</h5>
+										<button type="button" class="btn btn-danger"
+											data-dismiss="modal">Cerrar</button>
+									</div>
+									<div class="modal-body">
+										<form th:action="@{/search/startupByDateAndCategory}" method="post" th:object="${intervalDate}">
+											<div class="form-group">
+												<label for="recipient-name" class="col-form-label">
+													<b>Sector de Startup</b>
+												</label> <select class="form-select"
+													aria-label="Default select example">
+													<option th:each="category :${categories}"
+														th:text="${category.name}">One</option>
 
-					<div class="modal fade" id="exampleModal" tabindex="-1"
-						role="dialog" aria-labelledby="exampleModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Filtro</h5>
-									<button type="button" class="btn btn-danger"
-										data-dismiss="modal">Cerrar</button>
+												</select>
+
+											</div>
+											<div class="form-group">
+												<label for="message-text" class="col-form-label"><b>Tiempo en funcionamiento</b>
+												</label> <br> Inicio 
+												
+												<input type="text" class="form-control" id="intervalDate" autocomplete="off" th:field="*{intervalDate}"/>
+												<input type="hidden"autocomplete="off"placeholder="Fecha inicio..." name="dateFrom"  /> Fin 
+												<input type="hidden" autocomplete="off" placeholder="Fecha fin..." name="dateTo"  />
+
+											</div>
+											<div class="modal-footer">
+										<button type="submit" id="btnApply">Aplicar filtro</button>
+									</div>
+										</form>
+									</div>
+									
+
+
+
 								</div>
-								<div class="modal-body">
-									<form>
-										<div class="form-group">
-											<label for="recipient-name" class="col-form-label"> <b>Sector
-													de Startup</b>
-											</label> <select class="form-select"
-												aria-label="Default select example">
-												<option th:each="category :${categories}"
-													th:text="${category.name}">One</option>
-
-											</select>
-
-										</div>
-										<div class="form-group">
-											<label for="message-text" class="col-form-label"><b>Tiempo
-													en funcionamiento</b></label> <br> Inicio <input type="text"
-												autocomplete="off" name="birthday"
-												placeholder="Fecha inicio..." value="" /> Fin <input
-												type="text" autocomplete="off" name="birthday"
-												placeholder="Fecha fin..." value="" />
-
-										</div>
-									</form>
-								</div>
-								<div class="modal-footer">
-									<button type="button" id="btnApply">Aplicar filtro</button>
-								</div>
-
-
-
 							</div>
 						</div>
-					</div>
-
 
 				</div>
 			</div>
@@ -258,16 +260,21 @@
 			th:src="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js}"></script>
 
 
-		<script>
-    $(function() {
-      $('input[name="birthday"]').daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true,
-        minYear: 1901,
-        maxYear: parseInt(moment().format('YYYY'),10)
-      });
+	
+
+
+<script>
+    var $intervalDate = $('#intervalDate');
+
+    $intervalDate.daterangepicker();
+    $intervalDate.on('apply.daterangepicker', function (ev, picker) {
+        $('input[name="dateFrom"]').val(picker.startDate.format('DD/MM/YYYY'));
+        $('input[name="dateTo"]').val(picker.endDate.format('DD/MM/YYYY'));
     });
-    </script>
+</script>
+
+
+
 
 		<script th:src="@{/dashboard-investor/Bootstrap/js/bootstrap.min.js}"></script>
 	</footer>

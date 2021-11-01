@@ -424,34 +424,28 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 	transform: scale(1.1);
 	margin-right: 2rem;
 	box-shadow: 6px 15px 15px rgba(0, 0, 0, 0.55);
-	
 }
 
 .form-control:not(:focus)+button {
 	transition: 0.5s;
 	box-shadow: 6px 15px 15px rgba(0, 0, 0, 0.05);
-
-	
 }
 
-.form-control:focus{
+.form-control:focus {
 	transition: 0.5s;
 	transform: scale(1.1);
 	margin-right: 2rem;
 	box-shadow: 6px 15px 15px rgba(0, 0, 0, 0.55);
 	border: 3px solid #0dcaf0;
-	
 }
 
-
 .form-control:not(:focus) {
-transition: 0.5s;
+	transition: 0.5s;
 	box-shadow: 6px 15px 15px rgba(0, 0, 0, 0.05);
 	border-top-right-radius: 0rem;
 	border-bottom-right-radius: 0rem;
 	border-top-right-radius: 0rem;
 	border-right: 0rem;
-	
 }
 
 .input-group .btn {
@@ -466,12 +460,11 @@ transition: 0.5s;
 	box-shadow: 6px 15px 15px rgba(0, 0, 0, 0.05);
 	transition: 0.5s;
 	border-top-left-radius: 0rem;
-	background-color:#495057;
-	color:white;
-	
+	background-color: #495057;
+	color: white;
 }
 
-.btn-outline-primary:hover{
-	color:black;
+.btn-outline-primary:hover {
+	color: black;
 	background-color: aqua;
 }

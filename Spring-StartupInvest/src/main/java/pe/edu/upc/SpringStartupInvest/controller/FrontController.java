@@ -15,6 +15,7 @@ import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
 import pe.edu.upc.SpringStartupInvest.service.crud.StartupService;
 import pe.edu.upc.SpringStartupInvest.util.startup.CompareAmounth;
+import pe.edu.upc.SpringStartupInvest.util.startup.DateTimeUtil;
 
 @Controller
 @RequestMapping("/")//dominio base 
@@ -64,6 +65,7 @@ public class FrontController {
 			Collections.sort(startupsMostPopular, new CompareAmounth());
 			Collections.sort(startupsRecently, new CompareAmounth());
 			model.addAttribute("startupSearch",new Startup());
+			model.addAttribute("intervalDate",new DateTimeUtil());
 			model.addAttribute("moreStartups", startups);
 			model.addAttribute("categories", categories);
 			model.addAttribute("startupsRecently", startupsRecently);
