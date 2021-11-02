@@ -62,6 +62,8 @@ public class FrontController {
 			
 				
 			}
+			
+			//model.addAttribute("categorySelected", "");
 			Collections.sort(startupsMostPopular, new CompareAmounth());
 			Collections.sort(startupsRecently, new CompareAmounth());
 			model.addAttribute("startupSearch",new Startup());

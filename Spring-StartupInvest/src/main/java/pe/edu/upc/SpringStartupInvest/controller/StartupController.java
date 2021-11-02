@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
@@ -22,7 +21,6 @@ import pe.edu.upc.SpringStartupInvest.service.crud.StartupService;
 
 @Controller
 @RequestMapping("/startupinvest/startups")
-@SessionAttributes("startup")
 public class StartupController {
 
 	@Autowired
@@ -45,6 +43,38 @@ public class StartupController {
 		return null;
 	}
 
+	
+	
+	@GetMapping("{id}/view")
+	public String viewStartup(Model model, @PathVariable("id") Integer id) {
+		try {
+			if (startupService.existsById(id)) {
+				Optional<Startup> optional = startupService.findById(id);
+			//	model.addAttribute("", optional);
+				
+				return "startup/startup-investor-view";
+			}
+
+		} catch (Exception e) {
+			
+			
+			e.getMessage();
+			return "redirect:/startupinvest/home";
+		}
+
+		return "startup/startup-investor-view";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@PostMapping("newStartup")
 	public String insertar(Model model, @Valid @ModelAttribute("startup") Startup startup) {
 		try {

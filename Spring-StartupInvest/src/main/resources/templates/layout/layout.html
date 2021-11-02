@@ -187,51 +187,54 @@
 						</button>
 
 					</div>
-					
-						<div class="modal fade" id="exampleModal" tabindex="-1"
-							role="dialog" aria-labelledby="exampleModalLabel"
-							aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Filtro</h5>
-										<button type="button" class="btn btn-danger"
-											data-dismiss="modal">Cerrar</button>
-									</div>
-									<div class="modal-body">
-										<form th:action="@{/search/startupByDateAndCategory}" method="post" th:object="${intervalDate}">
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">
-													<b>Sector de Startup</b>
-												</label> <select class="form-select"
-													aria-label="Default select example">
-													<option th:each="category :${categories}"
-														th:text="${category.name}">One</option>
 
-												</select>
-
-											</div>
-											<div class="form-group">
-												<label for="message-text" class="col-form-label"><b>Tiempo en funcionamiento</b>
-												</label> <br> Inicio 
-												
-												<input type="text" class="form-control" id="intervalDate" autocomplete="off" th:field="*{intervalDate}"/>
-												<input type="hidden"autocomplete="off"placeholder="Fecha inicio..." name="dateFrom"  /> Fin 
-												<input type="hidden" autocomplete="off" placeholder="Fecha fin..." name="dateTo"  />
-
-											</div>
-											<div class="modal-footer">
-										<button type="submit" id="btnApply">Aplicar filtro</button>
-									</div>
-										</form>
-									</div>
-									
-
-
-
+					<div class="modal fade" id="exampleModal" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Filtros</h5>
+									<button type="button" class="btn btn-danger"
+										data-dismiss="modal">Cerrar</button>
 								</div>
+								<div class="modal-body">
+									<form th:action="@{/search/startupByDateAndCategory}"
+										method="post" th:object="${intervalDate}">
+										<div class="form-group">
+											<label for="recipient-name" class="col-form-label"> <b>Sector
+													de Startup</b>
+											</label> <select class="form-select"
+												aria-label="Default select example" th:field="*{categoryText}" >
+												<option th:field="*{categoryText}" value=Ninguna>Ninguna</option>
+												<option th:value="${category.name}"  th:each="category :${categories}"
+													th:text="${category.name}">One</option>
+
+											</select>
+
+										</div>
+										<div class="form-group">
+											<label for="message-text" class="col-form-label"><b>Tiempo
+													en funcionamiento</b> </label> <br> Inicio - Fin <input type="text"
+												class="form-control" id="intervalDate" autocomplete="off"
+												th:field="*{intervalDate}" /> <input type="hidden"
+												autocomplete="off" placeholder="Fecha inicio..."
+												name="dateFrom" /> <input type="hidden"
+												autocomplete="off" placeholder="Fecha fin..." name="dateTo" />
+
+										</div>
+										<div class="modal-footer">
+											<button type="submit" id="btnApply">Buscar</button>
+										</div>
+									</form>
+								</div>
+
+
+
+
 							</div>
 						</div>
+					</div>
 
 				</div>
 			</div>
@@ -260,10 +263,10 @@
 			th:src="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js}"></script>
 
 
-	
 
 
-<script>
+
+		<script>
     var $intervalDate = $('#intervalDate');
 
     $intervalDate.daterangepicker();

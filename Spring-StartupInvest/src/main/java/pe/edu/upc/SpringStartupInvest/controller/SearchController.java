@@ -40,13 +40,13 @@ public class SearchController {
 
 			model.addAttribute("startups", startups);
 			model.addAttribute("size", startups.size());
-			model.addAttribute("word", "la palabra ("+startupSearch.getName()+")");
-			model.addAttribute("intervalDate",new DateTimeUtil());
+			model.addAttribute("word", "la palabra (" + startupSearch.getName() + ")");
+			model.addAttribute("intervalDate", new DateTimeUtil());
 			return "dashboard/dashboard-investor-search";
 
 		} else {
-			model.addAttribute("word", "la palabra ("+startupSearch.getName()+")");
-			model.addAttribute("intervalDate",new DateTimeUtil());
+			model.addAttribute("word", "la palabra (" + startupSearch.getName() + ")");
+			model.addAttribute("intervalDate", new DateTimeUtil());
 			return "dashboard/dashboard-investor-search-error";
 		}
 
@@ -55,6 +55,7 @@ public class SearchController {
 	@PostMapping("startupByDateAndCategory")
 	public String searchStartupByDateAndCategory(Model model, @ModelAttribute("intervalDate") DateTimeUtil intervalDate)
 			throws Exception {
+
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		List<Startup> startups = new ArrayList<Startup>();
 		List<Category> categories = new ArrayList<>();
@@ -65,19 +66,44 @@ public class SearchController {
 		startups = startupService.findByDateBetween(startDate, endDate);
 
 		model.addAttribute("categories", categories);
+
+		// ---------------------------------------------------------------
 		if (startups.size() > 0) {
-			model.addAttribute("startupSearch",new Startup());
-			model.addAttribute("startups", startups);
+			model.addAttribute("startupSearch", new Startup());
+			// ---------------------------------------------------
+			if (!intervalDate.getCategoryText().equals("Ninguna")) {
+				for (Startup startup : startups) {
+					if (!startup.getCategory().getName().equals(intervalDate.getCategoryText()))
+						startups.remove(startup);
+				}
+
+				model.addAttribute("word", "el intervalo de tiempo (" + intervalDate.getIntervalDate()
+						+ ") y el sector (" + intervalDate.getCategoryText() + ")");
+
+			}
+			// ---------------------------------------------------
+			else {
+				model.addAttribute("word", "el intervalo de tiempo (" + intervalDate.getIntervalDate() + ")");
+			}
+
 			model.addAttribute("size", startups.size());
-			model.addAttribute("word", "el intervalo de tiempo ("+intervalDate.getIntervalDate()+")");
+			model.addAttribute("startups", startups);
+
 			return "dashboard/dashboard-investor-search";
 
-		} else {
-			model.addAttribute("startupSearch",new Startup());
-			model.addAttribute("word", "el intervalo de tiempo ("+intervalDate.getIntervalDate()+")");
+		}
+		// --------------------------------------------------------------
+		else {
+			model.addAttribute("startupSearch", new Startup());
+			if (intervalDate.getCategoryText().equals("Ninguna")) {
+				model.addAttribute("word", "el intervalo de tiempo (" + intervalDate.getIntervalDate() + ")");
+				model.addAttribute("ga", "color: #61BFD1;");
+			} else
+
+				model.addAttribute("word", "el intervalo de tiempo (" + intervalDate.getIntervalDate()
+						+ ") y el sector (" + intervalDate.getCategoryText() + ")");
 			return "dashboard/dashboard-investor-search-error";
-			
-			
+
 		}
 
 	}

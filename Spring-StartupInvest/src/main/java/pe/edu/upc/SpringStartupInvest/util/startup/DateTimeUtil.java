@@ -9,27 +9,32 @@ private Date endDate;
 private String startDateText;
 private String endDateText;
 private String intervalDate;
+private String categoryText;
 public DateTimeUtil() {
 	super();
 }
 
 
-
-
-
-
-public DateTimeUtil(Date startDate, Date endDate, String startDateText, String endDateText, String intervalDate) {
+public DateTimeUtil(Date startDate, Date endDate, String startDateText, String endDateText, String intervalDate,
+		String categoryText) {
 	super();
 	this.startDate = startDate;
 	this.endDate = endDate;
 	this.startDateText = startDateText;
 	this.endDateText = endDateText;
 	this.intervalDate = intervalDate;
+	this.categoryText = categoryText;
 }
 
 
+public String getCategoryText() {
+	return categoryText;
+}
 
 
+public void setCategoryText(String categoryText) {
+	this.categoryText = categoryText;
+}
 
 
 public String getIntervalDate() {

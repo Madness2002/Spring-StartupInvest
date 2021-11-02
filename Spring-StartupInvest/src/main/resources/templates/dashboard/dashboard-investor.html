@@ -32,15 +32,19 @@
 							<h5>Las Startups más populares</h5>
 						</div>
 						<div class="popular-startups-cards">
-							<a href="#">
+							<a th:each="startup:${startupsMostPopular}" th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
 								<div class=" card-portafolio startups-cards"
 									style="width: 13rem; height: 6em; color: #0085B6;"
-									th:each="startup:${startupsMostPopular}">
-									<div class="img-startup-portafolio">
-										<img th:src="@{'/images/startups/'+${startup.image}}">
+									 >
+									
+								
+									
+												
+									<div class="img-startup-portafolio" >
+										<img th:src="@{'/images/startups/'+${startup.image}}" >
 									</div>
 
-									<div class="text-startup-portafolio popular-text-startup">
+									<div class="text-startup-portafolio popular-text-startup" >
 										<div class="place">
 											<p th:text="${startup.position}+'°'">posición</p>
 										</div>
@@ -48,10 +52,12 @@
 											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest">
-											<p th:text="'$'+${startup.amounthTotalInvest}"
+											<p th:text="'$'+${startup.amounthTotalInvest}" 
 												style="font-size: 14px;">Monto invertido</p>
 										</div>
 									</div>
+									
+									
 								</div>
 							</a>
 
