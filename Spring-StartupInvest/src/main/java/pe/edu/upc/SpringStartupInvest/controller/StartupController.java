@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pe.edu.upc.SpringStartupInvest.model.entity.InvestmentRequest;
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
+import pe.edu.upc.SpringStartupInvest.service.crud.InvestmentRequestService;
 import pe.edu.upc.SpringStartupInvest.service.crud.StartupService;
 
 @Controller
@@ -29,13 +31,16 @@ public class StartupController {
 	@Autowired
 	private CategoryService categoryService;
 
+	@Autowired
+	private InvestmentRequestService investmentRequestService;
+
 	@GetMapping
 	public String list(Model model) {
 
 		try {
 			List<Startup> lista = new ArrayList<>();
 			lista = startupService.getAll();
-			
+
 			model.addAttribute("Startup", lista);
 		} catch (Exception e) {
 			e.getMessage();
@@ -43,38 +48,34 @@ public class StartupController {
 		return null;
 	}
 
-	
-	
 	@GetMapping("{id}/view")
 	public String viewStartup(Model model, @PathVariable("id") Integer id) {
 		try {
 			if (startupService.existsById(id)) {
-				Optional<Startup> optional = startupService.findById(id);
-			//	model.addAttribute("", optional);
 				
+				Optional<Startup> optional = startupService.findById(id);
+				int idStartup=optional.get().getId();
+				List<InvestmentRequest> listInvestmentRequests = new ArrayList<>();
+				listInvestmentRequests = investmentRequestService.findInvestmentRequestByStartupId(idStartup);
+				for (InvestmentRequest investmentRequest : listInvestmentRequests) {
+					
+					double amounthColected=investmentRequestService.getAmountColectedById(idStartup);
+					investmentRequest.setAmountColected(amounthColected);
+				}
+
+				model.addAttribute("investmentRequests", listInvestmentRequests);
+				model.addAttribute("porcentaje", 18);
 				return "startup/startup-investor-view";
 			}
-
 		} catch (Exception e) {
-			
-			
+
 			e.getMessage();
 			return "redirect:/startupinvest/home";
 		}
 
 		return "startup/startup-investor-view";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@PostMapping("newStartup")
 	public String insertar(Model model, @Valid @ModelAttribute("startup") Startup startup) {
 		try {

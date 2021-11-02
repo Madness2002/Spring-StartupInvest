@@ -36,6 +36,10 @@ public interface StartupRepository extends JpaRepository<Startup, Integer> {
 	 @Query(value="select*from startups where upper(startup_name) like upper(CONCAT('%',?1,'%'))",nativeQuery=true)
 	 List<Startup> findByNameStartup(String name);
 	
+	 
+	 
+	 
+	 
 	// registro
 	/*
 	 * @Query("") List<Startup> findByPopular()throws Exception; // Buscar Startups
