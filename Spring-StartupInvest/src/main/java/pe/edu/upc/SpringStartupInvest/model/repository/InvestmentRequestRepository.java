@@ -17,6 +17,10 @@ public interface InvestmentRequestRepository extends JpaRepository<InvestmentReq
 	List<InvestmentRequest> findInvestmentRequestByStartupId(Integer startupId);
 
 	@Query(value = "select p.amounth from viewInversionStatus p where p.startup_id=?1", nativeQuery = true)
-	double getAmountColectedById(Integer id) throws Exception;
+	double getAmountColectedByStartupId(Integer id) throws Exception;
 
+	@Query(value = "select p.amounth\r\n"
+			+ "from viewInversionStatus p where p.investment_request_id=?1", nativeQuery = true)
+	double getAmountColectedByInvestmentRequestId(Integer id) throws Exception;
+	
 }
