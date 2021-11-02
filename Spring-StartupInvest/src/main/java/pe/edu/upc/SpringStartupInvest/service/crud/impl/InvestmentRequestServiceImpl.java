@@ -28,9 +28,13 @@ public class InvestmentRequestServiceImpl implements InvestmentRequestService {
 	}
 
 	@Override
-	public double getAmountColectedById(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return investmentRequestRepository.getAmountColectedById(id);
+	public double getAmountColectedByStartupId(int id) throws Exception {
+		return investmentRequestRepository.getAmountColectedByStartupId(id);
+	}
+
+	@Override
+	public double getAmountColectedByInvestmentRequestId(Integer id) throws Exception {
+		return investmentRequestRepository.getAmountColectedByInvestmentRequestId(id);
 	}
 
 }

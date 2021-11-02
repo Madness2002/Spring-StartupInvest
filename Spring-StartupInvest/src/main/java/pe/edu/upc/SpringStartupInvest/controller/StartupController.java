@@ -52,14 +52,15 @@ public class StartupController {
 	public String viewStartup(Model model, @PathVariable("id") Integer id) {
 		try {
 			if (startupService.existsById(id)) {
-				
+
 				Optional<Startup> optional = startupService.findById(id);
-				int idStartup=optional.get().getId();
+				int idStartup = optional.get().getId();
 				List<InvestmentRequest> listInvestmentRequests = new ArrayList<>();
 				listInvestmentRequests = investmentRequestService.findInvestmentRequestByStartupId(idStartup);
 				for (InvestmentRequest investmentRequest : listInvestmentRequests) {
-					
-					double amounthColected=investmentRequestService.getAmountColectedById(idStartup);
+
+					double amounthColected = investmentRequestService
+							.getAmountColectedByInvestmentRequestId(investmentRequest.getId());
 					investmentRequest.setAmountColected(amounthColected);
 				}
 
