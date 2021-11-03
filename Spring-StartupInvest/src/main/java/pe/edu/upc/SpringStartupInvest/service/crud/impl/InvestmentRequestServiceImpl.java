@@ -37,4 +37,10 @@ public class InvestmentRequestServiceImpl implements InvestmentRequestService {
 		return investmentRequestRepository.getAmountColectedByInvestmentRequestId(id);
 	}
 
+	@Override
+	public Integer getInvestorQuantityByInvestmentRequestId(Integer id) throws Exception {
+
+		return investmentRequestRepository.getInvestorQuantityByInvestmentRequestId(id);
+	}
+
 }
