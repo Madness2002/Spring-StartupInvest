@@ -65,7 +65,9 @@ public class StartupController {
 				}
 
 				model.addAttribute("investmentRequests", listInvestmentRequests);
-				model.addAttribute("porcentaje", 18);
+				model.addAttribute("imgname", optional.get().getImage());
+				
+				
 				return "startup/startup-investor-view";
 			}
 		} catch (Exception e) {

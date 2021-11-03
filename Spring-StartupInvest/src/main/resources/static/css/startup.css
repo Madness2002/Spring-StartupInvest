@@ -3,6 +3,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	
+
 }
 
 #box-invierte-ya {
@@ -15,42 +17,96 @@
 	justify-content: center;
 }
 
-#img-portada img {
+#img-portada:before {
 	width: 100%;
+	display: flex;
+	justify-content: center;
+	background: linear-gradient(rgba(255, 0, 0, 0.45), rgba(255, 0, 0, 0.45));
+}
+
+#img-portada img {
+	position: relative;
+	width: 100%;
+	height:10vw;
 	display: flex;
 	justify-content: center;
 }
 
+#img-portada img:before {
+	background: linear-gradient(rgba(255, 0, 0, 0.45), rgba(255, 0, 0, 0.45));
+}
+
 #box-information {
+	position:relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-		padding-top: 3.4rem;
-	width: 90vw;
+	width: 85vw;
+	top: -5vw;
 }
 
 #img-comeback {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between; 
+	padding-top: 1.7rem;
+	padding-bottom: 3rem;
+	
 	width: 90%;
-	padding-top: 3rem;
 }
 
 #img-comeback button {
 	background-color: transparent;
 	color: aqua;
-	border:transparent;
-	
-	
+	border: transparent;
 }
 
-i{
+#comeback {
 	font-size: 4rem;
-	color:#2196F3;
-	
+	color: #2196F3;
+	height: auto;
+	transition: 0.5s;
 }
+
+#comeback:hover{
+	
+	
+
+	transition: 0.5s;
+   
+	color:#1F232C;
+}
+
+
+#img-comeback img {
+	position: relative;
+	display: flex;
+	margin-right:4vw;
+	justify-content: center;
+	align-items: center;
+	width: 17vw;
+	border-radius: 15px;
+	bottom: 7.5vw;
+}
+
+
+
+
+#img-comeback img:hover{
+	transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+}
+
+#img-comeback img:not(:hover){
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+}
+
 #first-row {
 	display: flex;
 	flex-direction: row;
-	width: 100%;
+	width: 70%;
 	justify-content: space-between;
 }
 
@@ -58,14 +114,26 @@ i{
 	font-family: Fira Sans;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 36px;
+	font-size: 2vw;
 	line-height: 43px;
 }
 
+#min-big-box:hover {
+	background:linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7));
+	transform: scale(1.1);
+	transition: 0.5s;
+	margin-top:  2rem;
+	filter: brightness(105%); 
+	 box-shadow: 10px 20px 15px rgb(0 0 0 / 50%);
+}
+
+
+
 #min-big-box {
+	transition: 0.5s;
 	display: flex;
 	flex-direction: column;
-	width: 100%;
+	width: 70%;
 	background: #1F232C;
 	border-radius: 10px;
 	color: white;
@@ -74,7 +142,11 @@ i{
 	padding: 1.2rem;
 	padding-left: 2.5rem;
 	padding-right: 2.5rem;
+margin-bottom:6vw;
 	justify-content: center;
+	transition: 0.5s;
+    box-shadow: 10px 5px 15px rgb(0 0 0 / 25%);
+	
 }
 
 #date {
@@ -109,7 +181,7 @@ i{
 	font-family: ABeeZee;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 3.5vw;
+	font-size: 3vw;
 	line-height: 43px;
 	display: flex;
 	justify-content: space-between;
@@ -120,9 +192,9 @@ i{
 #box-quantity-type-date {
 	display: flex;
 	flex-direction: row;
-	padding-top: 7rem;
-	padding-bottom: 3.5rem;
-	width: 80%;
+	padding-top: 3.5vw;
+	padding-bottom: 3.3rem;
+	width: 100%;
 	justify-content: space-between;
 }
 
@@ -130,25 +202,33 @@ i{
 	font-family: Fira Sans;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 1.81vw;
+	font-size: 1.3vw;
 	line-height: 4vw;
 }
 
 .box-details {
 	background: #F3F3F3;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+	box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.25);
 	border-radius: 15px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 4vw;
 	width: 15vw;
+	font-weight:bold;
 	flex-wrap: wrap;
 	color: black;
 	flex-wrap: wrap;
 	border-radius: 15px;
-	flex-wrap: wrap
+	flex-wrap: wrap;
+	transition: 0.5s;
 }
+
+.box-details:hover{
+	
+	transform: scale(1.1);
+}
+
 
 .columns {
 	display: flex;
@@ -163,7 +243,7 @@ i{
 }
 
 .progress {
-	height: 2.4rem;
+	height: 3vw;
 	border-radius: 1rem;
 }
 
@@ -198,16 +278,27 @@ i{
 	background: #61BFD1;
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
-		font-size: 25px;
+	font-weight:bold;
+	font-size: 25px;
 	width: 370px;
 	height: 55px;
 	left: 535px;
 	top: 1092px;
+		transition: 0.5s;
 }
 
-.progress-bar{
+#box-information button:hover{
 	
+	border-radius: 10px;
+	
+	color:black;
+	font-size: 29px;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+transform: scale(1.1);
+transition: 0.5s;
+}
+
+
+.progress-bar {
 	background-color: #61BFD1;
-	
 }
-
