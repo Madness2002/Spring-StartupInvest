@@ -8,10 +8,13 @@
 	th:href="@{/dashboard-investor/Bootstrap/css/bootstrap.css}" />
 <link rel="stylesheet"
 	th:href="@{/dashboard-investor/Bootstrap/css/Dashboard-investor.css}" />
-
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css}" />
 <link
 	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
 	rel="icon">
+	
+
 <!--Font-Awsome-->
 
 <link rel="stylesheet"
@@ -67,21 +70,187 @@
 	</header>
 
 
+	<div th:fragment="frag-left-bar">
+		<div class="left-section position-fixed">
+			<div class="top-section">
+				<div class="imagen-perfil">
+					<img
+						th:src="@{/dashboard-investor/Bootstrap/img/testimonial-2.jpg}"
+						alt="Imagen de perfil">
+				</div>
+				<div class="name-perfil">
+					<p id="nombreUsuario">Claudia Rodriguez</p>
+				</div>
+			</div>
+			<div class="middle-section">
 
+				<div class="main-options">
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a href="#">
+							<p>Inicio</p>
+						</a>
+					</div>
+
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a href="#">
+							<p>Mi perfil</p>
+						</a>
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="bottom-section">
+
+				<div class="box-portafolio">
+
+					<div class="title-portafolio">
+						<p>Mi portafolio</p>
+					</div>
+
+
+					<div class=" card-portafolio" style="width: 14rem;">
+						<div class="text-startup-portafolio">
+							<p class="card-text">Startups</p>
+							<p class="card-text">Invertido</p>
+						</div>
+					</div>
+
+
+
+					<a href="#">
+						<div class=" card-portafolio" style="width: 14rem;">
+							<div class="img-startup-portafolio">
+								<img th:src="@{/dashboard-investor/Bootstrap/img/Nanovida.jpg}"
+									class=""
+									style="height: 80%; width: 2.5rem; border-radius: 100%; margin-left: 1rem;">
+							</div>
+							<div class="text-startup-portafolio">
+								<p class="card-text" style="color: green;">3,000.00$</p>
+							</div>
+						</div>
+					</a> <a href="#">
+						<div class=" card-portafolio" style="width: 14rem;">
+							<div class="img-startup-portafolio">
+								<img th:src="@{/dashboard-investor/Bootstrap/img/kambista.png}"
+									class=""
+									style="height: 80%; width: 2.5rem; border-radius: 100%; margin-left: 1rem;"
+									alt="...">
+							</div>
+							<div class="text-startup-portafolio">
+								<p class="card-text" style="color: green;">1,000.00$</p>
+							</div>
+						</div>
+					</a>
+
+
+				</div>
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div th:fragment="frag-search">
+		<div class="search-dashboard">
+			<div class="center-search">
+				<div class="input-group">
+
+					<form class="d-flex" th:action="@{/search/startup}"
+						th:object="${startupSearch}" method="post">
+						<input type="search" class="form-control rounded"
+							placeholder="Busca una startup..." aria-label="Search"
+							aria-describedby="search-addon" th:field="*{name}">
+
+						<button type="submit" class="btn btn-outline-primary">
+							<i class="fab fa-searchengin"></i>
+						</button>
+
+
+
+					</form>
+
+
+					<div>
+						<button type="button" class="icon-filter btn btn-primary "
+							data-toggle="modal" data-target="#exampleModal"
+							data-whatever="@mdo"
+							style="background-color: #0dcaf0; border-color: #0dcaf0;">
+							<i class="icon-cog fa-1x fas fa-funnel-dollar "></i>
+						</button>
+
+					</div>
+
+					<div class="modal fade" id="exampleModal" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Filtros</h5>
+									<button type="button" class="btn btn-danger"
+										data-dismiss="modal">Cerrar</button>
+								</div>
+								<div class="modal-body">
+									<form th:action="@{/search/startupByDateAndCategory}"
+										method="post" th:object="${intervalDate}">
+										<div class="form-group">
+											<label for="recipient-name" class="col-form-label"> <b>Sector
+													de Startup</b>
+											</label> <select class="form-select"
+												aria-label="Default select example" th:field="*{categoryText}" >
+												<option th:field="*{categoryText}" value=Ninguna>Ninguna</option>
+												<option th:value="${category.name}"  th:each="category :${categories}"
+													th:text="${category.name}">One</option>
+
+											</select>
+
+										</div>
+										<div class="form-group">
+											<label for="message-text" class="col-form-label"><b>Tiempo
+													en funcionamiento</b> </label> <br> Inicio - Fin <input type="text"
+												class="form-control" id="intervalDate" autocomplete="off"
+												th:field="*{intervalDate}" /> <input type="hidden"
+												autocomplete="off" placeholder="Fecha inicio..."
+												name="dateFrom" /> <input type="hidden"
+												autocomplete="off" placeholder="Fecha fin..." name="dateTo" />
+
+										</div>
+										<div class="modal-footer">
+											<button type="submit" id="btnApply">Buscar</button>
+										</div>
+									</form>
+								</div>
+
+
+
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+	</div>
 
 
 	<footer th:fragment="frag-footer">
-		<script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"
-			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-			crossorigin="anonymous"></script>
+		<script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"></script>
+
 		<script
-			th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js}"
-			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-			crossorigin="anonymous"></script>
-		<script
-			th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"
-			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-			crossorigin="anonymous"></script>
+			th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
 
 
 		<script type="text/javascript"
@@ -89,20 +258,28 @@
 		<script type="text/javascript"
 			th:src="@{https://cdn.jsdelivr.net/momentjs/latest/moment.min.js}"></script>
 		<script type="text/javascript"
+			th:src="@{https://cdn.jsdelivr.net/jquery/latest/jquery.min.js}"></script>
+		<script type="text/javascript"
+			th:src="@{https://cdn.jsdelivr.net/momentjs/latest/moment.min.js}"></script>
+		<script type="text/javascript"
 			th:src="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js}"></script>
-		<link rel="stylesheet" type="text/css"
-			th:href="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css}" />
+
+
+
+
 
 		<script>
-    $(function() {
-      $('input[name="birthday"]').daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true,
-        minYear: 1901,
-        maxYear: parseInt(moment().format('YYYY'),10)
-      });
+    var $intervalDate = $('#intervalDate');
+
+    $intervalDate.daterangepicker();
+    $intervalDate.on('apply.daterangepicker', function (ev, picker) {
+        $('input[name="dateFrom"]').val(picker.startDate.format('DD/MM/YYYY'));
+        $('input[name="dateTo"]').val(picker.endDate.format('DD/MM/YYYY'));
     });
-    </script>
+</script>
+
+
+
 
 		<script th:src="@{/dashboard-investor/Bootstrap/js/bootstrap.min.js}"></script>
 	</footer>

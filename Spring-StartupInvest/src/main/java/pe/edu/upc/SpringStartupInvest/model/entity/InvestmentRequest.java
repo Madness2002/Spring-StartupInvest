@@ -18,6 +18,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
@@ -42,19 +43,17 @@ public class InvestmentRequest {
 	@JoinColumn(name = "type_investment_id")
 	private TypeInvestment typeInvestment;
 
-	@DecimalMax(value="9999999999.99")
-	@DecimalMin(value="0.99")
+	@DecimalMax(value = "9999999999.99")
+	@DecimalMin(value = "0.99")
 	@Column(name = "investment_request_amount", columnDefinition = "DECIMAL(12,2)", nullable = false)
 	private Double amount;
 
-	
 	@Column(name = "investment_request_state")
 	private Boolean state;
 
-	
 	@NotBlank()
 	@NotNull(message = "La descripcion debe contener valor")
-	@Size(max=200,message = "El tamaño máximo del nombre de la descripcion es 200")
+	@Size(max = 200, message = "El tamaño máximo del nombre de la descripcion es 200")
 	@Column(name = "investment_request_description", length = 200, nullable = false)
 	private String description;
 
@@ -79,13 +78,20 @@ public class InvestmentRequest {
 	@OneToMany(mappedBy = "investmentRequest", fetch = FetchType.LAZY)
 	private List<InvestorHistory> investorHistories;
 
+	@Transient
+	private double amountColected;
+
 	public InvestmentRequest() {
 		investorHistories = new ArrayList<InvestorHistory>();
 	}
 
-	public InvestmentRequest(Integer id, Startup startup, TypeInvestment typeInvestment, Double amount, Boolean state,
-			String description, Date creationDate, Date expirationDate, Date returnDate,
-			List<InvestorHistory> investorHistories) {
+	public InvestmentRequest(Integer id, Startup startup, TypeInvestment typeInvestment,
+			@DecimalMax("9999999999.99") @DecimalMin("0.99") Double amount, Boolean state,
+			@NotBlank @NotNull(message = "La descripcion debe contener valor") @Size(max = 200, message = "El tamaño máximo del nombre de la descripcion es 200") String description,
+			@NotNull(message = "La fecha de creación debe contener valor") @NotBlank(message = "La fecha de creación no debe estar en blanco") Date creationDate,
+			@NotNull(message = "La fecha de expiracion debe contener valor") @NotBlank(message = "La fecha de expiracion no debe estar en blanco") Date expirationDate,
+			@NotNull(message = "La fecha de retorno debe contener valor") @NotBlank(message = "La fecha de retorno no debe estar en blanco") Date returnDate,
+			List<InvestorHistory> investorHistories, double amountColected) {
 		super();
 		this.id = id;
 		this.startup = startup;
@@ -97,6 +103,23 @@ public class InvestmentRequest {
 		this.expirationDate = expirationDate;
 		this.returnDate = returnDate;
 		this.investorHistories = investorHistories;
+		this.amountColected = amountColected;
+	}
+
+	public List<InvestorHistory> getInvestorHistories() {
+		return investorHistories;
+	}
+
+	public void setInvestorHistories(List<InvestorHistory> investorHistories) {
+		this.investorHistories = investorHistories;
+	}
+
+	public double getAmountColected() {
+		return amountColected;
+	}
+
+	public void setAmountColected(double amounthColected) {
+		this.amountColected = amounthColected;
 	}
 
 	public Integer getId() {
