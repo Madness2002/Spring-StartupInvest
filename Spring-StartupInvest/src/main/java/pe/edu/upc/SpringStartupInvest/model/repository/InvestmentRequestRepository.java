@@ -22,5 +22,8 @@ public interface InvestmentRequestRepository extends JpaRepository<InvestmentReq
 	@Query(value = "select p.amounth\r\n"
 			+ "from viewInversionStatus p where p.investment_request_id=?1", nativeQuery = true)
 	double getAmountColectedByInvestmentRequestId(Integer id) throws Exception;
-	
+
+	@Query(value = "select p.cantidad_de_inversionistas from viewquantityinvestorsbyinvestmentrequest p where p.investment_request_id=?1", nativeQuery = true)
+	Integer getInvestorQuantityByInvestmentRequestId(Integer id) throws Exception;
+
 }
