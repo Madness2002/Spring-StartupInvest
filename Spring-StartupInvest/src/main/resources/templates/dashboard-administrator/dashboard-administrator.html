@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+<head>
+<link th:href="@{/css/dashboard-administrator.css}" rel="stylesheet">
+</head>
+
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+
+
+	<!--CONTENIDO-->
+	<main>
+		<header th:replace="layout/layout :: frag-left-bar-administrator">
+		</header>
+
+		<div class="right-section">
+			<h1>Bienvenido Administrador</h1>
+
+
+			<div class="buttons-container">
+				<div class="button2-container">
+					<div class="centrar">
+						<div class="button1"></div>
+						<a class="boton_personalizado1"
+							th:href="@{/startupinvest/administrator/categories}">Categorías
+							de startups</a>
+					</div>
+					<div class="centrar">
+						<div class="button1"
+							style="background: url(/images/administrator/ImagenPromocion.png) no-repeat center;">
+
+						</div>
+						<a class="boton_personalizado1"
+							th:href="@{/startupinvest/administrator/plans}">Planes de
+							promoción</a>
+					</div>
+				</div>
+				<div class="button3-container">
+					<div class="centrar">
+						<div class="button1"
+							style="background: url(/images/administrator/ImagenTarjeta.png) no-repeat center;">
+
+						</div>
+						<a class="boton_personalizado1"
+							th:href="@{/startupinvest/administrator/typesCard}">Tipos de
+							tarjeta</a>
+					</div>
+					<div class="centrar">
+						<div class="button1"
+							style="background: url(/images/administrator/ImagenInversion.png) no-repeat center;">
+
+						</div>
+						<a class="boton_personalizado1"
+							th:href="@{/startupinvest/administrator/typesInvestment}">Tipos
+							de inversión</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</main>
+
+
+
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+</body>
+
+</html>

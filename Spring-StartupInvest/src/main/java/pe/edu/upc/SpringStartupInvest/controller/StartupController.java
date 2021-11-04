@@ -59,13 +59,17 @@ public class StartupController {
 				listInvestmentRequests = investmentRequestService.findInvestmentRequestByStartupId(idStartup);
 				for (InvestmentRequest investmentRequest : listInvestmentRequests) {
 
+					int quantityInvestors=investmentRequestService.getInvestorQuantityByInvestmentRequestId(investmentRequest.getId());
 					double amounthColected = investmentRequestService
 							.getAmountColectedByInvestmentRequestId(investmentRequest.getId());
+					investmentRequest.setQuantityInvestors(quantityInvestors);
 					investmentRequest.setAmountColected(amounthColected);
 				}
 
 				model.addAttribute("investmentRequests", listInvestmentRequests);
-				model.addAttribute("porcentaje", 18);
+				model.addAttribute("imgname", optional.get().getImage());
+				
+				
 				return "startup/startup-investor-view";
 			}
 		} catch (Exception e) {

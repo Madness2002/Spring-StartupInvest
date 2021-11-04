@@ -80,10 +80,15 @@ public class InvestmentRequest {
 
 	@Transient
 	private double amountColected;
+	
+	@Transient
+	private int quantityInvestors;
 
 	public InvestmentRequest() {
 		investorHistories = new ArrayList<InvestorHistory>();
 	}
+
+	
 
 	public InvestmentRequest(Integer id, Startup startup, TypeInvestment typeInvestment,
 			@DecimalMax("9999999999.99") @DecimalMin("0.99") Double amount, Boolean state,
@@ -91,7 +96,7 @@ public class InvestmentRequest {
 			@NotNull(message = "La fecha de creación debe contener valor") @NotBlank(message = "La fecha de creación no debe estar en blanco") Date creationDate,
 			@NotNull(message = "La fecha de expiracion debe contener valor") @NotBlank(message = "La fecha de expiracion no debe estar en blanco") Date expirationDate,
 			@NotNull(message = "La fecha de retorno debe contener valor") @NotBlank(message = "La fecha de retorno no debe estar en blanco") Date returnDate,
-			List<InvestorHistory> investorHistories, double amountColected) {
+			List<InvestorHistory> investorHistories, double amountColected, int quantityInvestors) {
 		super();
 		this.id = id;
 		this.startup = startup;
@@ -104,7 +109,22 @@ public class InvestmentRequest {
 		this.returnDate = returnDate;
 		this.investorHistories = investorHistories;
 		this.amountColected = amountColected;
+		this.quantityInvestors = quantityInvestors;
 	}
+
+
+
+	public int getQuantityInvestors() {
+		return quantityInvestors;
+	}
+
+
+
+	public void setQuantityInvestors(int quantityInvestors) {
+		this.quantityInvestors = quantityInvestors;
+	}
+
+
 
 	public List<InvestorHistory> getInvestorHistories() {
 		return investorHistories;

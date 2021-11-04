@@ -1,0 +1,563 @@
+.right-section{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.buttons-container{
+	
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0 20vw 0 20vw;
+}
+.button2-container{
+	max-width: 100%;
+	max-height:150px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+.button3-container{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+h1{
+	margin-top: 13vh;
+	padding-bottom:5vw;
+	color: Black;
+	text-align: center;
+}
+.centrar{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	height: 250px;
+	width: 250px;
+}
+.button1{ 
+	width: 250px;
+	max-height: 150px;
+    padding: 30px ;
+    background-color: #1883ba;
+    border-radius: 6px;
+    background: url(/images/administrator/ImagenCategories.png) no-repeat center;
+   	background-size: cover;
+	height: 100%;
+   	width: 100% ;
+   	text-align: center;
+   	transition: 0.5s;
+   	box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+  .button1 {
+  	filter: brightness(50%);
+  }
+  .button1:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 50%);
+  }
+  
+  .boton_personalizado1{
+  	position: relative;
+  	display: flex;
+  	bottom:12vh;
+  	color:#ffffff;
+  	text-decoration: none;
+  	font-weight: 600;
+    font-size: 20px;
+    filter: brightness(100%);
+  }
+.button2{ 
+	max-width: 250px;
+	max-height: 250px;
+    padding: 30px ;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+    background: url(/images/administrator/ImagenPromocion.png) no-repeat center;
+   	background-size: cover;
+   	height: 100%;
+   	width: 100% ;
+   	text-align: center;
+  }
+  .button2:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+  .boton_personalizado2{
+  	position: relative;
+  	display: flex;
+  	bottom:9vh;
+  	color:#ffffff;
+  	text-decoration: none;
+  	font-weight: 600;
+    font-size: 20px;
+    filter: brightness(100%);
+  }
+.button3{ 
+	max-width: 250px;
+	max-height: 250px;
+    padding: 30px ;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+    background: url(/images/administrator/ImagenTarjeta.png) no-repeat center;
+   background-size: cover;
+   height: 100%;
+   width: 100% ;
+   text-align: center;
+  }
+  .button3:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+  .boton_personalizado3{
+  	position: relative;
+  	display: flex;
+  	bottom:9vh;
+  	color:#ffffff;
+  	text-decoration: none;
+  	font-weight: 600;
+    font-size: 20px;
+    filter: brightness(100%);
+  }
+.button4{ 
+	max-width: 250px;
+	min-height: 120px;
+    padding: 30px ;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+    background: url(/images/administrator/ImagenInversion.png) no-repeat center;
+   background-size: cover;
+   height: 100%;
+   width: 100% ;
+   text-align: center;
+  }
+  .button4:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+  .boton_personalizado4{
+  position: relative;
+  	display: flex;
+  	bottom:9vh;
+  	color:#ffffff;
+  	text-decoration: none;
+  	font-weight: 600;
+    font-size: 20px;
+    filter: brightness(100%);
+  }
+  
+ @media (max-width: 1500px){
+ 	.buttons-container{
+	margin-left: 650px;
+	margin-top: 100px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between
+}
+.button2-container{
+	width: 600px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+.button3-container{
+	width: 600px;
+	display: flex;
+	justify-content: space-between;
+}
+
+h1{
+	color: Black;
+	margin-top: 200px;
+	margin-left: 720px;
+}
+
+.boton_personalizado1{
+    text-decoration: none;
+    padding: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado1:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado2{
+    text-decoration: none;
+    padding: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado2:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado3{
+    text-decoration: none;
+    padding: 30px 61px 30px 61px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado3:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado4{
+    text-decoration: none;
+    padding: 30px 42px 30px 42px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado4:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+ }
+ 
+ 
+  @media (max-width: 1350px){
+ 	.buttons-container{
+	margin-left: 480px;
+	margin-top: 100px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between
+}
+.button2-container{
+	width: 600px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+.button3-container{
+	width: 600px;
+	display: flex;
+	justify-content: space-between;
+}
+
+h1{
+	color: Black;
+	margin-top: 200px;
+	margin-left: 540px;
+}
+
+.boton_personalizado1{
+    text-decoration: none;
+    padding: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado1:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado2{
+    text-decoration: none;
+    padding: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado2:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado3{
+    text-decoration: none;
+    padding: 30px 61px 30px 61px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado3:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado4{
+    text-decoration: none;
+    padding: 30px 42px 30px 42px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado4:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+ }
+ 
+   @media (max-width: 1100px){
+ 	.buttons-container{
+	margin-left: 380px;
+	margin-top: 100px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between
+}
+.button2-container{
+	width: 600px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+.button3-container{
+	width: 600px;
+	display: flex;
+	justify-content: space-between;
+}
+
+h1{
+	color: Black;
+	margin-top: 200px;
+	margin-left: 440px;
+}
+
+.boton_personalizado1{
+    text-decoration: none;
+    padding: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado1:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado2{
+    text-decoration: none;
+    padding: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado2:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado3{
+    text-decoration: none;
+    padding: 30px 61px 30px 61px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado3:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado4{
+    text-decoration: none;
+    padding: 30px 42px 30px 42px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado4:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+ }
+ 
+    @media (max-width: 1000px){
+ 	.buttons-container{
+	margin-left: 450px;
+	margin-top: 100px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between
+}
+.button2-container{
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+}
+.button3-container{
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+}
+
+h1{
+	color: Black;
+	margin-top: 200px;
+	margin-left: 440px;
+}
+
+.boton_personalizado1{
+    text-decoration: none;
+    padding: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+    margin-bottom: 30px;
+  }
+  .boton_personalizado1:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado2{
+    text-decoration: none;
+    padding: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+    margin-bottom: 10px;
+  }
+  .boton_personalizado2:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado3{
+    text-decoration: none;
+    padding: 30px 61px 30px 61px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+    margin-bottom: 30px;
+  }
+  .boton_personalizado3:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+.boton_personalizado4{
+    text-decoration: none;
+    padding: 30px 42px 30px 42px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+    margin-bottom: 30px;
+  }
+  .boton_personalizado4:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+    transform: scale(1.1);
+	transition: 0.5s;
+    box-shadow: 0.5px 5px 15px rgb(0 0 0 / 25%);
+  }
+ }
