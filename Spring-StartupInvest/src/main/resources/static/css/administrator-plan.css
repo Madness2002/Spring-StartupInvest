@@ -1,1 +1,52 @@
-@charset "ISO-8859-1";
+
+
+.row
+{
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+
+margin: 0 4vw 0 4vw;
+
+
+}
+
+path{
+	background-color: aqua;
+	color: aqua;
+	
+}
+
+.panel-color{
+	transition:0.5s;
+border-radius: 2rem;
+box-shadow: 6px 6px 15px rgb(0 0 0/ 50%);
+width: 13vw;
+}
+
+.panel-footer{
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+.btn-primary{
+	font-size:1vw;
+width: 30%;	
+margin: 1.4rem 1.4rem 1.4rem 1.4rem;
+	
+}
+
+.panel-color:hover{
+	transition:0.5s;
+		transform: scale(1.1);
+border-radius: 2rem;
+box-shadow: 5px 5px 15px rgb(0 0 0/ 25%);
+}
+
+#titulo {
+	margin-top: 15vh;
+	display: flex;
+	font-size:2.5vw;
+	justify-content: center;
+}
