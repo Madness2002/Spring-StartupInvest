@@ -103,12 +103,12 @@
 
 					<!--Tarjeta de startups-->
 
-					<a th:each="startup :${moreStartups}"
-								th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
-						<div class="list-startups">
 
+					<div class="list-startups">
+						<a th:each="startup :${moreStartups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
 
-							<div class="list-card-startup" >
+							<div class="list-card-startup">
 								<div class="img-list-card-startup">
 									<img th:src="@{'/images/startups/'+${startup.image}}" />
 								</div>
@@ -122,13 +122,15 @@
 									</div>
 								</div>
 							</div>
+						</a>
 
+					</div>
 
-						</div>
-					</a>
 				</div>
 
 			</div>
+			
+			
 	</main>
 	<footer th:replace="layout/layout :: frag-footer"></footer>
 
