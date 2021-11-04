@@ -13,7 +13,7 @@
 <link
 	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
 	rel="icon">
-	
+
 
 <!--Font-Awsome-->
 
@@ -190,47 +190,39 @@
 			<div class="bottom-section">
 
 				<div class="box-portafolio">
+					<div data-spy="scroll" data-target="#navbar-example2"
+						data-offset="0">
+						<div class="title-portafolio">
+							<p>Mi portafolio</p>
+						</div>
 
-					<div class="title-portafolio">
-						<p>Mi portafolio</p>
+
+						<div class="box-min-portafolio" style="width: 14rem;">
+							<div class="encabezado-portafolio">
+								<p class="card-text">Startups</p>
+								<p class="card-text">Invertido</p>
+							</div>
+						</div>
+
+
+
+						<a href="#" th:each="investement:${investments}">
+							<div class=" card-portafolio" style="width: 14rem;">
+								<div class="img-startup-portafolio">
+									<img th:src="@{'/images/startups/'+${investement.investmentRequest.startup.image}}"
+										class=""
+										style="height: 80%; width: 2.5rem; border-radius: 100%; margin-left: 1rem;">
+								</div>
+								<div class="text-startup-portafolio">
+									<p class="card-text" style="color: green;"th:text="${#numbers.formatDecimal(investement.amount, 1, 'COMMA', 2, 'POINT')+'$'}" >3,000.00$</p>
+								</div>
+							</div>
+
+						</a> 
+						
+						
+
 					</div>
-
-
-					<div class=" card-portafolio" style="width: 14rem;">
-						<div class="text-startup-portafolio">
-							<p class="card-text">Startups</p>
-							<p class="card-text">Invertido</p>
-						</div>
-					</div>
-
-
-
-					<a href="#">
-						<div class=" card-portafolio" style="width: 14rem;">
-							<div class="img-startup-portafolio">
-								<img th:src="@{/dashboard-investor/Bootstrap/img/Nanovida.jpg}"
-									class=""
-									style="height: 80%; width: 2.5rem; border-radius: 100%; margin-left: 1rem;">
-							</div>
-							<div class="text-startup-portafolio">
-								<p class="card-text" style="color: green;">3,000.00$</p>
-							</div>
-						</div>
-					</a> <a href="#">
-						<div class=" card-portafolio" style="width: 14rem;">
-							<div class="img-startup-portafolio">
-								<img th:src="@{/dashboard-investor/Bootstrap/img/kambista.png}"
-									class=""
-									style="height: 80%; width: 2.5rem; border-radius: 100%; margin-left: 1rem;"
-									alt="...">
-							</div>
-							<div class="text-startup-portafolio">
-								<p class="card-text" style="color: green;">1,000.00$</p>
-							</div>
-						</div>
-					</a>
-
-
 				</div>
 
 
@@ -291,9 +283,11 @@
 											<label for="recipient-name" class="col-form-label"> <b>Sector
 													de Startup</b>
 											</label> <select class="form-select"
-												aria-label="Default select example" th:field="*{categoryText}" >
+												aria-label="Default select example"
+												th:field="*{categoryText}">
 												<option th:field="*{categoryText}" value=Ninguna>Ninguna</option>
-												<option th:value="${category.name}"  th:each="category :${categories}"
+												<option th:value="${category.name}"
+													th:each="category :${categories}"
 													th:text="${category.name}">One</option>
 
 											</select>
@@ -301,18 +295,21 @@
 										</div>
 										<div class="form-group">
 											<label for="message-text" class="col-form-label"><b>Tiempo
-													en funcionamiento</b> </label> <br> Inicio - Fin <input type="text"
-												class="form-control" id="intervalDate" autocomplete="off"
-												th:field="*{intervalDate}" /> <input type="hidden"
-												autocomplete="off" placeholder="Fecha inicio..."
-												name="dateFrom" /> <input type="hidden"
-												autocomplete="off" placeholder="Fecha fin..." name="dateTo" />
+													en funcionamiento</b> </label> <br> Inicio - Fin <input
+												type="text" class="form-control" id="intervalDate"
+												autocomplete="off" th:field="*{intervalDate}" /> <input
+												type="hidden" autocomplete="off"
+												placeholder="Fecha inicio..." name="dateFrom" /> <input
+												type="hidden" autocomplete="off" placeholder="Fecha fin..."
+												name="dateTo" />
 
 										</div>
 										<div class="modal-footer">
 											<button type="submit" id="btnApply">Buscar</button>
 										</div>
 									</form>
+
+
 								</div>
 
 
