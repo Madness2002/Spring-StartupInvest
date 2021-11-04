@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+<head>
+<link th:href="@{/css/dashboard-administrator.css}" rel="stylesheet">
+</head>
+
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+
+
+	<!--CONTENIDO-->
+	<main>
+		<header th:replace="layout/layout :: frag-left-bar-administrator">
+		</header>
+
+		<div class="right-section">
+			<h1>Categorias de Startup</h1>
+
+
+		</div>
+
+
+	</main>
+
+
+
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+</body>
+
+</html>

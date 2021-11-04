@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.SpringStartupInvest.model.entity.Category;
-import pe.edu.upc.SpringStartupInvest.model.entity.InvestmentRequest;
 import pe.edu.upc.SpringStartupInvest.model.entity.InvestorHistory;
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
-import pe.edu.upc.SpringStartupInvest.service.crud.InvestmentRequestService;
 import pe.edu.upc.SpringStartupInvest.service.crud.InvestorHistoryService;
 import pe.edu.upc.SpringStartupInvest.service.crud.StartupService;
 import pe.edu.upc.SpringStartupInvest.util.startup.CompareAmounth;

@@ -31,4 +31,24 @@ public class AdministratorController {
 		return "dashboard-administrator/dashboard-administrator";
 	}
 	
+	@GetMapping("administrator/categories")// 
+	public String categories() {
+		return "dashboard-administrator/administrator-category";
+	}
+	
+	@GetMapping("administrator/plans")// 
+	public String plans() {
+		return "dashboard-administrator/administrator-plan";
+	}
+	@GetMapping("administrator/typesCard")// 
+	public String typesCard() {
+		return "dashboard-administrator/administrator-type-card";
+	}
+	@GetMapping("administrator/typesInvestment")// 
+	public String typesInvestment() {
+		return "dashboard-administrator/administrator-type-investment";
+	}
+	
+	
+	
 }
