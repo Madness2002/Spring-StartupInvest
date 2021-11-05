@@ -5,7 +5,8 @@
 <meta charset="UTF-8" />
 </head>
 <head>
-<link th:href="@{/css/dashboard-type-investment.css}" rel="stylesheet">
+<link th:href="@{/css/administrator-type-investment.css}" rel="stylesheet">
+
 </head>
 
 
@@ -15,20 +16,194 @@
 
 
 	<!--CONTENIDO-->
-	<main>
-		<header th:replace="layout/layout :: frag-left-bar-administrator">
-		</header>
-
+	
+	
+	<menu th:replace="layout/layout :: frag-left-bar-administrator"></menu>
+		
+<main >
 		<div class="right-section">
+			<div class="boton-agregar">
+				<a href="#agregar" class="btn btn-info btn-lg text-white" data-toggle="modal"><p > Agregar nuevo tipo de inversion</p></a>
+			</div>
 			<h1>Categorias de Startup</h1>
+			
+			<!-- Agregar tipo de inversion  -->
+				<div class="modal fade" id="agregar">
+					<div class="modal-dialog">
+						<div class="modal-content">
+						
+							<!-- header del dialogo  -->
+							<div class="modal-header">
+							<a class="navbar-brand" > <img
+							th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+							alt="StartupInvest" width="36" height="30"
+							class="d-inline-block align-text-top" /> StartupInvest
+							</a>
+							<button title="button" class="close" data-dismiss="modal" aria-hidden="true" >&times</button>
+							</div>
+							
+						<!-- cuerpo del dialogo  -->
+						<div class="modal-body">
+						<h4 class="text-muted">Agregar tipo de inversion</h4>
+						<label class="text-muted">Nombre de Tipo de Inversión </label>
+							<div class="input-group mb-3">
+							  <input type="text" class="form-control" placeholder="Tipo de inservión" aria-label="Username" aria-describedby="basic-addon1">
+							</div>
+							<label class="text-muted">Descripcion </label>
+							<div class="input-group mb-3">
+							  <input type="text" class="form-control" placeholder="Descripcion" aria-label="Username" aria-describedby="basic-addon1">
+							</div>
+							
+						</div>	
+						
+						<!-- footer del dialogo  -->	
+						<div class="modal-footer">
+							<div style="text-align:left">
+								<button type="button" class="btn btn-danger left" data-dismiss="modal">Cancelar</button> 
+							</div>	
+								
+							<div class="text-right">
+								<button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button> 
+							</div>
+						</div>	
+						</div>
+					</div> 
+				</div>
+			
+		<div class="ga">
+		
+		<div class="stilo_cartas">
+			<div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+			  <div class="card-header">Poner el tipo de inversionn</div>
+			  <div class="card-body">
+			    <h5 class="card-title">Success card title</h5>
+			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    <a href="#editar" class="btn btn-primary btn-lg" data-toggle="modal">Editar</a>
+				<a href="#desahabilitar" class="btn btn-danger btn-lg" data-toggle="modal">Editar</a>
+			  </div>
+		  	</div>
+		  </div>
+		
+		
+		  <div class="stilo_cartas">
+			<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+			  <div class="card-header">Poner el tipo de inversionn</div>
+			  <div class="card-body">
+			    <h5 class="card-title">Success card title</h5>
+			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    <a href="#editar" class="btn btn-primary btn-lg" data-toggle="modal">Editar</a>
+				<a href="#desahabilitar" class="btn btn-success btn-lg" data-toggle="modal">Editar</a>
+				
+				
+				<!-- Nodificar tipo de inversion  -->
+				<div class="modal fade" id="editar">
+					<div class="modal-dialog">
+						<div class="modal-content">
+						
+							<!-- header del dialogo  -->
+							<div class="modal-header">
+							<a class="navbar-brand" > <img
+							th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+							alt="StartupInvest" width="36" height="30"
+							class="d-inline-block align-text-top" /> StartupInvest
+							</a>
+							<button title="button" class="close" data-dismiss="modal" aria-hidden="true" >&times</button>
+							</div>
+							
+						<!-- cuerpo del dialogo  -->
+						<div class="modal-body">
+						<h4 class="text-muted">Modificar tipo de inversion</h4>
+						<label class="text-muted">Nombre de Tipo de Inversión </label>
+							<div class="input-group mb-3">
+							  <input type="text" class="form-control" placeholder="Tipo de inservión" aria-label="Username" aria-describedby="basic-addon1">
+							</div>
+							<label class="text-muted">Descripcion </label>
+							<div class="input-group mb-3">
+							  <input type="text" class="form-control" placeholder="Descripcion" aria-label="Username" aria-describedby="basic-addon1">
+							</div>
+							<label class="text-muted">Estado </label>
+							<div class="input-group mb-3">
+							  <select class="form-select" id="inputGroupSelect01">
+							    <option value="true">true</option>
+							    <option value="false">false</option>
+							  </select>
+							</div>
+						</div>	
+						
+						<!-- footer del dialogo  -->	
+						<div class="modal-footer">
+							<div style="text-align:left">
+								<button type="button" class="btn btn-danger left" data-dismiss="modal">Cancelar</button> 
+							</div>	
+								
+							<div class="text-right">
+								<button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button> 
+							</div>
+						</div>	
+						</div>
+					</div> 
+				</div>
+				
+				<!-- Desahabilitar opcion -->
+				<div class="modal fade" id="desahabilitar">
+					<div class="modal-dialog">
+						<div class="modal-content">
+						
+							<!-- header del dialogo  -->
+							<div class="modal-header">
+							<a class="navbar-brand" > <img
+							th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+							alt="StartupInvest" width="36" height="30"
+							class="d-inline-block align-text-top" /> StartupInvest
+							</a>
+							<button title="button" class="close" data-dismiss="modal" aria-hidden="true" >&times</button>
+							</div>
+							
+						<!-- cuerpo del dialogo  -->
+						<div class="modal-body">
+						<h5 class="editar-text" >Seguro que quiere cambiar el estado?</h5>
+						<h6 class="editar-text"> Los usuarios persiviran los cambios</h6>
+						</div>	
+						
+						<!-- footer del dialogo  -->	
+						<div class="modal-footer">
+							<div style="text-align:left">
+								<button type="button" class="btn btn-danger left" data-dismiss="modal">Cancelar</button> 
+							</div>	
+								
+							<div class="text-right">
+								<button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button> 
+							</div>
+						</div>	
+						</div>
+					</div> 
+				</div>
+				
+				<div class="modal fade" id="desahabilitar">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+							<h2 class="modal-title">Inversion por accion</h2> 
+							</div>
+						</div>
+					</div> 
+				</div>
+				
+				
+			  </div>
+		  	</div>
+		  </div>
+		  
+		  
+		  
+					  
+			</div>
+		</div>	
 
-
-		</div>
-
+		
+		
 
 	</main>
-
-
 
 	<footer th:replace="layout/layout :: frag-footer"></footer>
 

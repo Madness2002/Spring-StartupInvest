@@ -1,1 +1,57 @@
-@charset "ISO-8859-1";
+.header{
+	width: 100%;
+	min-width: 50%;
+}
+.ga{
+	margin-left: 25%;
+	
+	
+}
+.stilo_cartas{
+	display: inline-block;
+ 	padding: 5% 10% 0% 0% ;
+ 	box-sizing: border-box;
+ 
+}
+.btn{
+	border-radius: 50px;
+
+}
+.btn-success{
+	background-color: #3ABC37;
+}
+.navbar-brand{
+	color: white; 
+}
+.editar-text{
+	color: black;
+	
+	margin-bottom: 1rem;
+}
+.close{
+	background-color: red;
+	color: white;
+}
+.boton-agregar{
+
+	float: right;
+	padding-right: 10%;
+	padding-top:3%;  
+	
+}
+.btn-primary{
+	background-color: #D8FF86;
+	color: black;
+}
+.btn-primary:hover {
+	background-color: #D8FF86;
+	
+}
+.btn-lg{
+	font-size: 1rem;
+}
+.btn{
+	margin: 0px 20px 0px 20px;
+		
+}
+
