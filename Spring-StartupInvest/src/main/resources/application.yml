@@ -7,7 +7,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/startupinvestDB
     username: postgres
-    password: 1234
+    password: "|System2000|" 
   jpa:
     database: postgresql
     hibernate:

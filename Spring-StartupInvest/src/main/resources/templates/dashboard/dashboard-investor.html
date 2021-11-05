@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layout/layout :: frag-head">
-<meta charset="UTF-8" />
+	<meta charset="UTF-8" />
 </head>
 
 <body class="d-flex flex-column">
@@ -12,17 +12,17 @@
 	<main>
 		<div class=" main-container">
 			<div th:replace="layout/layout :: frag-left-bar"></div>
-			
-			
-			
-			
+
+
+
+
 			<div class="right-section">
 				<div class="title-dashboard">
 					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
 				</div>
 
-				
-<div th:replace="layout/layout :: frag-search"></div>
+
+				<div th:replace="layout/layout :: frag-search"></div>
 
 
 
@@ -32,19 +32,19 @@
 							<h5>Las Startups más populares</h5>
 						</div>
 						<div class="popular-startups-cards">
-							<a th:each="startup:${startupsMostPopular}" th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<a th:each="startup:${startupsMostPopular}"
+								th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
 								<div class=" card-portafolio startups-cards"
-									style="width: 13rem; height: 6em; color: #0085B6;"
-									 >
-									
-								
-									
-												
-									<div class="img-startup-portafolio" >
-										<img th:src="@{'/images/startups/'+${startup.image}}" >
+									style="width: 13rem; height: 6em; color: #0085B6;">
+
+
+
+
+									<div class="img-startup-portafolio">
+										<img th:src="@{'/images/startups/'+${startup.image}}">
 									</div>
 
-									<div class="text-startup-portafolio popular-text-startup" >
+									<div class="text-startup-portafolio popular-text-startup">
 										<div class="place">
 											<p th:text="${startup.position}+'°'">posición</p>
 										</div>
@@ -52,12 +52,12 @@
 											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest">
-											<p th:text="'$'+${startup.amounthTotalInvest}" 
-												style="font-size: 14px;">Monto invertido</p>
+											<p th:text="'$'+${startup.amounthTotalInvest}" style="font-size: 14px;">
+												Monto invertido</p>
 										</div>
 									</div>
-									
-									
+
+
 								</div>
 							</a>
 
@@ -74,8 +74,7 @@
 									style="width: 13rem; height: 6em; color: #0085B6;"
 									th:each="startup:${startupsRecently}">
 									<div class="img-startup-portafolio">
-										<img th:src="@{'/images/startups/'+${startup.image}}" class=""
-											alt="...">
+										<img th:src="@{'/images/startups/'+${startup.image}}" class="" alt="...">
 									</div>
 									<div class="text-startup-portafolio popular-text-startup">
 										<div class="place">
