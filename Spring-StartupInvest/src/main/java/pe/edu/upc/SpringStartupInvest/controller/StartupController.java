@@ -16,10 +16,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.SpringStartupInvest.model.entity.InvestmentRequest;
+import pe.edu.upc.SpringStartupInvest.model.entity.Investor;
+import pe.edu.upc.SpringStartupInvest.model.entity.InvestorHistory;
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
+import pe.edu.upc.SpringStartupInvest.model.entity.TypeCard;
 import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
 import pe.edu.upc.SpringStartupInvest.service.crud.InvestmentRequestService;
+import pe.edu.upc.SpringStartupInvest.service.crud.InvestorService;
 import pe.edu.upc.SpringStartupInvest.service.crud.StartupService;
+import pe.edu.upc.SpringStartupInvest.service.crud.TypeCardService;
 
 @Controller
 @RequestMapping("/startupinvest/startups")
@@ -29,11 +34,14 @@ public class StartupController {
 	private StartupService startupService;
 
 	@Autowired
-	private CategoryService categoryService;
+	private InvestorService investorService;
 
 	@Autowired
 	private InvestmentRequestService investmentRequestService;
 
+	@Autowired
+	private TypeCardService typeCardService;
+	
 	@GetMapping
 	public String list(Model model) {
 
@@ -65,11 +73,23 @@ public class StartupController {
 					investmentRequest.setQuantityInvestors(quantityInvestors);
 					investmentRequest.setAmountColected(amounthColected);
 				}
-
+				//USAMOS EL ID 1001 PORQUE AUN NO ENTRAMOS A SECURITY
+				Optional<Investor> investor = investorService.findById(1001);
+				List<TypeCard> cards=typeCardService.getAll();
+				
 				model.addAttribute("investmentRequests", listInvestmentRequests);
 				model.addAttribute("imgname", optional.get().getImage());
-				
-				
+				model.addAttribute("description", optional.get().getDescription());
+				//INVESTOR	
+				model.addAttribute("name", investor.get().getName());
+				model.addAttribute("lastName", investor.get().getLastname());
+				model.addAttribute("email", investor.get().getEmail());
+				model.addAttribute("dni", investor.get().getDni());
+				model.addAttribute("id", investor.get().getId());
+	
+				model.addAttribute("cards", cards);
+				model.addAttribute("startup", optional.get());
+				model.addAttribute("investorHistory", new InvestorHistory());
 				return "startup/startup-investor-view";
 			}
 		} catch (Exception e) {

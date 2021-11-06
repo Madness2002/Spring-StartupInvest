@@ -61,14 +61,74 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="#">Startup</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="#">Administrador</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/startupinvest/administrator}">Administrador</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 
 	</header>
+	<div th:fragment="frag-left-bar-administrator">
+		<div class="left-section position-fixed">
+			<div class="top-section">
+				<div class="imagen-perfil">
+					<img
+						th:src="@{/dashboard-investor/Bootstrap/img/testimonial-2.jpg}"
+						alt="Imagen de perfil">
+				</div>
+				<div class="name-perfil">
+					<p id="nombreUsuario">Claudia Rodriguez</p>
+				</div>
+			</div>
+			<div class="middle-section">
 
+				<div class="main-options">
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a th:href="@{/startupinvest/administrator}">
+							<p>Inicio</p>
+						</a>
+					</div>
+
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a href="#">
+							<p>Mi perfil</p>
+						</a>
+					</div>
+
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a th:href="@{/startupinvest/administrator/categories}">
+							<p>Categoria Startup</p>
+						</a>
+					</div>
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a th:href="@{/startupinvest/administrator/typesInvestment}">
+							<p>Tipos de inversiones</p>
+						</a>
+					</div>
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a th:href="@{/startupinvest/administrator/plans}">
+							<p>Tipos de planes</p>
+						</a>
+					</div>
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a th:href="@{/startupinvest/administrator/typesCard}">
+							<p>Tipos de tarjetas</p>
+						</a>
+					</div>
+
+				</div>
+			</div>
+
+
+		</div>
+	</div>
 
 	<div th:fragment="frag-left-bar">
 		<div class="left-section position-fixed">
@@ -125,18 +185,20 @@
 						<a href="#" th:each="investement:${investments}">
 							<div class=" card-portafolio" style="width: 14rem;">
 								<div class="img-startup-portafolio">
-									<img th:src="@{'/images/startups/'+${investement.investmentRequest.startup.image}}"
+									<img
+										th:src="@{'/images/startups/'+${investement.investmentRequest.startup.image}}"
 										class=""
 										style="height: 80%; width: 2.5rem; border-radius: 100%; margin-left: 1rem;">
 								</div>
 								<div class="text-startup-portafolio">
-									<p class="card-text" style="color: green;"th:text="${#numbers.formatDecimal(investement.amount, 1, 'COMMA', 2, 'POINT')+'$'}" >3,000.00$</p>
+									<p class="card-text" style="color: green;"
+										th:text="${#numbers.formatDecimal(investement.amount, 1, 'COMMA', 2, 'POINT')+'$'}">3,000.00$</p>
 								</div>
 							</div>
 
-						</a> 
-						
-						
+						</a>
+
+
 
 					</div>
 				</div>
@@ -249,7 +311,7 @@
 		<script
 			th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
 
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script type="text/javascript"
 			th:src=" @{https://cdn.jsdelivr.net/jquery/latest/jquery.min.js}"></script>
 		<script type="text/javascript"

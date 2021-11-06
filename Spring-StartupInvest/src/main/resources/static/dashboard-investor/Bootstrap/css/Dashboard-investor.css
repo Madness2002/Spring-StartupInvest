@@ -75,17 +75,21 @@
 .option-inicio {
 	display: flex;
 	justify-content: center;
+	align-content: center;
+	
+	
 }
 
 .option-inicio a {
 	text-decoration: none;
 	color: black;
+	width: 70%;
 }
 
 .option-inicio p {
 	margin-top: 10px;
 	margin-left: 10px;
-	width: 100px;
+	width: 100%;
 	text-align: left;
 }
 
@@ -153,6 +157,10 @@
 	margin-top: 10px;
 }
 
+.line-decorate a {
+width: 100%;
+}
+
 /*BOTTOM-SECTION*/
 .bottom-section {
 	display: flex;
@@ -191,7 +199,7 @@
 }
 .encabezado-portafolio{
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	padding-left: 1.4vw;
 	padding-right: 1.4vw;
 		align-items: center;
@@ -203,6 +211,12 @@
 	margin: 0px;
 	
 }
+
+.encabezado-portafolio p{
+	border-left: solid 0, 2px grey;
+	
+}
+
 .box-portafolio .card-portafolio .text-startup-portafolio {
 	font-family: ABeeZee;
 	font-style: normal;

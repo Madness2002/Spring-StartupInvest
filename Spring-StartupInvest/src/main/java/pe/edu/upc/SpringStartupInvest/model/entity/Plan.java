@@ -59,13 +59,47 @@ public class Plan {
 		plansHistory = new ArrayList<PlanHistory>();
 	}
 
-	public Plan(Integer id, String name, Double amount, List<PlanHistory> plansHistory) {
+	
+
+	public Plan(Integer id,
+			@NotBlank(message = "La nombre no debe estar en blanco") @NotNull(message = "La nombre debe contener valor") @Size(max = 40, message = "El tamaño no debe ser mayor a 40") String name,
+			@DecimalMax("9999999999.99") @DecimalMin("0.99") Double amount,
+			@NotBlank(message = "El descripción no debe estar en blanco") @NotNull(message = "La descripción debe contener valor") @Size(max = 500, message = "El tamaño no debe ser mayor a 500") String description,
+			Boolean state, List<PlanHistory> plansHistory) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.amount = amount;
+		this.description = description;
+		this.state = state;
 		this.plansHistory = plansHistory;
 	}
+
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+	public Boolean getState() {
+		return state;
+	}
+
+
+
+	public void setState(Boolean state) {
+		this.state = state;
+	}
+
+
 
 	public Integer getId() {
 		return id;

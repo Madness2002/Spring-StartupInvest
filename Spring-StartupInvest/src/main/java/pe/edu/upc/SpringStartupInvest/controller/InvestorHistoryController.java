@@ -1,6 +1,9 @@
 package pe.edu.upc.SpringStartupInvest.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.SpringStartupInvest.model.entity.InvestorHistory;
@@ -22,7 +26,6 @@ import pe.edu.upc.SpringStartupInvest.service.crud.TypeCardService;
 
 @Controller
 @RequestMapping("/startupinvest/investorsHistory")
-@SessionAttributes("investorHistory")
 public class InvestorHistoryController {
 	@Autowired
 	private InvestorHistoryService investorHistoryService;
@@ -42,17 +45,25 @@ public class InvestorHistoryController {
 		return null;
 	}
 
-	@PostMapping("newInvestor")
-	public String insertar(Model model, @Valid @ModelAttribute("investorHistory") InvestorHistory investorHistory) {
+	@PostMapping("newInvestorHistory")
+	public String insertar(Model model,  @ModelAttribute("investorHistory") InvestorHistory investorHistory) {
 		try {
+			Date todayDate= new Date();
+			
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+			System.out.println(todayDate);
+			investorHistory.setDate(formato.parse(formato.format(todayDate)));
+			System.out.println(investorHistory.getDate());
 			investorHistory.setState(true);
-			InvestorHistory investorHistorySaved = investorHistoryService.create(investorHistory);
-			model.addAttribute("investorHistory", investorHistorySaved);
+			 investorHistoryService.create(investorHistory);
+			
+			
+			//model.addAttribute("investorHistory", investorHistorySaved);
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 
-		return null;
+		return "redirect:/startupinvest/home";
 	}
 
 	@PostMapping("{id}/edit")
