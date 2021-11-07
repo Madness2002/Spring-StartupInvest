@@ -5,11 +5,12 @@
 <meta charset="UTF-8" />
 </head>
 <head>
-<link th:href="@{/css/dashboard-administrator.css}" rel="stylesheet">
+<link th:href="@{/css/administrator-category.css}" rel="stylesheet">
 </head>
 
 
 <body class="d-flex flex-column">
+
 	<header th:replace="layout/layout :: frag-header"> </header>
 
 
@@ -20,15 +21,216 @@
 		</header>
 
 		<div class="right-section">
-			<h1>Categorias de Startup</h1>
-
-
+			<div class="superior-zone">
+				<h1>Categorias de Startup</h1>
+				<button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">Agregar</button>
+					
+			</div>
+    
+   			<div class="container">
+      
+        	<div class="card color-card1">
+            	<img src="/images/administrator/ImagenCategories.png">
+            	<h4>Categoría: Educativo</h4>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				</div>
+        	</div>
+        
+       		 <div class="card color-card2">
+            	<img src="/images/administrator/ImagenCategories.png">
+            	<h4>Categoría: Educativo</h4>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color3-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Habilitar</button>
+           		</div>
+       		 </div>
+        
+       		 <div class="card color-card1">
+           		 <img src="/images/administrator/ImagenCategories.png">
+            	<h4>Categoría: Educativo</h4>
+           		  <div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				 </div>
+        	</div>
+        	<div class="card color-card2">
+            	<img src="/images/administrator/ImagenCategories.png">
+            	<h4>Categoría: Educativo</h4>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color3-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Habilitar</button>
+           		</div>
+        	</div>
+        	<div class="card color-card1">
+            	<img src="/images/administrator/ImagenCategories.png">
+            	<h4>Categoría: Educativo</h4>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				 </div>
+        	</div>
+        	<div class="card color-card2">
+            	<img src="/images/administrator/ImagenCategories.png">
+            	<h4>Categoría: Educativo</h4>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color3-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Habilitar</button>
+           		</div>
+        	</div>
+        	<div class="card color-card1">
+            	<img src="/images/administrator/ImagenCategories.png">
+            	<h4>Categoría: Educativo</h4>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				</div>
+        	</div>
+        	<div class="card color-card2">
+            	<img src="/images/administrator/ImagenCategories.png">
+            	<h4>Categoría: Educativo</h4>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color3-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Habilitar</button>
+           		</div>
+        	</div>
+    		</div>
 		</div>
+		
+	<!-- Modal1 -->
+   					<div class="modal fade" id="modalForm" role="dialog">
+      					 <div class="modal-dialog">
+          					 <div class="modal-content">
+               			<!-- Modal Header -->
+              					 <div class="modal-header">
+              					 	<img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
+                 				  <!--<button type="button" class="close" data-dismiss="modal">
+                       				<span aria-hidden="true">×</span>
+                      			 	<span class="sr-only">Cerrar</span>
+                   				  </button>-->
+                  					 <h4 class="modal-title" id="myModalLabel">Nueva Categoría</h4>
+               					</div>
+               
+               			<!-- Modal Body -->
+              			 <div class="modal-body">
+                  				 <p class="statusMsg"></p>
+                   				<form role="form">
+                      		 <div class="form-group">
+                           			<label for="inputName">Nombre de la Categoría</label>
+                           			<input type="text" class="form-control" id="inputName" placeholder="Enter your name"/>
+                       		</div>
+                       		<div class="form-group">
+                           			<label for="inputEmail">Dirección de la imagen:</label>
+                           			<input type="email" class="form-control" id="inputEmail" placeholder="Enter your email"/>
+                      		</div>
+                       		<div class="dropdown form-group ">
+                            		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             			 Estado</button>
+                           			 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              			<p class="dropdown-item">True</p>
+                             			<p class="dropdown-item">False</p>
+                            		</div>
+                         	</div>
+                   			   </form>
+               			</div>
+               
+               			<!-- Modal Footer -->
+               			<div class="modal-footer">
+                  			 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  			 <button type="button" class="btn btn-primary submitBtn" onclick="submitContactForm()">Agregar</button>
+              			</div>
+          			 </div>
+      			 </div>
+   			</div>
 
 
+
+		<!-- Modal2 -->
+   					<div class="modal fade" id="modalForm1" role="dialog">
+      					 <div class="modal-dialog">
+          					 <div class="modal-content">
+               			<!-- Modal Header -->
+              					 <div class="modal-header">
+              					 <img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
+                 				  <!--<button type="button" class="close" data-dismiss="modal">
+                       				<span aria-hidden="true">×</span>
+                      			 	<span class="sr-only">Cerrar</span>
+                   				  </button>-->
+                  					 <h4 class="modal-title" id="myModalLabel">Editar Categoría</h4>
+               					</div>
+               
+               			<!-- Modal Body -->
+              			 <div class="modal-body">
+                  				 <p class="statusMsg"></p>
+                   				<form role="form">
+                      		 <div class="form-group">
+                           			<label for="inputName">Nombre de la Categoría</label>
+                           			<input type="text" class="form-control" id="inputName" placeholder="Enter your name"/>
+                       		</div>
+                       		<div class="form-group">
+                           			<label for="inputEmail">Dirección de la imagen:</label>
+                           			<input type="email" class="form-control" id="inputEmail" placeholder="Enter your email"/>
+                      		</div>
+                       		<div class="dropdown form-group ">
+                            		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             			 Estado</button>
+                           			 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              			<p class="dropdown-item">True</p>
+                             			<p class="dropdown-item">False</p>
+                            		</div>
+                         	</div>
+                   			   </form>
+               			</div>
+               
+               			<!-- Modal Footer -->
+               			<div class="modal-footer">
+                  			 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  			 <button type="button" class="btn btn-primary submitBtn" onclick="submitContactForm()">Confirmar</button>
+              				</div>
+          				 </div>
+      			 	</div>
+      			 	</div>
+      			 	
+      			 	
+      <!-- Modal3 -->
+   					<div class="modal fade" id="modalForm2" role="dialog">
+      					 <div class="modal-dialog">
+          					 <div class="modal-content2">
+               			<!-- Modal Header -->
+              					 <div class="modal-header">
+              					 <img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
+                 				  <!--<button type="button" class="close" data-dismiss="modal">
+                       				<span aria-hidden="true">×</span>
+                      			 	<span class="sr-only">Cerrar</span>
+                   				  </button>-->
+                  					 <h4 class="modal-title" id="myModalLabel">Cambio de estado</h4>
+               					</div>
+               
+               			<!-- Modal Body -->
+              			 <div class="modal-body centrar">
+                  				 <p class="statusMsg"></p>
+                   				<form role="form">
+                      		 <div class="form-group">
+                           			<label for="inputName">¿Seguro que quieres cambiar el estado?</label>
+                           			</div>
+                       		<div class="form-group">
+                           			<label for="inputEmail">Los usuarios no podrán ver esta opción</label>
+                           			</div>
+                   			   </form>
+               			</div>
+               
+               			<!-- Modal Footer -->
+               			<div class="modal-footer">
+                  			 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  			 <button type="button" class="btn btn-primary submitBtn" onclick="submitContactForm()">Confirmar</button>
+              				</div>
+          				 </div>
+      			 	</div>
+      			 	</div>
 	</main>
 
-
+	
 
 	<footer th:replace="layout/layout :: frag-footer"></footer>
 
