@@ -444,7 +444,7 @@
 								</div>
 								<div class="modal-footer">
 									<form th:action="@{/startupinvest/investorsHistory/newInvestorHistory}" th:object="${investorHistory}" method="post" >
-										<div class="form-group">
+										<div class="form-group" hidden="true">
 											<label for="exampleFormControlInput1">Monto</label> <input
 												type="number" class="form-control"
 												id="amountCreate" placeholder="name@example.com" th:field="*{amount}" >

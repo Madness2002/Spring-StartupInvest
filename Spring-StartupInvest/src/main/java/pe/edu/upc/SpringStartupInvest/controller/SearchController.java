@@ -62,6 +62,7 @@ public class SearchController {
 		String fechas[] = intervalDate.getIntervalDate().trim().split("-");
 		Date startDate = formato.parse(fechas[0]);
 		Date endDate = formato.parse(fechas[1]);
+		System.out.println(startDate);
 		categories = categoryService.findByState(true);
 		startups = startupService.findByDateBetween(startDate, endDate);
 

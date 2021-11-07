@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +18,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
 import pe.edu.upc.SpringStartupInvest.model.entity.InvestorHistory;
 import pe.edu.upc.SpringStartupInvest.service.crud.InvestorHistoryService;
-import pe.edu.upc.SpringStartupInvest.service.crud.TypeCardService;
 
 @Controller
 @RequestMapping("/startupinvest/investorsHistory")
 public class InvestorHistoryController {
 	@Autowired
 	private InvestorHistoryService investorHistoryService;
-
-	private TypeCardService typeCardService;
 
 	@GetMapping
 	public String list(Model model) {
@@ -46,24 +41,36 @@ public class InvestorHistoryController {
 	}
 
 	@PostMapping("newInvestorHistory")
-	public String insertar(Model model,  @ModelAttribute("investorHistory") InvestorHistory investorHistory) {
+	public String insertar(@ModelAttribute("investorHistory") InvestorHistory investorHistory) {
 		try {
-			Date todayDate= new Date();
+			Date todayDate = new Date();
+
+		//	SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+			//System.out.println(todayDate);
+		//	investorHistory.setDate(formato.parse(formato.format(todayDate)));
+			//System.out.println(investorHistory.getDate());
 			
-			SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-			System.out.println(todayDate);
-			investorHistory.setDate(formato.parse(formato.format(todayDate)));
-			System.out.println(investorHistory.getDate());
+			investorHistory.setDate(todayDate);
 			investorHistory.setState(true);
-			 investorHistoryService.create(investorHistory);
 			
-			
-			//model.addAttribute("investorHistory", investorHistorySaved);
+			System.out.println(investorHistory.getId()); 
+			System.out.println(investorHistory.getDate());
+			System.out.println(investorHistory.getAmount());
+			System.out.println(investorHistory.getState());
+			System.out.println(investorHistory.getInvestmentRequest().getId());
+			System.out.println(investorHistory.getInvestor().getId());
+			System.out.println(investorHistory.getTypeCard().getId());
+				
+			investorHistoryService.create(investorHistory);
+		
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-
+		
+		
+		
 		return "redirect:/startupinvest/home";
+		
 	}
 
 	@PostMapping("{id}/edit")

@@ -7,4 +7,6 @@ import pe.edu.upc.SpringStartupInvest.model.entity.PlanHistory;
 
 public interface PlanHistoryService extends CrudService<PlanHistory, Integer> {
 	
+	
+	
 }
