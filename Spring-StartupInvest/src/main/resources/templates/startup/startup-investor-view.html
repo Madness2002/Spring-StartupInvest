@@ -257,7 +257,7 @@
 															id="inputGroupSelect01">
 															<option selected>Escoge un tipo de tarjeta...</option>
 															<option th:each="card:${cards}" th:value="${card.id}"
-																th:text=${card.name} id="typeCardId" ></option>
+																th:text=${card.name} th:id="{'typeCardId'+{card.id}}" th:onclick="'javascript:confirmEditPlanAll(\''+ ${plan.id} +'\');'"  >  </option>
 
 														</select>
 													</div>
@@ -309,7 +309,7 @@
 										<!-- Boton para ir a modal 2 -->
 										<button type="button" data-toggle="modal" data-dismiss="modal"
 											data-target=".modal-paso-2" id="submit"
-											class="btn btn-primary ">Siguiente</button>
+											class="btn btn-primary" th:onclick="'javascript:confirmEditPlanStateActive(\''+ ${plan.id} +'\');'">Siguiente</button>
 									</div>
 								</div>
 							</div>
@@ -589,6 +589,19 @@ $("#submit").click(function(e){
     
     var idInvestor = $("#idInvestor").val();
     $("#investorIdCreate").val(idInvestor);
+});
+
+$("#submit").click(function(e){
+	$('#editarPlan').modal('show');
+	$("#id").val(id);
+	$("#monto").val(amount);
+	$("#state").val(state);
+
+	var descriptionSend = $("#descriptionSend"+id).val();
+    $("#descripcionShow").val(descriptionSend);
+
+    var nameSend = $("#nameSend"+id).val();
+    $("#nameShow").val(nameSend);
 });
 
 </script>

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.SpringStartupInvest.model.entity.Category;
+import pe.edu.upc.SpringStartupInvest.model.entity.InvestorHistory;
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
+import pe.edu.upc.SpringStartupInvest.service.crud.InvestorHistoryService;
 import pe.edu.upc.SpringStartupInvest.service.crud.StartupService;
 import pe.edu.upc.SpringStartupInvest.util.startup.DateTimeUtil;
 
@@ -28,14 +30,20 @@ public class SearchController {
 	@Autowired
 	private CategoryService categoryService;
 
+	@Autowired
+	private InvestorHistoryService investorHistoryService;
+	
 	@PostMapping("startup")
 	public String searchStartup(Model model, @ModelAttribute("startupSearch") Startup startupSearch) throws Exception {
 		List<Startup> startups = new ArrayList<Startup>();
 		List<Category> categories = new ArrayList<>();
+		List<InvestorHistory>investments=new ArrayList<>();
 		startupSearch.setName(startupSearch.getName().trim());
 		categories = categoryService.findByState(true);
 		startups = startupService.findByNameStartup(startupSearch.getName());
+		investments=investorHistoryService.listPortafolioByInvestorId(1001);
 		model.addAttribute("categories", categories);
+		model.addAttribute("investments", investments);
 		if (startups.size() > 0) {
 
 			model.addAttribute("startups", startups);
@@ -50,6 +58,8 @@ public class SearchController {
 			return "dashboard/dashboard-investor-search-error";
 		}
 
+		
+		
 	}
 
 	@PostMapping("startupByDateAndCategory")
