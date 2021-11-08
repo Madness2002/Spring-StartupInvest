@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="frag-head">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	th:href="@{/dashboard-investor/Bootstrap/css/bootstrap.css}" />
+<link rel="stylesheet"
+	th:href="@{/dashboard-investor/Bootstrap/css/Dashboard-investor.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css}" />
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+
+<!--Font-Awsome-->
+
+<link rel="stylesheet"
+	th:href="@{/dashboard-investor/Bootstrap/css/all.css}">
+
+<link th:href="@{/dashboard-investor/Bootstrap/css/fontawesome.css}"
+	rel="stylesheet">
+<link th:href="@{/dashboard-investor/Bootstrap/css/brands.css}"
+	rel="stylesheet">
+<link th:href="@{/dashboard-investor/Bootstrap/css/solid.css}"
+	rel="stylesheet">
+
+
+<script defer th:src="@{/your-path-to-fontawesome/js/brands.js}"></script>
+<script defer th:src="@{/your-path-to-fontawesome/js/solid.js}"></script>
+<script defer th:src="@{/your-path-to-fontawesome/js/fontawesome.js}"></script>
+
+<title>StartupInvest|Dashboards</title>
+</head>
+<body>
+
+	<header th:fragment="frag-header">
+
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" th:href="@{/startupinvest/home}"> <img
+					th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+					alt="StartupInvest" width="36" height="30"
+					class="d-inline-block align-text-top" /> StartupInvest
+				</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav position-relative">
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" th:href="@{/startupinvest/home}">Inicio</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Noticias</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#">Planes</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" th:href="@{/startupinvest/startups/2001/view/profile}">Startup</a>
+						</li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/startupinvest/administrator}">Administrador</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+	</header>
+	<div th:fragment="frag-left-bar-administrator">
+		<div class="left-section position-fixed">
+			<div class="top-section">
+				<div class="imagen-perfil">
+					<img
+						th:src="@{/dashboard-investor/Bootstrap/img/testimonial-2.jpg}"
+						alt="Imagen de perfil">
+				</div>
+				<div class="name-perfil">
+					<p id="nombreUsuario">Claudia Rodriguez</p>
+				</div>
+			</div>
+			<div class="middle-section">
+
+				<div class="main-options">
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a th:href="@{/startupinvest/administrator}">
+							<p>Inicio</p>
+						</a>
+					</div>
+
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a href="#">
+							<p>Mi perfil</p>
+						</a>
+					</div>
+
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a th:href="@{/startupinvest/administrator/categories}">
+							<p>Categoria Startup</p>
+						</a>
+					</div>
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a th:href="@{/startupinvest/administrator/typesInvestment}">
+							<p>Tipos de inversiones</p>
+						</a>
+					</div>
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a th:href="@{/startupinvest/administrator/plans}">
+							<p>Tipos de planes</p>
+						</a>
+					</div>
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a th:href="@{/startupinvest/administrator/typesCard}">
+							<p>Tipos de tarjetas</p>
+						</a>
+					</div>
+
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+	<div th:fragment="frag-left-bar">
+		<div class="left-section position-fixed">
+			<div class="top-section">
+				<div class="imagen-perfil">
+					<img
+						th:src="@{/dashboard-investor/Bootstrap/img/testimonial-2.jpg}"
+						alt="Imagen de perfil">
+				</div>
+				<div class="name-perfil">
+					<p id="nombreUsuario">Claudia Rodriguez</p>
+				</div>
+			</div>
+			<div class="middle-section">
+
+				<div class="main-options">
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a href="#">
+							<p>Inicio</p>
+						</a>
+					</div>
+
+					<div class="option-inicio">
+						<div class="line-decorate"></div>
+						<a href="#">
+							<p>Mi perfil</p>
+						</a>
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="bottom-section">
+
+				<div class="box-portafolio">
+					<div data-spy="scroll" data-target="#navbar-example2"
+						data-offset="0">
+						<div class="title-portafolio">
+							<p>Mi portafolio</p>
+						</div>
+
+
+						<div class="box-min-portafolio" style="width: 14rem;">
+							<div class="encabezado-portafolio">
+								<p class="card-text">Startups</p>
+								<p class="card-text">Invertido</p>
+							</div>
+						</div>
+
+
+
+						<a href="#" th:each="investement:${investments}">
+							<div class=" card-portafolio" style="width: 14rem;">
+								<div class="img-startup-portafolio">
+									<img
+										th:src="@{'/images/startups/'+${investement.investmentRequest.startup.image}}"
+										class=""
+										style="height: 80%; width: 2.5rem; border-radius: 100%; margin-left: 1rem;">
+								</div>
+								<div class="text-startup-portafolio">
+									<p class="card-text" style="color: green;"
+										th:text="${#numbers.formatDecimal(investement.amount, 1, 'COMMA', 2, 'POINT')+'$'}">3,000.00$</p>
+								</div>
+							</div>
+
+						</a>
+
+
+
+					</div>
+				</div>
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div th:fragment="frag-search">
+		<div class="search-dashboard">
+			<div class="center-search">
+				<div class="input-group">
+
+					<form class="d-flex" th:action="@{/search/startup}"
+						th:object="${startupSearch}" method="post">
+						<input type="search" class="form-control rounded"
+							placeholder="Busca una startup..." aria-label="Search"
+							aria-describedby="search-addon" th:field="*{name}">
+
+						<button type="submit" class="btn btn-outline-primary">
+							<i class="fab fa-searchengin"></i>
+						</button>
+
+
+
+					</form>
+
+
+					<div>
+						<button type="button" class="icon-filter btn btn-primary "
+							data-toggle="modal" data-target="#exampleModal"
+							data-whatever="@mdo"
+							style="background-color: #0dcaf0; border-color: #0dcaf0;">
+							<i class="icon-cog fa-1x fas fa-funnel-dollar "></i>
+						</button>
+
+					</div>
+
+					<div class="modal fade" id="exampleModal" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Filtros</h5>
+									<button type="button" class="btn btn-danger"
+										data-dismiss="modal">Cerrar</button>
+								</div>
+								<div class="modal-body">
+									<form th:action="@{/search/startupByDateAndCategory}"
+										method="post" th:object="${intervalDate}">
+										<div class="form-group">
+											<label for="recipient-name" class="col-form-label"> <b>Sector
+													de Startup</b>
+											</label> <select class="form-select"
+												aria-label="Default select example"
+												th:field="*{categoryText}">
+												<option th:field="*{categoryText}" value=Ninguna>Ninguna</option>
+												<option th:value="${category.name}"
+													th:each="category :${categories}"
+													th:text="${category.name}">One</option>
+
+											</select>
+
+										</div>
+										<div class="form-group">
+											<label for="message-text" class="col-form-label"><b>Tiempo
+													en funcionamiento</b> </label> <br> Inicio - Fin <input
+												type="text" class="form-control" id="intervalDate"
+												autocomplete="off" th:field="*{intervalDate}" /> <input
+												type="hidden" autocomplete="off"
+												placeholder="Fecha inicio..." name="dateFrom" /> <input
+												type="hidden" autocomplete="off" placeholder="Fecha fin..."
+												name="dateTo" />
+
+										</div>
+										<div class="modal-footer">
+											<button type="submit" id="btnApply">Buscar</button>
+										</div>
+									</form>
+
+
+								</div>
+
+
+
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+	<footer th:fragment="frag-footer">
+		<script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"></script>
+
+		<script
+			th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script type="text/javascript"
+			th:src=" @{https://cdn.jsdelivr.net/jquery/latest/jquery.min.js}"></script>
+		<script type="text/javascript"
+			th:src="@{https://cdn.jsdelivr.net/momentjs/latest/moment.min.js}"></script>
+		<script type="text/javascript"
+			th:src="@{https://cdn.jsdelivr.net/jquery/latest/jquery.min.js}"></script>
+		<script type="text/javascript"
+			th:src="@{https://cdn.jsdelivr.net/momentjs/latest/moment.min.js}"></script>
+		<script type="text/javascript"
+			th:src="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js}"></script>
+
+
+
+
+
+		<script>
+    var $intervalDate = $('#intervalDate');
+
+    $intervalDate.daterangepicker();
+    $intervalDate.on('apply.daterangepicker', function (ev, picker) {
+        $('input[name="dateFrom"]').val(picker.startDate.format('DD/MM/YYYY'));
+        $('input[name="dateTo"]').val(picker.endDate.format('DD/MM/YYYY'));
+    });
+</script>
+
+
+
+
+		<script th:src="@{/dashboard-investor/Bootstrap/js/bootstrap.min.js}"></script>
+	</footer>
+
+</body>
+</html>

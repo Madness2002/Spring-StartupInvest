@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+<head>
+<link th:href="@{/css/administrator-plan.css}" rel="stylesheet">
+</head>
+
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+
+
+	<!--CONTENIDO-->
+	<main>
+		<header th:replace="layout/layout :: frag-left-bar-administrator">
+		</header>
+
+		<div class="right-section">
+			<h1 id="titulo">Tipos de planes</h1>
+
+			<div id="box-agregar">
+				<button type="button" class="btn btn btn-secondary"
+					data-toggle="modal" data-target="#agregarPlan"
+					data-whatever="@getbootstrap">Agregar nuevo tipo de Plan</button>
+			</div>
+			<form class="modal fade" id="agregarPlan" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel"
+				th:action="@{/startupinvest/newPlan}" th:object="${plan}"
+				method="post">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<img
+								src="/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png"
+								alt="StartupInvest" width="36" height="30"
+								class="d-inline-block align-text-top" style="height: 100%;">
+							<h5 class="modal-title" id="exampleModalLabel">Startup
+								Invest</h5>
+
+						</div>
+						<div class="modal-body">
+							<h3>Agregar tipo de plan</h3>
+
+							<div class="form-group">
+								<label for="recipient-name" class="col-form-label"
+									style="font-weight: bolder;">Nombre</label> <input type="text"
+									class="form-control" id="recipient-name"
+									placeholder="Nombre del plan..." th:field="*{name}"
+									autocomplete="off">
+							</div>
+							<div class="form-group">
+								<label for="recipient-name" class="col-form-label"
+									style="font-weight: bolder;">Duración en días</label> <input
+									type="number" class="form-control" id="recipient-name"
+									placeholder="Nombre del plan..."
+									onkeypress="return validarNumero(event)" th:field="*{duration}">
+							</div>
+
+
+							<div class="form-group">
+								<label for="message-text" class="col-form-label"
+									style="font-weight: bolder;">Monto</label> <input type="number"
+									class="form-control" id="recipient-name" placeholder="00.00 S/"
+									onkeypress="return validarNumero(event)" th:field="*{amount}">
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label"
+									style="font-weight: bolder;">Descripción</label> <input
+									class="form-control" id="message-text"
+									placeholder="Descripción del plan..." th:field="*{description}">
+							</div>
+							<div class="modal-footer">
+								<a class="btn btn-lg btn-primary btn-block"
+									style="background-color: #DC3545;" data-dismiss="modal">Cancelar</a>
+								<button class="btn btn-lg btn-primary btn-block" type="submit"
+									style="background-color: #28A745;">Agregar</button>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</form>
+			<!-- EDITAR -->
+			<form th:action="@{'/startupinvest/administrator/plans/edit'}"
+				th:object="${editPlan}" method="post" class="modal fade"
+				id="editarPlan" tabindex="1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<img
+								src="/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png"
+								alt="StartupInvest" width="36" height="30"
+								class="d-inline-block align-text-top" style="height: 100%;">
+							<h5 class="modal-title" id="exampleModalLabel">Startup
+								Invest</h5>
+
+						</div>
+						<div class="modal-body">
+							<h3>Modificar tipo de plan</h3>
+							<div>
+
+								<div class="form-group" hidden="true">
+									<label for="id" class="col-form-label"
+										style="font-weight: bolder;">Id</label> <input type="number"
+										class="form-control" id="id" placeholder="Identificador..."
+										th:field="*{id}">
+								</div>
+								
+								<div class="form-group">
+									<label for="nombre" class="col-form-label"
+										style="font-weight: bolder;">Nombre</label> <input type="text"
+										class="form-control" id="nameShow"
+										placeholder="Nombre del plan..." th:field="*{name}">
+								</div>
+								<div class="form-group">
+									<label for="monto" class="col-form-label"
+										style="font-weight: bolder;">Duración en días</label> <input
+										type="number" class="form-control" id="durationShow"
+										placeholder="00.00 S/" th:field="*{duration}"
+										onkeypress="return validarNumero(event)">
+								</div>
+								
+								<div class="form-group">
+									<label for="monto" class="col-form-label"
+										style="font-weight: bolder;">Monto</label> <input
+										type="number" class="form-control" id="monto"
+										placeholder="00.00 S/" th:field="*{amount}"
+										onkeypress="return validarNumero(event)">
+								</div>
+								
+								<div class="form-group">
+									<label for="descripcion" class="col-form-label"
+										style="font-weight: bolder;">Descripción</label> <input
+										class="form-control" id="descripcionShow"
+										placeholder="Descripción del plan..."
+										th:value=${plan.description} th:field="*{description}"></input>
+								</div>
+								<div class="form-group" hidden="true">
+									<label for="state" class="col-form-label"
+										style="font-weight: bolder;">Estado</label> <input
+										class="form-control" id="state" placeholder="Estado..."
+										th:value=${plan.state} th:field="*{state}"></input>
+								</div>
+
+								<div class="modal-footer">
+									<a class="btn btn-lg btn-primary btn-block"
+										style="background-color: #DC3545;" data-dismiss="modal"
+										th:onclick="'javascript:closeModalEdit();'">Cancelar</a>
+									<button class="btn btn-lg btn-primary btn-block" type="submit"
+										style="background-color: #28A745;">Agregar</button>
+
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</form>
+			<!-- EDITAR -->
+			<!-- DESHABILITAR -->
+
+			<div class="modal fade" id="deshabilitarPlan" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<form class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<img
+								src="/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png"
+								alt="StartupInvest" width="36" height="30"
+								class="d-inline-block align-text-top" style="height: 100%;">
+							<h5 class="modal-title" id="exampleModalLabel">Startup
+								Invest</h5>
+
+						</div>
+						<div class="modal-body">
+							<input type="hidden" id="defuseStateHiddenInput"
+								name="defuseStateHiddenInput" />
+							<h3>¿Seguro que quieres deshabilitar el plan?</h3>
+							<p>Los usuarios no podrán visualizar el plan si lo
+								deshabilita</p>
+
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-lg btn-primary btn-block"
+								style="background-color: #DC3545;" data-dismiss="modal">No</button>
+							<a class="btn btn-lg btn-primary btn-block" data-dismiss="modal"
+								style="background-color: #28A745;"
+								th:onclick="editPlanStateDefuse()">Sí</a>
+
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- DESHABILITAR -->
+
+
+
+			<!-- HABILITAR -->
+			<div class="modal fade" id="habilitarPlan" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalLabel"
+				aria-hidden="false">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<img
+								src="/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png"
+								alt="StartupInvest" width="36" height="30"
+								class="d-inline-block align-text-top" style="height: 100%;">
+							<h5 class="modal-title" id="exampleModalLabel">Startup
+								Invest</h5>
+
+						</div>
+						<div class="modal-body">
+							<input type="hidden" id="activeStateHiddenInput"
+								name="activeStateHiddenInput" />
+							<h3>¿Seguro que quieres habilitar el plan?</h3>
+							<p>Los usuarios podrán visualizar el plan si lo habilita</p>
+						</div>
+						<div class="modal-footer">
+							<a class="btn btn-lg btn-primary btn-block"
+								style="background-color: #DC3545;" data-dismiss="modal">No</a> <a
+								class="btn btn-lg btn-primary btn-block" data-dismiss="modal"
+								style="background-color: #28A745;"
+								th:onclick="editPlanStateActive()">Sí</a>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- HABILITAR -->
+
+
+
+			<!-- row -->
+			<div class="row">
+				<div class="col-xs-6 col-sm-6 col-lg-6 col-xl-3 mt-2"
+					th:each="plan:${plans}">
+
+					<div class="panel price  panel-color">
+
+
+
+
+
+						<div class=" bg-white text-center">
+							<svg x="0" y="0" viewBox="0 0 360 220">
+											<g>
+												<path fill="#1F232C"
+									d="M0.732,193.75c0,0,29.706,28.572,43.736-4.512c12.976-30.599,37.005-27.589,44.983-7.061
+													c8.09,20.815,22.83,41.034,48.324,27.781c21.875-11.372,46.499,4.066,49.155,5.591c6.242,3.586,28.729,7.626,38.246-14.243
+													s27.202-37.185,46.917-8.488c19.715,28.693,38.687,13.116,46.502,4.832c7.817-8.282,27.386-15.906,41.405,6.294V0H0.48
+													L0.732,193.75z"></path>
+											</g>
+											<text transform="matrix(1 0 0 1 45 116.2686)" fill="#fff"
+									font-size="35" p th:text=${plan.name}>Semanal</text>
+									
+										</svg>
+						</div>
+						<div class="panel-body text-center">
+							<p class="lead">
+								<strong
+									th:text="${#numbers.formatDecimal(plan.amount, 1, 'COMMA', 2, 'POINT')}">23</strong>
+								S/<strong></strong> <strong></strong>
+							</p>
+						</div>
+						<ul class="list-group list-group-flush text-center">
+							<li class="list-group-item"><strong>
+
+									<li class="list-group-item"><input hidden="true"
+										th:value="${plan.description}"
+										th:id="*{'descriptionSend'+{plan.id}}"> <input
+										hidden="true" th:value="${plan.name}"
+										th:id="*{'nameSend'+{plan.id}}">
+										<li class="list-group-item"><input hidden="true"
+										th:value="${plan.duration}"
+										th:id="*{'durationSend'+{plan.id}}">
+										
+										<strong
+										th:text="${plan.description}" id="descriptionSend"> </strong></li>
+
+							</strong></li>
+							<li class="list-group-item"><strong> </strong></li>
+						</ul>
+						<div class="panel-footer text-center">
+							<button class="btn btn-lg btn-primary btn-block"
+								style="background-color: #61BFD1; color: white;"
+								data-toggle="modal" data-target="#editarPlan" id="edit"
+								th:onclick="'javascript:confirmEditPlanAll(\''+ ${plan.id} +'\',\''+ ${plan.amount} +'\',\''+ ${plan.state} +'\');'">Editar</button>
+							<!--Cortar-->
+
+							<!--Cortar-->
+
+							<a th:if="${plan.state}" type="submit"
+								class="btn btn-lg btn-primary btn-block"
+								style="background-color: #D11F1F;" data-toggle="modal"
+								th:onclick="'javascript:confirmEditPlanStateDefuse(\''+ ${plan.id} +'\');'">Deshabilitar</a>
+							<a th:unless="${plan.state}" type="submit"
+								class="btn btn-lg btn-primary btn-block"
+								style="background-color: #3ABC37; color: white;"
+								data-toggle="modal"
+								th:onclick="'javascript:confirmEditPlanStateActive(\''+ ${plan.id} +'\');'">habilitar</a>
+
+						</div>
+					</div>
+
+
+				</div>
+				<!-- col-end -->
+
+				<!-- col-end -->
+			</div>
+			<!-- row end -->
+
+
+
+
+		</div>
+
+
+	</main>
+
+
+
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+	<footer>
+
+		<script type="text/javascript">
+function confirmEditPlanStateDefuse(id){
+	$('#deshabilitarPlan').modal('show');
+	$("#defuseStateHiddenInput").val(id);
+}
+
+function editPlanStateDefuse(){
+	var id = $("#defuseStateHiddenInput").val();
+    window.location = "/startupinvest/administrator/plans/"+id+"/edit/loadEdit";
+}
+
+//HABILITAR
+
+
+function confirmEditPlanStateActive(id){
+	$('#habilitarPlan').modal('show');
+	$("#activeStateHiddenInput").val(id);
+}
+
+function editPlanStateActive(){
+	var id = $("#activeStateHiddenInput").val();
+    window.location = "/startupinvest/administrator/plans/"+id+"/edit/loadEdit";
+}
+//EDITAR
+function confirmEditPlanAll(id,amount,state){
+	$('#editarPlan').modal('show');
+	$("#id").val(id);
+	$("#monto").val(amount);
+	$("#state").val(state);
+
+	var descriptionSend = $("#descriptionSend"+id).val();
+    $("#descripcionShow").val(descriptionSend);
+
+    var nameSend = $("#nameSend"+id).val();
+    $("#nameShow").val(nameSend);
+
+    var durationSend = $("#durationSend"+id).val();
+    $("#durationShow").val(durationSend);
+}
+
+
+function closeModalEdit(){
+	$('#editarPlan').modal('hide');
+	
+}
+
+
+
+
+</script>
+
+
+
+
+		<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
+	</footer>
+</body>
+
+</html>
