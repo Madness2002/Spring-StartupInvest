@@ -59,21 +59,20 @@ public class PlanController {
 
 		return "dashboard-administrator/administrator-plan";
 	}
-
+	
 	@PostMapping("newPlan")
 	public String insert(Model model, @Valid @ModelAttribute("plan") Plan plan) {
 		try {
 
 			plan.setState(true);
-			 planService.create(plan);
-			//model.addAttribute("plan", planSaved);
+			planService.create(plan);
+	
 		} catch (Exception e) {
 			e.getMessage();
 		}
 
 		return "redirect:/startupinvest/administrator/plans";
 	}
-
 
 	/// startupinvest/administrator/plans/{id}/edit/loadEdit
 	@GetMapping("administrator/plans/{id}/edit/loadEdit")
@@ -94,12 +93,13 @@ public class PlanController {
 
 		return "redirect:/startupinvest/administrator/plans";
 	}
+
 //CARGAR DATOS
-	@RequestMapping(value ="administrator/plans/{id}/edit", method = RequestMethod.PATCH)
+	@RequestMapping(value = "administrator/plans/{id}/edit", method = RequestMethod.PATCH)
 	public void updateGo(Model model, @PathVariable("id") Integer id, ModelMap modelMap) {
 		try {
 			if (planService.existsById(id)) {
-				Optional<Plan>plan=planService.findById(id);
+				Optional<Plan> plan = planService.findById(id);
 				modelMap.put("editPlan", plan);
 			}
 
@@ -107,10 +107,9 @@ public class PlanController {
 			e.getMessage();
 		}
 
-		//return "administrator-plan";
+		// return "administrator-plan";
 	}
-	
-	
+
 	@PostMapping("administrator/plans/edit")
 	public String update(Model model, @ModelAttribute("editPlan") Plan plan) {
 		try {
