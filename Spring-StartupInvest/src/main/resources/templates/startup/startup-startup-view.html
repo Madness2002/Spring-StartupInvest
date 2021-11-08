@@ -67,20 +67,20 @@
 				<div class="box-izquierda">
 					<div class="box-boton">
 						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target=".ronda-inversion" data-bs-toggle="button"
+							data-target=".ronda-inversion" data-bs-toggle="button" id="boton-left"
 							autocomplete="off">Añadir una ronda de inversión</button>
 					</div>
 				</div>
 				<div class="box-derecha">
-					<div class="box-boton">
-						<button type="button" class="btn btn-primary"
+					<div class="box-boton"> 
+						<button type="button" class="btn btn-primary" 
 							data-bs-toggle="button" autocomplete="off">Administrar
 							publicaciones</button>
 					</div>
 					<div class="box-boton">
 						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target=".adquirir-promocion" data-bs-toggle="button"
-							autocomplete="off">Adquirir plan de promoción</button>
+							data-target=".adquirir-promocion" data-bs-toggle="button"  
+							>Adquirir plan de promoción</button>
 					</div>
 
 				</div>
@@ -407,7 +407,7 @@
 									<form
 										th:action="@{'/startupinvest/plansHistory/startups/view/profile/newPlanHistory'}"
 										th:object="${planHistory}" method="post">
-										<div class="form-group">
+										<div class="form-group" hidden="true">
 											<label for="exampleFormControlInput1">id plan</label> <input
 												type="number" class="form-control" id="planIdCreate"
 												placeholder="name@example.com" th:field="*{plan}"> <label

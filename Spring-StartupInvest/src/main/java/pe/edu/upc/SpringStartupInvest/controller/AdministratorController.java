@@ -26,10 +26,7 @@ public class AdministratorController {
 		return "dashboard-administrator/dashboard-administrator";
 	}
 	
-	@GetMapping("administrator/categories")// 
-	public String categories() {
-		return "dashboard-administrator/administrator-category";
-	}
+	
 	
 	@GetMapping("administrator/typesCard")// 
 	public String typesCard() {
