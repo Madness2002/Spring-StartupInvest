@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface PlanRepository extends JpaRepository<Plan, Integer> {
 List<Plan>findByName (String name)throws Exception ;
-
+List<Plan>findByState (Boolean state)throws Exception ;
 
 }

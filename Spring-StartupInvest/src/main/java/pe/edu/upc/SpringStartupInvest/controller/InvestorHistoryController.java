@@ -45,10 +45,6 @@ public class InvestorHistoryController {
 		try {
 			Date todayDate = new Date();
 
-		//	SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-			//System.out.println(todayDate);
-		//	investorHistory.setDate(formato.parse(formato.format(todayDate)));
-			//System.out.println(investorHistory.getDate());
 			
 			investorHistory.setDate(todayDate);
 			investorHistory.setState(true);

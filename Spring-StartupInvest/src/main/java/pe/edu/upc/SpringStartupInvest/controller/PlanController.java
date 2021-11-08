@@ -59,7 +59,7 @@ public class PlanController {
 
 		return "dashboard-administrator/administrator-plan";
 	}
-
+	
 	@PostMapping("newPlan")
 	public String insert(Model model, @Valid @ModelAttribute("plan") Plan plan) {
 		try {

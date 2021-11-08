@@ -49,8 +49,18 @@
 								<label for="recipient-name" class="col-form-label"
 									style="font-weight: bolder;">Nombre</label> <input type="text"
 									class="form-control" id="recipient-name"
-									placeholder="Nombre del plan..." th:field="*{name}">
+									placeholder="Nombre del plan..." th:field="*{name}"
+									autocomplete="off">
 							</div>
+							<div class="form-group">
+								<label for="recipient-name" class="col-form-label"
+									style="font-weight: bolder;">Duración en días</label> <input
+									type="number" class="form-control" id="recipient-name"
+									placeholder="Nombre del plan..."
+									onkeypress="return validarNumero(event)" th:field="*{duration}">
+							</div>
+
+
 							<div class="form-group">
 								<label for="message-text" class="col-form-label"
 									style="font-weight: bolder;">Monto</label> <input type="number"
@@ -102,7 +112,7 @@
 										class="form-control" id="id" placeholder="Identificador..."
 										th:field="*{id}">
 								</div>
-
+								
 								<div class="form-group">
 									<label for="nombre" class="col-form-label"
 										style="font-weight: bolder;">Nombre</label> <input type="text"
@@ -111,11 +121,20 @@
 								</div>
 								<div class="form-group">
 									<label for="monto" class="col-form-label"
+										style="font-weight: bolder;">Duración en días</label> <input
+										type="number" class="form-control" id="durationShow"
+										placeholder="00.00 S/" th:field="*{duration}"
+										onkeypress="return validarNumero(event)">
+								</div>
+								
+								<div class="form-group">
+									<label for="monto" class="col-form-label"
 										style="font-weight: bolder;">Monto</label> <input
 										type="number" class="form-control" id="monto"
 										placeholder="00.00 S/" th:field="*{amount}"
 										onkeypress="return validarNumero(event)">
 								</div>
+								
 								<div class="form-group">
 									<label for="descripcion" class="col-form-label"
 										style="font-weight: bolder;">Descripción</label> <input
@@ -257,9 +276,14 @@
 
 									<li class="list-group-item"><input hidden="true"
 										th:value="${plan.description}"
-										th:id="*{'descriptionSend'+{plan.id}}"> </input><input
+										th:id="*{'descriptionSend'+{plan.id}}"> <input
 										hidden="true" th:value="${plan.name}"
-										th:id="*{'nameSend'+{plan.id}}"> </input><strong
+										th:id="*{'nameSend'+{plan.id}}">
+										<li class="list-group-item"><input hidden="true"
+										th:value="${plan.duration}"
+										th:id="*{'durationSend'+{plan.id}}">
+										
+										<strong
 										th:text="${plan.description}" id="descriptionSend"> </strong></li>
 
 							</strong></li>
@@ -344,6 +368,9 @@ function confirmEditPlanAll(id,amount,state){
 
     var nameSend = $("#nameSend"+id).val();
     $("#nameShow").val(nameSend);
+
+    var durationSend = $("#durationSend"+id).val();
+    $("#durationShow").val(durationSend);
 }
 
 

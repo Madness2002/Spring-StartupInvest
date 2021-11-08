@@ -43,6 +43,9 @@ public class Plan {
 	@Column(name = "plan_amount", columnDefinition = "DECIMAL(12,2)", nullable = false)
 	private Double amount;
 
+	@Column(name = "plan_duration_days", length = 5, nullable = false)
+	private Integer duration;
+	
 	@NotBlank(message = "El descripción no debe estar en blanco")
 	@NotNull(message = "La descripción debe contener valor")
 	@Size(max = 500, message = "El tamaño no debe ser mayor a 500")
@@ -61,19 +64,48 @@ public class Plan {
 
 	
 
+
+
+
+
 	public Plan(Integer id,
 			@NotBlank(message = "La nombre no debe estar en blanco") @NotNull(message = "La nombre debe contener valor") @Size(max = 40, message = "El tamaño no debe ser mayor a 40") String name,
-			@DecimalMax("9999999999.99") @DecimalMin("0.99") Double amount,
+			@DecimalMax("9999999999.99") @DecimalMin("0.99") Double amount, Integer duration,
 			@NotBlank(message = "El descripción no debe estar en blanco") @NotNull(message = "La descripción debe contener valor") @Size(max = 500, message = "El tamaño no debe ser mayor a 500") String description,
 			Boolean state, List<PlanHistory> plansHistory) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.amount = amount;
+		this.duration = duration;
 		this.description = description;
 		this.state = state;
 		this.plansHistory = plansHistory;
 	}
+
+
+
+
+
+
+
+	public Integer getDuration() {
+		return duration;
+	}
+
+
+
+
+
+
+
+	public void setDuration(Integer duration) {
+		this.duration = duration;
+	}
+
+
+
+
 
 
 

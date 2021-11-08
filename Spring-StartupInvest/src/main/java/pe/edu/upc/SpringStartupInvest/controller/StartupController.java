@@ -18,11 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pe.edu.upc.SpringStartupInvest.model.entity.InvestmentRequest;
 import pe.edu.upc.SpringStartupInvest.model.entity.Investor;
 import pe.edu.upc.SpringStartupInvest.model.entity.InvestorHistory;
+import pe.edu.upc.SpringStartupInvest.model.entity.Plan;
+import pe.edu.upc.SpringStartupInvest.model.entity.PlanHistory;
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 import pe.edu.upc.SpringStartupInvest.model.entity.TypeCard;
 import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
 import pe.edu.upc.SpringStartupInvest.service.crud.InvestmentRequestService;
 import pe.edu.upc.SpringStartupInvest.service.crud.InvestorService;
+import pe.edu.upc.SpringStartupInvest.service.crud.PlanService;
 import pe.edu.upc.SpringStartupInvest.service.crud.StartupService;
 import pe.edu.upc.SpringStartupInvest.service.crud.TypeCardService;
 
@@ -41,6 +44,9 @@ public class StartupController {
 
 	@Autowired
 	private TypeCardService typeCardService;
+	
+	@Autowired
+	private PlanService planService;
 	
 	@GetMapping
 	public String list(Model model) {
@@ -100,6 +106,52 @@ public class StartupController {
 
 		return "startup/startup-investor-view";
 	}
+	
+	@GetMapping("{id}/view/profile")
+	public String viewStartupProfile(Model model, @PathVariable("id") Integer id) {
+		try {
+			if (startupService.existsById(id)) {
+
+				
+				Optional<Startup> optional = startupService.findById(id);
+				int idStartup = optional.get().getId();
+				List<InvestmentRequest> listInvestmentRequests = new ArrayList<>();
+				listInvestmentRequests = investmentRequestService.findInvestmentRequestByStartupId(idStartup);
+				for (InvestmentRequest investmentRequest : listInvestmentRequests) {
+
+					int quantityInvestors=investmentRequestService.getInvestorQuantityByInvestmentRequestId(investmentRequest.getId());
+					double amounthColected = investmentRequestService
+							.getAmountColectedByInvestmentRequestId(investmentRequest.getId());
+					investmentRequest.setQuantityInvestors(quantityInvestors);
+					investmentRequest.setAmountColected(amounthColected);
+				}
+				//USAMOS EL ID 1001 PORQUE AUN NO ENTRAMOS A SECURITY
+			
+				List<Plan> plans = planService.findByState(true);
+				model.addAttribute("investmentRequests", listInvestmentRequests);
+				model.addAttribute("imgname", optional.get().getImage());
+				model.addAttribute("description", optional.get().getDescription());
+				model.addAttribute("plans", plans);
+				model.addAttribute("planHistory", new PlanHistory());
+				model.addAttribute("name", optional.get().getName());
+				model.addAttribute("idStartup", id);
+				
+				
+				
+				return "startup/startup-startup-view";
+			}
+		} catch (Exception e) {
+
+			e.getMessage();
+			return "redirect:/startupinvest/home";
+		}
+		return "startup/startup-startup-view";
+	}
+	
+	
+	
+	
+	
 
 	@PostMapping("newStartup")
 	public String insertar(Model model, @Valid @ModelAttribute("startup") Startup startup) {

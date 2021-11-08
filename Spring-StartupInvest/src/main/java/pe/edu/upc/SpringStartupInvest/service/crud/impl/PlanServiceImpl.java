@@ -27,6 +27,12 @@ public class PlanServiceImpl implements PlanService {
 		return planRepository.findByName(name);
 	}
 
+	@Override
+	public List<Plan> findByState(Boolean state) throws Exception {
+		// TODO Auto-generated method stub
+		return planRepository.findByState(state);
+	}
+
 
 	
 	

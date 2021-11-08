@@ -11,7 +11,8 @@
 	rel="icon">
 <link rel="stylesheet"
 	th:href="@{/dashboard-investor/Bootstrap/css/Dashboard-investor.css}" />
-<link rel="stylesheet" th:href="@{/css/Startup_perfil-investor.css}">
+<link rel="stylesheet" th:href="@{/css/startup-startup-view.css}">
+<!-- Nuevos estilos -->
 
 <!--Font-Awsome-->
 
@@ -38,6 +39,8 @@
 	<header th:replace="layout/layout :: frag-header"> </header>
 
 	<main>
+
+		<!-- Portada -->
 		<div class="portada">
 			<div class="imagen-portada">
 				<img th:src="@{/images/general/portada.jpg}" alt="">
@@ -55,6 +58,38 @@
 			</div>
 		</div>
 		<input th:value="${id}" hidden="true" id="idInvestor">
+<input th:value="${idStartup}" hidden="true" id="idStartupSend">
+		<!-- Botones de administrador como startup -->
+
+		<div class="box-botones-administrador">
+			<div class="botones-administrador">
+
+				<div class="box-izquierda">
+					<div class="box-boton">
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-target=".ronda-inversion" data-bs-toggle="button"
+							autocomplete="off">Añadir una ronda de inversión</button>
+					</div>
+				</div>
+				<div class="box-derecha">
+					<div class="box-boton">
+						<button type="button" class="btn btn-primary"
+							data-bs-toggle="button" autocomplete="off">Administrar
+							publicaciones</button>
+					</div>
+					<div class="box-boton">
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-target=".adquirir-promocion" data-bs-toggle="button"
+							autocomplete="off">Adquirir plan de promoción</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- Box de Ronda de Inversión -->
 		<div class="box-ronda-inversion"
 			th:each="investmentRequest:${investmentRequests}">
 
@@ -151,127 +186,39 @@
 
 					</div>
 
-					<div class="sector-boton">
-						<button type="button" data-toggle="modal"
-							data-target=".modal-paso-1"
-							class="btn btn-primary btn-lg btn-block sector-boton">¡Invierte
-							ya!</button>
-					</div>
 
 
-					<!-- MODAL - PASO - 1 -->
-					<div class="modal fade modal-paso-1" tabindex="-1" role="dialog"
+
+					<!-- Aplicación de Modals -->
+					<!-- MODAL - AÑADIR - RONDA - DE - INVERSIÓN -->
+					<div class="modal fade ronda-inversion" tabindex="-1" role="dialog"
 						aria-labelledby="myLargeModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="emergente-contenido">
 									<div class="seccion-superior">
-										<h3 th:text="'Buena elección, '+${name}+' '+${lastName}"></h3>
+										<h3>Startup Invest</h3>
 									</div>
 									<div class="seccion-medio">
 										<div class="descripcion-ventana">
-											<h5>Paso 1 - Registro de Datos</h5>
+											<h3 th:text="'Entra a operar en Startup Invest, '+${name}">Entra
+												a operar en Startup Invest, Kambista</h3>
 										</div>
 
 
 										<fieldset>
-											<legend>Datos Personales</legend>
+											<legend>Datos</legend>
 											<div class="box-input">
 												<div class="campo-input">
 													<div class="nombre">
 														<p>
-															<b>Nombre</b>
+															<b>Objetivo</b>
 														</p>
 													</div>
 													<div class="box-input">
-														<input type="text" class="form-control size-sm-input"
-															placeholder="Nombre" id="nameInvestor" th:value="${name}"
-															disabled aria-label="Username">
-													</div>
-												</div>
-
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Apellidos</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" class="form-control size-sm-input"
-															placeholder="Apellido" id="lastNameInvestor"
-															th:value="${lastName}" disabled aria-label="Username">
-													</div>
-												</div>
-
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>D.N.I</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" class="form-control size-sm-input"
-															placeholder="DNI" id="dniInvestor" th:value="${dni}"
-															aria-label="Username" disabled>
-													</div>
-												</div>
-
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Correo Electrónico</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" class="form-control size-sm-input"
-															placeholder="Correo Electrónico" th:value="${email}"
-															disabled id="emailInvestor" aria-label="Username">
-													</div>
-												</div>
-											</div>
-										</fieldset>
-
-										<fieldset th:object="${startup}">
-											<legend>Pago</legend>
-											<div class="box-input">
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Nombre de Startup</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" class="form-control size-sm-input"
-															placeholder="Nombre de Startup"
-															th:value="${startup.name}" disabled aria-label="Username">
-													</div>
-												</div>
-
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Tipo de tarjeta</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<select class="form-select size-sm-input" id="typeCardId">
-															<option selected>Escoge un tipo de tarjeta...</option>
-															<option th:each="card:${cards}" th:value="${card.id}"
-																th:text=${card.name}></option>
-
-														</select>
-													</div>
-												</div>
-
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Monto de inversión</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" class="form-control size-sm-input"
-															placeholder="Monto de inversión" id="amountInvested"
+														<input type="text" autocomplete="off"
+															class="form-control size-sm-input"
+															placeholder="Introduce tu monto objetivo..."
 															aria-label="Username">
 													</div>
 												</div>
@@ -279,26 +226,61 @@
 												<div class="campo-input">
 													<div class="nombre">
 														<p>
-															<b>Número de tarjeta</b>
+															<b>Fecha de Caducidad</b>
 														</p>
 													</div>
 													<div class="box-input">
-														<input type="text" class="form-control size-sm-input"
-															placeholder="Número de tarjeta" aria-label="Username">
+														<input type="text" autocomplete="off" name="birthday"
+															placeholder="" value="" />
+													</div>
+												</div>
+										</fieldset>
+
+										<fieldset>
+											<legend>Venta</legend>
+											<div class="box-input">
+												<div class="campo-input">
+													<div class="nombre">
+														<p>
+															<b>Tipo de producto financiero</b>
+														</p>
+													</div>
+													<div class="box-input">
+														<select class="form-select size-sm-input"
+															id="inputGroupSelect01">
+															<option selected>Tipo de producto financiero</option>
+															<option value="1">Participación</option>
+															<option value="2">Acción</option>
+														</select>
 													</div>
 												</div>
 
 												<div class="campo-input">
 													<div class="nombre">
 														<p>
-															<b>CCV</b>
+															<b>Tu % de la startup vendida es</b>
 														</p>
 													</div>
 													<div class="box-input">
-														<input type="text" class="form-control size-sm-input"
-															placeholder="CCV" aria-label="Username">
+														<input type="text" disabled
+															class="form-control size-sm-input" placeholder="45"
+															aria-label="Username">
 													</div>
 												</div>
+
+												<div class="campo-input">
+													<div class="nombre">
+														<p>
+															<b>Fecha de recompra</b>
+														</p>
+													</div>
+													<div class="box-input">
+														<input type="text" autocomplete="off" name="birthday"
+															placeholder="" value="" />
+													</div>
+												</div>
+
+
 											</div>
 										</fieldset>
 									</div>
@@ -306,10 +288,9 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-dismiss="modal">Close</button>
-										<!-- Boton para ir a modal 2 -->
+										<!-- Boton para ir a modal de confirmación -->
 										<button type="button" data-toggle="modal" data-dismiss="modal"
-											data-target=".modal-paso-2" id="submit"
-											class="btn btn-primary">Siguiente</button>
+											data-target="#modal-confirmacion" class="btn btn-primary ">Confirmar</button>
 									</div>
 								</div>
 							</div>
@@ -317,121 +298,97 @@
 					</div>
 
 
+					<!-- Modal Adquirir Plan de promoción -->
 
-					<!-- Modal - Paso - 2 -->
-					<div class="modal fade modal-paso-2" tabindex="-1" role="dialog"
-						aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal fade adquirir-promocion" tabindex="-1"
+						role="dialog" aria-labelledby="myLargeModalLabel"
+						aria-hidden="true">
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="emergente-contenido">
 									<div class="seccion-superior">
-										<h3>Buena elección, Valeria Croice</h3>
+										<h3>Startup Invest</h3>
 									</div>
-									<div class="seccion-medio-2">
+									<div class="seccion-medio">
 										<div class="descripcion-ventana">
-											<h5>Paso 2 - Confirmación de Datos</h5>
+											<h3 th:text="'Entra a operar en Startup Invest, '+${name}">
+											</h3>
 										</div>
 
+										<!-- row -->
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-lg-6 col-xl-3 mt-2"
+												th:each="plan:${plans}">
 
-										<fieldset>
-											<legend>Resumen</legend>
-											<div class="box-input-2">
+												<div class="panel price  panel-color">
 
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Nombre</b>
+
+
+
+
+													<div class=" bg-white text-center">
+														<svg x="0" y="0" viewBox="0 0 360 220">
+<g>
+ <path fill="#1F232C"
+																d="M0.732,193.75c0,0,29.706,28.572,43.736-4.512c12.976-30.599,37.005-27.589,44.983-7.061
+                                                  c8.09,20.815,22.83,41.034,48.324,27.781c21.875-11.372,46.499,4.066,49.155,5.591c6.242,3.586,28.729,7.626,38.246-14.243
+                                                  s27.202-37.185,46.917-8.488c19.715,28.693,38.687,13.116,46.502,4.832c7.817-8.282,27.386-15.906,41.405,6.294V0H0.48
+                                                  L0.732,193.75z"></path>
+                              </g>
+                              <text
+																transform="matrix(1 0 0 1 45 116.2686)" fill="#fff"
+																font-size="35" p th:text=${plan.name}>Semanal</text>
+ </svg>
+													</div>
+													<div class="panel-body text-center">
+														<p class="lead">
+															<strong
+																th:text="${#numbers.formatDecimal(plan.amount, 1, 'COMMA', 2, 'POINT')}">23</strong>
+															S/<strong></strong> <strong></strong>
 														</p>
 													</div>
-													<div class="box-input">
-														<input type="text" class="form-control size-sm-input-2"
-															placeholder="Nombre" id="nameInvestorShow"
-															aria-label="Username" disabled>
+													<ul class="list-group list-group-flush text-center">
+														<li class="list-group-item"><strong>
+
+																<li class="list-group-item"><input hidden="true"
+																	th:value="${plan.id}" th:id="*{'planIdSend'+{plan.id}}"><strong
+																	style="font-size: 0.8rem;"
+																	th:text="${plan.description}" id="descriptionSend">
+																</strong></li>
+
+														</strong></li>
+														<li class="list-group-item"><strong> </strong></li>
+													</ul>
+													<div class="panel-footer text-center">
+
+														<a type="button" data-toggle="modal" data-dismiss="modal"
+															data-target="#modal-confirmacion"
+															class="btn btn-lg btn-primary btn-block"
+															style="background-color: rgb(31, 35, 44); color: white; font-weight: bold;"
+															th:onclick="'javascript:confirmNewPlan(\''+ ${plan.id} +'\');'">Adquirir</a>
+
 													</div>
 												</div>
 
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Apellidos</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" class="form-control size-sm-input-2"
-															placeholder="Apellido" id="lastNameInvestorShow"
-															aria-label="Username" disabled>
-													</div>
-												</div>
-
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Correo Electrónico</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" class="form-control size-sm-input-2"
-															placeholder="Correo electrónico" id="emailInvestorShow"
-															aria-label="Username" disabled>
-													</div>
-												</div>
-
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>DNI</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" class="form-control size-sm-input-2"
-															placeholder="DNI" aria-label="Username"
-															id="dniInvestorShow" disabled>
-													</div>
-												</div>
-
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Monto de inversión</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" class="form-control size-sm-input-2"
-															placeholder="Monto de inversión" id="amountInvestedShow"
-															aria-label="Username" disabled>
-													</div>
-												</div>
 
 											</div>
-										</fieldset>
 
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value=""
-												id="defaultCheck1"> <label class="form-check-label"
-												for="defaultCheck1">
-												<p>
-													Acepto los <a href="">Términos y Condiciones</a> y la <a
-														href="">Política de privacidad</a> de Startups Invest
-												</p>
-											</label>
 										</div>
 
 									</div>
 
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-toggle="modal" data-target=".modal-paso-1"
-											data-dismiss="modal">Atrás</button>
 
-										<button type="button" data-toggle="modal" data-dismiss="modal"
-											data-target="#modal-confirmacion" class="btn btn-primary"
-											id="confirmCreate">Confirmar</button>
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 
+
+
+
+
+
+					<!-- Modal confirmación -->
 					<div class="modal fade" id="modal-confirmacion" tabindex="-1"
 						aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
@@ -441,42 +398,52 @@
 										Realizada</h5>
 								</div>
 								<div class="modal-body">
-									<h5>Muchas gracias, Claudia Rodriguez</h5>
+									<h5 th:text="'¡Su acción se realizó exitosamente, '+${name}">¡Su
+										acción se realizó exitosamente, kambista!</h5>
 								</div>
+
+
 								<div class="modal-footer">
 									<form
-										th:action="@{/startupinvest/investorsHistory/newInvestorHistory}"
-										th:object="${investorHistory}" method="post">
-										<div class="form-group" hidden="true">
-											<label for="exampleFormControlInput1">Monto</label> <input
-												type="number" class="form-control" id="amountCreate"
-												placeholder="name@example.com" th:field="*{amount}">
-
-											<label for="exampleFormControlInput1">investment
-												request id</label> <input type="number" class="form-control"
-												th:field="*{investmentRequest}"
-												id="investmentRequestIdCreate"
+										th:action="@{'/startupinvest/plansHistory/startups/view/profile/newPlanHistory'}"
+										th:object="${planHistory}" method="post">
+										<div class="form-group">
+											<label for="exampleFormControlInput1">id plan</label> <input
+												type="number" class="form-control" id="planIdCreate"
+												placeholder="name@example.com" th:field="*{plan}"> <label
+												for="exampleFormControlInput1">id startup</label>
+											<input type="number" class="form-control" 
+												th:field="*{startup}" id="startupIdCreate"
 												placeholder="name@example.com"> <label
-												for="exampleFormControlInput1">investor id</label> <input
-												type="number" class="form-control" th:field="*{investor}"
-												id="investorIdCreate" placeholder="name@example.com">
-											<label for="exampleFormControlInput1">id tipo tarjeta</label>
-											<input type="number" class="form-control"
-												th:field="*{typeCard}" id="typeCardIdCreate"
-												placeholder="name@example.com">
+												for="exampleFormControlInput1">id type card</label> <input
+												type="number" class="form-control" th:field="*{typeCard}"
+												id="typeCardIdCreate" placeholder="name@example.com">
+
 										</div>
 
-										<button type="submit" class="btn btn-primary">Close</button>
 
+
+
+
+										<button type="submit" class="btn btn-primary"
+											>Close</button>
 									</form>
 								</div>
 							</div>
 						</div>
 					</div>
 
+
+
+
 				</div>
 			</div>
 		</div>
+
+
+
+
+
 
 		<div class="box-sector-descripcion">
 			<div class="sector-descripcion">
@@ -533,6 +500,16 @@
 
 	<footer> </footer>
 
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	<script src="Bootstrap/js/bootstrap.min.js"></script>
+
 
 	<script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -557,52 +534,48 @@
 	<script th:src="@{/dashboard-investor/Bootstrap/js/bootstrap.min.js}"></script>
 
 	<script type="text/javascript">
-$("#submit").click(function(e){
-    /*evita la recarga de la pagina*/ 
-    e.preventDefault();
 
-    var nameInvestor = $("#nameInvestor").val();
-    $("#nameInvestorShow").val(nameInvestor);
-
-    var lastNameInvestor = $("#lastNameInvestor").val();
-    $("#lastNameInvestorShow").val(lastNameInvestor);
-
-    var emailInvestor = $("#emailInvestor").val();
-    $("#emailInvestorShow").val(emailInvestor);
-
-    var emailInvestor = $("#dniInvestor").val();
-    $("#dniInvestorShow").val(emailInvestor);
-
-    var amountInvested = $("#amountInvested").val();
-    $("#amountInvestedShow").val(amountInvested);
-    amountInvested
-});
-
-$("#submit").click(function(e){
-    /*evita la recarga de la pagina*/ 
-    e.preventDefault();
-
-
-    var amountInvested = $("#amountInvested").val();
-    $("#amountCreate").val(amountInvested);
-
-  var typeCardId = $("#typeCardId").val();
-   $("#typeCardIdCreate").val(typeCardId);
-    
-    var investmentRequestId = $("#investmentRequestId").val();
-    $("#investmentRequestIdCreate").val(investmentRequestId);
-    
-    var idInvestor = $("#idInvestor").val();
-    $("#investorIdCreate").val(idInvestor);
-});
-
-function sendCardId(id){
-	$("#typeCardIdCreate").val(id);
-
-}
 
 </script>
 
+
+
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+	<script>
+    $(function () {
+      $('input[name="birthday"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: 1901,
+        maxYear: parseInt(moment().format('YYYY'), 10)
+      });
+    });
+//Pasar informacion 
+function confirmNewPlan(id){
+
+	 var planIdSend = $("#planIdSend"+id).val();
+	    $("#planIdCreate").val(planIdSend);
+
+	    var idStartupSend = $("#idStartupSend").val();
+	    $("#startupIdCreate").val(idStartupSend);
+}
+
+
+
+
+    
+  </script>
+
+	<script src="Bootstrap/js/bootstrap.min.js"></script>
+	<script src=""></script>
 </body>
 
 
