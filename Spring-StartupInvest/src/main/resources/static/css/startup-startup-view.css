@@ -65,12 +65,15 @@ legend {
 }
 
 .botones-administrador {
-	width: 75em;
 	display: flex;
+	width: 60%;
+	margin-left:-22px;
+	justify-content: space-between;
+	flex-direction: row;
+	
 }
 
 .box-izquierda {
-	width: 50%;
 	display: flex;
 	justify-content: start;
 }
@@ -534,7 +537,7 @@ strong {
 	transform: scale(1.1);
 }
 
-.box-derecha button {
+.box-box-boton button {
 	border: transparent;
 	background-color: #61BFD1;
 	color: white;
@@ -542,7 +545,7 @@ strong {
 	box-shadow: 6px 6px 15px rgb(0 0 0/ 50%);
 }
 
-.box-derecha button:hover {
+.box-boton button:hover {
 	position: relative;
 	transition: 0.5s;
 	box-shadow: 6px 6px 15px rgb(0 0 0/ 50%);
