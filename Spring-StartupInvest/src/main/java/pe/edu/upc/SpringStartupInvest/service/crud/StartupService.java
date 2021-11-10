@@ -23,8 +23,8 @@ public interface StartupService extends CrudService<Startup, Integer> {
 	List<Startup> listStartupsMostPopular() throws Exception;
 	// registro
 
-	
-	
+	@Transactional(readOnly = true)
+	List<Startup> findStartupsByActivePlan()throws Exception;
 	
 	double getAmounthInvestedById(int id) throws Exception;
 

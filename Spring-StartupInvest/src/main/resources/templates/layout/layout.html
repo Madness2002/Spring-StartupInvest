@@ -59,7 +59,20 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="#">Planes</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" th:href="@{/startupinvest/startups/2001/view/profile}">Startup</a>
+						<li class="nav-item">
+							<div class="btn-group">
+								<button type="button" class="btn btn-success dropdown-toggle"
+									data-toggle="dropdown" style="background-color: #212529;border: transparent;">
+									Startups <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a th:href="@{/startupinvest/startups/2001/view/profile}">Rappi</a></li>
+									<li><a th:href="@{/startupinvest/startups/2000/view/profile}">Crehana</a></li>
+									<li><a th:href="@{/startupinvest/startups/2004/view/profile}">dLocal</a></li>
+									<li class="divider"></li>
+									<li><a th:href="@{/startupinvest/startups/2003/view/profile}">Kambista</a></li>
+								</ul>
+							</div>
 						</li>
 						<li class="nav-item"><a class="nav-link"
 							th:href="@{/startupinvest/administrator}">Administrador</a></li>
@@ -223,7 +236,8 @@
 						th:object="${startupSearch}" method="post">
 						<input type="search" class="form-control rounded"
 							placeholder="Busca una startup..." aria-label="Search"
-							aria-describedby="search-addon" th:field="*{name}">
+							aria-describedby="search-addon" th:field="*{name}"
+							autocomplete="off">
 
 						<button type="submit" class="btn btn-outline-primary">
 							<i class="fab fa-searchengin"></i>
@@ -311,7 +325,7 @@
 		<script
 			th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script type="text/javascript"
 			th:src=" @{https://cdn.jsdelivr.net/jquery/latest/jquery.min.js}"></script>
 		<script type="text/javascript"
@@ -337,7 +351,13 @@
     });
 </script>
 
-
+<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
 
 
 		<script th:src="@{/dashboard-investor/Bootstrap/js/bootstrap.min.js}"></script>

@@ -8,4 +8,5 @@ import pe.edu.upc.SpringStartupInvest.model.entity.Publication;
 public interface PublicationService extends CrudService<Publication, Integer> {
 	List<Publication> findByName (String name) throws Exception;
 	List<Publication> findByStartup (String startupName) throws Exception;
+	List<Publication> findByStartupId (Integer id) throws Exception;
 }

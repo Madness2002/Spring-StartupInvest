@@ -41,14 +41,14 @@ public class FrontController {
 
 		try {		
 			List<Category> categories = new ArrayList<>();
-			List<Startup> startupsMostPopular, startupsRecently,startups = new ArrayList<>();
+			List<Startup> startupsMostPopular, startupsRecently,startups,startupWithActivePlans = new ArrayList<>();
 			List<InvestorHistory>investments=new ArrayList<>();
 			
 			categories = categoryService.findByState(true);
 			startups=startupService.getAll();
 			startupsMostPopular = startupService.listStartupsMostPopular();
 			startupsRecently = startupService.findByDateRecently();
-			
+			startupWithActivePlans=startupService.findStartupsByActivePlan();
 			//Usamos el ID=1001, ya que aun no entramos al login (security)
 			investments=investorHistoryService.listPortafolioByInvestorId(1001);
 			// Lista de las startups más populares (TOP 5)
@@ -72,13 +72,12 @@ public class FrontController {
 			
 				
 			}
-		//	investments.get(1).getInvestmentRequest().getStartup().getImage();
-		//	investment.investmentRequest.startup.image;
+
 			
 			
-			//model.addAttribute("categorySelected", "");
 			Collections.sort(startupsMostPopular, new CompareAmounth());
 			Collections.sort(startupsRecently, new CompareAmounth());
+			
 			model.addAttribute("startupSearch",new Startup());
 			model.addAttribute("intervalDate",new DateTimeUtil());
 			model.addAttribute("moreStartups", startups);
@@ -86,6 +85,7 @@ public class FrontController {
 			model.addAttribute("startupsRecently", startupsRecently);
 			model.addAttribute("startupsMostPopular", startupsMostPopular);		
 			model.addAttribute("investments", investments);
+			model.addAttribute("startupWithActivePlans", startupWithActivePlans);
 			
 		} catch (Exception e) {
 

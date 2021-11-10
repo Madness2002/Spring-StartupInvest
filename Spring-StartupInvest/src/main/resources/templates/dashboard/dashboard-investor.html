@@ -3,6 +3,11 @@
 
 <head th:replace="layout/layout :: frag-head">
 <meta charset="UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap"
+	rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column">
@@ -24,6 +29,23 @@
 
 				<div th:replace="layout/layout :: frag-search"></div>
 
+
+				<!-- Empieza promociones -->
+				<div class="Promociones">
+					<div th:each="startupWithActivePlan:${startupWithActivePlans}"
+						class="startup1-promocion">
+						<div class="Titulo-startup-promocion">
+							<p th:text="'Startup '+${startupWithActivePlan.name}">Startup
+								NAME</p>
+						</div>
+						<a th:href="${'/startupinvest/startups/'+startupWithActivePlan.id+'/view'}" id="imageActivePlan">
+							<img  
+								th:src="@{'/images/startups/'+${startupWithActivePlan.image}}">
+						</a>
+					</div>
+
+				</div>
+				<!-- Termina promociones -->
 
 
 				<div class="filter-startups">
@@ -52,7 +74,7 @@
 											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest">
-											<p th:text="'$'+${startup.amounthTotalInvest}"
+											<p th:text="${#numbers.formatDecimal(startup.amounthTotalInvest, 1, 'COMMA', 2, 'POINT')+'$'}"
 												style="font-size: 14px;">Monto invertido</p>
 										</div>
 									</div>
@@ -85,7 +107,7 @@
 											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest" style="font-size: 14px;"
-											th:text="'$'+${startup.amounthTotalInvest}">
+											th:text="${#numbers.formatDecimal(startup.amounthTotalInvest, 1, 'COMMA', 2, 'POINT')+'$'}">
 											<p>Monto invertido/p>
 										</div>
 									</div>
