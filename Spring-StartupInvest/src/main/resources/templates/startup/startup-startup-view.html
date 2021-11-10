@@ -57,35 +57,56 @@
 				</a>
 			</div>
 		</div>
-		<input th:value="${id}" hidden="true" id="idInvestor">
-<input th:value="${idStartup}" hidden="true" id="idStartupSend">
+		<input th:value="${id}" hidden="true" id="idInvestor"> <input
+			th:value="${idStartup}" hidden="true" id="idStartupSend">
+		<div th:if="${dateExpirationOfTheLastPlanActive!=null}"
+			id="box-date-valid">
+			<div>
+				<label>PLANES ACTIVOS</label> <label
+					th:text="'Caduca el :'+${dateExpirationOfTheLastPlanActive}">Caduca
+					el :xx/xx/xxxx</label>
+			</div>
+		</div>
+
 		<!-- Botones de administrador como startup -->
 
 		<div class="box-botones-administrador">
 			<div class="botones-administrador">
 
 				<div class="box-izquierda">
-					<div class="box-boton">
-						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target=".ronda-inversion" data-bs-toggle="button" id="boton-left"
-							autocomplete="off">Añadir una ronda de inversión</button>
-					</div>
-				</div>
-				
-				<div class="box-boton">
-						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target=".adquirir-promocion" data-bs-toggle="button" id="" 
-							>Adquirir plan de promoción</button>
-					</div> 
-				
-					<div class="box-boton"> 
-						<button type="button" class="btn btn-primary" 
-							data-bs-toggle="button" autocomplete="off">Administrar
-							publicaciones</button>
+					<div th:if="${investmentRequests!=null and !investmentRequests.empty}" class="box-boton">
+						<button  type="button" class="btn btn-primary" data-toggle="modal"
+							data-target=".ronda-inversion" data-bs-toggle="button"
+							id="boton-left" autocomplete="off" disabled >Añadir una ronda de
+							inversión</button>												
 					</div>
 					
+					<div th:unless="${investmentRequests!=null and !investmentRequests.empty}" class="box-boton">
+						<button  type="button" class="btn btn-primary" data-toggle="modal"
+							data-target=".ronda-inversion" data-bs-toggle="button"
+							id="boton-left" autocomplete="off"  >Añadir una ronda de
+							inversión</button>												
+					</div>
+					
+					
+				</div>
 
-				
+				<div class="box-boton">
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						data-target=".adquirir-promocion" data-bs-toggle="button"
+						style="background-color: #61BFD1;">Adquirir plan de
+						promoción</button>
+				</div>
+
+				<div class="box-boton">
+					<button type="button" class="btn btn-primary"
+						data-bs-toggle="button" autocomplete="off"
+						style="background-color: #838383;">Administrar
+						publicaciones</button>
+				</div>
+
+
+
 			</div>
 		</div>
 
@@ -188,261 +209,300 @@
 
 					</div>
 
-
-
-
-					<!-- Aplicación de Modals -->
-					<!-- MODAL - AÑADIR - RONDA - DE - INVERSIÓN -->
-					<div class="modal fade ronda-inversion" tabindex="-1" role="dialog"
-						aria-labelledby="myLargeModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="emergente-contenido">
-									<div class="seccion-superior">
-										<h3>Startup Invest</h3>
-									</div>
-									<div class="seccion-medio">
-										<div class="descripcion-ventana">
-											<h3 th:text="'Entra a operar en Startup Invest, '+${name}">Entra
-												a operar en Startup Invest, Kambista</h3>
-										</div>
-
-
-										<fieldset>
-											<legend>Datos</legend>
-											<div class="box-input">
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Objetivo</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" autocomplete="off"
-															class="form-control size-sm-input"
-															placeholder="Introduce tu monto objetivo..."
-															aria-label="Username">
-													</div>
-												</div>
-
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Fecha de Caducidad</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" autocomplete="off" name="birthday"
-															placeholder="" value="" />
-													</div>
-												</div>
-										</fieldset>
-
-										<fieldset>
-											<legend>Venta</legend>
-											<div class="box-input">
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Tipo de producto financiero</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<select class="form-select size-sm-input"
-															id="inputGroupSelect01">
-															<option selected>Tipo de producto financiero</option>
-															<option value="1">Participación</option>
-															<option value="2">Acción</option>
-														</select>
-													</div>
-												</div>
-
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Tu % de la startup vendida es</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" disabled
-															class="form-control size-sm-input" placeholder="45"
-															aria-label="Username">
-													</div>
-												</div>
-
-												<div class="campo-input">
-													<div class="nombre">
-														<p>
-															<b>Fecha de recompra</b>
-														</p>
-													</div>
-													<div class="box-input">
-														<input type="text" autocomplete="off" name="birthday"
-															placeholder="" value="" />
-													</div>
-												</div>
-
-
-											</div>
-										</fieldset>
-									</div>
-
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Close</button>
-										<!-- Boton para ir a modal de confirmación -->
-										<button type="button" data-toggle="modal" data-dismiss="modal"
-											data-target="#modal-confirmacion" class="btn btn-primary ">Confirmar</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-					<!-- Modal Adquirir Plan de promoción -->
-
-					<div class="modal fade adquirir-promocion" tabindex="-1"
-						role="dialog" aria-labelledby="myLargeModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="emergente-contenido">
-									<div class="seccion-superior">
-										<h3>Startup Invest</h3>
-									</div>
-									<div class="seccion-medio">
-										<div class="descripcion-ventana">
-											<h3 th:text="'Entra a operar en Startup Invest, '+${name}">
-											</h3>
-										</div>
-
-										<!-- row -->
-										<div class="row">
-											<div class="col-xs-6 col-sm-6 col-lg-6 col-xl-3 mt-2"
-												th:each="plan:${plans}">
-
-												<div class="panel price  panel-color">
-
-
-
-
-
-													<div class=" bg-white text-center">
-														<svg x="0" y="0" viewBox="0 0 360 220">
-<g>
- <path fill="#1F232C"
-																d="M0.732,193.75c0,0,29.706,28.572,43.736-4.512c12.976-30.599,37.005-27.589,44.983-7.061
-                                                  c8.09,20.815,22.83,41.034,48.324,27.781c21.875-11.372,46.499,4.066,49.155,5.591c6.242,3.586,28.729,7.626,38.246-14.243
-                                                  s27.202-37.185,46.917-8.488c19.715,28.693,38.687,13.116,46.502,4.832c7.817-8.282,27.386-15.906,41.405,6.294V0H0.48
-                                                  L0.732,193.75z"></path>
-                              </g>
-                              <text
-																transform="matrix(1 0 0 1 45 116.2686)" fill="#fff"
-																font-size="35" p th:text=${plan.name}>Semanal</text>
- </svg>
-													</div>
-													<div class="panel-body text-center">
-														<p class="lead">
-															<strong
-																th:text="${#numbers.formatDecimal(plan.amount, 1, 'COMMA', 2, 'POINT')}">23</strong>
-															S/<strong></strong> <strong></strong>
-														</p>
-													</div>
-													<ul class="list-group list-group-flush text-center">
-														<li class="list-group-item"><strong>
-
-																<li class="list-group-item"><input hidden="true"
-																	th:value="${plan.id}" th:id="*{'planIdSend'+{plan.id}}"><strong
-																	style="font-size: 0.8rem;"
-																	th:text="${plan.description}" id="descriptionSend">
-																</strong></li>
-
-														</strong></li>
-														<li class="list-group-item"><strong> </strong></li>
-													</ul>
-													<div class="panel-footer text-center">
-
-														<a type="button" data-toggle="modal" data-dismiss="modal"
-															data-target="#modal-confirmacion"
-															class="btn btn-lg btn-primary btn-block"
-															style="background-color: rgb(31, 35, 44); color: white; font-weight: bold;"
-															th:onclick="'javascript:confirmNewPlan(\''+ ${plan.id} +'\');'">Adquirir</a>
-
-													</div>
-												</div>
-
-
-											</div>
-
-										</div>
-
-									</div>
-
-
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-
-
-
-					<!-- Modal confirmación -->
-					<div class="modal fade" id="modal-confirmacion" tabindex="-1"
-						aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Inversión
-										Realizada</h5>
-								</div>
-								<div class="modal-body">
-									<h5 th:text="'¡Su acción se realizó exitosamente, '+${name}">¡Su
-										acción se realizó exitosamente, kambista!</h5>
-								</div>
-
-
-								<div class="modal-footer">
-									<form
-										th:action="@{'/startupinvest/plansHistory/startups/view/profile/newPlanHistory'}"
-										th:object="${planHistory}" method="post">
-										<div class="form-group" hidden="true">
-											<label for="exampleFormControlInput1">id plan</label> <input
-												type="number" class="form-control" id="planIdCreate"
-												placeholder="name@example.com" th:field="*{plan}"> <label
-												for="exampleFormControlInput1">id startup</label>
-											<input type="number" class="form-control" 
-												th:field="*{startup}" id="startupIdCreate"
-												placeholder="name@example.com"> <label
-												for="exampleFormControlInput1">id type card</label> <input
-												type="number" class="form-control" th:field="*{typeCard}"
-												id="typeCardIdCreate" placeholder="name@example.com">
-
-										</div>
-
-
-
-
-
-										<button type="submit" class="btn btn-primary"
-											>Close</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-
 				</div>
 			</div>
 		</div>
 
 
+		<!-- Modal Adquirir Plan de promoción -->
+
+		<div class="modal fade adquirir-promocion" tabindex="-1" role="dialog"
+			aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="emergente-contenido">
+						<div class="seccion-superior">
+							<h3>Startup Invest</h3>
+						</div>
+						<div class="seccion-medio">
+							<div class="descripcion-ventana">
+								<h3 th:text="'Entra a operar en Startup Invest, '+${name}">
+								</h3>
+							</div>
+
+							<!-- row -->
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-lg-6 col-xl-3 mt-2"
+									th:each="plan:${plans}">
+
+									<div class="panel price  panel-color">
+
+
+
+
+
+										<div class=" bg-white text-center">
+											<svg x="0" y="0" viewBox="0 0 360 220">
+<g>
+ <path fill="#1F232C"
+													d="M0.732,193.75c0,0,29.706,28.572,43.736-4.512c12.976-30.599,37.005-27.589,44.983-7.061
+                                                  c8.09,20.815,22.83,41.034,48.324,27.781c21.875-11.372,46.499,4.066,49.155,5.591c6.242,3.586,28.729,7.626,38.246-14.243
+                                                  s27.202-37.185,46.917-8.488c19.715,28.693,38.687,13.116,46.502,4.832c7.817-8.282,27.386-15.906,41.405,6.294V0H0.48
+                                                  L0.732,193.75z"></path>
+                              </g>
+                              <text
+													transform="matrix(1 0 0 1 45 116.2686)" fill="#fff"
+													font-size="35" p th:text=${plan.name}>Semanal</text>
+ </svg>
+										</div>
+										<div class="panel-body text-center">
+											<p class="lead">
+												<strong
+													th:text="${#numbers.formatDecimal(plan.amount, 1, 'COMMA', 2, 'POINT')}">23</strong>
+												S/<strong></strong> <strong></strong>
+											</p>
+										</div>
+										<ul class="list-group list-group-flush text-center">
+											<li class="list-group-item"><strong>
+
+													<li class="list-group-item"><input hidden="true"
+														th:value="${plan.id}" th:id="*{'planIdSend'+{plan.id}}"><strong
+														style="font-size: 0.8rem;" th:text="${plan.description}"
+														id="descriptionSend"> </strong></li>
+
+											</strong></li>
+											<li class="list-group-item"><strong> </strong></li>
+										</ul>
+										<div class="panel-footer text-center">
+
+											<a type="button" data-toggle="modal" data-dismiss="modal"
+												data-target="#modal-confirmacion"
+												class="btn btn-lg btn-primary btn-block"
+												style="background-color: rgb(31, 35, 44); color: white; font-weight: bold;"
+												th:onclick="'javascript:confirmNewPlan(\''+ ${plan.id} +'\');'">Adquirir</a>
+
+										</div>
+									</div>
+
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal confirmación -->
+		<div class="modal fade" id="modal-confirmacion" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Inversión
+							Realizada</h5>
+					</div>
+					<div class="modal-body">
+						<h5 th:text="'¡Su acción se realizó exitosamente, '+${name}">¡Su
+							acción se realizó exitosamente, kambista!</h5>
+					</div>
+
+
+					<div class="modal-footer">
+						<form                                        
+							th:action="@{'/startupinvest/plansHistory/startups/view/profile/newPlanHistory'}"
+							th:object="${planHistory}" method="post">
+							<div class="form-group" >
+								<label for="exampleFormControlInput1">id plan</label> 
+								<input type="number" class="form-control" id="planIdCreate"
+									placeholder="name@example.com" th:field="*{plan}"> 
+									<label for="exampleFormControlInput1">id startup</label> 
+									<input type="number" class="form-control" th:field="*{startup}"
+									id="startupIdCreate" placeholder="name@example.com"> 
+									<label for="exampleFormControlInput1">id type card</label> 
+									<input type="number" class="form-control" th:field="*{typeCard}"
+									id="typeCardIdCreate" placeholder="name@example.com">
+
+							</div>
+
+
+
+
+
+							<button type="submit" class="btn btn-primary">Close</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal confirmación RequestInvestment -->
+		<div class="modal fade" id="modal-confirmacion-request-startup"
+			tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Inversión
+							Realizada</h5>
+					</div>
+					<div class="modal-body">
+						<h5 th:text="'¡Su acción se realizó exitosamente, '+${name}">¡Su
+							acción se realizó exitosamente, kambista!</h5>
+					</div>
+
+
+					<div class="modal-footer">
+						<form
+							th:action="@{'/startupinvest/investmentRequests/startups/view/profile/newInvestmentRequest'}"
+							th:object="${investmentRequest}" method="post">
+							<div class="form-group" hidden="true">
+								<label for="exampleFormControlInput1">investment request
+									amount</label> <input type="number" class="form-control"
+									id="objetiveCreate" placeholder="name@example.com"
+									th:field="*{amount}"> <label
+									for="exampleFormControlInput1">investment request
+									return date</label> <input type="date" class="form-control"
+									th:field="*{returnDateText}" id="dateRebuyCreate"
+									placeholder="name@example.com"> <label
+									for="exampleFormControlInput1">investment request
+									expiration date </label> <input type="date" class="form-control"
+									th:field="*{expirationDateText}" id="dateExpirationCreate1"
+									placeholder="name@example.com"> <label
+									for="exampleFormControlInput1">startup id </label> <input
+									type="number" class="form-control" th:field="*{startup}"
+									id="startupIdCreate1" placeholder="00"> <label
+									for="exampleFormControlInput1">type investment id </label> <input
+									type="number" class="form-control" th:field="*{typeInvestment}"
+									id="typeInvestmentCreate" placeholder="name@example.com">
+							</div>
+
+
+
+
+
+							<button type="submit" class="btn btn-primary">Close</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Aplicación de Modals -->
+		<!-- MODAL - AÑADIR - RONDA - DE - INVERSIÓN -->
+		<div class="modal fade ronda-inversion" tabindex="-1" role="dialog"
+			aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="emergente-contenido">
+						<div class="seccion-superior">
+							<h3>Startup Invest</h3>
+						</div>
+						<div class="seccion-medio">
+							<div class="descripcion-ventana">
+								<h3 th:text="'Entra a operar en Startup Invest, '+${name}">Entra
+									a operar en Startup Invest, Kambista</h3>
+							</div>
+
+
+							<fieldset>
+								<legend>Datos</legend>
+								<div class="box-input">
+									<div class="campo-input">
+										<div class="nombre">
+											<p>
+												<b>Objetivo</b>
+											</p>
+										</div>
+										<div class="box-input">
+											<input type="number" autocomplete="off"
+												class="form-control size-sm-input"
+												placeholder="Introduce tu monto objetivo..."
+												aria-label="Username" id="objetiveSend"
+												onkeypress="return validarNumero(event)">
+										</div>
+									</div>
+
+									<div class="campo-input">
+										<div class="nombre">
+											<p>
+												<b>Fecha de Caducidad</b>
+											</p>
+										</div>
+										<div class="box-input">
+											<input type="date" autocomplete="off" name="birthday"
+												placeholder="" id="dateExpirationSend" />
+										</div>
+									</div>
+							</fieldset>
+
+							<fieldset>
+								<legend>Venta</legend>
+								<div class="box-input">
+									<div class="campo-input">
+										<div class="nombre">
+											<p>
+												<b>Tipo de producto financiero</b>
+											</p>
+										</div>
+										<div class="box-input">
+											<select class="form-select size-sm-input"
+												id="typeInvestmentSend">
+												<option selected>Tipo de producto financiero</option>
+												<option th:value="${typeInvestment.id}"
+													th:each="typeInvestment:${typesInvestment}"
+													th:text="${typeInvestment.name}">Participación</option>
+
+											</select>
+										</div>
+									</div>
+
+									<div class="campo-input">
+										<div class="nombre">
+											<p>
+												<b>Tu % de la startup vendida es</b>
+											</p>
+										</div>
+										<div class="box-input">
+											<input type="number" class="form-control size-sm-input"
+												placeholder="00.00%" aria-label="Username"
+												id="porcentageSend" onkeypress="return validarNumero(event)">
+										</div>
+									</div>
+
+									<div class="campo-input">
+										<div class="nombre">
+											<p>
+												<b>Fecha de recompra</b>
+											</p>
+										</div>
+										<div class="box-input">
+											<input type="date" autocomplete="off" name="birthday"
+												id="dateRebuySend" />
+										</div>
+									</div>
+
+
+								</div>
+							</fieldset>
+						</div>
+
+						<div class="modal-footer">
+
+							<!-- Boton para ir a modal de confirmación -->
+							<button type="button" data-toggle="modal" data-dismiss="modal"
+								data-target="#modal-confirmacion-request-startup"
+								class="btn btn-primary "
+								th:onclick="'javascript:confirmNewInvestmentRequest();'">Confirmar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 
@@ -552,14 +612,7 @@
 		href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 	<script>
-    $(function () {
-      $('input[name="birthday"]').daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true,
-        minYear: 1901,
-        maxYear: parseInt(moment().format('YYYY'), 10)
-      });
-    });
+   
 //Pasar informacion 
 function confirmNewPlan(id){
 
@@ -573,9 +626,37 @@ function confirmNewPlan(id){
 
 
 
+function confirmNewInvestmentRequest(){
+
+	 var objetiveSend = $("#objetiveSend").val();
+	    $("#objetiveCreate").val(objetiveSend);
+
+	    var dateExpirationSend = $("#dateExpirationSend").val();
+	    $("#dateExpirationCreate1").val(dateExpirationSend);
+
+	    var typeInvestmentSend = $("#typeInvestmentSend").val();
+	    $("#typeInvestmentCreate").val(typeInvestmentSend);
+
+	    var dateRebuySend = $("#dateRebuySend").val();
+	    $("#dateRebuyCreate").val(dateRebuySend);
+
+	    var idStartupSend = $("#idStartupSend").val();
+	    $("#startupIdCreate1").val(idStartupSend);
+}
+
+
+
+
+
     
   </script>
-
+	<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
 	<script src="Bootstrap/js/bootstrap.min.js"></script>
 	<script src=""></script>
 </body>

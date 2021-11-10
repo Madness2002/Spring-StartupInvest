@@ -50,18 +50,21 @@ public class PlanHistoryController {
 		try {
 			int planDays = planHistory.getPlan().getDuration();
 			Date ActiveDateValid= planHistoryService.findActivePlanValidByStartupId(planHistory.getStartup().getId());
-			Date todayDate = new Date(); 
+			Date todayDate = new Date();//FECHA DE HOY 
+			//SI TENGO UN PLAN ACTIVO
 		 if(ActiveDateValid!=null) {
 			 Date LastDateValidPlan=planHistoryService.findLastDateOfPlanValidByStartupId(planHistory.getStartup().getId());
 			  todayDate = LastDateValidPlan; 
 		 }			
-		
+	//SI TENGO UN PLAN ACTIVO
+		 
+
 			Date expirationDate = new Date();
-			Calendar c = Calendar.getInstance();
+			Calendar c = Calendar.getInstance(); //Tipo de dato para pode sumar los días
 			c.setTime(todayDate);
 			c.add(Calendar.DATE, planDays);
 			expirationDate = c.getTime();
-
+//SE LE SUMA DIAS 
 			
 			
 			

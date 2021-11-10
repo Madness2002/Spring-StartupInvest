@@ -74,7 +74,7 @@
 											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest">
-											<p th:text="'$'+${startup.amounthTotalInvest}"
+											<p th:text="${#numbers.formatDecimal(startup.amounthTotalInvest, 1, 'COMMA', 2, 'POINT')+'$'}"
 												style="font-size: 14px;">Monto invertido</p>
 										</div>
 									</div>
@@ -107,7 +107,7 @@
 											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest" style="font-size: 14px;"
-											th:text="'$'+${startup.amounthTotalInvest}">
+											th:text="${#numbers.formatDecimal(startup.amounthTotalInvest, 1, 'COMMA', 2, 'POINT')+'$'}">
 											<p>Monto invertido/p>
 										</div>
 									</div>

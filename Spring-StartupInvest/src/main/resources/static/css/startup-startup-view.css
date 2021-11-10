@@ -381,6 +381,7 @@ legend {
 
 .sector-descripcion .descripcion-startup {
 	margin-top: 1em;
+	text-align:justify; 
 }
 
 /* SECTOR DE PUBLICACIONES*/
@@ -537,12 +538,13 @@ strong {
 	transform: scale(1.1);
 }
 
-.box-box-boton button {
+.box-boton button {
 	border: transparent;
 	background-color: #61BFD1;
 	color: white;
 	transition: 0.5s;
 	box-shadow: 6px 6px 15px rgb(0 0 0/ 50%);
+	border: transparent;
 }
 
 .box-boton button:hover {
@@ -551,6 +553,60 @@ strong {
 	box-shadow: 6px 6px 15px rgb(0 0 0/ 50%);
 	transform: scale(1.1);
 	transform: translate(0px, 50%);
+}
+
+
+#box-date-valid{
+	
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	padding: 0rem 0 1rem 0;
+}
+#box-date-valid div{
+	transition:0.5s;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 25%;
+	align-items: center;
+	background-image: radial-gradient(circle at 120.71% 50%, #ffff7c 0, #ffff6c 12.5%, #ffff5e 25%, #ffee51 37.5%, #f9cc46 50%, #dfab3c 62.5%, #c78f35 75%, #b1772f 87.5%, #9d622a 100%);
+border-radius: 10px;
+color:black;
+position:relative;
+font-weight:bold;
+animation: cambio 1s ease infinite;
+padding: 1rem 0 1rem 0;
+box-shadow: 6px 6px 6px rgb(0 0 0/ 50%);
+}
+
+#box-date-valid div:hover{
+	transition:0.5s;
+transform:scale(1.1);
+	background-image: radial-gradient(circle at 116.45% 74.18%, #ffff7b 0, #ffff6b 12.5%, #ffff5d 25%, #ffee51 37.5%, #f9cc46 50%, #e0ac3c 62.5%, #c89035 75%, #b2782f 87.5%, #9e642a 100%);
+}
+
+
+@keyframes cambio{
+	10%{background-image: radial-gradient(circle at 120.71% 50%, #ffff7c 0, #ffff6c 12.5%, #ffff5e 25%, #ffee51 37.5%, #f9cc46 50%, #dfab3c 62.5%, #c78f35 75%, #b1772f 87.5%, #9d622a 100%);}
+	20%{background-image: radial-gradient(circle at 107.92% 90.56%, #ffff7c 0, #ffff6c 12.5%, #ffff5e 25%, #ffee51 37.5%, #f9cc46 50%, #dfab3c 62.5%, #c78f35 75%, #b1772f 87.5%, #9d622a 100%);}	
+	30%{background-image: radial-gradient(circle at 68.3% 118.3%, #ffff7c 0, #ffff6c 12.5%, #ffff5e 25%, #ffee51 37.5%, #f9cc46 50%, #dfab3c 62.5%, #c78f35 75%, #b1772f 87.5%, #9d622a 100%);}
+40%{background-image: radial-gradient(circle at 31.7% 118.3%, #ffff7c 0, #ffff6c 12.5%, #ffff5e 25%, #ffee51 37.5%, #f9cc46 50%, #dfab3c 62.5%, #c78f35 75%, #b1772f 87.5%, #9d622a 100%);}
+50%{background-image: radial-gradient(circle at 0% 100%, #ffff7c 0, #ffff6c 12.5%, #ffff5e 25%, #ffee51 37.5%, #f9cc46 50%, #dfab3c 62.5%, #c78f35 75%, #b1772f 87.5%, #9d622a 100%);}
+60%{background-image: radial-gradient(circle at 31.7% 118.3%, #ffff7c 0, #ffff6c 12.5%, #ffff5e 25%, #ffee51 37.5%, #f9cc46 50%, #dfab3c 62.5%, #c78f35 75%, #b1772f 87.5%, #9d622a 100%);}
+
+70%{background-image: radial-gradient(circle at 68.3% 118.3%, #ffff7c 0, #ffff6c 12.5%, #ffff5e 25%, #ffee51 37.5%, #f9cc46 50%, #dfab3c 62.5%, #c78f35 75%, #b1772f 87.5%, #9d622a 100%);}
+
+80%{background-image: radial-gradient(circle at 107.92% 90.56%, #ffff7c 0, #ffff6c 12.5%, #ffff5e 25%, #ffee51 37.5%, #f9cc46 50%, #dfab3c 62.5%, #c78f35 75%, #b1772f 87.5%, #9d622a 100%);}	
+
+90%{background-image: radial-gradient(circle at 120.71% 50%, #ffff7c 0, #ffff6c 12.5%, #ffff5e 25%, #ffee51 37.5%, #f9cc46 50%, #dfab3c 62.5%, #c78f35 75%, #b1772f 87.5%, #9d622a 100%);}
+	}
+
+#box-date-valid div label{
+	display: flex;	
+	width: auto;	
 }
 
 

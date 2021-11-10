@@ -1,6 +1,7 @@
 package pe.edu.upc.SpringStartupInvest.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,15 +23,18 @@ import pe.edu.upc.SpringStartupInvest.model.entity.Plan;
 import pe.edu.upc.SpringStartupInvest.model.entity.PlanHistory;
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 import pe.edu.upc.SpringStartupInvest.model.entity.TypeCard;
+import pe.edu.upc.SpringStartupInvest.model.entity.TypeInvestment;
 import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
 import pe.edu.upc.SpringStartupInvest.service.crud.InvestmentRequestService;
 import pe.edu.upc.SpringStartupInvest.service.crud.InvestorService;
+import pe.edu.upc.SpringStartupInvest.service.crud.PlanHistoryService;
 import pe.edu.upc.SpringStartupInvest.service.crud.PlanService;
 import pe.edu.upc.SpringStartupInvest.service.crud.StartupService;
 import pe.edu.upc.SpringStartupInvest.service.crud.TypeCardService;
+import pe.edu.upc.SpringStartupInvest.service.crud.TypeInvestmentService;
 
 @Controller
-@RequestMapping("/startupinvest/startups")
+@RequestMapping("/startupinvest/startups")//DOMINIO BASE
 public class StartupController {
 
 	@Autowired
@@ -47,6 +51,14 @@ public class StartupController {
 	
 	@Autowired
 	private PlanService planService;
+	
+	@Autowired
+	private PlanHistoryService planHistoryService;
+	
+	@Autowired
+	private TypeInvestmentService typeInvestmentService;
+	
+
 	
 	@GetMapping
 	public String list(Model model) {
@@ -74,8 +86,7 @@ public class StartupController {
 				for (InvestmentRequest investmentRequest : listInvestmentRequests) {
 
 					int quantityInvestors=investmentRequestService.getInvestorQuantityByInvestmentRequestId(investmentRequest.getId());
-					double amounthColected = investmentRequestService
-							.getAmountColectedByInvestmentRequestId(investmentRequest.getId());
+					double amounthColected = investmentRequestService.getAmountColectedByInvestmentRequestId(investmentRequest.getId());
 					investmentRequest.setQuantityInvestors(quantityInvestors);
 					investmentRequest.setAmountColected(amounthColected);
 				}
@@ -107,6 +118,7 @@ public class StartupController {
 		return "startup/startup-investor-view";
 	}
 	
+	///   /startupinvest/startups/2001/view/profile
 	@GetMapping("{id}/view/profile")
 	public String viewStartupProfile(Model model, @PathVariable("id") Integer id) {
 		try {
@@ -120,8 +132,10 @@ public class StartupController {
 				for (InvestmentRequest investmentRequest : listInvestmentRequests) {
 
 					int quantityInvestors=investmentRequestService.getInvestorQuantityByInvestmentRequestId(investmentRequest.getId());
-					double amounthColected = investmentRequestService
-							.getAmountColectedByInvestmentRequestId(investmentRequest.getId());
+					//TE DEVUELVE EL MONTO RECOLECTADO POR LA SOLICITUD DE INVERSION
+					double amounthColected = investmentRequestService.getAmountColectedByInvestmentRequestId(investmentRequest.getId());
+					
+					
 					investmentRequest.setQuantityInvestors(quantityInvestors);
 					investmentRequest.setAmountColected(amounthColected);
 				}
@@ -136,6 +150,19 @@ public class StartupController {
 				model.addAttribute("name", optional.get().getName());
 				model.addAttribute("idStartup", id);
 				
+				//SOLICITUD DE INVERSION
+				List<TypeInvestment> typesInvestment =typeInvestmentService.getAll();
+						
+				model.addAttribute("investmentRequest", new InvestmentRequest());
+				model.addAttribute("typesInvestment", typesInvestment);
+				
+				//PLANS
+				
+				
+				Date dateExpirationOfTheLastPlanActive=planHistoryService.findLastDateOfPlanValidByStartupId(id);
+				Date dateExpirationPlanActive=planHistoryService.findActivePlanValidByStartupId(id);
+				if(dateExpirationPlanActive!=null)
+				model.addAttribute("dateExpirationOfTheLastPlanActive", dateExpirationOfTheLastPlanActive);
 				
 				
 				return "startup/startup-startup-view";
@@ -150,13 +177,9 @@ public class StartupController {
 	
 	
 	
-	
-	
-
 	@PostMapping("newStartup")
 	public String insertar(Model model, @Valid @ModelAttribute("startup") Startup startup) {
 		try {
-
 			Startup startupSaved = startupService.create(startup);
 			model.addAttribute("Startup", startupSaved);
 		} catch (Exception e) {

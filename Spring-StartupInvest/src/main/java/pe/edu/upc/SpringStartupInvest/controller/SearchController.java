@@ -32,16 +32,16 @@ public class SearchController {
 
 	@Autowired
 	private InvestorHistoryService investorHistoryService;
-	
+
 	@PostMapping("startup")
 	public String searchStartup(Model model, @ModelAttribute("startupSearch") Startup startupSearch) throws Exception {
 		List<Startup> startups = new ArrayList<Startup>();
 		List<Category> categories = new ArrayList<>();
-		List<InvestorHistory>investments=new ArrayList<>();
+		List<InvestorHistory> investments = new ArrayList<>();
 		startupSearch.setName(startupSearch.getName().trim());
 		categories = categoryService.findByState(true);
 		startups = startupService.findByNameStartup(startupSearch.getName());
-		investments=investorHistoryService.listPortafolioByInvestorId(1001);
+		investments = investorHistoryService.listPortafolioByInvestorId(1001);
 		model.addAttribute("categories", categories);
 		model.addAttribute("investments", investments);
 		if (startups.size() > 0) {
@@ -58,8 +58,6 @@ public class SearchController {
 			return "dashboard/dashboard-investor-search-error";
 		}
 
-		
-		
 	}
 
 	@PostMapping("startupByDateAndCategory")
@@ -67,7 +65,7 @@ public class SearchController {
 			throws Exception {
 
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-		List<Startup> startups = new ArrayList<Startup>();
+		List<Startup> startups, startupsFound = new ArrayList<Startup>();
 		List<Category> categories = new ArrayList<>();
 		String fechas[] = intervalDate.getIntervalDate().trim().split("-");
 		Date startDate = formato.parse(fechas[0]);
@@ -83,11 +81,12 @@ public class SearchController {
 			model.addAttribute("startupSearch", new Startup());
 			// ---------------------------------------------------
 			if (!intervalDate.getCategoryText().equals("Ninguna")) {
-				for (Startup startup : startups) {
-					if (!startup.getCategory().getName().equals(intervalDate.getCategoryText()))
-						startups.remove(startup);
-				}
 
+				for (Startup startup : startups) {
+					if (startup.getCategory().getName().equals(intervalDate.getCategoryText()))
+						startupsFound.add(startup);
+				}
+				startups = startupsFound;
 				model.addAttribute("word", "el intervalo de tiempo (" + intervalDate.getIntervalDate()
 						+ ") y el sector (" + intervalDate.getCategoryText() + ")");
 
