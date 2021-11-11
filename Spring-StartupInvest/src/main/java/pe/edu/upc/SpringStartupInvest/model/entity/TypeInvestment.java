@@ -40,6 +40,10 @@ public class TypeInvestment {
 	@Column(name = "type_investment_description", length = 50, nullable = false)
 	private String description;
 
+	
+	@Column(name = "type_investment_state", nullable = false)
+	private Boolean state ;
+	
 	@OneToMany(mappedBy = "typeInvestment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<InvestmentRequest> investmentRequests;
 

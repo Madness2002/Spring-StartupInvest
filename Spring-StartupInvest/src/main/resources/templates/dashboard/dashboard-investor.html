@@ -2,12 +2,17 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layout/layout :: frag-head">
-	<meta charset="UTF-8" />
+<meta charset="UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap"
+	rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column">
 	<header th:replace="layout/layout :: frag-header"> </header>
-
+	<!-- Elaboración del dashboard - investor -->
 	<!--CONTENIDO-->
 	<main>
 		<div class=" main-container">
@@ -24,6 +29,23 @@
 
 				<div th:replace="layout/layout :: frag-search"></div>
 
+
+				<!-- Empieza promociones -->
+				<div class="Promociones">
+					<div th:each="startupWithActivePlan:${startupWithActivePlans}"
+						class="startup1-promocion">
+						<div class="Titulo-startup-promocion">
+							<p th:text="'Startup '+${startupWithActivePlan.name}">Startup
+								NAME</p>
+						</div>
+						<a th:href="${'/startupinvest/startups/'+startupWithActivePlan.id+'/view'}" id="imageActivePlan">
+							<img  
+								th:src="@{'/images/startups/'+${startupWithActivePlan.image}}">
+						</a>
+					</div>
+
+				</div>
+				<!-- Termina promociones -->
 
 
 				<div class="filter-startups">
@@ -52,8 +74,8 @@
 											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest">
-											<p th:text="'$'+${startup.amounthTotalInvest}" style="font-size: 14px;">
-												Monto invertido</p>
+											<p th:text="${#numbers.formatDecimal(startup.amounthTotalInvest, 1, 'COMMA', 2, 'POINT')+'$'}"
+												style="font-size: 14px;">Monto invertido</p>
 										</div>
 									</div>
 
@@ -69,12 +91,13 @@
 							<h5>Las Startups más recientes</h5>
 						</div>
 						<div class="popular-startups-cards">
-							<a href="#">
+							<a th:each="startup:${startupsRecently}"
+								th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
 								<div class=" card-portafolio startups-cards"
-									style="width: 13rem; height: 6em; color: #0085B6;"
-									th:each="startup:${startupsRecently}">
+									style="width: 13rem; height: 6em; color: #0085B6;">
 									<div class="img-startup-portafolio">
-										<img th:src="@{'/images/startups/'+${startup.image}}" class="" alt="...">
+										<img th:src="@{'/images/startups/'+${startup.image}}" class=""
+											alt="...">
 									</div>
 									<div class="text-startup-portafolio popular-text-startup">
 										<div class="place">
@@ -84,7 +107,7 @@
 											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest" style="font-size: 14px;"
-											th:text="'$'+${startup.amounthTotalInvest}">
+											th:text="${#numbers.formatDecimal(startup.amounthTotalInvest, 1, 'COMMA', 2, 'POINT')+'$'}">
 											<p>Monto invertido/p>
 										</div>
 									</div>
@@ -101,24 +124,27 @@
 					</div>
 
 					<!--Tarjeta de startups-->
+
+
 					<div class="list-startups">
+						<a th:each="startup :${moreStartups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
 
 
-						<div class="list-card-startup" th:each="startup :${moreStartups}">
-							<div class="img-list-card-startup">
-								<img th:src="@{'/images/startups/'+${startup.image}}" />
-							</div>
-							<div id="barra"></div>
-
-
-							<div class="card-body-startup">
-								<h5 class="card-title" th:text=${startup.name}>startup</h5>
-								<div class="boton-card">
-									<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
 								</div>
 							</div>
-						</div>
-
+						</a>
 
 					</div>
 

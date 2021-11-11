@@ -46,7 +46,7 @@ legend {
     height: 3em;
 }
 
-/* TARJETA DE RONDA DE INVERSIÃ“N*/
+/* TARJETA DE RONDA DE INVERSIÓN*/
 .box-ronda-inversion{
     margin: 0;
     display: flex;
@@ -192,7 +192,13 @@ legend {
 .cuadro .sector-boton button{
     background-color: #61BFD1;
     width: 30%;
+    border:transparent;
+transition:0.5s;
+}
 
+.cuadro .sector-boton button:hover{
+   transition:0.5s;
+transform:scale(1.1);
 }
 
 /*Descripcion de ronda*/
@@ -329,7 +335,7 @@ legend {
     
 }
 
-/*SECTOR DE DESCRIPCIÃ“N DE LA STARTUP*/
+/*SECTOR DE DESCRIPCIÓN DE LA STARTUP*/
 
 .box-sector-descripcion{
     width: 100%;

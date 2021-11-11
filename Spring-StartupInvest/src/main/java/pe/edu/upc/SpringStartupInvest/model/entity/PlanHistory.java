@@ -39,14 +39,12 @@ public class PlanHistory {
 	@JoinColumn(name = "type_card_id", nullable = false)
 	private TypeCard typeCard;
 
-	@NotNull(message = "La fecha de adquisición debe contener valor")
-	@NotBlank(message = "La fecha de adquisición no debe estar en blanco")
+	
 	@Column(name = "plan_history_acquisition_date", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date acquistionDate;
 
-	@NotNull(message = "La fecha de expiración debe contener valor")
-	@NotBlank(message = "La fecha de expiración no debe estar en blanco")
+	
 	@Column(name = "plan_history_expiration_date", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date expirationDate;

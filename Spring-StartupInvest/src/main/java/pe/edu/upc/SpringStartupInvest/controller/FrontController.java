@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.SpringStartupInvest.model.entity.Category;
+import pe.edu.upc.SpringStartupInvest.model.entity.InvestorHistory;
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
+import pe.edu.upc.SpringStartupInvest.service.crud.InvestorHistoryService;
 import pe.edu.upc.SpringStartupInvest.service.crud.StartupService;
 import pe.edu.upc.SpringStartupInvest.util.startup.CompareAmounth;
 import pe.edu.upc.SpringStartupInvest.util.startup.DateTimeUtil;
@@ -26,6 +28,9 @@ public class FrontController {
 	@Autowired
 	private StartupService startupService;
 
+	
+	@Autowired
+	private InvestorHistoryService investorHistoryService;
 	@GetMapping("startupinvest")// 
 	public String index() {
 		return "index/index";
@@ -36,11 +41,16 @@ public class FrontController {
 
 		try {		
 			List<Category> categories = new ArrayList<>();
-			List<Startup> startupsMostPopular, startupsRecently,startups = new ArrayList<>();
+			List<Startup> startupsMostPopular, startupsRecently,startups,startupWithActivePlans = new ArrayList<>();
+			List<InvestorHistory>investments=new ArrayList<>();
+			
 			categories = categoryService.findByState(true);
 			startups=startupService.getAll();
 			startupsMostPopular = startupService.listStartupsMostPopular();
 			startupsRecently = startupService.findByDateRecently();
+			startupWithActivePlans=startupService.findStartupsByActivePlan();
+			//Usamos el ID=1001, ya que aun no entramos al login (security)
+			investments=investorHistoryService.listPortafolioByInvestorId(1001);
 			// Lista de las startups más populares (TOP 5)
 			for (Startup startup : startupsMostPopular) {
 				startups.remove(startup);
@@ -62,16 +72,21 @@ public class FrontController {
 			
 				
 			}
+
 			
-			//model.addAttribute("categorySelected", "");
+			
 			Collections.sort(startupsMostPopular, new CompareAmounth());
 			Collections.sort(startupsRecently, new CompareAmounth());
+			
 			model.addAttribute("startupSearch",new Startup());
 			model.addAttribute("intervalDate",new DateTimeUtil());
 			model.addAttribute("moreStartups", startups);
 			model.addAttribute("categories", categories);
 			model.addAttribute("startupsRecently", startupsRecently);
-			model.addAttribute("startupsMostPopular", startupsMostPopular);
+			model.addAttribute("startupsMostPopular", startupsMostPopular);		
+			model.addAttribute("investments", investments);
+			model.addAttribute("startupWithActivePlans", startupWithActivePlans);
+			
 		} catch (Exception e) {
 
 		}

@@ -53,8 +53,12 @@ public class TypeCard {
 		plansHistory = new ArrayList<PlanHistory>();
 	}
 
-	public TypeCard(Integer id, String name, Boolean state, List<InvestorHistory> investorHistories,
-			List<PlanHistory> plansHistory, List<TypeCardHistory> typeCardHistories) {
+	
+
+	public TypeCard(Integer id,
+			@NotBlank(message = "El nombre no debe estar en blanco") @NotNull(message = "El nombre debe contener valor") @Size(max = 50, message = "El tamaño no debe ser mayor a 50") String name,
+			Boolean state, List<InvestorHistory> investorHistories, List<PlanHistory> plansHistory,
+			List<TypeCardHistory> typeCardHistories) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -63,6 +67,8 @@ public class TypeCard {
 		this.plansHistory = plansHistory;
 		this.typeCardHistories = typeCardHistories;
 	}
+
+
 
 	public Integer getId() {
 		return id;

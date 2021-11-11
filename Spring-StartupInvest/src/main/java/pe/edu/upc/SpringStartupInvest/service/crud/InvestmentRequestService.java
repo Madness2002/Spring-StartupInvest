@@ -10,4 +10,5 @@ public interface InvestmentRequestService extends CrudService<InvestmentRequest,
 	double getAmountColectedByStartupId(int id) throws Exception;
 	
 	double getAmountColectedByInvestmentRequestId(Integer id) throws Exception;
+	Integer getInvestorQuantityByInvestmentRequestId(Integer id) throws Exception;
 }
