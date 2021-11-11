@@ -17,7 +17,7 @@ public interface StartupRepository extends JpaRepository<Startup, Integer> {
 	@Query("select a from Startup a where a.state=:state")
 	List<Startup> findByState(Boolean state) throws Exception;
 
-	@Query(value="select * from startups  where (current_date - startup_register_date)<=60", nativeQuery = true)
+	@Query(value = "select * from startups  where (current_date - startup_register_date)<=60", nativeQuery = true)
 	List<Startup> findByDateRecently() throws Exception; // Startups registradas recientemente (2 meses antes)
 
 	@Query("select a from Startup a where a.registerDate between ?1 and ?2")
@@ -29,20 +29,16 @@ public interface StartupRepository extends JpaRepository<Startup, Integer> {
 
 	@Query(value = "select p.amounth from viewStartupPositionAmounth p where p.startup_id=?1", nativeQuery = true)
 	double getAmounthInvestedById(int id) throws Exception;
-	
+
 	@Query(value = "select p.position from viewStartupPositionAmounth p where p.startup_id=?1", nativeQuery = true)
 	Integer getPositionStartupById(int id) throws Exception;
 
-	 @Query(value="select*from startups where upper(startup_name) like upper(CONCAT('%',?1,'%'))",nativeQuery=true)
-	 List<Startup> findByNameStartup(String name);
-	
-	 
-	 
-	 
-	 
-	// registro
-	/*
-	 * @Query("") List<Startup> findByPopular()throws Exception; // Buscar Startups
-	 * mas populares FALTA EL TOP
-	 */
+	@Query(value = "select*from startups where upper(startup_name) like upper(CONCAT('%',?1,'%'))", nativeQuery = true)
+	List<Startup> findByNameStartup(String name);
+
+	@Query(value = "select s.startup_id,s.startup_description,s.startup_email,s.startup_image,s.startup_name,s.startup_password,s.startup_register_date,s.startup_ruc,s.startup_state,s.category_id\r\n"
+			+ "	 from startups s join plans_history ph on  s.startup_id= ph.startup_id\r\n"
+			+ "	 where current_date between ph.plan_history_acquisition_date and ph.plan_history_expiration_date", nativeQuery = true)
+	List<Startup> findStartupsByActivePlan()throws Exception;
+
 }

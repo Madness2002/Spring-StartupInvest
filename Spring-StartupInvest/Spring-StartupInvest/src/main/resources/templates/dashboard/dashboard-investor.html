@@ -5,8 +5,9 @@
 <meta charset="UTF-8" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap" rel="stylesheet">
-
+<link
+	href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap"
+	rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column">
@@ -27,42 +28,25 @@
 
 
 				<div th:replace="layout/layout :: frag-search"></div>
-				
+
+
 				<!-- Empieza promociones -->
 				<div class="Promociones">
-					<div class="startup1-promocion">
+					<div th:each="startupWithActivePlan:${startupWithActivePlans}"
+						class="startup1-promocion">
 						<div class="Titulo-startup-promocion">
-							<p>Startup Kambista</p>
+							<p th:text="'Startup '+${startupWithActivePlan.name}">Startup
+								NAME</p>
 						</div>
-						<div>
-							<img src="/images/startups/kambista.jpg">
-						</div>
+						<a th:href="${'/startupinvest/startups/'+startupWithActivePlan.id+'/view'}" id="imageActivePlan">
+							<img  
+								th:src="@{'/images/startups/'+${startupWithActivePlan.image}}">
+						</a>
 					</div>
-					<div class="startup1-promocion">
-						<div class="Titulo-startup-promocion">
-							<p>Startup Rappi</p>
-						</div>
-						<div>
-							<img src="/images/startups/rappi.jpg">
-						</div>
-					</div>
-					<div class="startup1-promocion">
-						<div class="Titulo-startup-promocion">
-							<p>Startup Cirkula</p>
-						</div>
-						<div>
-							<img src="/images/startups/cirkula.jpg">
-						</div>
-					</div>
-					<div class="startup1-promocion">
-						<div class="Titulo-startup-promocion">
-							<p>Startup Vipa</p>
-						</div>
-						<div>
-							<img src="/images/startups/VIPA 3.png">
-						</div>
-					</div>
-				</div> <!-- Termina promociones -->
+
+				</div>
+				<!-- Termina promociones -->
+
 
 				<div class="filter-startups">
 					<div class="popular-startups">
@@ -90,7 +74,7 @@
 											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest">
-											<p th:text="'$'+${startup.amounthTotalInvest}"
+											<p th:text="${#numbers.formatDecimal(startup.amounthTotalInvest, 1, 'COMMA', 2, 'POINT')+'$'}"
 												style="font-size: 14px;">Monto invertido</p>
 										</div>
 									</div>
@@ -123,7 +107,7 @@
 											<p class="card-text" th:text="${startup.name}">Nanovida</p>
 										</div>
 										<div class="total-invest" style="font-size: 14px;"
-											th:text="'$'+${startup.amounthTotalInvest}">
+											th:text="${#numbers.formatDecimal(startup.amounthTotalInvest, 1, 'COMMA', 2, 'POINT')+'$'}">
 											<p>Monto invertido/p>
 										</div>
 									</div>

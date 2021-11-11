@@ -34,7 +34,12 @@ public class PublicationServiceImpl implements PublicationService {
 	@Override
 	public List<Publication> findByStartup(String startupName) throws Exception {
 		
-		return publicationRepository.findByStartup(startupName);
+		return publicationRepository.findByStartupName(startupName);
+	}
+
+	@Override
+	public List<Publication> findByStartupId(Integer id) throws Exception {
+		return publicationRepository.findByStartupId(id);
 	}
 	
 }

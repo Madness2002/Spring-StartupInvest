@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.SpringStartupInvest.model.entity.PlanHistory;
+import pe.edu.upc.SpringStartupInvest.model.repository.PlanHistoryRepository;
 import pe.edu.upc.SpringStartupInvest.service.crud.PlanHistoryService;
 import pe.edu.upc.SpringStartupInvest.service.crud.TypeCardService;
 
@@ -48,16 +49,27 @@ public class PlanHistoryController {
 	public String insertar(Model model, @ModelAttribute("planHistory") PlanHistory planHistory) {
 		try {
 			int planDays = planHistory.getPlan().getDuration();
-			Date todayDate = new Date();
+			Date ActiveDateValid= planHistoryService.findActivePlanValidByStartupId(planHistory.getStartup().getId());
+			Date todayDate = new Date();//FECHA DE HOY 
+			//SI TENGO UN PLAN ACTIVO
+		 if(ActiveDateValid!=null) {
+			 Date LastDateValidPlan=planHistoryService.findLastDateOfPlanValidByStartupId(planHistory.getStartup().getId());
+			  todayDate = LastDateValidPlan; 
+		 }			
+	//SI TENGO UN PLAN ACTIVO
+		 
+
 			Date expirationDate = new Date();
-			Calendar c = Calendar.getInstance();
-			c.setTime(expirationDate);
+			Calendar c = Calendar.getInstance(); //Tipo de dato para pode sumar los días
+			c.setTime(todayDate);
 			c.add(Calendar.DATE, planDays);
 			expirationDate = c.getTime();
-
+//SE LE SUMA DIAS 
+			
+			
+			
 			planHistory.setAcquistionDate(todayDate);
 			planHistory.setExpirationDate(expirationDate);
-
 			planHistory.setTypeCard(typeCardService.findById(40).get());
 
 			planHistoryService.create(planHistory);

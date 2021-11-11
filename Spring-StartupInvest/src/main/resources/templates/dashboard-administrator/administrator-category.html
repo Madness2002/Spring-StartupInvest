@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+<head>
+<link th:href="@{/css/administrator-category.css}" rel="stylesheet">
+</head>
+
+
+<body class="d-flex flex-column">
+
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+
+
+	<!--CONTENIDO-->
+	<main>
+		<header th:replace="layout/layout :: frag-left-bar-administrator">
+		</header>
+
+		<div class="right-section">
+			<div class="superior-zone">
+				<h1>Categorias de Startup</h1>
+				<button class="btn btn-success btn-lg" data-toggle="modal"
+					data-target="#modalForm">Agregar</button>
+
+			</div>
+
+			<div class="container">
+
+				<div class="card color-card1" th:each="category:${categories}">
+
+
+					<img src="/images/administrator/ImagenCategories.png">
+
+					<div th:if="${category.state}" id="circle"></div>
+					<div th:unless="${category.state}" id="circle"
+						style="background-color: red;"></div>
+
+
+					<h4 th:text="'Categoría:'+${category.name}">nameCategory</h4>
+					<div class="botones">
+						<button class="btn color-ancho btn-lg" data-toggle="modal"
+							data-target="#modalForm1">Editar</button>
+						<button th:if="${category.state}" class="btn color2-ancho btn-lg"
+							data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+						<button th:unless="${category.state}"
+							class="btn color3-ancho btn-lg" data-toggle="modal"
+							data-target="#modalForm2">Habilitar</button>
+
+					</div>
+				</div>
+
+
+
+
+			</div>
+		</div>
+
+		<!-- Modal1 -->
+		<div class="modal fade" id="modalForm" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<img
+							th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
+						<!--<button type="button" class="close" data-dismiss="modal">
+                       				<span aria-hidden="true">×</span>
+                      			 	<span class="sr-only">Cerrar</span>
+                   				  </button>-->
+						<h4 class="modal-title" id="myModalLabel">Nueva Categoría</h4>
+					</div>
+
+					<!-- Modal Body -->
+					<div class="modal-body">
+						<p class="statusMsg"></p>
+						<form role="form">
+							<div class="form-group">
+								<label for="inputName">Nombre de la Categoría</label> <input
+									type="text" class="form-control" id="inputName"
+									placeholder="Ingrese el nuevo nombre de la categoría" />
+							</div>
+						</form>
+					</div>
+
+					<!-- Modal Footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							style="background-color: red; color: white;">Cerrar</button>
+						<button type="button" class="btn btn-primary submitBtn"
+							onclick="submitContactForm()"
+							style="background-color: green; color: white;">Agregar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- Modal2 -->
+		<div class="modal fade" id="modalForm1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<img
+							th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
+						<!--<button type="button" class="close" data-dismiss="modal">
+                       				<span aria-hidden="true">×</span>
+                      			 	<span class="sr-only">Cerrar</span>
+                   				  </button>-->
+						<h4 class="modal-title" id="myModalLabel">Editar Categoría</h4>
+					</div>
+
+					<!-- Modal Body -->
+					<div class="modal-body">
+						<p class="statusMsg"></p>
+						<form role="form">
+							<div class="form-group">
+								<label for="inputName">Nombre de la Categoría</label> <input
+									type="text" class="form-control" id="inputName"
+									placeholder="Ingrese el nuevo nombre de la categoría" />
+							</div>
+
+
+						</form>
+					</div>
+
+					<!-- Modal Footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+						<button type="button" class="btn btn-primary submitBtn"
+							onclick="submitContactForm()">Confirmar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Modal3 -->
+		<div class="modal fade" id="modalForm2" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content2">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<img
+							th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
+						<!--<button type="button" class="close" data-dismiss="modal">
+                       				<span aria-hidden="true">×</span>
+                      			 	<span class="sr-only">Cerrar</span>
+                   				  </button>-->
+						<h4 class="modal-title" id="myModalLabel">Cambio de estado</h4>
+					</div>
+
+					<!-- Modal Body -->
+					<div class="modal-body centrar">
+						<p class="statusMsg"></p>
+						<form role="form">
+							<div class="form-group">
+								<label for="inputName">¿Seguro que quieres cambiar el
+									estado?</label>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail">Los usuarios no podrán ver esta
+									opción</label>
+							</div>
+						</form>
+					</div>
+
+					<!-- Modal Footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+						<button type="button" class="btn btn-primary submitBtn"
+							onclick="submitContactForm()">Confirmar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+</body>
+
+</html>

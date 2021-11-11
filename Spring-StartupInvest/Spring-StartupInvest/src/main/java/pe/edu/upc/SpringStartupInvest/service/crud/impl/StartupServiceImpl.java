@@ -68,14 +68,12 @@ public class StartupServiceImpl implements StartupService {
 
 	@Override
 	public List<Startup> findByNameStartup(String name) {
-		// TODO Auto-generated method stub
 		return startupRepository.findByNameStartup(name);
 	}
 
-	
+	@Override
+	public List<Startup> findStartupsByActivePlan() throws Exception {
+		return startupRepository.findStartupsByActivePlan();
+	}
 
-	/*
-	 * @Override public List<Startup> findByPopular() throws Exception { return
-	 * startupRepository.findByPopular(); }
-	 */
 }

@@ -25,7 +25,7 @@ import pe.edu.upc.SpringStartupInvest.model.entity.Category;
 import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
 
 @Controller
-@RequestMapping("/startupinvest/categories")
+@RequestMapping("/startupinvest/category")
 @SessionAttributes("category")
 public class CategoryController {
 
@@ -52,30 +52,25 @@ public class CategoryController {
 		return "dashboard/dashboard-investor";
 	}
 
-	@PostMapping("newCategory")
-	public String insertar(Model model, @Valid @ModelAttribute("category") Category category,
-			@RequestParam("file") MultipartFile imagen) throws Exception {
+	@GetMapping("administrator/categories")
+	public String listAdministrator(Model model) {
+
 		try {
-			// Path directorioImagenes =
-			// Paths.get("src//main//resources//static/images/categories");
-			String rutaAbsoluta = "C:\\Users\\Usuario\\eclipse-workspace\\Spring-StartupInvest\\Spring-StartupInvest\\src\\main\\resources\\static\\images\\categories";
-			byte[] bytesImg = imagen.getBytes();
-			Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
-			Files.write(rutaCompleta, bytesImg);
-
-			category.setImage(imagen.getOriginalFilename());
-
-			category.setState(true);
-			category.setImage(imagen.getOriginalFilename());
-			Category categorySaved = categoryService.create(category);
-			model.addAttribute("category", categorySaved);
+			List<Category> categories = new ArrayList<>();
+			categories = categoryService.getAll();
+			model.addAttribute("categories", categories);
+			model.addAttribute("category", new Category());
 		} catch (Exception e) {
 			e.getMessage();
 		}
 
-		return "redirect:/ga";
+		return "dashboard-administrator/administrator-category";
 	}
-
+	
+	
+	
+	
+	
 	@PostMapping("{id}/edit")
 	public void actualizar(Model model, @PathVariable("id") Integer id) {
 		try {
@@ -116,4 +111,37 @@ public class CategoryController {
 		return "redirect:/ga";
 	}
 
+	
+	//PRUEBAS
+	@PostMapping("newCategory")
+	public String insertar(Model model, @Valid @ModelAttribute("category") Category category,
+			@RequestParam("file") MultipartFile imagen) throws Exception {
+		try {
+			// Path directorioImagenes =
+			// Paths.get("src//main//resources//static/images/categories");
+			String rutaAbsoluta = "C:\\Users\\Usuario\\eclipse-workspace\\Spring-StartupInvest\\Spring-StartupInvest\\src\\main\\resources\\static\\images\\categories";
+			byte[] bytesImg = imagen.getBytes();
+			Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
+			Files.write(rutaCompleta, bytesImg);
+
+			category.setImage(imagen.getOriginalFilename());
+
+			category.setState(true);
+			category.setImage(imagen.getOriginalFilename());
+			Category categorySaved = categoryService.create(category);
+			model.addAttribute("category", categorySaved);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+
+		return "redirect:/ga";
+	}
+
+	
 }
+
+
+
+
+
+
