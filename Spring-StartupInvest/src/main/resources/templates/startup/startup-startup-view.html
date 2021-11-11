@@ -13,7 +13,7 @@
 	th:href="@{/dashboard-investor/Bootstrap/css/Dashboard-investor.css}" />
 <link rel="stylesheet" th:href="@{/css/startup-startup-view.css}">
 <!-- Nuevos estilos -->
-
+<link rel="stylesheet" th:href="@{/css/publication.css}">
 <!--Font-Awsome-->
 
 <link rel="stylesheet"
@@ -74,21 +74,25 @@
 			<div class="botones-administrador">
 
 				<div class="box-izquierda">
-					<div th:if="${investmentRequests!=null and !investmentRequests.empty}" class="box-boton">
-						<button  type="button" class="btn btn-primary" data-toggle="modal"
+					<div
+						th:if="${investmentRequests!=null and !investmentRequests.empty}"
+						class="box-boton">
+						<button type="button" class="btn btn-primary" data-toggle="modal"
 							data-target=".ronda-inversion" data-bs-toggle="button"
-							id="boton-left" autocomplete="off" disabled >Añadir una ronda de
-							inversión</button>												
+							id="boton-left" autocomplete="off" disabled>Añadir una
+							ronda de inversión</button>
 					</div>
-					
-					<div th:unless="${investmentRequests!=null and !investmentRequests.empty}" class="box-boton">
-						<button  type="button" class="btn btn-primary" data-toggle="modal"
+
+					<div
+						th:unless="${investmentRequests!=null and !investmentRequests.empty}"
+						class="box-boton">
+						<button type="button" class="btn btn-primary" data-toggle="modal"
 							data-target=".ronda-inversion" data-bs-toggle="button"
-							id="boton-left" autocomplete="off"  >Añadir una ronda de
-							inversión</button>												
+							id="boton-left" autocomplete="off">Añadir una ronda de
+							inversión</button>
 					</div>
-					
-					
+
+
 				</div>
 
 				<div class="box-boton">
@@ -98,12 +102,15 @@
 						promoción</button>
 				</div>
 
-				<div class="box-boton">
+
+				<a
+					th:onclick="|window.location.href ='/startupinvest/publications/'+${idStartup}+'/view'|"
+					class="box-boton">
 					<button type="button" class="btn btn-primary"
 						data-bs-toggle="button" autocomplete="off"
 						style="background-color: #838383;">Administrar
 						publicaciones</button>
-				</div>
+				</a>
 
 
 
@@ -303,28 +310,40 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Inversión
-							Realizada</h5>
+						<h5 class="modal-title" id="exampleModalLabel">Compra de plan
+							de promoción</h5>
 					</div>
 					<div class="modal-body">
-						<h5 th:text="'¡Su acción se realizó exitosamente, '+${name}">¡Su
+						<h5
+							th:text="'Complete el formulario para concretar la compra, '+${name}">¡Su
 							acción se realizó exitosamente, kambista!</h5>
+
+						<label>Selecciona el tipo de tarjeta</label> <select
+							class="form-select size-sm-input">
+							<option selected>Método de pago</option>
+							<option th:each="typeCard:${typesCard}"
+								th:text="${typeCard.name}">Participación</option>
+						</select> <label>Número de tarjeta</label> <input class="form-control"
+							type="number" placeholder="ingrese el número de su tarjeta">
+						<label>CVV</label> <input class="form-control" type="number"
+							placeholder="ingrese su CVV">
+
 					</div>
 
 
 					<div class="modal-footer">
-						<form                                        
+						<form
 							th:action="@{'/startupinvest/plansHistory/startups/view/profile/newPlanHistory'}"
 							th:object="${planHistory}" method="post">
-							<div class="form-group" >
-								<label for="exampleFormControlInput1">id plan</label> 
-								<input type="number" class="form-control" id="planIdCreate"
-									placeholder="name@example.com" th:field="*{plan}"> 
-									<label for="exampleFormControlInput1">id startup</label> 
-									<input type="number" class="form-control" th:field="*{startup}"
-									id="startupIdCreate" placeholder="name@example.com"> 
-									<label for="exampleFormControlInput1">id type card</label> 
-									<input type="number" class="form-control" th:field="*{typeCard}"
+							<div hidden="true" class="form-group">
+								<label for="exampleFormControlInput1">id plan</label> <input
+									type="number" class="form-control" id="planIdCreate"
+									placeholder="name@example.com" th:field="*{plan}"> <label
+									for="exampleFormControlInput1">id startup</label> <input
+									type="number" class="form-control" th:field="*{startup}"
+									id="startupIdCreate" placeholder="name@example.com"> <label
+									for="exampleFormControlInput1">id type card</label> <input
+									type="number" class="form-control" th:field="*{typeCard}"
 									id="typeCardIdCreate" placeholder="name@example.com">
 
 							</div>
@@ -333,7 +352,9 @@
 
 
 
-							<button type="submit" class="btn btn-primary">Close</button>
+							<button id="button-buy-plan" type="submit"
+								class="btn btn-primary"
+								style="background-color: #61BFD1; border-color: transparent;">Comprar</button>
 						</form>
 					</div>
 				</div>
@@ -384,7 +405,7 @@
 
 
 
-							<button type="submit" class="btn btn-primary">Close</button>
+							<button type="submit" class="btn btn-primary">Confirmar</button>
 						</form>
 					</div>
 				</div>
@@ -537,22 +558,21 @@
 				</div>
 				<div class="box-novedades">
 
-					<div class="list-card-startup">
-						<div class="img-list-card-startup">
-							<img
-								src="../../static/dashboard-investor/Bootstrap/img/kambista.png" />
-						</div>
-						<div class="card-body-startup">
-							<h6 class="card-title">Usuarios podrán cambiar dinero y
-								crear una cuenta bancaria 100% digital desde Kambista</h6>
-							<p class="card-body">Interbank y Kambista firman alianza
-								estratégica para seguir reforzando los servicios financieros...</p>
-							<div class="boton-card">
-								<a
-									href="https://kambista.com/noticias/usuarios-podran-cambiar-dinero-y-crear-una-cuenta-bancaria-100-digital-desde-kambista/"
-									class="btn " style="width: 100%;">¡Ir a la noticia!</a>
+					<div id="box-novedad" th:each="publication:${publications}">
+						<label id="datePublished" th:text=${publication.date}>2019-09-21</label>
+						<div id="box-novedad-content">
+							<div id="title-and-description">
+								<label id="title" th:text=${publication.name}>Usuarios
+									podrán cambiar dinero y crear una cuenta bancaria 100% digital
+									desde Kambista</label><label id="descripcion"
+									th:text="${publication.description}">Interbank y
+									Kambista firman alianza estratégica para seguir reforzando los
+									servicios financieros...</label>
 							</div>
+							<img th:src="@{'/images/startups/'+${imgname}}">
 						</div>
+						<a th:href="@{${publication.url}}" id="editPublication"
+							type="button" class="btn btn-info">Ver más</a>
 					</div>
 				</div>
 			</div>

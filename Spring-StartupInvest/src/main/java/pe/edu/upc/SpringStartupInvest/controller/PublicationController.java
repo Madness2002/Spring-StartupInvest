@@ -1,10 +1,11 @@
 package pe.edu.upc.SpringStartupInvest.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.ProcessBuilder.Redirect;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Optional;
 
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,56 +15,72 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.SpringStartupInvest.model.entity.Publication;
+import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 import pe.edu.upc.SpringStartupInvest.service.crud.PublicationService;
+import pe.edu.upc.SpringStartupInvest.service.crud.StartupService;
 
 @Controller
 @RequestMapping("/startupinvest/publications")
-@SessionAttributes("publication")
 public class PublicationController {
 	@Autowired
 	private PublicationService publicationService;
 
-	@GetMapping
-	public String list(Model model) {
+	@Autowired
+	private StartupService startupService;
+	
+	
+	@GetMapping("{id}/view")
+	public String list(Model model,@ModelAttribute("id")Integer id) {
 
 		try {
-			List<Publication> lista = new ArrayList<>();
-			lista = publicationService.getAll();
-			model.addAttribute("publication", lista);
+			Optional<Startup> startup = startupService.findById(id);
+			Date todayDate= new Date();
+		
+			model.addAttribute("publications", startup.get().getPublications());
+			model.addAttribute("imgname", startup.get().getImage());
+			model.addAttribute("idStartup", startup.get().getId());
+			model.addAttribute("name", startup.get().getName());
+			model.addAttribute("newPublication",new Publication());
+			model.addAttribute("editPublication",new Publication());
+			
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
-		return null;
+		return "publication/publication";
 	}
 
 	@PostMapping("newPublication")
-	public String insertar(Model model, @Valid @ModelAttribute("publication") Publication publication) {
+	public String insertar(Model model, @ModelAttribute("publication") Publication publication) {
 		try {
-
-			Publication publicationSaved = publicationService.create(publication);
-			model.addAttribute("publication", publicationSaved);
+			publication.setDate(new Date());
+		publicationService.create(publication);		
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 
-		return null;
+		return "redirect:/startupinvest/publications/"+publication.getStartup().getId()+"/view";
 	}
 
-	@PostMapping("{id}/edit")
-	public void actualizar(Model model, @PathVariable("id") Integer id) {
+	@PostMapping("edit")
+	public String actualizar(Model model, @ModelAttribute("editPublication") Publication publication) {
 		try {
-			if (publicationService.existsById(id)) {
-				Optional<Publication> optional = publicationService.findById(id);
-				model.addAttribute("editPublication", optional);
+			if (publicationService.existsById(publication.getId())) {
+				Optional<Publication> optional = publicationService.findById(publication.getId());
+				String title=publication.getName();
+				String description=publication.getDescription();
+				String url=publication.getUrl();
+			optional.get().setName(title);
+			optional.get().setDescription(description);
+			optional.get().setUrl(url);
+publicationService.update(optional.get());
 			}
 
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
-
+return "redirect:/startupinvest/publications/"+publication.getStartup().getId()+"/view";
 	}
 
 	@PostMapping("saveEdit")
@@ -72,24 +89,23 @@ public class PublicationController {
 			publicationService.update(publication);
 
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 
 		return "redirect:/startupinvest/publications";
 	}
 
-	@GetMapping("{id}/del")
-	public String delete(@PathVariable("id") Integer id) {
+	@GetMapping("{idStartup}/{idPublication}/del")
+	public String delete(@PathVariable("idStartup") Integer idStartup,@PathVariable("idPublication") Integer idPublication) {
 
 		try {
-			if (publicationService.existsById(id)) {
-				publicationService.deleteById(id);
-
+			if (publicationService.existsById(idPublication)) {
+				publicationService.deleteById(idPublication);
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
-		return "redirect:/startupinvest/publications";
+		return "redirect:/startupinvest/publications/"+idStartup+"/view";
 	}
 
 }

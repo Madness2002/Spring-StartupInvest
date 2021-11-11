@@ -13,6 +13,7 @@
 	th:href="@{/dashboard-investor/Bootstrap/css/Dashboard-investor.css}" />
 <link rel="stylesheet" th:href="@{/css/Startup_perfil-investor.css}">
 
+<link rel="stylesheet" th:href="@{/css/publication.css}">
 <!--Font-Awsome-->
 
 <link rel="stylesheet"
@@ -100,7 +101,7 @@
 							</div>
 							<div class="barra-progreso">
 								<div class="progress">
-									<div
+									<div 
 										class="progress-bar progress-bar-striped progress-bar-animated"
 										role="progressbar"
 										th:style="'width:'+${#numbers.formatDecimal(aux, 1, 'COMMA', 2, 'POINT')} +'%'"
@@ -469,7 +470,7 @@
 												placeholder="name@example.com">
 										</div>
 
-										<button type="submit" class="btn btn-primary">Close</button>
+										<button type="submit" class="btn btn-primary">Está bien</button>
 
 									</form>
 								</div>
@@ -511,23 +512,27 @@
 				</div>
 				<div class="box-novedades">
 
-					<div class="list-card-startup">
-						<div class="img-list-card-startup">
-							<img
-								src="../../static/dashboard-investor/Bootstrap/img/kambista.png" />
-						</div>
-						<div class="card-body-startup">
-							<h6 class="card-title">Usuarios podrán cambiar dinero y
-								crear una cuenta bancaria 100% digital desde Kambista</h6>
-							<p class="card-body">Interbank y Kambista firman alianza
-								estratégica para seguir reforzando los servicios financieros...</p>
-							<div class="boton-card">
-								<a
-									href="https://kambista.com/noticias/usuarios-podran-cambiar-dinero-y-crear-una-cuenta-bancaria-100-digital-desde-kambista/"
-									class="btn " style="width: 100%;">¡Ir a la noticia!</a>
+					<div id="box-novedad" th:each="publication:${publications}">
+						<label id="datePublished" th:text=${publication.date}>2019-09-21</label>
+						<div id="box-novedad-content">
+							<div id="title-and-description">
+								<label id="title" th:text=${publication.name}>Usuarios
+									podrán cambiar dinero y crear una cuenta bancaria 100% digital
+									desde Kambista</label><label id="descripcion"
+									th:text="${publication.description}">Interbank y
+									Kambista firman alianza estratégica para seguir reforzando los
+									servicios financieros...</label>
 							</div>
+							<img th:src="@{'/images/startups/'+${imgname}}">
 						</div>
-					</div>
+						
+						<a th:href="@{${publication.url}}" id="editPublication" 
+								 type="button"
+								class="btn btn-info" 
+							>Ver más</a>
+							
+						</div>
+						
 				</div>
 			</div>
 		</div>
