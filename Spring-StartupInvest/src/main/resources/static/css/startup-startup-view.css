@@ -609,5 +609,11 @@ transform:scale(1.1);
 	width: auto;	
 }
 
+#button-buy-plan{
+	transition:0.5s;
+}
 
-
+#button-buy-plan:hover {
+	transition:0.5s;
+	transform:scale(1.1);
+}

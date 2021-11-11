@@ -1,0 +1,118 @@
+#title-and-description {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.box-novedades {
+	width: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-bottom: 5rem;
+}
+
+#box-novedad:hover{
+	transition:0.5s;
+	transform: scale(1.1);
+	
+}
+
+#box-novedad-content {
+	display: flex;
+	width: 28rem;
+	flex-direction: row;
+}
+
+#box-novedad-content img {
+	padding: 1rem 2rem 2rem 1rem; border-radius : 2rem;
+	width: 40%;
+	border-radius: 2rem;
+}
+
+#title {
+	text-align: justify;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+#box-novedad {
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0.5px 5px 15px rgb(0 0 0/ 55%);
+	padding: 1.9rem;
+	border-radius: 2rem;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-color: aqua solid 2px;
+		transition:0.5s;
+}
+
+#editPublication {
+	width: 40%;
+	border-radius: 1rem;
+		font-weight: bolder;
+	color: white;
+}
+
+#descripcion {
+	padding-top: 1rem;
+	text-align: justify;
+}
+
+#datePublished {
+	padding-bottom: 1.9rem;
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+#addPublication {
+	font-size: 1.3rem;
+	font-weight: bold; width : 19rem;
+	height: 5rem;
+	border-radius: 20px;
+	box-shadow: 0.5px 5px 15px rgb(0 0 0/ 55%);
+	color: white;
+	width: 19rem;
+}
+
+#box-addPublication {
+	display: flex;
+	justify-content: flex-end;
+}
+
+#buttons-publication {
+	padding-top: 1.5rem;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+#deletePublication {
+	font-weight: bolder;
+	color: white;
+	width: 40%;
+	background-color:red;
+	border:transparent;
+	border-radius: 1rem;
+}
+
+
+#text-body-delete-publication{
+	font-weight:bold;
+	font-size:24px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+	text-align: left;
+
+}
+#text-body-delete-publication label{
+	align-content: flex-start;
+
+}
+

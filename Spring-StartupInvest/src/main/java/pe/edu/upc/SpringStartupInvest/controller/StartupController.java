@@ -24,7 +24,6 @@ import pe.edu.upc.SpringStartupInvest.model.entity.PlanHistory;
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 import pe.edu.upc.SpringStartupInvest.model.entity.TypeCard;
 import pe.edu.upc.SpringStartupInvest.model.entity.TypeInvestment;
-import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
 import pe.edu.upc.SpringStartupInvest.service.crud.InvestmentRequestService;
 import pe.edu.upc.SpringStartupInvest.service.crud.InvestorService;
 import pe.edu.upc.SpringStartupInvest.service.crud.PlanHistoryService;
@@ -107,6 +106,10 @@ public class StartupController {
 				model.addAttribute("cards", cards);
 				model.addAttribute("startup", optional.get());
 				model.addAttribute("investorHistory", new InvestorHistory());
+				//PUBLICACIONES
+				model.addAttribute("publications", optional.get().getPublications());
+				
+				
 				return "startup/startup-investor-view";
 			}
 		} catch (Exception e) {
@@ -118,7 +121,7 @@ public class StartupController {
 		return "startup/startup-investor-view";
 	}
 	
-	///   /startupinvest/startups/2001/view/profile
+	//
 	@GetMapping("{id}/view/profile")
 	public String viewStartupProfile(Model model, @PathVariable("id") Integer id) {
 		try {
@@ -151,18 +154,22 @@ public class StartupController {
 				model.addAttribute("idStartup", id);
 				
 				//SOLICITUD DE INVERSION
-				List<TypeInvestment> typesInvestment =typeInvestmentService.getAll();
-						
+				List<TypeInvestment> typesInvestment =typeInvestmentService.getAll();						
 				model.addAttribute("investmentRequest", new InvestmentRequest());
 				model.addAttribute("typesInvestment", typesInvestment);
 				
 				//PLANS
-				
-				
+				List<TypeCard>typesCard =typeCardService.getAll();
+				model.addAttribute("typesCard", typesCard);
 				Date dateExpirationOfTheLastPlanActive=planHistoryService.findLastDateOfPlanValidByStartupId(id);
 				Date dateExpirationPlanActive=planHistoryService.findActivePlanValidByStartupId(id);
 				if(dateExpirationPlanActive!=null)
 				model.addAttribute("dateExpirationOfTheLastPlanActive", dateExpirationOfTheLastPlanActive);
+				//PUBLICACIONES
+				model.addAttribute("publications", optional.get().getPublications());
+				
+				
+				
 				
 				
 				return "startup/startup-startup-view";

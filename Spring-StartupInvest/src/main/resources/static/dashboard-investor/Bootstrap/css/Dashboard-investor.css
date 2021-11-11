@@ -216,7 +216,12 @@
 	display: flex;
 	text-align: right;
 	align-items: flex-end;
-	width: 40%;
+	width: 47%;
+}
+
+.progress-bar{
+	background-color: #61BFD1;
+	
 }
 
 .box-portafolio .card-portafolio .img-startup-portafolio {
