@@ -13,178 +13,295 @@
 
 	<header th:replace="layout/layout :: frag-header"> </header>
 
-
-
 	<!--CONTENIDO-->
 	<main>
 		<header th:replace="layout/layout :: frag-left-bar-administrator">
 		</header>
 
 		<div class="right-section">
-			<div class="superior-zone">
-				<h1>Categorias de Startup</h1>
-				<button class="btn btn-success btn-lg" data-toggle="modal"
-					data-target="#modalForm">Agregar</button>
 
+			<div id="title">Categoría de startups</div>
+			<div id="box-button-add">
+				<button data-toggle="modal" data-target="#agregarCategoria" id="button-add-category" type="button" class="btn btn-info">Agregar
+					nueva categoría</button>
 			</div>
 
-			<div class="container">
-
-				<div class="card color-card1" th:each="category:${categories}">
+			<div class="list-startups">
 
 
-					<img src="/images/administrator/ImagenCategories.png">
+				<div th:each="category:${categories}" class="list-card-startup"
+					th:style="${category.state ? 'background-color: #DBFDCF' : 'background-color: #FFC6C6'}">
+					<div class="img-list-card-startup">
+						<div id="img-categories" style="filter: brightness(50%);">
+							<div th:if="${category.state}" style="background-color: #3ABC37;"
+								id="circle"></div>
+							<div th:unless="${category.state}"
+								style="background-color: #E11E1E;" id="circle"></div>
+						</div>
+					</div>
+					<div id="barra"></div>
 
-					<div th:if="${category.state}" id="circle"></div>
-					<div th:unless="${category.state}" id="circle"
-						style="background-color: red;"></div>
+					<input hidden="true" class="form-control" th:id="*{'idSend'+{category.id}}" th:value="${category.id}">
+					<input hidden="true" class="form-control" type="text" th:id="*{'nameSend'+{category.id}}"
+						th:value="${category.name}">
 
-
-					<h4 th:text="'Categoría:'+${category.name}">nameCategory</h4>
-					<div class="botones">
-						<button class="btn color-ancho btn-lg" data-toggle="modal"
-							data-target="#modalForm1">Editar</button>
-						<button th:if="${category.state}" class="btn color2-ancho btn-lg"
-							data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
-						<button th:unless="${category.state}"
-							class="btn color3-ancho btn-lg" data-toggle="modal"
-							data-target="#modalForm2">Habilitar</button>
-
+					<div class="card-body-startup">
+						<h5 class="card-title" th:text="'Categoría: '+${category.name}">startup</h5>
+						<div class="boton-card" style="background-color: transparent;">
+							<button id="button-footer" class="btn btn-pill btn-secondary"
+								style="background-color: #D8FF86; border-radius: 4rem; width: 8rem; color: black; font-weight: bold; border: transparent;"
+								th:onclick="'javascript:confirmEditCategoryAll(\''+ ${category.id} +'\');'">Editar</button>
+							<button th:if="${category.state}"
+								class="btn btn-pill btn-secondary"
+								th:onclick="'javascript:confirmEditCategoryStateDefuse(\''+ ${category.id} +'\');'"
+								style="background-color: #E11E1E; border-radius: 4rem; width: 8rem; border: transparent; font-weight: bold;"
+								data-toggle="modal" data-target="#deshabilitarCategoria">Deshabilitar</button>
+							<button th:unless="${category.state}"
+								class="btn btn-pill btn-secondary"
+								th:onclick="'javascript:confirmEditCategoryStateActive(\''+ ${category.id} +'\');'"
+								style="background-color: #3ABC37; border: transparent; width: 8rem; border-radius: 4rem; font-weight: bold;">Habilitar</button>
+						</div>
 					</div>
 				</div>
 
 
-
-
 			</div>
+
+
+			<!-- DESHABILITAR -->
+
+			<div class="modal fade" id="deshabilitarCategoria" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<form class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<img
+								src="/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png"
+								alt="StartupInvest" width="36" height="30"
+								class="d-inline-block align-text-top" style="height: 100%;">
+							<h5 class="modal-title" id="exampleModalLabel">Startup
+								Invest</h5>
+
+						</div>
+						<div class="modal-body">
+							<input type="hidden" id="activeStateHiddenInput"
+								name="activeStateHiddenInput" />
+							<h3>¿Seguro que quieres deshabilitar la categoría?</h3>
+							<p>Los usuarios no podrán visualizar categoría si lo
+								deshabilita</p>
+
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-lg btn-primary btn-block"
+								id="button-footer-left"
+								style="background-color: #DC3545; width: 8rem;"
+								data-dismiss="modal" th:onclick="closeModalEditState()">No</button>
+							<a class="btn btn-lg btn-primary btn-block" data-dismiss="modal"
+								style="background-color: #28A745; width: 8rem;"
+								th:onclick="editCategoryStateActive()" id="button-footer-right">Sí</a>
+
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- DESHABILITAR -->
+
+
+<!-- HABILITAR -->
+
+			<div class="modal fade" id="habilitarCategoria" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<form class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<img
+								src="/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png"
+								alt="StartupInvest" width="36" height="30"
+								class="d-inline-block align-text-top" style="height: 100%;">
+							<h5 class="modal-title" id="exampleModalLabel">Startup
+								Invest</h5>
+
+						</div>
+						<div class="modal-body">
+							<input type="hidden" id="activeStateHiddenInput"
+								name="activeStateHiddenInput" />
+							<h3>¿Seguro que quieres habilitar la categoría?</h3>
+							<p>Los usuarios podrán visualizar categoría si la
+								habilita</p>
+
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-lg btn-primary btn-block"
+								id="button-footer-left"
+								style="background-color: #DC3545; width: 8rem;"
+								data-dismiss="modal" th:onclick="closeModalEditState()">No</button>
+							<a class="btn btn-lg btn-primary btn-block" data-dismiss="modal"
+								style="background-color: #28A745; width: 8rem;"
+								th:onclick="editCategoryStateActive()" id="button-footer-right">Sí</a>
+
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- HABILITAR -->
+
+
+
+			<!-- EDITAR CATEGORIA -->
+
+			<div class="modal fade" id="editarCategoria" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<form th:action="@{/startupinvest/category/administrator/categories/edit}" th:object="${editCategory}" class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<img
+								src="/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png"
+								alt="StartupInvest" width="36" height="30"
+								class="d-inline-block align-text-top" style="height: 100%;">
+							<h5 class="modal-title" id="exampleModalLabel">Startup
+								Invest</h5>
+
+						</div>
+						<div class="modal-body">
+
+							<h3>Editar categoría</h3>
+
+							<div>
+								<div class="form-group" hidden="true" >
+									<label for="id" class="col-form-label"
+										style="font-weight: bolder;">Id</label> <input type="number"
+										class="form-control" id="idCreate" placeholder="Identificador..."
+										th:field="*{id}">
+								</div>
+
+								<div class="form-group">
+									<label for="nombre" class="col-form-label"
+										style="font-weight: bolder;">Nombre</label> <input type="text"
+										class="form-control" id="nameCreate1"
+										placeholder="Nombre del plan..." th:field="*{name}">
+								</div>
+							</div>
+
+
+						</div>
+						<div class="modal-footer">
+							<a class="btn btn-lg btn-primary btn-block"
+								id="button-footer-left"
+								style="background-color: #DC3545; width: 8rem;"
+								data-dismiss="modal" th:onclick="closeModalEditAll()">Cancelar</a>
+							<button class="btn btn-lg btn-primary btn-block" data-dismiss="modal"
+								style="background-color: #28A745; width: 8rem;"
+								th:onclick="editCategoryStateActive()" id="button-footer-right">Aceptar</button>
+
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- EDITAR CATEGORIA -->
+
+
+
+
+
+<!-- AGREGAR CATEGORIA -->
+
+			<div class="modal fade" id="agregarCategoria" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<form th:action="@{/startupinvest/category/administrator/categories/newCategory}" th:object="${newCategory}" class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<img
+								src="/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png"
+								alt="StartupInvest" width="36" height="30"
+								class="d-inline-block align-text-top" style="height: 100%;">
+							<h5 class="modal-title" id="exampleModalLabel">Startup
+								Invest</h5>
+
+						</div>
+						<div class="modal-body">
+
+							<h3>Agregar categoría</h3>
+
+							<div>
+								
+
+								<div class="form-group">
+									<label for="nombre" class="col-form-label"
+										style="font-weight: bolder;">Nombre</label> <input type="text"
+										class="form-control" id="nameCreate1"
+										placeholder="Nombre de la categoría..." th:field="*{name}" autocomplete="off">
+								</div>
+							</div>
+
+
+						</div>
+						<div class="modal-footer">
+							<a class="btn btn-lg btn-primary btn-block"
+								id="button-footer-left"
+								style="background-color: #DC3545; width: 8rem;"
+								data-dismiss="modal" th:onclick="closeModalEditAll()">Cancelar</a>
+							<button  class="btn btn-lg btn-primary btn-block" 
+								style="background-color: #28A745; width: 8rem;"
+								 id="button-footer-right">Aceptar</button>
+
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- AGREGAR CATEGORIA -->
+
 		</div>
 
-		<!-- Modal1 -->
-		<div class="modal fade" id="modalForm" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<img
-							th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
-						<!--<button type="button" class="close" data-dismiss="modal">
-                       				<span aria-hidden="true">×</span>
-                      			 	<span class="sr-only">Cerrar</span>
-                   				  </button>-->
-						<h4 class="modal-title" id="myModalLabel">Nueva Categoría</h4>
-					</div>
-
-					<!-- Modal Body -->
-					<div class="modal-body">
-						<p class="statusMsg"></p>
-						<form role="form">
-							<div class="form-group">
-								<label for="inputName">Nombre de la Categoría</label> <input
-									type="text" class="form-control" id="inputName"
-									placeholder="Ingrese el nuevo nombre de la categoría" />
-							</div>
-						</form>
-					</div>
-
-					<!-- Modal Footer -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal"
-							style="background-color: red; color: white;">Cerrar</button>
-						<button type="button" class="btn btn-primary submitBtn"
-							onclick="submitContactForm()"
-							style="background-color: green; color: white;">Agregar</button>
-					</div>
-				</div>
-			</div>
-		</div>
 
 
 
-		<!-- Modal2 -->
-		<div class="modal fade" id="modalForm1" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<img
-							th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
-						<!--<button type="button" class="close" data-dismiss="modal">
-                       				<span aria-hidden="true">×</span>
-                      			 	<span class="sr-only">Cerrar</span>
-                   				  </button>-->
-						<h4 class="modal-title" id="myModalLabel">Editar Categoría</h4>
-					</div>
 
-					<!-- Modal Body -->
-					<div class="modal-body">
-						<p class="statusMsg"></p>
-						<form role="form">
-							<div class="form-group">
-								<label for="inputName">Nombre de la Categoría</label> <input
-									type="text" class="form-control" id="inputName"
-									placeholder="Ingrese el nuevo nombre de la categoría" />
-							</div>
-
-
-						</form>
-					</div>
-
-					<!-- Modal Footer -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-						<button type="button" class="btn btn-primary submitBtn"
-							onclick="submitContactForm()">Confirmar</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<!-- Modal3 -->
-		<div class="modal fade" id="modalForm2" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content2">
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<img
-							th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
-						<!--<button type="button" class="close" data-dismiss="modal">
-                       				<span aria-hidden="true">×</span>
-                      			 	<span class="sr-only">Cerrar</span>
-                   				  </button>-->
-						<h4 class="modal-title" id="myModalLabel">Cambio de estado</h4>
-					</div>
-
-					<!-- Modal Body -->
-					<div class="modal-body centrar">
-						<p class="statusMsg"></p>
-						<form role="form">
-							<div class="form-group">
-								<label for="inputName">¿Seguro que quieres cambiar el
-									estado?</label>
-							</div>
-							<div class="form-group">
-								<label for="inputEmail">Los usuarios no podrán ver esta
-									opción</label>
-							</div>
-						</form>
-					</div>
-
-					<!-- Modal Footer -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-						<button type="button" class="btn btn-primary submitBtn"
-							onclick="submitContactForm()">Confirmar</button>
-					</div>
-				</div>
-			</div>
-		</div>
 	</main>
 
-
-
 	<footer th:replace="layout/layout :: frag-footer"></footer>
+	<footer>
+		<script type="text/javascript">
+function editCategoryStateActive(){
+	var id = $("#activeStateHiddenInput").val();
+    window.location = "/startupinvest/category/administrator/categories/"+id+"/editState" ;
+}
 
+function confirmEditCategoryStateDefuse(id){
+	$('#deshabilitarCategoria').modal('show');
+	$("#activeStateHiddenInput").val(id);
+}
+
+
+function confirmEditCategoryStateActive(id){
+	$('#habilitarCategoria').modal('show');
+	$("#activeStateHiddenInput").val(id);
+}
+
+function closeModalEditState(){
+	$('#deshabilitarCategoria').modal('hide');
+	
+}
+
+function closeModalEditAll(){
+	$('#editarCategoria').modal('hide');
+	
+}
+
+
+function confirmEditCategoryAll(id){
+	$('#editarCategoria').modal('show');
+	
+	var idSend = $("#idSend"+id).val();
+	$("#idCreate").val(idSend);
+
+	var nameSend = $("#nameSend"+id).val();
+	$("#nameCreate1").val(nameSend);
+
+}
+
+
+</script>
+	</footer>
 
 </body>
 

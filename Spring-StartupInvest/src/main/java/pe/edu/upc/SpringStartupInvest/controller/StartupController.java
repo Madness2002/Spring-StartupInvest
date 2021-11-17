@@ -92,7 +92,7 @@ public class StartupController {
 				//USAMOS EL ID 1001 PORQUE AUN NO ENTRAMOS A SECURITY
 				Optional<Investor> investor = investorService.findById(1001);
 				List<TypeCard> cards=typeCardService.getAll();
-				
+				//Solicitudes de inversion
 				model.addAttribute("investmentRequests", listInvestmentRequests);
 				model.addAttribute("imgname", optional.get().getImage());
 				model.addAttribute("description", optional.get().getDescription());

@@ -49,8 +49,12 @@ public class FrontController {
 			startupsMostPopular = startupService.listStartupsMostPopular();
 			startupsRecently = startupService.findByDateRecently();
 			startupWithActivePlans=startupService.findStartupsByActivePlan();
+			
+			
 			//Usamos el ID=1001, ya que aun no entramos al login (security)
 			investments=investorHistoryService.listPortafolioByInvestorId(1001);
+			
+			
 			// Lista de las startups más populares (TOP 5)
 			for (Startup startup : startupsMostPopular) {
 				startups.remove(startup);
@@ -74,7 +78,7 @@ public class FrontController {
 			}
 
 			
-			
+			//Aqui se ordena las startups por posición
 			Collections.sort(startupsMostPopular, new CompareAmounth());
 			Collections.sort(startupsRecently, new CompareAmounth());
 			
@@ -84,7 +88,9 @@ public class FrontController {
 			model.addAttribute("categories", categories);
 			model.addAttribute("startupsRecently", startupsRecently);
 			model.addAttribute("startupsMostPopular", startupsMostPopular);		
+			//Aqui se cargan las inversiones que ha hecho el inversionista
 			model.addAttribute("investments", investments);
+			
 			model.addAttribute("startupWithActivePlans", startupWithActivePlans);
 			
 		} catch (Exception e) {

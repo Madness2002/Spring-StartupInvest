@@ -26,7 +26,6 @@ import pe.edu.upc.SpringStartupInvest.service.crud.CategoryService;
 
 @Controller
 @RequestMapping("/startupinvest/category")
-@SessionAttributes("category")
 public class CategoryController {
 
 	@Autowired
@@ -60,30 +59,65 @@ public class CategoryController {
 			categories = categoryService.getAll();
 			model.addAttribute("categories", categories);
 			model.addAttribute("category", new Category());
+			model.addAttribute("editCategory", new Category());
+			model.addAttribute("newCategory", new Category());
 		} catch (Exception e) {
 			e.getMessage();
 		}
 
 		return "dashboard-administrator/administrator-category";
 	}
-	
-	
-	
-	
-	
-	@PostMapping("{id}/edit")
-	public void actualizar(Model model, @PathVariable("id") Integer id) {
-		try {
-			if (categoryService.existsById(id)) {
-				Optional<Category> optional = categoryService.findById(id);
-				model.addAttribute("editCountry", optional);
-			}
 
+	@GetMapping("administrator/categories/{id}/editState")
+	public String editAdministratorCategory(Model model, @PathVariable("id") Integer id) {
+
+		try {
+			Optional<Category> category = categoryService.findById(id);
+			if (category.isPresent()) {
+				Boolean state = category.get().getState();
+
+				category.get().setState(!state);
+				categoryService.update(category.get());
+			} else
+				return "redirect:/startupinvest/category/administrator/categories";
 		} catch (Exception e) {
 			e.getMessage();
 		}
 
+		return "redirect:/startupinvest/category/administrator/categories";
 	}
+
+	@GetMapping("administrator/categories/edit")
+	public String actualizar(Model model, @ModelAttribute("editCategory") Category editCategory) {
+		try {
+			Optional<Category> category = categoryService.findById(editCategory.getId());
+			category.get().setName(editCategory.getName());
+			categoryService.update(category.get());
+			
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return "redirect:/startupinvest/category/administrator/categories";
+	}
+	
+	
+	@GetMapping("administrator/categories/newCategory")
+	public String insert(Model model, @ModelAttribute("newCategory") Category editCategory) {
+		try {
+			editCategory.setState(false);
+			
+			
+			categoryService.create(editCategory);
+			
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return "redirect:/startupinvest/category/administrator/categories";
+	}
+	
+	
+	
+	
 
 	@PostMapping("saveEdit")
 	public String saveEdit(Model model, @ModelAttribute("category") Category category) {
@@ -112,7 +146,16 @@ public class CategoryController {
 	}
 
 	
-	//PRUEBAS
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// PRUEBAS
 	@PostMapping("newCategory")
 	public String insertar(Model model, @Valid @ModelAttribute("category") Category category,
 			@RequestParam("file") MultipartFile imagen) throws Exception {
@@ -137,11 +180,4 @@ public class CategoryController {
 		return "redirect:/ga";
 	}
 
-	
 }
-
-
-
-
-
-
