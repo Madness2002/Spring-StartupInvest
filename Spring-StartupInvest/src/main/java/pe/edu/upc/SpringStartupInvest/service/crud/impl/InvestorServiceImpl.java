@@ -5,6 +5,8 @@ import pe.edu.upc.SpringStartupInvest.model.entity.Investor;
 import pe.edu.upc.SpringStartupInvest.model.repository.InvestorRepository;
 import pe.edu.upc.SpringStartupInvest.service.crud.InvestorService;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -20,5 +22,20 @@ public class InvestorServiceImpl implements InvestorService {
 		return investorRepository;
 	}
 
+	@Override
+	public Optional<Investor> findById(Integer id) {
+		
+		return investorRepository.findById(id);
+	}
+
+	@Override
+	public Optional<Investor> findInvestorByInvestorHistoryId(Integer id) {
+		return investorRepository.findInvestorByInvestorHistoryId(id);
+	}
+
+	
+	
+	
+	
 	
 }

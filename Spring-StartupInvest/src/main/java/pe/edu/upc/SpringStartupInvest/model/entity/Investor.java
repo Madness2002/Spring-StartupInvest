@@ -10,8 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -59,25 +61,33 @@ public class Investor {
 	@Column(name = "investor_state", nullable = false)
 	private Boolean state;
 
-	@NotBlank(message = "La contraseña no debe estar en blanco")
-	@NotNull(message="La contraseña debe contener valor")
-	@Size(max=500,message="El tamaño no debe ser mayor a 500")
-	@Column(name = "investor_password", length = 500, nullable = false)
-	private String password;
-
 	@OneToMany(mappedBy = "investor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<InvestorHistory> investorHistories;
 
 	@OneToMany(mappedBy = "investor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<TypeCardHistory> typeCardHistories;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@MapsId("id")
+	@JoinColumn(name="user_id",nullable = true)
+	private User user;
+	
+	
 	public Investor() {
 		investorHistories = new ArrayList<InvestorHistory>();
 		typeCardHistories = new ArrayList<TypeCardHistory>();
+		
 	}
 
-	public Investor(Integer id, String name, String dni, String lastname, String email, String image, Boolean state,
-			String password, List<InvestorHistory> investorHistories, List<TypeCardHistory> typeCardHistories) {
+	
+
+	public Investor(Integer id,
+			@NotBlank(message = "La descripcion no debe estar en blanco") @NotNull(message = "La descripcion debe contener valor") @Size(max = 50, message = "El tamaño no debe ser mayor a 50") String name,
+			@NotBlank(message = "El DNI no debe estar en blanco") @NotNull(message = "El DNI debe contener valor") @Size(max = 8, message = "El tamaño no debe ser mayor a 8") String dni,
+			@NotBlank(message = "El lastname no debe estar en blanco") @NotNull(message = "El lastname debe contener valor") @Size(max = 50, message = "El tamaño no debe ser mayor a 50") String lastname,
+			@NotBlank(message = "El email no debe estar en blanco") @NotNull(message = "El email debe contener valor") @Size(max = 50, message = "El tamaño no debe ser mayor a 50") String email,
+			@Size(max = 500, message = "El tamaño no debe ser mayor a 500") String image, Boolean state,
+			List<InvestorHistory> investorHistories, List<TypeCardHistory> typeCardHistories, User user) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -86,9 +96,19 @@ public class Investor {
 		this.email = email;
 		this.image = image;
 		this.state = state;
-		this.password = password;
 		this.investorHistories = investorHistories;
 		this.typeCardHistories = typeCardHistories;
+		this.user = user;
+	}
+
+
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Integer getId() {
@@ -147,14 +167,7 @@ public class Investor {
 		this.state = state;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
+	
 	public List<InvestorHistory> getInvestorHistories() {
 		return investorHistories;
 	}

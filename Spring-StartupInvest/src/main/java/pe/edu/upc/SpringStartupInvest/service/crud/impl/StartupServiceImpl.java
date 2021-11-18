@@ -24,10 +24,7 @@ public class StartupServiceImpl implements StartupService {
 		return startupRepository;
 	}
 
-	@Override
-	public Optional<Startup> findById(Integer id) throws Exception {
-		return startupRepository.findById(id);
-	}
+	
 
 	@Override
 	public List<Startup> findByName(String name) throws Exception {
@@ -74,6 +71,13 @@ public class StartupServiceImpl implements StartupService {
 	@Override
 	public List<Startup> findStartupsByActivePlan() throws Exception {
 		return startupRepository.findStartupsByActivePlan();
+	}
+
+
+
+	@Override
+	public Optional<Startup> findById(Integer id) {
+		return startupRepository.findById(id);
 	}
 
 }

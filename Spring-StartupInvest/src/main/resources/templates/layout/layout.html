@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="frag-head">
-
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
@@ -40,6 +39,8 @@
 
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
+			
+			<div style="display: flex;flex-direction: row;">
 				<a class="navbar-brand" th:href="@{/startupinvest/home}"> <img
 					th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
 					alt="StartupInvest" width="36" height="30"
@@ -55,10 +56,8 @@
 					<ul class="navbar-nav position-relative">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" th:href="@{/startupinvest/home}">Inicio</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Noticias</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">Planes</a>
-						</li>
+						
+						
 						<li class="nav-item">
 							<div class="btn-group">
 								<button type="button" class="btn btn-success dropdown-toggle"
@@ -74,10 +73,14 @@
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item"><a class="nav-link"
+						<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link"
 							th:href="@{/startupinvest/administrator}">Administrador</a></li>
 					</ul>
 				</div>
+				
+				</div>
+				<a th:href="@{/logout}" style="color: white;"><i  class="fas fa-power-off fa-2x"></i></a>
+				
 			</div>
 		</nav>
 

@@ -19,4 +19,5 @@ spring:
       spring.thymeleaf.content-type: text/html 
 spring.thymeleaf.cache: FALSE
 spring.thymeleaf.mode: LEGACYHTML5
+jdbc.lob.non_contextual_creation: true
               
