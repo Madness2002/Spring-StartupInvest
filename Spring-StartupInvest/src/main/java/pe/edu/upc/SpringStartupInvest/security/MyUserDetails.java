@@ -61,6 +61,10 @@ public MyUserDetails(User user) {
 		return this.user.isEnable();
 	}
 
+	 public User getUser(){
+	        return this.user;
+	    }
+	
 	
 	
 }

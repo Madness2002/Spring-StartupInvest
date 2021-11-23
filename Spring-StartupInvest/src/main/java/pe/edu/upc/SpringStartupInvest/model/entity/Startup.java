@@ -69,8 +69,7 @@ public class Startup {
 	@Column(name = "startup_ruc", length = 11, nullable = false)
 	private String ruc;
 
-	@NotNull(message = "La fecha de registro debe contener valor")
-	@NotBlank(message = "La fecha de registro no debe estar en blanco")
+	
 	@Column(name = "startup_register_date", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date registerDate;
@@ -87,13 +86,13 @@ public class Startup {
 	@Transient
 	private Double amounthTotalInvest;
 
-	@OneToMany(mappedBy = "startup", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "startup", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<Publication> publications;
 
-	@OneToMany(mappedBy = "startup", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "startup", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<PlanHistory> plansHistory;
 
-	@OneToMany(mappedBy = "startup", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "startup", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<InvestmentRequest> investmentRequests;
 
 	@OneToOne(cascade = CascadeType.ALL)
@@ -101,11 +100,19 @@ public class Startup {
 	@JoinColumn(name = "user_id", nullable = true)
 	private User user;
 
+	@Transient
+	private String username;
+	
+	@Transient
+	private String password;
+	
 	public Startup() {
 		publications = new ArrayList<Publication>();
 		plansHistory = new ArrayList<PlanHistory>();
 		investmentRequests = new ArrayList<InvestmentRequest>();
 	}
+
+	
 
 	public Startup(Integer id, Category category,
 			@NotBlank(message = "El nombre no debe estar en blanco") @NotNull(message = "El nombre debe contener valor") @Size(max = 50, message = "El tamaño no debe ser mayor a 50") String name,
@@ -115,7 +122,7 @@ public class Startup {
 			@NotNull(message = "La fecha de registro debe contener valor") @NotBlank(message = "La fecha de registro no debe estar en blanco") Date registerDate,
 			@NotBlank(message = "La descripción no debe estar en blanco") @NotNull(message = "La descripción debe contener valor") @Size(max = 2000, message = "El tamaño no debe ser mayor a 2000") String description,
 			Integer position, Double amounthTotalInvest, List<Publication> publications, List<PlanHistory> plansHistory,
-			List<InvestmentRequest> investmentRequests, User user) {
+			List<InvestmentRequest> investmentRequests, User user, String username, String password) {
 		super();
 		this.id = id;
 		this.category = category;
@@ -132,7 +139,35 @@ public class Startup {
 		this.plansHistory = plansHistory;
 		this.investmentRequests = investmentRequests;
 		this.user = user;
+		this.username = username;
+		this.password = password;
 	}
+
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
 
 	public Integer getId() {
 		return id;

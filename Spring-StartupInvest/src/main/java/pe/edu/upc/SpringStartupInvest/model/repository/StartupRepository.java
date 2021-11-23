@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import pe.edu.upc.SpringStartupInvest.model.entity.Investor;
 import pe.edu.upc.SpringStartupInvest.model.entity.Startup;
 
 import org.springframework.data.jpa.repository.JpaRepository;

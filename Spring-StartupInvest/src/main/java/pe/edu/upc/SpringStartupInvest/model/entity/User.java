@@ -48,7 +48,7 @@ public class User {
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Authority> authorities;
 
-	@OneToOne(mappedBy="user")
+	@OneToOne(mappedBy="user",orphanRemoval = true)
 	private Startup startup;
 	
 	@OneToOne(mappedBy="user")
@@ -148,6 +148,41 @@ public class User {
 		return authorities;
 	}
 
+	public String getAuthorityRoleInvestor() {
+		
+		String roleInvestor = new String();
+		for (Authority authority : this.authorities) {
+			if(authority.getAuthority().equals("ROLE_INVESTOR"))
+				roleInvestor=authority.getAuthority();	
+		}
+		
+		return roleInvestor;
+	}
+	
+public String getAuthorityRoleAdmin() {
+		
+		String roleAdmin= new String();
+		for (Authority authority : this.authorities) {
+			if(authority.getAuthority().equals("ROLE_ADMIN"))
+				roleAdmin=authority.getAuthority();	
+		}
+		
+		return roleAdmin;
+	}
+	
+
+
+public String getAuthorityRoleStartup() {
+	
+	String roleStartup= new String();
+	for (Authority authority : this.authorities) {
+		if(authority.getAuthority().equals("ROLE_STARTUP"))
+			roleStartup=authority.getAuthority();	
+	}
+	
+	return roleStartup;
+}
+	
 	public void setAuthorities(List<Authority> authorities) {
 		this.authorities = authorities;
 	}

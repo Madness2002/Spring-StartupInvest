@@ -57,4 +57,10 @@ public class InvestorHistoryServiceImpl implements InvestorHistoryService {
 		return investmentsByInvestor;
 	}
 
+	
+	@Override
+	public List<InvestorHistory> listInvestmentsToReclaimByInvestorId(Integer id) {
+		return investorHistoryRepository.listInvestmentsToReclaimByInvestorId(id);
+	}
+
 }

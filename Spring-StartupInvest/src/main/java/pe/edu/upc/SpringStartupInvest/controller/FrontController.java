@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,14 +47,34 @@ public class FrontController {
 
 	@GetMapping("startupinvest/login") //
 	public String login() {
-		return "users/login";
+		return "login";
 	}
 	
+	@GetMapping("startupinvest/choose/user") //
+	public String chooseUser() {
+		return "choose-user";
+	}
+	
+	@GetMapping("startupinvest/register/startup") //
+	public String registerStartup() {
+		return "register-startup";
+	}
+	
+	@GetMapping("startupinvest/register/investor") //
+	public String registerInvestor(Model model) {
+		Investor investor=new Investor();
+		investor.setState(true);
+		model.addAttribute("investor", investor);
+		
+		return "register-investor";
+	}
 	
 	@GetMapping("startupinvest/home")
-	public String home(Model model) {
-
+	public String home(Model model, Authentication authentication) {
+		MyUserDetails userSession = (MyUserDetails) authentication.getPrincipal();
+if(userSession.getUser().getAuthorityRoleInvestor().equals("ROLE_INVESTOR")) {		
 		try {
+			
 			List<Category> categories = new ArrayList<>();
 			List<Startup> startupsMostPopular, startupsRecently, startups, startupWithActivePlans = new ArrayList<>();
 			List<InvestorHistory> investments = new ArrayList<>();
@@ -64,8 +85,9 @@ public class FrontController {
 			startupsRecently = startupService.findByDateRecently();
 			startupWithActivePlans = startupService.findStartupsByActivePlan();
 
-			// MyUserDetails userSession = (MyUserDetails) authentication.getPrincipal();
-			investments=investorHistoryService.listPortafolioByInvestor(1001);
+			//LA LINEA 69 ME DA LOS DATOS DEL USUARIO AUTENTICADO 
+		
+			investments=investorHistoryService.listPortafolioByInvestor(userSession.getUser().getInvestor().getId());
 			
 			
 			// Lista de las startups más populares (TOP 5)
@@ -108,6 +130,15 @@ public class FrontController {
 		}
 
 		return "dashboard/dashboard-investor";
+		
+		
+}//FIN DEL LA PRIMERA CONDICION
+
+else if(userSession.getUser().getAuthorityRoleAdmin().equals("ROLE_ADMIN")) {return "redirect:/startupinvest/administrator";}
+
+else return "redirect:/startupinvest/startups/"+userSession.getUser().getStartup().getId()+"/view/profile";
+
+
 	}
 
 	@GetMapping("ga")

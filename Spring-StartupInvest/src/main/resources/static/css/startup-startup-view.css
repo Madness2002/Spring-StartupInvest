@@ -502,7 +502,8 @@ legend {
 }
 
 .panel-footer a {
-	border-toprgb(255, 255, 0)-radius: 0px;
+	border-top-radius: 0px rgb(255, 255, 0);
+	
 	border-top-right-radius: 0px;
 	border-color: transparent;
 	width: 100%;
@@ -565,7 +566,7 @@ strong {
 	align-items: center;
 	padding: 0rem 0 1rem 0;
 }
-#box-date-valid div{
+#box-date-valid #planActivo{
 	transition:0.5s;
 	display: flex;
 	justify-content: center;
@@ -582,7 +583,8 @@ padding: 1rem 0 1rem 0;
 box-shadow: 6px 6px 6px rgb(0 0 0/ 50%);
 }
 
-#box-date-valid div:hover{
+
+#box-date-valid #planActivo:hover{
 	transition:0.5s;
 transform:scale(1.1);
 	background-image: radial-gradient(circle at 116.45% 74.18%, #ffff7b 0, #ffff6b 12.5%, #ffff5d 25%, #ffee51 37.5%, #f9cc46 50%, #e0ac3c 62.5%, #c89035 75%, #b2782f 87.5%, #9e642a 100%);

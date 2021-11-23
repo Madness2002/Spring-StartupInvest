@@ -1,0 +1,28 @@
+#register-startup:hover {
+	transition: 0.5s;
+	transform: scale(1.1);
+	z-index: 1000;
+	filter: saturate(150%);
+animation: cambio 1s ease infinite;
+}
+
+#register-investor:hover {
+	transition: 0.5s;
+	filter: saturate(150%);
+	transform: scale(1.1);
+	z-index: 1000;
+	
+animation: cambio 1s ease infinite;
+}
+
+
+
+@keyframes cambio { 
+	50%{
+	box-shadow: 0.5px 0.5px 0.5px aqua;
+	transition: transform 0.4s ease-in-out;
+       }
+
+100%{box-shadow: 5px 5px 15px aqua;
+	transition: transform 0.4s ease-in-out;}
+}

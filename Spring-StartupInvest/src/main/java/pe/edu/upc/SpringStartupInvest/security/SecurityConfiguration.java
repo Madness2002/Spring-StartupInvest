@@ -47,6 +47,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 		.authorizeRequests()
 		.antMatchers("/startupinvest/home").hasAnyRole("INVESTOR","STARTUP","ADMIN")
+		
+		
+		.antMatchers("/startupinvest/startups/view/profile/edit").hasAnyRole("STARTUP")	
+		.antMatchers("/startupinvest/publications/").hasAnyRole("STARTUP")
+		.antMatchers("/startupinvest/startups/**").hasAnyRole("STARTUP","INVESTOR")
+		.antMatchers("/startupinvest/investors/perfil").hasRole("INVESTOR")
+		.antMatchers("/startupinvest/investors/perfil/edit").hasRole("INVESTOR")
+		.antMatchers("/startupinvest/administrator").hasRole("ADMIN")
+		.antMatchers("/startupinvest/category/administrator/categories").hasRole("ADMIN")
+		.antMatchers("/startupinvest/administrator/plans").hasRole("ADMIN")
 		.and()
 		.formLogin()
 		  .loginProcessingUrl("/signin")

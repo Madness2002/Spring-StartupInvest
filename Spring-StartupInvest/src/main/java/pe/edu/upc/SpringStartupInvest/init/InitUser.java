@@ -31,6 +31,7 @@ public class InitUser implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 	
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
+		
 		// DESBLOQUEAR PARA CREAR USUARIOS
 		/*
 		Optional<Startup> optional= startupRepository.findById(2001);
@@ -42,7 +43,7 @@ public class InitUser implements CommandLineRunner{
 		 }
 		
 		
-			Optional<Investor> optional= investorRepository.findById(1001);
+			Optional<Investor> optional= investorRepository.findById(8);
 			if (optional.isPresent()) {
 				Investor investor = optional.get();
 				User user =new User("investor", bcpe.encode("contra"), investor);
