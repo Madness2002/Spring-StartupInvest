@@ -1,14 +1,10 @@
 package pe.edu.upc.SpringStartupInvest.controller;
 
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-import javax.transaction.Transactional;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +18,7 @@ import pe.edu.upc.SpringStartupInvest.model.entity.InvestorHistory;
 import pe.edu.upc.SpringStartupInvest.service.crud.InvestorHistoryService;
 
 @Controller
-@RequestMapping("/startupinvest/investorsHistory")
+@RequestMapping("/startupinvest/investorsHistory") //url base
 public class InvestorHistoryController {
 	@Autowired
 	private InvestorHistoryService investorHistoryService;
@@ -48,14 +44,7 @@ public class InvestorHistoryController {
 			
 			investorHistory.setDate(todayDate);
 			investorHistory.setState(true);
-			
-			System.out.println(investorHistory.getId()); 
-			System.out.println(investorHistory.getDate());
-			System.out.println(investorHistory.getAmount());
-			System.out.println(investorHistory.getState());
-			System.out.println(investorHistory.getInvestmentRequest().getId());
-			System.out.println(investorHistory.getInvestor().getId());
-			System.out.println(investorHistory.getTypeCard().getId());
+
 				
 			investorHistoryService.create(investorHistory);
 		

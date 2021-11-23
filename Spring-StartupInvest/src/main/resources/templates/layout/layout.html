@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="frag-head">
-
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
@@ -28,11 +27,13 @@
 	rel="stylesheet">
 
 
+
+
 <script defer th:src="@{/your-path-to-fontawesome/js/brands.js}"></script>
 <script defer th:src="@{/your-path-to-fontawesome/js/solid.js}"></script>
 <script defer th:src="@{/your-path-to-fontawesome/js/fontawesome.js}"></script>
 
-<title>StartupInvest|Dashboards</title>
+<title>StartupInvest|Dashboard</title>
 </head>
 <body>
 
@@ -40,6 +41,8 @@
 
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
+			
+			<div style="display: flex;flex-direction: row;">
 				<a class="navbar-brand" th:href="@{/startupinvest/home}"> <img
 					th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
 					alt="StartupInvest" width="36" height="30"
@@ -55,29 +58,16 @@
 					<ul class="navbar-nav position-relative">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" th:href="@{/startupinvest/home}">Inicio</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Noticias</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">Planes</a>
-						</li>
-						<li class="nav-item">
-							<div class="btn-group">
-								<button type="button" class="btn btn-success dropdown-toggle"
-									data-toggle="dropdown" style="background-color: #212529;border: transparent;">
-									Startups <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a th:href="@{/startupinvest/startups/2001/view/profile}">Rappi</a></li>
-									<li><a th:href="@{/startupinvest/startups/2000/view/profile}">Crehana</a></li>
-									<li><a th:href="@{/startupinvest/startups/2004/view/profile}">dLocal</a></li>
-									<li class="divider"></li>
-									<li><a th:href="@{/startupinvest/startups/2003/view/profile}">Kambista</a></li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item"><a class="nav-link"
-							th:href="@{/startupinvest/administrator}">Administrador</a></li>
+						
+						
+						
+						
 					</ul>
 				</div>
+				
+				</div>
+				<a th:href="@{/logout}" style="color: white;"><i  class="fas fa-power-off fa-2x"></i></a>
+				
 			</div>
 		</nav>
 
@@ -87,11 +77,11 @@
 			<div class="top-section">
 				<div class="imagen-perfil">
 					<img
-						th:src="@{/dashboard-investor/Bootstrap/img/testimonial-2.jpg}"
+						th:src="@{/images/administrator/perfil_administrator.jpg}"
 						alt="Imagen de perfil">
 				</div>
 				<div class="name-perfil">
-					<p id="nombreUsuario">Claudia Rodriguez</p>
+					<p id="nombreUsuario">Administrador</p>
 				</div>
 			</div>
 			<div class="middle-section">
@@ -104,12 +94,7 @@
 						</a>
 					</div>
 
-					<div class="option-inicio">
-						<div class="line-decorate"></div>
-						<a href="#">
-							<p>Mi perfil</p>
-						</a>
-					</div>
+					
 
 					<div class="option-inicio">
 						<div class="line-decorate"></div>
@@ -117,24 +102,14 @@
 							<p>Categoria Startup</p>
 						</a>
 					</div>
-					<div class="option-inicio">
-						<div class="line-decorate"></div>
-						<a th:href="@{/startupinvest/administrator/typesInvestment}">
-							<p>Tipos de inversiones</p>
-						</a>
-					</div>
+					
 					<div class="option-inicio">
 						<div class="line-decorate"></div>
 						<a th:href="@{/startupinvest/administrator/plans}">
 							<p>Tipos de planes</p>
 						</a>
 					</div>
-					<div class="option-inicio">
-						<div class="line-decorate"></div>
-						<a th:href="@{/startupinvest/administrator/typesCard}">
-							<p>Tipos de tarjetas</p>
-						</a>
-					</div>
+					
 
 				</div>
 			</div>
@@ -144,7 +119,7 @@
 	</div>
 
 	<div th:fragment="frag-left-bar">
-		<div class="left-section position-fixed">
+		<div class="left-section position-fixed" >
 			<div class="top-section">
 				<div class="imagen-perfil">
 					<img
@@ -160,14 +135,14 @@
 				<div class="main-options">
 					<div class="option-inicio">
 						<div class="line-decorate"></div>
-						<a href="#">
+						<a th:href="@{/startupinvest/home}">
 							<p>Inicio</p>
 						</a>
 					</div>
 
 					<div class="option-inicio">
 						<div class="line-decorate"></div>
-						<a href="#">
+						<a th:href="@{/startupinvest/investors/perfil}">
 							<p>Mi perfil</p>
 						</a>
 					</div>
@@ -337,7 +312,64 @@
 		<script type="text/javascript"
 			th:src="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js}"></script>
 
+<!-- Back to top -->
+		<a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
+		<!-- Jquery js-->
+		<script th:src="@{/assets/js/vendors/jquery-3.2.1.min.js}"></script>
+
+		<!--Bootstrap.min js-->
+		<script th:src="@{/assets/plugins/bootstrap/popper.min.js}"></script>
+		<script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+
+		<!--Jquery Sparkline js-->
+		<script th:src="@{/assets/js/vendors/jquery.sparkline.min.js}"></script>
+
+		<!-- Chart Circle js-->
+		<script th:src="@{/assets/js/vendors/circle-progress.min.js}"></script>
+
+		<!-- Star Rating js-->
+		<script th:src="@{/assets/plugins/rating/jquery.rating-stars.js}"></script>
+
+		<!--Moment js-->
+		<script th:src="@{/assets/plugins/moment/moment.min.js}"></script>
+
+		<!-- Daterangepicker js-->
+		<script th:src="@{/assets/plugins/bootstrap-daterangepicker/daterangepicker.js}"></script>
+
+		<!-- Horizontal-menu js -->
+		<script th:src="@{/assets/plugins/horizontal-menu/horizontalmenu.js}"></script>
+
+		<!-- Sidebar Accordions js -->
+		<script th:src="@{/assets/plugins/accordion1/js/easyResponsiveTabs.js}"></script>
+
+		<!-- Custom scroll bar js-->
+		<script th:src="@{/assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js}"></script>
+
+		<!--Owl Carousel js -->
+		<script th:src="@{/assets/plugins/owl-carousel/owl.carousel.js}"></script>
+		<script th:src="@{/assets/plugins/owl-carousel/owl-main.js}"></script>
+
+		<!-- Rightsidebar js -->
+		<script th:src="@{/assets/plugins/sidebar/sidebar.js}"></script>
+
+		<!-- Charts js-->
+		<script th:src="@{/assets/plugins/chart/chart.bundle.js}"></script>
+		<script th:src="@{/assets/plugins/chart/utils.js}"></script>
+
+		<!--Time Counter js-->
+		<script th:src="@{/assets/plugins/counters/jquery.missofis-countdown.js}"></script>
+		<script th:src="@{/assets/plugins/counters/counter.js}"></script>
+
+		<!--Morris  Charts js-->
+		<script th:src="@{/assets/plugins/morris/raphael-min.js}"></script>
+		<script th:src="@{/assets/plugins/morris/morris.js}"></script>
+
+		<!-- Custom-charts js-->
+		<script th:src="@{/assets/js/index1.js}"></script>
+
+		<!-- Custom js-->
+		<script th:src="@{/assets/js/custom.js}"></script>
 
 
 

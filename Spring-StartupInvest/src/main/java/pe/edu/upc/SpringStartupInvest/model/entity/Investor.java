@@ -10,17 +10,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Investors", indexes = { @Index(columnList = "investor_id", name = "investors_index_investor_id") })
-@SequenceGenerator(name = "Investors_investor_id_seq", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "Investors_investor_id_seq", initialValue = 3, allocationSize = 1)
 public class Investor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Investors_investor_id_seq")
@@ -43,14 +46,13 @@ public class Investor {
 	@NotNull(message="El lastname debe contener valor")
 	@Size(max=50,message="El tamaño no debe ser mayor a 50")
 	@Column(name = "investor_lastname", length = 50, nullable = false)
-	private String lastname;
+	private String lastName;
 
 	@NotBlank(message = "El email no debe estar en blanco")
 	@NotNull(message="El email debe contener valor")
 	@Size(max=50,message="El tamaño no debe ser mayor a 50")
 	@Column(name = "investor_email", length = 50, nullable = false)
 	private String email;
-
 
 	@Size(max=500,message="El tamaño no debe ser mayor a 500")
 	@Column(name = "investor_image", length = 500, nullable = true)
@@ -59,36 +61,75 @@ public class Investor {
 	@Column(name = "investor_state", nullable = false)
 	private Boolean state;
 
-	@NotBlank(message = "La contraseña no debe estar en blanco")
-	@NotNull(message="La contraseña debe contener valor")
-	@Size(max=500,message="El tamaño no debe ser mayor a 500")
-	@Column(name = "investor_password", length = 500, nullable = false)
-	private String password;
-
 	@OneToMany(mappedBy = "investor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<InvestorHistory> investorHistories;
 
 	@OneToMany(mappedBy = "investor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<TypeCardHistory> typeCardHistories;
 
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@MapsId("id")
+	@JoinColumn(name="user_id",nullable = true)
+	private User user;
+	
+	@Transient
+	private String username;
+	
+	@Transient
+	private String password;
+	
 	public Investor() {
 		investorHistories = new ArrayList<InvestorHistory>();
 		typeCardHistories = new ArrayList<TypeCardHistory>();
+		
 	}
 
-	public Investor(Integer id, String name, String dni, String lastname, String email, String image, Boolean state,
-			String password, List<InvestorHistory> investorHistories, List<TypeCardHistory> typeCardHistories) {
+	public Investor(Integer id,
+			@NotBlank(message = "La descripcion no debe estar en blanco") @NotNull(message = "La descripcion debe contener valor") @Size(max = 50, message = "El tamaño no debe ser mayor a 50") String name,
+			@NotBlank(message = "El DNI no debe estar en blanco") @NotNull(message = "El DNI debe contener valor") @Size(max = 8, message = "El tamaño no debe ser mayor a 8") String dni,
+			@NotBlank(message = "El lastname no debe estar en blanco") @NotNull(message = "El lastname debe contener valor") @Size(max = 50, message = "El tamaño no debe ser mayor a 50") String lastName,
+			@NotBlank(message = "El email no debe estar en blanco") @NotNull(message = "El email debe contener valor") @Size(max = 50, message = "El tamaño no debe ser mayor a 50") String email,
+			@Size(max = 500, message = "El tamaño no debe ser mayor a 500") String image, Boolean state,
+			List<InvestorHistory> investorHistories, List<TypeCardHistory> typeCardHistories, User user,
+			String username, String password) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.dni = dni;
-		this.lastname = lastname;
+		this.lastName = lastName;
 		this.email = email;
 		this.image = image;
 		this.state = state;
-		this.password = password;
 		this.investorHistories = investorHistories;
 		this.typeCardHistories = typeCardHistories;
+		this.user = user;
+		this.username = username;
+		this.password = password;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Integer getId() {
@@ -115,12 +156,12 @@ public class Investor {
 		this.dni = dni;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastname) {
+		this.lastName = lastname;
 	}
 
 	public String getEmail() {
@@ -147,14 +188,7 @@ public class Investor {
 		this.state = state;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
+	
 	public List<InvestorHistory> getInvestorHistories() {
 		return investorHistories;
 	}

@@ -2,6 +2,7 @@ package pe.edu.upc.SpringStartupInvest.service.crud;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,4 +35,6 @@ public interface StartupService extends CrudService<Startup, Integer> {
 	// List<Startup> findByPopular() throws Exception; // Buscar Startups mas
 	// populares FALTA EL TOP
 
+	Optional<Startup> findById(Integer id);
+	
 }

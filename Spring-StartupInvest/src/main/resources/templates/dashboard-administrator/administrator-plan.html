@@ -15,7 +15,7 @@
 
 
 	<!--CONTENIDO-->
-	<main>
+	<main style="padding-top: 0.001rem;">
 		<header th:replace="layout/layout :: frag-left-bar-administrator">
 		</header>
 
@@ -226,7 +226,7 @@
 						</div>
 						<div class="modal-footer">
 							<a class="btn btn-lg btn-primary btn-block"
-								style="background-color: #DC3545;" data-dismiss="modal">No</a> <a
+								style="background-color: #DC3545;" data-dismiss="modal" th:onclick="closeModalEditState()">No</a> <a
 								class="btn btn-lg btn-primary btn-block" data-dismiss="modal"
 								style="background-color: #28A745;"
 								th:onclick="editPlanStateActive()">Sí</a>
@@ -380,6 +380,10 @@ function closeModalEdit(){
 }
 
 
+function  closeModalEditState(){
+	$('#habilitarPlan').modal('hide');
+	
+}
 
 
 </script>

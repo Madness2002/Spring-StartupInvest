@@ -60,12 +60,18 @@
 		<input th:value="${id}" hidden="true" id="idInvestor"> <input
 			th:value="${idStartup}" hidden="true" id="idStartupSend">
 		<div th:if="${dateExpirationOfTheLastPlanActive!=null}"
-			id="box-date-valid">
-			<div>
+			id="box-date-valid" style="flex-direction: row;">
+			<div id="planActivo" >
 				<label>PLANES ACTIVOS</label> <label
 					th:text="'Caduca el :'+${dateExpirationOfTheLastPlanActive}">Caduca
 					el :xx/xx/xxxx</label>
 			</div>
+
+			<div id="icono" style="position: absolute; display: flex; justify-content: stretch; transform: translate(25vw); font-size: 2rem; transition:0.5s; cursor:pointer; ">
+			<a th:href="@{/startupinvest/startups/view/profile/edit}">	<i class="fas fa-edit"
+					></i></a>
+			</div>
+
 		</div>
 
 		<!-- Botones de administrador como startup -->
@@ -554,7 +560,7 @@
 		<div class="box-sector-novedades">
 			<div class="sector-novedades">
 				<div class="titulo">
-					<h2>Novedades de Kambista</h2>
+					<h2 th:text="'Novedades de '+${name}">Novedades de Kambista</h2>
 				</div>
 				<div class="box-novedades">
 

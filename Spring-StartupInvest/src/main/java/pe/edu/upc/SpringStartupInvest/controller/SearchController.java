@@ -41,7 +41,7 @@ public class SearchController {
 		startupSearch.setName(startupSearch.getName().trim());
 		categories = categoryService.findByState(true);
 		startups = startupService.findByNameStartup(startupSearch.getName());
-		investments = investorHistoryService.listPortafolioByInvestorId(1001);
+		investments = investorHistoryService.listPortafolioByInvestor(1001);
 		model.addAttribute("categories", categories);
 		model.addAttribute("investments", investments);
 		if (startups.size() > 0) {

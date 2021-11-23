@@ -51,23 +51,29 @@ public class Category {
 	}
 //gagaga
 
-	public Category(Integer id, String name, String image, boolean state, List<Startup> startups) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.image = image;
-		this.state = state;
-		this.startups = startups;
-	}
+	
 
 	public Integer getId() {
 		return id;
 	}
 
+	public Category(Integer id,
+		@NotBlank(message = "El name no debe estar en blanco") @NotNull(message = "El name debe contener valor") @Size(max = 40, message = "El tamaño máximo del nombre de la categoria es 40") String name,
+		@Size(max = 500, message = "El tamaño máximo del nombre de la categoria es 500") String image, boolean state,
+		List<Startup> startups) {
+	super();
+	this.id = id;
+	this.name = name;
+	this.image = image;
+	this.state = state;
+	this.startups = startups;
+}
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	
+	
 	public String getName() {
 		return name;
 	}
@@ -84,7 +90,7 @@ public class Category {
 		this.image = image;
 	}
 
-	public boolean isState() {
+	public boolean getState() {
 		return state;
 	}
 
