@@ -171,7 +171,7 @@
 								</div>
 							</div>
 							<div class="card-footer text-right">
-								<a  class="btn btn-success mt-1"  th:onclick="'javascript:confirmEditProfile();'" style="background-color: aqua;color:black;font-weight: bolder; " >Save</a> 
+								<a  class="btn btn-success mt-1"  th:onclick="'javascript:confirmEditProfile();'" style="background-color: aqua;color:black;font-weight: bolder; border: transparent; " >Save</a> 
 							</div>
 						</form>
 					</div>
@@ -202,9 +202,9 @@
 						</div>
 						<div class="modal-footer">
 							<a class="btn btn-lg btn-primary btn-block"
-								style="background-color: #DC3545;" data-dismiss="modal" >No</a> <a
+								style="background-color: #DC3545;border-color: transparent;" data-dismiss="modal" >No</a> <a
 								class="btn btn-lg btn-primary btn-block" 
-								style="background-color: #28A745;" th:onclick="sendEditProfile()"
+								style="background-color: #28A745;border-color: transparent;" th:onclick="sendEditProfile()"
 								>Sí</a>
 						
 
@@ -231,7 +231,9 @@ function confirmEditProfile(){
 	 var nombresSendStyle = document.getElementById('nombresSend');
 	 var apellidosSendStyle = document.getElementById('apellidosSend');
 	 var correoSendStyle = document.getElementById('correoSend');
-	 
+
+
+	 if(confirmNewPasswordSend!="" || newPasswordSend!=""){
 if(confirmNewPasswordSend === newPasswordSend){
 	confirmNewPasswordSendStyle.style.borderColor = '#2fd8c6';
 	  newPasswordSendStyle.style.borderColor = '#2fd8c6';
@@ -261,7 +263,21 @@ if(confirmNewPasswordSend === newPasswordSend){
 	  apellidosSendStyle.style.borderColor = '#2fd8c6';
 	  correoSendStyle.style.borderColor = '#2fd8c6';
 }
-    
+
+
+
+	 } else {
+
+		 function notv2(){
+		        notif({
+					msg: "Asegurese de no dejar campos sin rellenar",
+					type: "error"
+				   
+				});
+		    }
+		 notv2();
+
+		 }
 }
 
 function sendEditProfile(){

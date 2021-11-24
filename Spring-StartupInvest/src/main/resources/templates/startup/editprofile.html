@@ -144,9 +144,9 @@
 						</div>
 						<div class="modal-footer">
 							<a class="btn btn-lg btn-primary btn-block"
-								style="background-color: #DC3545;" data-dismiss="modal" >No</a> <a
+								style="background-color: #DC3545;border-color: transparent;" data-dismiss="modal" >No</a> <a
 								class="btn btn-lg btn-primary btn-block" 
-								style="background-color: #28A745;" th:onclick="'javascript:sendEditProfile();'"
+								style="background-color: #28A745;border-color: transparent;" th:onclick="'javascript:sendEditProfile();'"
 								>Sí</a>
 						
 
@@ -174,7 +174,10 @@ function confirmEditProfile(){
 	 var emailSendStyle = document.getElementById('emailSend');
 	 
 	 var descriptionSendStyle = document.getElementById('descriptionSend');
-	 
+
+
+
+	 if(confirmNewPasswordSend!="" || newPasswordSend!=""){
 if(confirmNewPasswordSend === newPasswordSend){
 	confirmNewPasswordSendStyle.style.borderColor = '#2fd8c6';
 	  newPasswordSendStyle.style.borderColor = '#2fd8c6';
@@ -203,7 +206,21 @@ if(confirmNewPasswordSend === newPasswordSend){
 	  descriptionSendStyle.style.borderColor ='#2fd8c6';
 	  usernameSendStyle.style.borderColor = '#2fd8c6';
 }
-    
+
+
+	 } else {
+
+		 function notv2(){
+		        notif({
+					msg: "Asegurese de no dejar campos sin rellenar",
+					type: "error"
+				   
+				});
+		    }
+		 notv2();
+
+		 }
+
 }
 
 function sendEditProfile(){
