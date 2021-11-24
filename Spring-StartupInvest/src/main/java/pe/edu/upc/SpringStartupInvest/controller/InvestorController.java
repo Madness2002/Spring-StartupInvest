@@ -164,7 +164,7 @@ public class InvestorController {
 		model.addAttribute("nombres", userSession.getUser().getInvestor().getName());
 		model.addAttribute("apellidos", userSession.getUser().getInvestor().getLastName());
 		
-		return "users/edit-profile";
+		return "investor/edit-profile";
 	}
 
 	@GetMapping("perfil/saveEdit")

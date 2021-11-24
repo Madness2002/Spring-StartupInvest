@@ -14,8 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name = "PlansHistory", indexes = {
