@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template" name="description">
+		<meta content="Spruko Technologies Private Limited" name="author">
+		<meta name="keywords" content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template"/>
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>	
+
+	</head>
+	
+	<head><link th:href="@{/assets/plugins/notify/css/notifIt.css}" rel="stylesheet"></head>
+	<body class="bg-account" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);">
+	    <!-- page -->
+		<div class="page" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" >
+
+			<!-- page-content -->
+			<div class="page-content" style="padding-top: 9rem;">
+				<div class="container text-center text-dark">
+					<div class="row">
+						<div class="col-lg-4 d-block mx-auto">
+							<div class="row">
+								<div class="col-xl-12 col-md-12 col-md-12">
+									<div class="card">
+										<form method="post" id="sendNewAccount" class="card-body" th:action="@{/startupinvest/investors/newInvestor}" th:object="${investor}">
+											<div class="text-center mb-6" style="display: flex;justify-content: center;flex-direction: row; align-content: center;text-align: center;align-items: center;padding-bottom: 1.4rem;">
+												<img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}" style="width: 4rem;" class="" alt=""> 
+												<p style="margin: 0;font-weight: bold;font-size: 2rem;">Startup Invest</p>
+											</div>
+											<h3>Registro de inversionista</h3>
+											<p class="text-muted">Crear cuenta nueva</p>
+											<div class="input-group mb-3">
+												<span class="input-group-addon "><i class="fa fa-user w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Username"  placeholder="Username" th:field="*{username}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-unlock-alt  w-4"style="color: black;"></i></span>
+												<input type="password" class="form-control" id="Contraseña" placeholder="Contraseña" th:field="*{password}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Nombres" placeholder="Nombres" th:field="*{name}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Apellidos"placeholder="Apellidos"th:field="*{lastName}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4" style="color: black;"></i></span>
+												<input maxlength="9" type="number" onkeypress="return validarNumero(event)" class="form-control" id="DNI" placeholder="DNI" th:field="*{dni}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-envelope  w-4" style="color: black;"></i></span>
+												<input type="email" class="form-control" id="Email" placeholder="Email"th:field="*{email}">
+											</div>
+							
+											
+											<div class="row" style="padding-top: 2rem;">
+												<div class="col-12">
+													<button th:onclick="'javascript:confirmNewAccount();'" style="border:transparent;color:black;font-weight:bolder ;background-image: radial-gradient(circle at 55.05% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" type="button" class="btn btn-primary btn-block px-4">Crear nueva cuenta</button>
+												</div>
+											</div>
+											
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- page-content end -->
+		</div>
+		<!-- page End-->
+
+		<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+		
+	<script type="text/javascript">
+
+function confirmNewAccount(){
+var username =$("#Username").val();
+var contraseña =$("#Contraseña").val();
+var nombres =$("#Nombres").val();
+var apellidos =$("#Apellidos").val();
+var DNI =$("#DNI").val();
+var email =$("#Email").val();
+
+var usernameStyle = document.getElementById('Username');
+var contraseñaStyle = document.getElementById('Contraseña');
+var nombresStyle = document.getElementById('Nombres');
+var apellidosStyle = document.getElementById('Apellidos');
+var DNIStyle = document.getElementById('DNI');
+var emailStyle = document.getElementById('Email');
+
+var create ="v"; 
+
+
+if(username===""||contraseña===""||nombres===""||apellidos===""||DNI===""||email===""){
+if(username==="")
+{usernameStyle.style.borderColor = '#ec2d38';}
+
+else {
+	usernameStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(contraseña==="")
+{contraseñaStyle.style.borderColor = '#ec2d38';}
+
+else {
+	contraseñaStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(nombres==="")
+{nombresStyle.style.borderColor = '#ec2d38';}
+
+else {
+	nombresStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(apellidos==="")
+{apellidosStyle.style.borderColor = '#ec2d38';}
+
+else {
+	apellidosStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(DNI==="")
+{DNIStyle.style.borderColor = '#ec2d38';}
+
+else {
+	DNIStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(email==="")
+{emailStyle.style.borderColor = '#ec2d38';}
+
+else {
+	emailStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+	
+}
+
+}else sendNewAccount()
+
+}
+
+
+
+
+
+
+	
+	function sendNewAccount(){
+		var formulario = document.getElementById("sendNewAccount");
+		formulario.submit();	
+	}
+
+
+	
+	</script>	
+	
+	
+	
+	<script th:src="@{/assets/plugins/notify/js/rainbow.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/sample.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/jquery.growl.js}"></script>
+
+<script type="text/javascript" th:src="@{/assets/plugins/notify/js/notifIt.js}"> </script>	
+
+
+	<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
+	</body>
+</html>
+
+

@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Startup Invest</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300, 400, 500" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" th:href="@{/dist/style.css}">
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+</head>
+<body>
+
+<section class="user">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">Don't you have an account yet?</h2>
+        <p class="user_unregistered-text">What are you waiting for to create yours? Take advantage of having an account.</p>
+       <button th:onclick="|window.location.href ='/startupinvest/choose/user'|"  class="user_unregistered-signup" id="signup-button">Register</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Do you already have an account?</h2>
+        <p class="user_registered-text">Start the adventure of looking for an apartment as if it were your home</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Login</h2>
+        <form class="forms_form" th:action="@{/signin}" method="post">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" autocomplete="off" placeholder="Enter Username" name="username" id="username" class="forms_field-input" required autofocus />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Enter Password" name="password" id="password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="button" class="forms_buttons-forgot">Forgot your password?</button>
+            <input type="submit" value="Log In" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Register</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" placeholder="Full Name" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <input type="submit" value="Sign up" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script th:src="@{/dist/script.js}"></script>
+
+</body>
+
+</html>
