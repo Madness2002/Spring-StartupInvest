@@ -1,6 +1,6 @@
-
 <!doctype html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
 <meta charset="UTF-8">
 <meta name='viewport'
 	content='width=device-width, initial-scale=1.0, user-scalable=0'>
@@ -11,10 +11,21 @@
 <meta content="Spruko Technologies Private Limited" name="author">
 <meta name="keywords"
 	content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template" />
-<link th:href="@{/assets/plugins/notify/css/notifIt.css}" rel="stylesheet">
+
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<link th:href="@{/assets/plugins/notify/css/notifIt.css}"
+	rel="stylesheet">
 <head th:replace="layout/layoutHongo :: frag-head-hongo">
+
 </head>
 
+
+<head>
+<link th:href="@{/css/choose-user.css}" rel="stylesheet">
+</head>
 <body class="app sidebar-mini rtl">
 
 	<!--Global-Loader-->
@@ -22,224 +33,3048 @@
 		<img th:src="@{/assets/images/icons/loader.svg}" alt="loader">
 	</div>
 
-	<div class="page" th:object="${startup}">
-		<div class="page-main" th:object="${user}">
+	<div class="page" style="height: 100vh;">
+		<div class="page-main"
+			style="display: flex; justify-content: center; background-image: url(https://images.alphacoders.com/463/thumb-1920-463798.jpg);">
+			<!--app-header-->
 
+			<div
+				style="display: flex; justify-content: space-between; width: 70%; padding-top: 7rem;">
 
-			<!-- app-content-->
-			<div class="container content-area">
-				<div class="side-app">
-
-
-					<!-- row -->
-					<div class="row" style="padding-top: 4rem;">
-						<div class="col-lg-12 col-xl-4 col-md-12 col-sm-12">
-							<div class="card">
-								<div class="card-header">
-									<h3 class="card-title">Mi cuenta</h3>
-									<div class="card-options">
-										<a href="profile.html" class="btn btn-primary btn-sm" th:href="@{'/startupinvest/startups/'+${startup.id}+'/view/profile'}" ><i
-											class="si si-eye mr-1"></i>Regresar</a>
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="text-center">
-										<div class="userprofile ">
-											<div class="userpic  brround">
-												<img th:src="@{'/images/startups/'+${startup.image}}" alt=""
-													class="userpicimg">
-											</div>
-											<h3 class="username mb-2" th:text="${startup.name}">Alison</h3>
-
-
-
-										</div>
-									</div>
-								</div>
-
-							</div>
-
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card" id="register-startup" th:onclick="|window.location.href ='/startupinvest/register/startup'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title ">Startup</h3>
+							<div class="card-options"></div>
 						</div>
-						<div class="col-lg-12 col-xl-8 col-md-12 col-sm-12">
-							<form method="post" class="card" id="saveEditProfile" th:action="@{/startupinvest/startups/view/profile/saveEdit}" th:object="${saveEditProfile}">
-								<div class="card-header">
-									<h3 class="card-title">Modificar perfil del Startup</h3>
-								</div>
-								<div class="card-body">
-									<div class="row">
-										<div class="col-lg-6 col-md-12">
-											<div class="form-group">
-												<label for="exampleInputname">Username</label> <input
-													type="text" class="form-control" id="usernameSend" th:value="${user.username}" th:name="username"
-													placeholder="username">
-											</div>
-											<div class="form-group">
-												<label for="exampleInputname">Nombre del startup</label> <input
-													type="text" class="form-control" id="nombreSend" th:value="${startup.name}" th:name="name"
-													placeholder="Nombre del startup">
-											</div>
-
-
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="exampleInputEmail1">Correo electronico</label> <input
-											type="email" class="form-control" id="emailSend" th:value="${startup.email}" th:name="email"
-											placeholder="email address" >
-									</div>
-
-									<div class="form-group">
-										<label class="form-label">Descripción</label>
-										<textarea th:text="${startup.description}" th:name="description" class="form-control" rows="6" id="descriptionSend">Descripción</textarea>
-									</div>
-
-
-									<div class="form-group mb-0 mt-5">
-										<div class="row">
-
-											<div class="col-xl-6 col-lg-12 col-md-12">
-
-												<div class="form-group">
-													<label>New Password</label> <input type="password"
-														class="form-control" placeholder="" id="newPasswordSend" th:name="password">
-												</div>
-												<div class="form-group mb-0">
-													<label>Confirm Password</label> <input type="password"
-														class="form-control" placeholder="" id="confirmNewPasswordSend">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="card-footer text-right">
-									<a href="#" class="btn btn-success mt-1" th:onclick="'javascript:confirmEditProfile();'">Save</a> 
-								</div>
-							</form>
-						</div>
-					</div>
-					<!-- row end -->
-
-				</div>
-
-			</div>
-			<!-- End app-content-->
-			
-			<div class="modal fade" id="editarPerfil" tabindex="-1"
-				role="dialog" aria-labelledby="exampleModalLabel"
-				aria-hidden="false">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<img
-								src="/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png"
-								alt="StartupInvest" width="36" height="30"
-								class="d-inline-block align-text-top" style="height: 100%;">
-							<h5 class="modal-title" id="exampleModalLabel">Startup
-								Invest</h5>
-
-						</div>
-						<div class="modal-body">
-							
-							<h3 style="font-size: 1.5rem;">¿Seguro que quieres guardar los cambios?</h3>
-							
-						</div>
-						<div class="modal-footer">
-							<a class="btn btn-lg btn-primary btn-block"
-								style="background-color: #DC3545;border-color: transparent;" data-dismiss="modal" >No</a> <a
-								class="btn btn-lg btn-primary btn-block" 
-								style="background-color: #28A745;border-color: transparent;" th:onclick="'javascript:sendEditProfile();'"
-								>Sí</a>
-						
-
+						<div class="card-body text-center"
+							style="background-image: url(https://as2.ftcdn.net/v2/jpg/02/49/62/47/1000_F_249624792_BiZIxdHasOUOg85Q8fLtvoNE2gREbH4d.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/male/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
 						</div>
 					</div>
 				</div>
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card " id="register-investor" th:onclick="|window.location.href ='/startupinvest/register/investor'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title">Inversionista</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://image.freepik.com/foto-gratis/joven-empresario-exitoso-ropa-formal-mostrando-pulgar-arriba-gesto_171337-9526.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/female/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+
 			</div>
-			<!-- HABILITAR  -->
+
 		</div>
+
+
 	</div>
+
 
 	<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
 	</footer>
 
-<script type="text/javascript">
-function confirmEditProfile(){
-
-	 var confirmNewPasswordSend = $("#confirmNewPasswordSend").val();
-	 var newPasswordSend = $("#newPasswordSend").val();
-
-	 var newPasswordSendStyle = document.getElementById('newPasswordSend');
-	 var confirmNewPasswordSendStyle = document.getElementById('confirmNewPasswordSend');
-	 var usernameSendStyle = document.getElementById('usernameSend');
-	 var nombreSendStyle = document.getElementById('nombreSend');
-	 var emailSendStyle = document.getElementById('emailSend');
-	 
-	 var descriptionSendStyle = document.getElementById('descriptionSend');
 
 
 
-	 if(confirmNewPasswordSend!="" || newPasswordSend!=""){
-if(confirmNewPasswordSend === newPasswordSend){
-	confirmNewPasswordSendStyle.style.borderColor = '#2fd8c6';
-	  newPasswordSendStyle.style.borderColor = '#2fd8c6';
-	  usernameSendStyle.style.borderColor = '#2fd8c6';
-	  nombreSendStyle.style.borderColor = '#2fd8c6';
-	  emailSendStyle.style.borderColor = '#2fd8c6';
-	  descriptionSendStyle.style.borderColor ='#2fd8c6';
-	$('#editarPerfil').modal('show');
+
+</body>
+</html>
 
 
 
-}else {
 
-	function notv1(){
-        notif({
-			msg: "Asegurese de ingresar la misma contraseña dos veces",
-			type: "error"
-		   
-		});
-    }
-	  notv1();
-	  confirmNewPasswordSendStyle.style.borderColor = '#ec2d38';
-	  newPasswordSendStyle.style.borderColor = '#ec2d38';
-	  nombreSendStyle.style.borderColor = '#2fd8c6';
-	  emailSendStyle.style.borderColor = '#2fd8c6';
-	  descriptionSendStyle.style.borderColor ='#2fd8c6';
-	  usernameSendStyle.style.borderColor = '#2fd8c6';
+
+
+
+LOGIN:
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Startup Invest</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300, 400, 500" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" th:href="@{/dist/style.css}">
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+</head>
+<body>
+
+<section class="user">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">Don't you have an account yet?</h2>
+        <p class="user_unregistered-text">What are you waiting for to create yours? Take advantage of having an account.</p>
+       <button th:onclick="|window.location.href ='/startupinvest/choose/user'|"  class="user_unregistered-signup" id="signup-button">Register</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Do you already have an account?</h2>
+        <p class="user_registered-text">Start the adventure of looking for an apartment as if it were your home</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Login</h2>
+        <form class="forms_form" th:action="@{/signin}" method="post">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" autocomplete="off" placeholder="Enter Username" name="username" id="username" class="forms_field-input" required autofocus />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Enter Password" name="password" id="password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="button" class="forms_buttons-forgot">Forgot your password?</button>
+            <input type="submit" value="Log In" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Register</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" placeholder="Full Name" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <input type="submit" value="Sign up" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script th:src="@{/dist/script.js}"></script>
+
+</body>
+
+</html>
+
+
+
+REGISTER-INVESTOR:
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template" name="description">
+		<meta content="Spruko Technologies Private Limited" name="author">
+		<meta name="keywords" content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template"/>
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>	
+
+	</head>
+	
+	<head><link th:href="@{/assets/plugins/notify/css/notifIt.css}" rel="stylesheet"></head>
+	<body class="bg-account" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);">
+	    <!-- page -->
+		<div class="page" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" >
+
+			<!-- page-content -->
+			<div class="page-content" style="padding-top: 9rem;">
+				<div class="container text-center text-dark">
+					<div class="row">
+						<div class="col-lg-4 d-block mx-auto">
+							<div class="row">
+								<div class="col-xl-12 col-md-12 col-md-12">
+									<div class="card">
+										<form method="post" id="sendNewAccount" class="card-body" th:action="@{/startupinvest/investors/newInvestor}" th:object="${investor}">
+											<div class="text-center mb-6" style="display: flex;justify-content: center;flex-direction: row; align-content: center;text-align: center;align-items: center;padding-bottom: 1.4rem;">
+												<img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}" style="width: 4rem;" class="" alt=""> 
+												<p style="margin: 0;font-weight: bold;font-size: 2rem;">Startup Invest</p>
+											</div>
+											<h3>Registro de inversionista</h3>
+											<p class="text-muted">Crear cuenta nueva</p>
+											<div class="input-group mb-3">
+												<span class="input-group-addon "><i class="fa fa-user w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Username"  placeholder="Username" th:field="*{username}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-unlock-alt  w-4"style="color: black;"></i></span>
+												<input type="password" class="form-control" id="Contraseña" placeholder="Contraseña" th:field="*{password}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Nombres" placeholder="Nombres" th:field="*{name}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Apellidos"placeholder="Apellidos"th:field="*{lastName}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4" style="color: black;"></i></span>
+												<input maxlength="9" type="number" onkeypress="return validarNumero(event)" class="form-control" id="DNI" placeholder="DNI" th:field="*{dni}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-envelope  w-4" style="color: black;"></i></span>
+												<input type="email" class="form-control" id="Email" placeholder="Email"th:field="*{email}">
+											</div>
+							
+											
+											<div class="row" style="padding-top: 2rem;">
+												<div class="col-12">
+													<button th:onclick="'javascript:confirmNewAccount();'" style="border:transparent;color:black;font-weight:bolder ;background-image: radial-gradient(circle at 55.05% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" type="button" class="btn btn-primary btn-block px-4">Crear nueva cuenta</button>
+												</div>
+											</div>
+											
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- page-content end -->
+		</div>
+		<!-- page End-->
+
+		<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+		
+	<script type="text/javascript">
+
+function confirmNewAccount(){
+var username =$("#Username").val();
+var contraseña =$("#Contraseña").val();
+var nombres =$("#Nombres").val();
+var apellidos =$("#Apellidos").val();
+var DNI =$("#DNI").val();
+var email =$("#Email").val();
+
+var usernameStyle = document.getElementById('Username');
+var contraseñaStyle = document.getElementById('Contraseña');
+var nombresStyle = document.getElementById('Nombres');
+var apellidosStyle = document.getElementById('Apellidos');
+var DNIStyle = document.getElementById('DNI');
+var emailStyle = document.getElementById('Email');
+
+var create ="v"; 
+
+
+if(username===""||contraseña===""||nombres===""||apellidos===""||DNI===""||email===""){
+if(username==="")
+{usernameStyle.style.borderColor = '#ec2d38';}
+
+else {
+	usernameStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(contraseña==="")
+{contraseñaStyle.style.borderColor = '#ec2d38';}
+
+else {
+	contraseñaStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(nombres==="")
+{nombresStyle.style.borderColor = '#ec2d38';}
+
+else {
+	nombresStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
 }
 
 
-	 } else {
+if(apellidos==="")
+{apellidosStyle.style.borderColor = '#ec2d38';}
 
-		 function notv2(){
-		        notif({
-					msg: "Asegurese de no dejar campos sin rellenar",
-					type: "error"
-				   
-				});
-		    }
-		 notv2();
-
-		 }
-
+else {
+	apellidosStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
 }
 
-function sendEditProfile(){
-	var formulario = document.getElementById("saveEditProfile");
-	formulario.submit();
 
+if(DNI==="")
+{DNIStyle.style.borderColor = '#ec2d38';}
 
+else {
+	DNIStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(email==="")
+{emailStyle.style.borderColor = '#ec2d38';}
+
+else {
+	emailStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
 	
 }
 
+}else sendNewAccount()
 
-</script>
+}
 
 
-<script th:src="@{/assets/plugins/notify/js/rainbow.js}"></script>
+
+
+
+
+	
+	function sendNewAccount(){
+		var formulario = document.getElementById("sendNewAccount");
+		formulario.submit();	
+	}
+
+
+	
+	</script>	
+	
+	
+	
+	<script th:src="@{/assets/plugins/notify/js/rainbow.js}"></script>
 		<script th:src="@{/assets/plugins/notify/js/sample.js}"></script>
 		<script th:src="@{/assets/plugins/notify/js/jquery.growl.js}"></script>
 
-<script type="text/javascript" th:src="@{/assets/plugins/notify/js/notifIt.js}"> </script>
+<script type="text/javascript" th:src="@{/assets/plugins/notify/js/notifIt.js}"> </script>	
+
+
+	<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
+	</body>
+</html>
+
+
+
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport'
+	content='width=device-width, initial-scale=1.0, user-scalable=0'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta
+	content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template"
+	name="description">
+<meta content="Spruko Technologies Private Limited" name="author">
+<meta name="keywords"
+	content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template" />
+
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<link th:href="@{/assets/plugins/notify/css/notifIt.css}"
+	rel="stylesheet">
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>
+
+
+<head>
+<link th:href="@{/css/choose-user.css}" rel="stylesheet">
+</head>
+<body class="app sidebar-mini rtl">
+
+	<!--Global-Loader-->
+	<div id="global-loader">
+		<img th:src="@{/assets/images/icons/loader.svg}" alt="loader">
+	</div>
+
+	<div class="page" style="height: 100vh;">
+		<div class="page-main"
+			style="display: flex; justify-content: center; background-image: url(https://images.alphacoders.com/463/thumb-1920-463798.jpg);">
+			<!--app-header-->
+
+			<div
+				style="display: flex; justify-content: space-between; width: 70%; padding-top: 7rem;">
+
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card" id="register-startup" th:onclick="|window.location.href ='/startupinvest/register/startup'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title ">Startup</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://as2.ftcdn.net/v2/jpg/02/49/62/47/1000_F_249624792_BiZIxdHasOUOg85Q8fLtvoNE2gREbH4d.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/male/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card " id="register-investor" th:onclick="|window.location.href ='/startupinvest/register/investor'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title">Inversionista</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://image.freepik.com/foto-gratis/joven-empresario-exitoso-ropa-formal-mostrando-pulgar-arriba-gesto_171337-9526.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/female/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+	<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+
+
+
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+LOGIN:
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Startup Invest</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300, 400, 500" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" th:href="@{/dist/style.css}">
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+</head>
+<body>
+
+<section class="user">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">Don't you have an account yet?</h2>
+        <p class="user_unregistered-text">What are you waiting for to create yours? Take advantage of having an account.</p>
+       <button th:onclick="|window.location.href ='/startupinvest/choose/user'|"  class="user_unregistered-signup" id="signup-button">Register</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Do you already have an account?</h2>
+        <p class="user_registered-text">Start the adventure of looking for an apartment as if it were your home</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Login</h2>
+        <form class="forms_form" th:action="@{/signin}" method="post">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" autocomplete="off" placeholder="Enter Username" name="username" id="username" class="forms_field-input" required autofocus />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Enter Password" name="password" id="password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="button" class="forms_buttons-forgot">Forgot your password?</button>
+            <input type="submit" value="Log In" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Register</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" placeholder="Full Name" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <input type="submit" value="Sign up" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script th:src="@{/dist/script.js}"></script>
+
+</body>
+
+</html>
+
+
+
+REGISTER-INVESTOR:
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template" name="description">
+		<meta content="Spruko Technologies Private Limited" name="author">
+		<meta name="keywords" content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template"/>
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>	
+
+	</head>
+	
+	<head><link th:href="@{/assets/plugins/notify/css/notifIt.css}" rel="stylesheet"></head>
+	<body class="bg-account" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);">
+	    <!-- page -->
+		<div class="page" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" >
+
+			<!-- page-content -->
+			<div class="page-content" style="padding-top: 9rem;">
+				<div class="container text-center text-dark">
+					<div class="row">
+						<div class="col-lg-4 d-block mx-auto">
+							<div class="row">
+								<div class="col-xl-12 col-md-12 col-md-12">
+									<div class="card">
+										<form method="post" id="sendNewAccount" class="card-body" th:action="@{/startupinvest/investors/newInvestor}" th:object="${investor}">
+											<div class="text-center mb-6" style="display: flex;justify-content: center;flex-direction: row; align-content: center;text-align: center;align-items: center;padding-bottom: 1.4rem;">
+												<img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}" style="width: 4rem;" class="" alt=""> 
+												<p style="margin: 0;font-weight: bold;font-size: 2rem;">Startup Invest</p>
+											</div>
+											<h3>Registro de inversionista</h3>
+											<p class="text-muted">Crear cuenta nueva</p>
+											<div class="input-group mb-3">
+												<span class="input-group-addon "><i class="fa fa-user w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Username"  placeholder="Username" th:field="*{username}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-unlock-alt  w-4"style="color: black;"></i></span>
+												<input type="password" class="form-control" id="Contraseña" placeholder="Contraseña" th:field="*{password}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Nombres" placeholder="Nombres" th:field="*{name}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Apellidos"placeholder="Apellidos"th:field="*{lastName}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4" style="color: black;"></i></span>
+												<input maxlength="9" type="number" onkeypress="return validarNumero(event)" class="form-control" id="DNI" placeholder="DNI" th:field="*{dni}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-envelope  w-4" style="color: black;"></i></span>
+												<input type="email" class="form-control" id="Email" placeholder="Email"th:field="*{email}">
+											</div>
+							
+											
+											<div class="row" style="padding-top: 2rem;">
+												<div class="col-12">
+													<button th:onclick="'javascript:confirmNewAccount();'" style="border:transparent;color:black;font-weight:bolder ;background-image: radial-gradient(circle at 55.05% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" type="button" class="btn btn-primary btn-block px-4">Crear nueva cuenta</button>
+												</div>
+											</div>
+											
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- page-content end -->
+		</div>
+		<!-- page End-->
+
+		<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+		
+	<script type="text/javascript">
+
+function confirmNewAccount(){
+var username =$("#Username").val();
+var contraseña =$("#Contraseña").val();
+var nombres =$("#Nombres").val();
+var apellidos =$("#Apellidos").val();
+var DNI =$("#DNI").val();
+var email =$("#Email").val();
+
+var usernameStyle = document.getElementById('Username');
+var contraseñaStyle = document.getElementById('Contraseña');
+var nombresStyle = document.getElementById('Nombres');
+var apellidosStyle = document.getElementById('Apellidos');
+var DNIStyle = document.getElementById('DNI');
+var emailStyle = document.getElementById('Email');
+
+var create ="v"; 
+
+
+if(username===""||contraseña===""||nombres===""||apellidos===""||DNI===""||email===""){
+if(username==="")
+{usernameStyle.style.borderColor = '#ec2d38';}
+
+else {
+	usernameStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(contraseña==="")
+{contraseñaStyle.style.borderColor = '#ec2d38';}
+
+else {
+	contraseñaStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(nombres==="")
+{nombresStyle.style.borderColor = '#ec2d38';}
+
+else {
+	nombresStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(apellidos==="")
+{apellidosStyle.style.borderColor = '#ec2d38';}
+
+else {
+	apellidosStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(DNI==="")
+{DNIStyle.style.borderColor = '#ec2d38';}
+
+else {
+	DNIStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(email==="")
+{emailStyle.style.borderColor = '#ec2d38';}
+
+else {
+	emailStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+	
+}
+
+}else sendNewAccount()
+
+}
+
+
+
+
+
+
+	
+	function sendNewAccount(){
+		var formulario = document.getElementById("sendNewAccount");
+		formulario.submit();	
+	}
+
+
+	
+	</script>	
+	
+	
+	
+	<script th:src="@{/assets/plugins/notify/js/rainbow.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/sample.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/jquery.growl.js}"></script>
+
+<script type="text/javascript" th:src="@{/assets/plugins/notify/js/notifIt.js}"> </script>	
+
+
+	<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
+	</body>
+</html>
+
+
+
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport'
+	content='width=device-width, initial-scale=1.0, user-scalable=0'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta
+	content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template"
+	name="description">
+<meta content="Spruko Technologies Private Limited" name="author">
+<meta name="keywords"
+	content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template" />
+
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<link th:href="@{/assets/plugins/notify/css/notifIt.css}"
+	rel="stylesheet">
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>
+
+
+<head>
+<link th:href="@{/css/choose-user.css}" rel="stylesheet">
+</head>
+<body class="app sidebar-mini rtl">
+
+	<!--Global-Loader-->
+	<div id="global-loader">
+		<img th:src="@{/assets/images/icons/loader.svg}" alt="loader">
+	</div>
+
+	<div class="page" style="height: 100vh;">
+		<div class="page-main"
+			style="display: flex; justify-content: center; background-image: url(https://images.alphacoders.com/463/thumb-1920-463798.jpg);">
+			<!--app-header-->
+
+			<div
+				style="display: flex; justify-content: space-between; width: 70%; padding-top: 7rem;">
+
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card" id="register-startup" th:onclick="|window.location.href ='/startupinvest/register/startup'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title ">Startup</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://as2.ftcdn.net/v2/jpg/02/49/62/47/1000_F_249624792_BiZIxdHasOUOg85Q8fLtvoNE2gREbH4d.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/male/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card " id="register-investor" th:onclick="|window.location.href ='/startupinvest/register/investor'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title">Inversionista</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://image.freepik.com/foto-gratis/joven-empresario-exitoso-ropa-formal-mostrando-pulgar-arriba-gesto_171337-9526.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/female/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+	<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+LOGIN:
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Startup Invest</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300, 400, 500" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" th:href="@{/dist/style.css}">
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+</head>
+<body>
+
+<section class="user">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">Don't you have an account yet?</h2>
+        <p class="user_unregistered-text">What are you waiting for to create yours? Take advantage of having an account.</p>
+       <button th:onclick="|window.location.href ='/startupinvest/choose/user'|"  class="user_unregistered-signup" id="signup-button">Register</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Do you already have an account?</h2>
+        <p class="user_registered-text">Start the adventure of looking for an apartment as if it were your home</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Login</h2>
+        <form class="forms_form" th:action="@{/signin}" method="post">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" autocomplete="off" placeholder="Enter Username" name="username" id="username" class="forms_field-input" required autofocus />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Enter Password" name="password" id="password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="button" class="forms_buttons-forgot">Forgot your password?</button>
+            <input type="submit" value="Log In" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Register</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" placeholder="Full Name" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <input type="submit" value="Sign up" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script th:src="@{/dist/script.js}"></script>
+
+</body>
+
+</html>
+
+
+
+REGISTER-INVESTOR:
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template" name="description">
+		<meta content="Spruko Technologies Private Limited" name="author">
+		<meta name="keywords" content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template"/>
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>	
+
+	</head>
+	
+	<head><link th:href="@{/assets/plugins/notify/css/notifIt.css}" rel="stylesheet"></head>
+	<body class="bg-account" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);">
+	    <!-- page -->
+		<div class="page" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" >
+
+			<!-- page-content -->
+			<div class="page-content" style="padding-top: 9rem;">
+				<div class="container text-center text-dark">
+					<div class="row">
+						<div class="col-lg-4 d-block mx-auto">
+							<div class="row">
+								<div class="col-xl-12 col-md-12 col-md-12">
+									<div class="card">
+										<form method="post" id="sendNewAccount" class="card-body" th:action="@{/startupinvest/investors/newInvestor}" th:object="${investor}">
+											<div class="text-center mb-6" style="display: flex;justify-content: center;flex-direction: row; align-content: center;text-align: center;align-items: center;padding-bottom: 1.4rem;">
+												<img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}" style="width: 4rem;" class="" alt=""> 
+												<p style="margin: 0;font-weight: bold;font-size: 2rem;">Startup Invest</p>
+											</div>
+											<h3>Registro de inversionista</h3>
+											<p class="text-muted">Crear cuenta nueva</p>
+											<div class="input-group mb-3">
+												<span class="input-group-addon "><i class="fa fa-user w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Username"  placeholder="Username" th:field="*{username}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-unlock-alt  w-4"style="color: black;"></i></span>
+												<input type="password" class="form-control" id="Contraseña" placeholder="Contraseña" th:field="*{password}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Nombres" placeholder="Nombres" th:field="*{name}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Apellidos"placeholder="Apellidos"th:field="*{lastName}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4" style="color: black;"></i></span>
+												<input maxlength="9" type="number" onkeypress="return validarNumero(event)" class="form-control" id="DNI" placeholder="DNI" th:field="*{dni}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-envelope  w-4" style="color: black;"></i></span>
+												<input type="email" class="form-control" id="Email" placeholder="Email"th:field="*{email}">
+											</div>
+							
+											
+											<div class="row" style="padding-top: 2rem;">
+												<div class="col-12">
+													<button th:onclick="'javascript:confirmNewAccount();'" style="border:transparent;color:black;font-weight:bolder ;background-image: radial-gradient(circle at 55.05% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" type="button" class="btn btn-primary btn-block px-4">Crear nueva cuenta</button>
+												</div>
+											</div>
+											
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- page-content end -->
+		</div>
+		<!-- page End-->
+
+		<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+		
+	<script type="text/javascript">
+
+function confirmNewAccount(){
+var username =$("#Username").val();
+var contraseña =$("#Contraseña").val();
+var nombres =$("#Nombres").val();
+var apellidos =$("#Apellidos").val();
+var DNI =$("#DNI").val();
+var email =$("#Email").val();
+
+var usernameStyle = document.getElementById('Username');
+var contraseñaStyle = document.getElementById('Contraseña');
+var nombresStyle = document.getElementById('Nombres');
+var apellidosStyle = document.getElementById('Apellidos');
+var DNIStyle = document.getElementById('DNI');
+var emailStyle = document.getElementById('Email');
+
+var create ="v"; 
+
+
+if(username===""||contraseña===""||nombres===""||apellidos===""||DNI===""||email===""){
+if(username==="")
+{usernameStyle.style.borderColor = '#ec2d38';}
+
+else {
+	usernameStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(contraseña==="")
+{contraseñaStyle.style.borderColor = '#ec2d38';}
+
+else {
+	contraseñaStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(nombres==="")
+{nombresStyle.style.borderColor = '#ec2d38';}
+
+else {
+	nombresStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(apellidos==="")
+{apellidosStyle.style.borderColor = '#ec2d38';}
+
+else {
+	apellidosStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(DNI==="")
+{DNIStyle.style.borderColor = '#ec2d38';}
+
+else {
+	DNIStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(email==="")
+{emailStyle.style.borderColor = '#ec2d38';}
+
+else {
+	emailStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+	
+}
+
+}else sendNewAccount()
+
+}
+
+
+
+
+
+
+	
+	function sendNewAccount(){
+		var formulario = document.getElementById("sendNewAccount");
+		formulario.submit();	
+	}
+
+
+	
+	</script>	
+	
+	
+	
+	<script th:src="@{/assets/plugins/notify/js/rainbow.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/sample.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/jquery.growl.js}"></script>
+
+<script type="text/javascript" th:src="@{/assets/plugins/notify/js/notifIt.js}"> </script>	
+
+
+	<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
+	</body>
+</html>
+
+
+
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport'
+	content='width=device-width, initial-scale=1.0, user-scalable=0'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta
+	content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template"
+	name="description">
+<meta content="Spruko Technologies Private Limited" name="author">
+<meta name="keywords"
+	content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template" />
+
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<link th:href="@{/assets/plugins/notify/css/notifIt.css}"
+	rel="stylesheet">
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>
+
+
+<head>
+<link th:href="@{/css/choose-user.css}" rel="stylesheet">
+</head>
+<body class="app sidebar-mini rtl">
+
+	<!--Global-Loader-->
+	<div id="global-loader">
+		<img th:src="@{/assets/images/icons/loader.svg}" alt="loader">
+	</div>
+
+	<div class="page" style="height: 100vh;">
+		<div class="page-main"
+			style="display: flex; justify-content: center; background-image: url(https://images.alphacoders.com/463/thumb-1920-463798.jpg);">
+			<!--app-header-->
+
+			<div
+				style="display: flex; justify-content: space-between; width: 70%; padding-top: 7rem;">
+
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card" id="register-startup" th:onclick="|window.location.href ='/startupinvest/register/startup'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title ">Startup</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://as2.ftcdn.net/v2/jpg/02/49/62/47/1000_F_249624792_BiZIxdHasOUOg85Q8fLtvoNE2gREbH4d.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/male/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card " id="register-investor" th:onclick="|window.location.href ='/startupinvest/register/investor'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title">Inversionista</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://image.freepik.com/foto-gratis/joven-empresario-exitoso-ropa-formal-mostrando-pulgar-arriba-gesto_171337-9526.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/female/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+	<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+LOGIN:
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Startup Invest</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300, 400, 500" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" th:href="@{/dist/style.css}">
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+</head>
+<body>
+
+<section class="user">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">Don't you have an account yet?</h2>
+        <p class="user_unregistered-text">What are you waiting for to create yours? Take advantage of having an account.</p>
+       <button th:onclick="|window.location.href ='/startupinvest/choose/user'|"  class="user_unregistered-signup" id="signup-button">Register</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Do you already have an account?</h2>
+        <p class="user_registered-text">Start the adventure of looking for an apartment as if it were your home</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Login</h2>
+        <form class="forms_form" th:action="@{/signin}" method="post">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" autocomplete="off" placeholder="Enter Username" name="username" id="username" class="forms_field-input" required autofocus />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Enter Password" name="password" id="password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="button" class="forms_buttons-forgot">Forgot your password?</button>
+            <input type="submit" value="Log In" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Register</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" placeholder="Full Name" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <input type="submit" value="Sign up" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script th:src="@{/dist/script.js}"></script>
+
+</body>
+
+</html>
+
+
+
+REGISTER-INVESTOR:
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template" name="description">
+		<meta content="Spruko Technologies Private Limited" name="author">
+		<meta name="keywords" content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template"/>
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>	
+
+	</head>
+	
+	<head><link th:href="@{/assets/plugins/notify/css/notifIt.css}" rel="stylesheet"></head>
+	<body class="bg-account" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);">
+	    <!-- page -->
+		<div class="page" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" >
+
+			<!-- page-content -->
+			<div class="page-content" style="padding-top: 9rem;">
+				<div class="container text-center text-dark">
+					<div class="row">
+						<div class="col-lg-4 d-block mx-auto">
+							<div class="row">
+								<div class="col-xl-12 col-md-12 col-md-12">
+									<div class="card">
+										<form method="post" id="sendNewAccount" class="card-body" th:action="@{/startupinvest/investors/newInvestor}" th:object="${investor}">
+											<div class="text-center mb-6" style="display: flex;justify-content: center;flex-direction: row; align-content: center;text-align: center;align-items: center;padding-bottom: 1.4rem;">
+												<img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}" style="width: 4rem;" class="" alt=""> 
+												<p style="margin: 0;font-weight: bold;font-size: 2rem;">Startup Invest</p>
+											</div>
+											<h3>Registro de inversionista</h3>
+											<p class="text-muted">Crear cuenta nueva</p>
+											<div class="input-group mb-3">
+												<span class="input-group-addon "><i class="fa fa-user w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Username"  placeholder="Username" th:field="*{username}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-unlock-alt  w-4"style="color: black;"></i></span>
+												<input type="password" class="form-control" id="Contraseña" placeholder="Contraseña" th:field="*{password}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Nombres" placeholder="Nombres" th:field="*{name}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Apellidos"placeholder="Apellidos"th:field="*{lastName}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4" style="color: black;"></i></span>
+												<input maxlength="9" type="number" onkeypress="return validarNumero(event)" class="form-control" id="DNI" placeholder="DNI" th:field="*{dni}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-envelope  w-4" style="color: black;"></i></span>
+												<input type="email" class="form-control" id="Email" placeholder="Email"th:field="*{email}">
+											</div>
+							
+											
+											<div class="row" style="padding-top: 2rem;">
+												<div class="col-12">
+													<button th:onclick="'javascript:confirmNewAccount();'" style="border:transparent;color:black;font-weight:bolder ;background-image: radial-gradient(circle at 55.05% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" type="button" class="btn btn-primary btn-block px-4">Crear nueva cuenta</button>
+												</div>
+											</div>
+											
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- page-content end -->
+		</div>
+		<!-- page End-->
+
+		<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+		
+	<script type="text/javascript">
+
+function confirmNewAccount(){
+var username =$("#Username").val();
+var contraseña =$("#Contraseña").val();
+var nombres =$("#Nombres").val();
+var apellidos =$("#Apellidos").val();
+var DNI =$("#DNI").val();
+var email =$("#Email").val();
+
+var usernameStyle = document.getElementById('Username');
+var contraseñaStyle = document.getElementById('Contraseña');
+var nombresStyle = document.getElementById('Nombres');
+var apellidosStyle = document.getElementById('Apellidos');
+var DNIStyle = document.getElementById('DNI');
+var emailStyle = document.getElementById('Email');
+
+var create ="v"; 
+
+
+if(username===""||contraseña===""||nombres===""||apellidos===""||DNI===""||email===""){
+if(username==="")
+{usernameStyle.style.borderColor = '#ec2d38';}
+
+else {
+	usernameStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(contraseña==="")
+{contraseñaStyle.style.borderColor = '#ec2d38';}
+
+else {
+	contraseñaStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(nombres==="")
+{nombresStyle.style.borderColor = '#ec2d38';}
+
+else {
+	nombresStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(apellidos==="")
+{apellidosStyle.style.borderColor = '#ec2d38';}
+
+else {
+	apellidosStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(DNI==="")
+{DNIStyle.style.borderColor = '#ec2d38';}
+
+else {
+	DNIStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(email==="")
+{emailStyle.style.borderColor = '#ec2d38';}
+
+else {
+	emailStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+	
+}
+
+}else sendNewAccount()
+
+}
+
+
+
+
+
+
+	
+	function sendNewAccount(){
+		var formulario = document.getElementById("sendNewAccount");
+		formulario.submit();	
+	}
+
+
+	
+	</script>	
+	
+	
+	
+	<script th:src="@{/assets/plugins/notify/js/rainbow.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/sample.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/jquery.growl.js}"></script>
+
+<script type="text/javascript" th:src="@{/assets/plugins/notify/js/notifIt.js}"> </script>	
+
+
+	<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
+	</body>
+</html>
+
+
+
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport'
+	content='width=device-width, initial-scale=1.0, user-scalable=0'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta
+	content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template"
+	name="description">
+<meta content="Spruko Technologies Private Limited" name="author">
+<meta name="keywords"
+	content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template" />
+
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<link th:href="@{/assets/plugins/notify/css/notifIt.css}"
+	rel="stylesheet">
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>
+
+
+<head>
+<link th:href="@{/css/choose-user.css}" rel="stylesheet">
+</head>
+<body class="app sidebar-mini rtl">
+
+	<!--Global-Loader-->
+	<div id="global-loader">
+		<img th:src="@{/assets/images/icons/loader.svg}" alt="loader">
+	</div>
+
+	<div class="page" style="height: 100vh;">
+		<div class="page-main"
+			style="display: flex; justify-content: center; background-image: url(https://images.alphacoders.com/463/thumb-1920-463798.jpg);">
+			<!--app-header-->
+
+			<div
+				style="display: flex; justify-content: space-between; width: 70%; padding-top: 7rem;">
+
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card" id="register-startup" th:onclick="|window.location.href ='/startupinvest/register/startup'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title ">Startup</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://as2.ftcdn.net/v2/jpg/02/49/62/47/1000_F_249624792_BiZIxdHasOUOg85Q8fLtvoNE2gREbH4d.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/male/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card " id="register-investor" th:onclick="|window.location.href ='/startupinvest/register/investor'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title">Inversionista</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://image.freepik.com/foto-gratis/joven-empresario-exitoso-ropa-formal-mostrando-pulgar-arriba-gesto_171337-9526.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/female/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+	<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+LOGIN:
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Startup Invest</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300, 400, 500" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" th:href="@{/dist/style.css}">
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+</head>
+<body>
+
+<section class="user">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">Don't you have an account yet?</h2>
+        <p class="user_unregistered-text">What are you waiting for to create yours? Take advantage of having an account.</p>
+       <button th:onclick="|window.location.href ='/startupinvest/choose/user'|"  class="user_unregistered-signup" id="signup-button">Register</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Do you already have an account?</h2>
+        <p class="user_registered-text">Start the adventure of looking for an apartment as if it were your home</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Login</h2>
+        <form class="forms_form" th:action="@{/signin}" method="post">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" autocomplete="off" placeholder="Enter Username" name="username" id="username" class="forms_field-input" required autofocus />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Enter Password" name="password" id="password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="button" class="forms_buttons-forgot">Forgot your password?</button>
+            <input type="submit" value="Log In" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Register</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" placeholder="Full Name" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <input type="submit" value="Sign up" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script th:src="@{/dist/script.js}"></script>
+
+</body>
+
+</html>
+
+
+
+REGISTER-INVESTOR:
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template" name="description">
+		<meta content="Spruko Technologies Private Limited" name="author">
+		<meta name="keywords" content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template"/>
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>	
+
+	</head>
+	
+	<head><link th:href="@{/assets/plugins/notify/css/notifIt.css}" rel="stylesheet"></head>
+	<body class="bg-account" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);">
+	    <!-- page -->
+		<div class="page" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" >
+
+			<!-- page-content -->
+			<div class="page-content" style="padding-top: 9rem;">
+				<div class="container text-center text-dark">
+					<div class="row">
+						<div class="col-lg-4 d-block mx-auto">
+							<div class="row">
+								<div class="col-xl-12 col-md-12 col-md-12">
+									<div class="card">
+										<form method="post" id="sendNewAccount" class="card-body" th:action="@{/startupinvest/investors/newInvestor}" th:object="${investor}">
+											<div class="text-center mb-6" style="display: flex;justify-content: center;flex-direction: row; align-content: center;text-align: center;align-items: center;padding-bottom: 1.4rem;">
+												<img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}" style="width: 4rem;" class="" alt=""> 
+												<p style="margin: 0;font-weight: bold;font-size: 2rem;">Startup Invest</p>
+											</div>
+											<h3>Registro de inversionista</h3>
+											<p class="text-muted">Crear cuenta nueva</p>
+											<div class="input-group mb-3">
+												<span class="input-group-addon "><i class="fa fa-user w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Username"  placeholder="Username" th:field="*{username}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-unlock-alt  w-4"style="color: black;"></i></span>
+												<input type="password" class="form-control" id="Contraseña" placeholder="Contraseña" th:field="*{password}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Nombres" placeholder="Nombres" th:field="*{name}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Apellidos"placeholder="Apellidos"th:field="*{lastName}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4" style="color: black;"></i></span>
+												<input maxlength="9" type="number" onkeypress="return validarNumero(event)" class="form-control" id="DNI" placeholder="DNI" th:field="*{dni}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-envelope  w-4" style="color: black;"></i></span>
+												<input type="email" class="form-control" id="Email" placeholder="Email"th:field="*{email}">
+											</div>
+							
+											
+											<div class="row" style="padding-top: 2rem;">
+												<div class="col-12">
+													<button th:onclick="'javascript:confirmNewAccount();'" style="border:transparent;color:black;font-weight:bolder ;background-image: radial-gradient(circle at 55.05% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" type="button" class="btn btn-primary btn-block px-4">Crear nueva cuenta</button>
+												</div>
+											</div>
+											
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- page-content end -->
+		</div>
+		<!-- page End-->
+
+		<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+		
+	<script type="text/javascript">
+
+function confirmNewAccount(){
+var username =$("#Username").val();
+var contraseña =$("#Contraseña").val();
+var nombres =$("#Nombres").val();
+var apellidos =$("#Apellidos").val();
+var DNI =$("#DNI").val();
+var email =$("#Email").val();
+
+var usernameStyle = document.getElementById('Username');
+var contraseñaStyle = document.getElementById('Contraseña');
+var nombresStyle = document.getElementById('Nombres');
+var apellidosStyle = document.getElementById('Apellidos');
+var DNIStyle = document.getElementById('DNI');
+var emailStyle = document.getElementById('Email');
+
+var create ="v"; 
+
+
+if(username===""||contraseña===""||nombres===""||apellidos===""||DNI===""||email===""){
+if(username==="")
+{usernameStyle.style.borderColor = '#ec2d38';}
+
+else {
+	usernameStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(contraseña==="")
+{contraseñaStyle.style.borderColor = '#ec2d38';}
+
+else {
+	contraseñaStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(nombres==="")
+{nombresStyle.style.borderColor = '#ec2d38';}
+
+else {
+	nombresStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(apellidos==="")
+{apellidosStyle.style.borderColor = '#ec2d38';}
+
+else {
+	apellidosStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(DNI==="")
+{DNIStyle.style.borderColor = '#ec2d38';}
+
+else {
+	DNIStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(email==="")
+{emailStyle.style.borderColor = '#ec2d38';}
+
+else {
+	emailStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+	
+}
+
+}else sendNewAccount()
+
+}
+
+
+
+
+
+
+	
+	function sendNewAccount(){
+		var formulario = document.getElementById("sendNewAccount");
+		formulario.submit();	
+	}
+
+
+	
+	</script>	
+	
+	
+	
+	<script th:src="@{/assets/plugins/notify/js/rainbow.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/sample.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/jquery.growl.js}"></script>
+
+<script type="text/javascript" th:src="@{/assets/plugins/notify/js/notifIt.js}"> </script>	
+
+
+	<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
+	</body>
+</html>
+
+
+
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport'
+	content='width=device-width, initial-scale=1.0, user-scalable=0'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta
+	content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template"
+	name="description">
+<meta content="Spruko Technologies Private Limited" name="author">
+<meta name="keywords"
+	content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template" />
+
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<link th:href="@{/assets/plugins/notify/css/notifIt.css}"
+	rel="stylesheet">
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>
+
+
+<head>
+<link th:href="@{/css/choose-user.css}" rel="stylesheet">
+</head>
+<body class="app sidebar-mini rtl">
+
+	<!--Global-Loader-->
+	<div id="global-loader">
+		<img th:src="@{/assets/images/icons/loader.svg}" alt="loader">
+	</div>
+
+	<div class="page" style="height: 100vh;">
+		<div class="page-main"
+			style="display: flex; justify-content: center; background-image: url(https://images.alphacoders.com/463/thumb-1920-463798.jpg);">
+			<!--app-header-->
+
+			<div
+				style="display: flex; justify-content: space-between; width: 70%; padding-top: 7rem;">
+
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card" id="register-startup" th:onclick="|window.location.href ='/startupinvest/register/startup'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title ">Startup</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://as2.ftcdn.net/v2/jpg/02/49/62/47/1000_F_249624792_BiZIxdHasOUOg85Q8fLtvoNE2gREbH4d.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/male/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card " id="register-investor" th:onclick="|window.location.href ='/startupinvest/register/investor'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title">Inversionista</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://image.freepik.com/foto-gratis/joven-empresario-exitoso-ropa-formal-mostrando-pulgar-arriba-gesto_171337-9526.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/female/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+	<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+LOGIN:
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Startup Invest</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300, 400, 500" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" th:href="@{/dist/style.css}">
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+</head>
+<body>
+
+<section class="user">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">Don't you have an account yet?</h2>
+        <p class="user_unregistered-text">What are you waiting for to create yours? Take advantage of having an account.</p>
+       <button th:onclick="|window.location.href ='/startupinvest/choose/user'|"  class="user_unregistered-signup" id="signup-button">Register</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Do you already have an account?</h2>
+        <p class="user_registered-text">Start the adventure of looking for an apartment as if it were your home</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Login</h2>
+        <form class="forms_form" th:action="@{/signin}" method="post">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" autocomplete="off" placeholder="Enter Username" name="username" id="username" class="forms_field-input" required autofocus />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Enter Password" name="password" id="password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="button" class="forms_buttons-forgot">Forgot your password?</button>
+            <input type="submit" value="Log In" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Register</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" placeholder="Full Name" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <input type="submit" value="Sign up" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script th:src="@{/dist/script.js}"></script>
+
+</body>
+
+</html>
+
+
+
+REGISTER-INVESTOR:
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template" name="description">
+		<meta content="Spruko Technologies Private Limited" name="author">
+		<meta name="keywords" content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template"/>
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>	
+
+	</head>
+	
+	<head><link th:href="@{/assets/plugins/notify/css/notifIt.css}" rel="stylesheet"></head>
+	<body class="bg-account" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);">
+	    <!-- page -->
+		<div class="page" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" >
+
+			<!-- page-content -->
+			<div class="page-content" style="padding-top: 9rem;">
+				<div class="container text-center text-dark">
+					<div class="row">
+						<div class="col-lg-4 d-block mx-auto">
+							<div class="row">
+								<div class="col-xl-12 col-md-12 col-md-12">
+									<div class="card">
+										<form method="post" id="sendNewAccount" class="card-body" th:action="@{/startupinvest/investors/newInvestor}" th:object="${investor}">
+											<div class="text-center mb-6" style="display: flex;justify-content: center;flex-direction: row; align-content: center;text-align: center;align-items: center;padding-bottom: 1.4rem;">
+												<img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}" style="width: 4rem;" class="" alt=""> 
+												<p style="margin: 0;font-weight: bold;font-size: 2rem;">Startup Invest</p>
+											</div>
+											<h3>Registro de inversionista</h3>
+											<p class="text-muted">Crear cuenta nueva</p>
+											<div class="input-group mb-3">
+												<span class="input-group-addon "><i class="fa fa-user w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Username"  placeholder="Username" th:field="*{username}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-unlock-alt  w-4"style="color: black;"></i></span>
+												<input type="password" class="form-control" id="Contraseña" placeholder="Contraseña" th:field="*{password}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Nombres" placeholder="Nombres" th:field="*{name}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Apellidos"placeholder="Apellidos"th:field="*{lastName}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4" style="color: black;"></i></span>
+												<input maxlength="9" type="number" onkeypress="return validarNumero(event)" class="form-control" id="DNI" placeholder="DNI" th:field="*{dni}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-envelope  w-4" style="color: black;"></i></span>
+												<input type="email" class="form-control" id="Email" placeholder="Email"th:field="*{email}">
+											</div>
+							
+											
+											<div class="row" style="padding-top: 2rem;">
+												<div class="col-12">
+													<button th:onclick="'javascript:confirmNewAccount();'" style="border:transparent;color:black;font-weight:bolder ;background-image: radial-gradient(circle at 55.05% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" type="button" class="btn btn-primary btn-block px-4">Crear nueva cuenta</button>
+												</div>
+											</div>
+											
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- page-content end -->
+		</div>
+		<!-- page End-->
+
+		<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+		
+	<script type="text/javascript">
+
+function confirmNewAccount(){
+var username =$("#Username").val();
+var contraseña =$("#Contraseña").val();
+var nombres =$("#Nombres").val();
+var apellidos =$("#Apellidos").val();
+var DNI =$("#DNI").val();
+var email =$("#Email").val();
+
+var usernameStyle = document.getElementById('Username');
+var contraseñaStyle = document.getElementById('Contraseña');
+var nombresStyle = document.getElementById('Nombres');
+var apellidosStyle = document.getElementById('Apellidos');
+var DNIStyle = document.getElementById('DNI');
+var emailStyle = document.getElementById('Email');
+
+var create ="v"; 
+
+
+if(username===""||contraseña===""||nombres===""||apellidos===""||DNI===""||email===""){
+if(username==="")
+{usernameStyle.style.borderColor = '#ec2d38';}
+
+else {
+	usernameStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(contraseña==="")
+{contraseñaStyle.style.borderColor = '#ec2d38';}
+
+else {
+	contraseñaStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(nombres==="")
+{nombresStyle.style.borderColor = '#ec2d38';}
+
+else {
+	nombresStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(apellidos==="")
+{apellidosStyle.style.borderColor = '#ec2d38';}
+
+else {
+	apellidosStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(DNI==="")
+{DNIStyle.style.borderColor = '#ec2d38';}
+
+else {
+	DNIStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(email==="")
+{emailStyle.style.borderColor = '#ec2d38';}
+
+else {
+	emailStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+	
+}
+
+}else sendNewAccount()
+
+}
+
+
+
+
+
+
+	
+	function sendNewAccount(){
+		var formulario = document.getElementById("sendNewAccount");
+		formulario.submit();	
+	}
+
+
+	
+	</script>	
+	
+	
+	
+	<script th:src="@{/assets/plugins/notify/js/rainbow.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/sample.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/jquery.growl.js}"></script>
+
+<script type="text/javascript" th:src="@{/assets/plugins/notify/js/notifIt.js}"> </script>	
+
+
+	<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
+	</body>
+</html>
+
+
+
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport'
+	content='width=device-width, initial-scale=1.0, user-scalable=0'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta
+	content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template"
+	name="description">
+<meta content="Spruko Technologies Private Limited" name="author">
+<meta name="keywords"
+	content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template" />
+
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<link th:href="@{/assets/plugins/notify/css/notifIt.css}"
+	rel="stylesheet">
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>
+
+
+<head>
+<link th:href="@{/css/choose-user.css}" rel="stylesheet">
+</head>
+<body class="app sidebar-mini rtl">
+
+	<!--Global-Loader-->
+	<div id="global-loader">
+		<img th:src="@{/assets/images/icons/loader.svg}" alt="loader">
+	</div>
+
+	<div class="page" style="height: 100vh;">
+		<div class="page-main"
+			style="display: flex; justify-content: center; background-image: url(https://images.alphacoders.com/463/thumb-1920-463798.jpg);">
+			<!--app-header-->
+
+			<div
+				style="display: flex; justify-content: space-between; width: 70%; padding-top: 7rem;">
+
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card" id="register-startup" th:onclick="|window.location.href ='/startupinvest/register/startup'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title ">Startup</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://as2.ftcdn.net/v2/jpg/02/49/62/47/1000_F_249624792_BiZIxdHasOUOg85Q8fLtvoNE2gREbH4d.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/male/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card " id="register-investor" th:onclick="|window.location.href ='/startupinvest/register/investor'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title">Inversionista</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://image.freepik.com/foto-gratis/joven-empresario-exitoso-ropa-formal-mostrando-pulgar-arriba-gesto_171337-9526.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/female/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+	<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+LOGIN:
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Startup Invest</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300, 400, 500" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" th:href="@{/dist/style.css}">
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+</head>
+<body>
+
+<section class="user">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">Don't you have an account yet?</h2>
+        <p class="user_unregistered-text">What are you waiting for to create yours? Take advantage of having an account.</p>
+       <button th:onclick="|window.location.href ='/startupinvest/choose/user'|"  class="user_unregistered-signup" id="signup-button">Register</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Do you already have an account?</h2>
+        <p class="user_registered-text">Start the adventure of looking for an apartment as if it were your home</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Login</h2>
+        <form class="forms_form" th:action="@{/signin}" method="post">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" autocomplete="off" placeholder="Enter Username" name="username" id="username" class="forms_field-input" required autofocus />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Enter Password" name="password" id="password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="button" class="forms_buttons-forgot">Forgot your password?</button>
+            <input type="submit" value="Log In" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Register</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" placeholder="Full Name" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <input type="submit" value="Sign up" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script th:src="@{/dist/script.js}"></script>
+
+</body>
+
+</html>
+
+
+
+REGISTER-INVESTOR:
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template" name="description">
+		<meta content="Spruko Technologies Private Limited" name="author">
+		<meta name="keywords" content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template"/>
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>	
+
+	</head>
+	
+	<head><link th:href="@{/assets/plugins/notify/css/notifIt.css}" rel="stylesheet"></head>
+	<body class="bg-account" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);">
+	    <!-- page -->
+		<div class="page" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" >
+
+			<!-- page-content -->
+			<div class="page-content" style="padding-top: 9rem;">
+				<div class="container text-center text-dark">
+					<div class="row">
+						<div class="col-lg-4 d-block mx-auto">
+							<div class="row">
+								<div class="col-xl-12 col-md-12 col-md-12">
+									<div class="card">
+										<form method="post" id="sendNewAccount" class="card-body" th:action="@{/startupinvest/investors/newInvestor}" th:object="${investor}">
+											<div class="text-center mb-6" style="display: flex;justify-content: center;flex-direction: row; align-content: center;text-align: center;align-items: center;padding-bottom: 1.4rem;">
+												<img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}" style="width: 4rem;" class="" alt=""> 
+												<p style="margin: 0;font-weight: bold;font-size: 2rem;">Startup Invest</p>
+											</div>
+											<h3>Registro de inversionista</h3>
+											<p class="text-muted">Crear cuenta nueva</p>
+											<div class="input-group mb-3">
+												<span class="input-group-addon "><i class="fa fa-user w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Username"  placeholder="Username" th:field="*{username}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-unlock-alt  w-4"style="color: black;"></i></span>
+												<input type="password" class="form-control" id="Contraseña" placeholder="Contraseña" th:field="*{password}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Nombres" placeholder="Nombres" th:field="*{name}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Apellidos"placeholder="Apellidos"th:field="*{lastName}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4" style="color: black;"></i></span>
+												<input maxlength="9" type="number" onkeypress="return validarNumero(event)" class="form-control" id="DNI" placeholder="DNI" th:field="*{dni}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-envelope  w-4" style="color: black;"></i></span>
+												<input type="email" class="form-control" id="Email" placeholder="Email"th:field="*{email}">
+											</div>
+							
+											
+											<div class="row" style="padding-top: 2rem;">
+												<div class="col-12">
+													<button th:onclick="'javascript:confirmNewAccount();'" style="border:transparent;color:black;font-weight:bolder ;background-image: radial-gradient(circle at 55.05% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" type="button" class="btn btn-primary btn-block px-4">Crear nueva cuenta</button>
+												</div>
+											</div>
+											
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- page-content end -->
+		</div>
+		<!-- page End-->
+
+		<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+		
+	<script type="text/javascript">
+
+function confirmNewAccount(){
+var username =$("#Username").val();
+var contraseña =$("#Contraseña").val();
+var nombres =$("#Nombres").val();
+var apellidos =$("#Apellidos").val();
+var DNI =$("#DNI").val();
+var email =$("#Email").val();
+
+var usernameStyle = document.getElementById('Username');
+var contraseñaStyle = document.getElementById('Contraseña');
+var nombresStyle = document.getElementById('Nombres');
+var apellidosStyle = document.getElementById('Apellidos');
+var DNIStyle = document.getElementById('DNI');
+var emailStyle = document.getElementById('Email');
+
+var create ="v"; 
+
+
+if(username===""||contraseña===""||nombres===""||apellidos===""||DNI===""||email===""){
+if(username==="")
+{usernameStyle.style.borderColor = '#ec2d38';}
+
+else {
+	usernameStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(contraseña==="")
+{contraseñaStyle.style.borderColor = '#ec2d38';}
+
+else {
+	contraseñaStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(nombres==="")
+{nombresStyle.style.borderColor = '#ec2d38';}
+
+else {
+	nombresStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(apellidos==="")
+{apellidosStyle.style.borderColor = '#ec2d38';}
+
+else {
+	apellidosStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(DNI==="")
+{DNIStyle.style.borderColor = '#ec2d38';}
+
+else {
+	DNIStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(email==="")
+{emailStyle.style.borderColor = '#ec2d38';}
+
+else {
+	emailStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+	
+}
+
+}else sendNewAccount()
+
+}
+
+
+
+
+
+
+	
+	function sendNewAccount(){
+		var formulario = document.getElementById("sendNewAccount");
+		formulario.submit();	
+	}
+
+
+	
+	</script>	
+	
+	
+	
+	<script th:src="@{/assets/plugins/notify/js/rainbow.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/sample.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/jquery.growl.js}"></script>
+
+<script type="text/javascript" th:src="@{/assets/plugins/notify/js/notifIt.js}"> </script>	
+
+
+	<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
+	</body>
+</html>
+
+
+
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport'
+	content='width=device-width, initial-scale=1.0, user-scalable=0'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta
+	content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template"
+	name="description">
+<meta content="Spruko Technologies Private Limited" name="author">
+<meta name="keywords"
+	content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template" />
+
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<link th:href="@{/assets/plugins/notify/css/notifIt.css}"
+	rel="stylesheet">
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>
+
+
+<head>
+<link th:href="@{/css/choose-user.css}" rel="stylesheet">
+</head>
+<body class="app sidebar-mini rtl">
+
+	<!--Global-Loader-->
+	<div id="global-loader">
+		<img th:src="@{/assets/images/icons/loader.svg}" alt="loader">
+	</div>
+
+	<div class="page" style="height: 100vh;">
+		<div class="page-main"
+			style="display: flex; justify-content: center; background-image: url(https://images.alphacoders.com/463/thumb-1920-463798.jpg);">
+			<!--app-header-->
+
+			<div
+				style="display: flex; justify-content: space-between; width: 70%; padding-top: 7rem;">
+
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card" id="register-startup" th:onclick="|window.location.href ='/startupinvest/register/startup'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title ">Startup</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://as2.ftcdn.net/v2/jpg/02/49/62/47/1000_F_249624792_BiZIxdHasOUOg85Q8fLtvoNE2gREbH4d.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/male/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-xl-6 col-lg-4">
+					<div class="card " id="register-investor" th:onclick="|window.location.href ='/startupinvest/register/investor'|"
+						style="height: 29rem; opacity: 99%; transition: 0.5s; cursor: pointer; transition: transform 0.4s ease-in-out; box-shadow: 5px 5px 15px aqua;">
+						<div class="card-header"
+							style="border-right: 2px solid #1753fc; border-top: 2px solid #1753fc;">
+							<h3 class="card-title">Inversionista</h3>
+							<div class="card-options"></div>
+						</div>
+						<div class="card-body text-center"
+							style="background-image: url(https://image.freepik.com/foto-gratis/joven-empresario-exitoso-ropa-formal-mostrando-pulgar-arriba-gesto_171337-9526.jpg);">
+							<span class="avatar avatar-xxl brround cover-image"
+								data-image-src="../assets/images/users/female/18.jpg"></span>
+							<h4 class="h4 mb-0 mt-3"></h4>
+							<p class="card-text"></p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+	<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+LOGIN:
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Startup Invest</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300, 400, 500" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" th:href="@{/dist/style.css}">
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+</head>
+<body>
+
+<section class="user">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">Don't you have an account yet?</h2>
+        <p class="user_unregistered-text">What are you waiting for to create yours? Take advantage of having an account.</p>
+       <button th:onclick="|window.location.href ='/startupinvest/choose/user'|"  class="user_unregistered-signup" id="signup-button">Register</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Do you already have an account?</h2>
+        <p class="user_registered-text">Start the adventure of looking for an apartment as if it were your home</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Login</h2>
+        <form class="forms_form" th:action="@{/signin}" method="post">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" autocomplete="off" placeholder="Enter Username" name="username" id="username" class="forms_field-input" required autofocus />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Enter Password" name="password" id="password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="button" class="forms_buttons-forgot">Forgot your password?</button>
+            <input type="submit" value="Log In" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Register</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" placeholder="Full Name" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="password" placeholder="Password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <input type="submit" value="Sign up" class="forms_buttons-action">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script th:src="@{/dist/script.js}"></script>
+
+</body>
+
+</html>
+
+
+
+REGISTER-INVESTOR:
+
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="Hogo– Creative Admin Multipurpose Responsive Bootstrap4 Dashboard HTML Template" name="description">
+		<meta content="Spruko Technologies Private Limited" name="author">
+		<meta name="keywords" content="html admin template, bootstrap admin template premium, premium responsive admin template, admin dashboard template bootstrap, bootstrap simple admin template premium, web admin template, bootstrap admin template, premium admin template html5, best bootstrap admin template, premium admin panel template, admin template"/>
+<link
+	th:href="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}"
+	rel="icon">
+
+<head th:replace="layout/layoutHongo :: frag-head-hongo">
+
+</head>	
+
+	</head>
+	
+	<head><link th:href="@{/assets/plugins/notify/css/notifIt.css}" rel="stylesheet"></head>
+	<body class="bg-account" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);">
+	    <!-- page -->
+		<div class="page" style="background-image: radial-gradient(circle at 120.71% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" >
+
+			<!-- page-content -->
+			<div class="page-content" style="padding-top: 9rem;">
+				<div class="container text-center text-dark">
+					<div class="row">
+						<div class="col-lg-4 d-block mx-auto">
+							<div class="row">
+								<div class="col-xl-12 col-md-12 col-md-12">
+									<div class="card">
+										<form method="post" id="sendNewAccount" class="card-body" th:action="@{/startupinvest/investors/newInvestor}" th:object="${investor}">
+											<div class="text-center mb-6" style="display: flex;justify-content: center;flex-direction: row; align-content: center;text-align: center;align-items: center;padding-bottom: 1.4rem;">
+												<img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}" style="width: 4rem;" class="" alt=""> 
+												<p style="margin: 0;font-weight: bold;font-size: 2rem;">Startup Invest</p>
+											</div>
+											<h3>Registro de inversionista</h3>
+											<p class="text-muted">Crear cuenta nueva</p>
+											<div class="input-group mb-3">
+												<span class="input-group-addon "><i class="fa fa-user w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Username"  placeholder="Username" th:field="*{username}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-unlock-alt  w-4"style="color: black;"></i></span>
+												<input type="password" class="form-control" id="Contraseña" placeholder="Contraseña" th:field="*{password}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Nombres" placeholder="Nombres" th:field="*{name}" >
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4"style="color: black;"></i></span>
+												<input type="text" class="form-control" id="Apellidos"placeholder="Apellidos"th:field="*{lastName}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-check  w-4" style="color: black;"></i></span>
+												<input maxlength="9" type="number" onkeypress="return validarNumero(event)" class="form-control" id="DNI" placeholder="DNI" th:field="*{dni}">
+											</div>
+											<div class="input-group mb-4">
+												<span class="input-group-addon "><i class="fa fa-envelope  w-4" style="color: black;"></i></span>
+												<input type="email" class="form-control" id="Email" placeholder="Email"th:field="*{email}">
+											</div>
+							
+											
+											<div class="row" style="padding-top: 2rem;">
+												<div class="col-12">
+													<button th:onclick="'javascript:confirmNewAccount();'" style="border:transparent;color:black;font-weight:bolder ;background-image: radial-gradient(circle at 55.05% 50%, #c0ffff 0, #a3feff 16.67%, #7eeaf7 33.33%, #48d1e5 50%, #00b9d5 66.67%, #00a4c8 83.33%, #0094c0 100%);" type="button" class="btn btn-primary btn-block px-4">Crear nueva cuenta</button>
+												</div>
+											</div>
+											
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- page-content end -->
+		</div>
+		<!-- page End-->
+
+		<footer th:replace="layout/layoutHongo :: frag-footer-hongo">
+	</footer>
+		
+	<script type="text/javascript">
+
+function confirmNewAccount(){
+var username =$("#Username").val();
+var contraseña =$("#Contraseña").val();
+var nombres =$("#Nombres").val();
+var apellidos =$("#Apellidos").val();
+var DNI =$("#DNI").val();
+var email =$("#Email").val();
+
+var usernameStyle = document.getElementById('Username');
+var contraseñaStyle = document.getElementById('Contraseña');
+var nombresStyle = document.getElementById('Nombres');
+var apellidosStyle = document.getElementById('Apellidos');
+var DNIStyle = document.getElementById('DNI');
+var emailStyle = document.getElementById('Email');
+
+var create ="v"; 
+
+
+if(username===""||contraseña===""||nombres===""||apellidos===""||DNI===""||email===""){
+if(username==="")
+{usernameStyle.style.borderColor = '#ec2d38';}
+
+else {
+	usernameStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(contraseña==="")
+{contraseñaStyle.style.borderColor = '#ec2d38';}
+
+else {
+	contraseñaStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(nombres==="")
+{nombresStyle.style.borderColor = '#ec2d38';}
+
+else {
+	nombresStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(apellidos==="")
+{apellidosStyle.style.borderColor = '#ec2d38';}
+
+else {
+	apellidosStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+
+if(DNI==="")
+{DNIStyle.style.borderColor = '#ec2d38';}
+
+else {
+	DNIStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+}
+
+if(email==="")
+{emailStyle.style.borderColor = '#ec2d38';}
+
+else {
+	emailStyle.style.borderColor ='#2fd8c6' ;
+	create="f";
+	
+}
+
+}else sendNewAccount()
+
+}
+
+
+
+
+
+
+	
+	function sendNewAccount(){
+		var formulario = document.getElementById("sendNewAccount");
+		formulario.submit();	
+	}
+
+
+	
+	</script>	
+	
+	
+	
+	<script th:src="@{/assets/plugins/notify/js/rainbow.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/sample.js}"></script>
+		<script th:src="@{/assets/plugins/notify/js/jquery.growl.js}"></script>
+
+<script type="text/javascript" th:src="@{/assets/plugins/notify/js/notifIt.js}"> </script>	
+
+
+	<script type="text/javascript">function validarNumero(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true; 
+    patron =/[0-9]/;
+    te = String.fromCharCode(tecla); 
+    return patron.test(te); 
+ }</script>
+	</body>
+</html>
+
+
+
+
