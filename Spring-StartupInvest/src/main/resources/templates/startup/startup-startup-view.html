@@ -125,7 +125,7 @@
 
 
 
-		<!-- Box de Ronda de Inversión -->
+		<!-- BOX RONDA DE INVERSIÓN -->
 		<div class="box-ronda-inversion"
 			th:each="investmentRequest:${investmentRequests}">
 
@@ -310,7 +310,7 @@
 			</div>
 		</div>
 
-		<!-- Modal confirmación -->
+		<!-- Modal confirmación PLAN -->
 		<div class="modal fade" id="modal-confirmacion" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -367,7 +367,7 @@
 			</div>
 		</div>
 
-		<!-- Modal confirmación RequestInvestment -->
+		<!-- MODAL DE CONFIRMACIÓN RONDA DE INVERSIÓN - LLENADO DE DATOS DEL OBJETO-->
 		<div class="modal fade" id="modal-confirmacion-request-startup"
 			tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -385,31 +385,36 @@
 					<div class="modal-footer">
 						<form
 							th:action="@{'/startupinvest/investmentRequests/startups/view/profile/newInvestmentRequest'}"
+							
 							th:object="${investmentRequest}" method="post">
 							<div class="form-group" hidden="true">
-								<label for="exampleFormControlInput1">investment request
+							    	<label for="exampleFormControlInput1">investment request
 									amount</label> <input type="number" class="form-control"
 									id="objetiveCreate" placeholder="name@example.com"
-									th:field="*{amount}"> <label
+									th:field="*{amount}"> 
+									
+									<label
 									for="exampleFormControlInput1">investment request
 									return date</label> <input type="date" class="form-control"
 									th:field="*{returnDateText}" id="dateRebuyCreate"
-									placeholder="name@example.com"> <label
+									placeholder="name@example.com"> 
+									
+									<label
 									for="exampleFormControlInput1">investment request
 									expiration date </label> <input type="date" class="form-control"
 									th:field="*{expirationDateText}" id="dateExpirationCreate1"
-									placeholder="name@example.com"> <label
+									placeholder="name@example.com">
+									
+									<label
 									for="exampleFormControlInput1">startup id </label> <input
 									type="number" class="form-control" th:field="*{startup}"
-									id="startupIdCreate1" placeholder="00"> <label
+									id="startupIdCreate1" placeholder="00"> 
+									
+									<label
 									for="exampleFormControlInput1">type investment id </label> <input
 									type="number" class="form-control" th:field="*{typeInvestment}"
 									id="typeInvestmentCreate" placeholder="name@example.com">
 							</div>
-
-
-
-
 
 							<button type="submit" class="btn btn-primary">Confirmar</button>
 						</form>
@@ -419,7 +424,6 @@
 		</div>
 
 
-		<!-- Aplicación de Modals -->
 		<!-- MODAL - AÑADIR - RONDA - DE - INVERSIÓN -->
 		<div class="modal fade ronda-inversion" tabindex="-1" role="dialog"
 			aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -434,8 +438,7 @@
 								<h3 th:text="'Entra a operar en Startup Invest, '+${name}">Entra
 									a operar en Startup Invest, Kambista</h3>
 							</div>
-
-
+		<!-- BOX DE CAMPOS DE ENTRADA -->
 							<fieldset>
 								<legend>Datos</legend>
 								<div class="box-input">
@@ -520,7 +523,7 @@
 
 						<div class="modal-footer">
 
-							<!-- Boton para ir a modal de confirmación -->
+							<!-- BOTÓN PARA PASAR LOS DATOS -->
 							<button type="button" data-toggle="modal" data-dismiss="modal"
 								data-target="#modal-confirmacion-request-startup"
 								class="btn btn-primary "
@@ -651,10 +654,11 @@ function confirmNewPlan(id){
 
 
 
+//PASAR LOS DATOS DE RONDA DE INVERSIÓN
 
 function confirmNewInvestmentRequest(){
 
-	 var objetiveSend = $("#objetiveSend").val();
+	 	var objetiveSend = $("#objetiveSend").val();
 	    $("#objetiveCreate").val(objetiveSend);
 
 	    var dateExpirationSend = $("#dateExpirationSend").val();
