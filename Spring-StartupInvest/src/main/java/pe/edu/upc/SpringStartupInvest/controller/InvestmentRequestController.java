@@ -1,6 +1,8 @@
 package pe.edu.upc.SpringStartupInvest.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +25,6 @@ import pe.edu.upc.SpringStartupInvest.service.crud.TypeInvestmentService;
 
 @Controller
 @RequestMapping("/startupinvest/investmentRequests")
-@SessionAttributes("investmentRequest")
 public class InvestmentRequestController {
 
 	@Autowired
@@ -51,17 +52,27 @@ public class InvestmentRequestController {
 
 	
 
-	@PostMapping("newInvestmentRequest")
-	public String insertar(Model model,
-			@Valid @ModelAttribute("investmentRequest") InvestmentRequest investmentRequest) {
+	@PostMapping("startups/view/profile/newInvestmentRequest")
+	public String insertar(Model model, @ModelAttribute("investmentRequest") InvestmentRequest investmentRequest) {
 		try {
-			InvestmentRequest investmentRequestSaved = investmentRequestService.create(investmentRequest);
-			model.addAttribute("investmentRequest", investmentRequestSaved);
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			Date expirationDate = formato.parse(investmentRequest.getExpirationDateText());
+			Date returnDate = formato.parse(investmentRequest.getReturnDateText());
+			Date todayDate= new Date();
+			
+			investmentRequest.setDescription("a");
+			investmentRequest.setCreationDate(todayDate);
+			investmentRequest.setExpirationDate(expirationDate);
+			investmentRequest.setReturnDate(returnDate);
+			investmentRequest.setState(true);
+			
+			
+		investmentRequestService.create(investmentRequest);
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 
-		return null;
+		return "redirect:/startupinvest/startups/"+investmentRequest.getStartup().getId().toString()+"/view/profile";
 	}
 
 	@PostMapping("{id}/edit")

@@ -1,10 +1,12 @@
 package pe.edu.upc.SpringStartupInvest.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
+import java.time.ZoneId;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,22 +16,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import pe.edu.upc.SpringStartupInvest.model.entity.Plan;
 import pe.edu.upc.SpringStartupInvest.model.entity.PlanHistory;
+import pe.edu.upc.SpringStartupInvest.model.repository.PlanHistoryRepository;
 import pe.edu.upc.SpringStartupInvest.service.crud.PlanHistoryService;
+import pe.edu.upc.SpringStartupInvest.service.crud.TypeCardService;
 
 @Controller
 @RequestMapping("/startupinvest/plansHistory")
-@SessionAttributes("planHistory")
 public class PlanHistoryController {
 
 	@Autowired
 	private PlanHistoryService planHistoryService;
-	
-	
-	
+
+	@Autowired
+	private TypeCardService typeCardService;
+
 	@GetMapping
 	public String list(Model model) {
 
@@ -43,17 +45,40 @@ public class PlanHistoryController {
 		return null;
 	}
 
-	@PostMapping("newPlanHistory")
-	public String insertar(Model model, @Valid @ModelAttribute("planHistory") PlanHistory planHistory) {
+	@PostMapping("startups/view/profile/newPlanHistory")
+	public String insertar(Model model, @ModelAttribute("planHistory") PlanHistory planHistory) {
 		try {
+			int planDays = planHistory.getPlan().getDuration();
+			Date ActiveDateValid= planHistoryService.findActivePlanValidByStartupId(planHistory.getStartup().getId());
+			Date todayDate = new Date();//FECHA DE HOY 
+			//SI TENGO UN PLAN ACTIVO
+		 if(ActiveDateValid!=null) {
+			 Date LastDateValidPlan=planHistoryService.findLastDateOfPlanValidByStartupId(planHistory.getStartup().getId());
+			  todayDate = LastDateValidPlan; 
+		 }			
+	//SI TENGO UN PLAN ACTIVO
+		 
 
-			PlanHistory planHistorySaved = planHistoryService.create(planHistory);
-			model.addAttribute("planHistory", planHistorySaved);
+			Date expirationDate = new Date();
+			Calendar c = Calendar.getInstance(); //Tipo de dato para pode sumar los días
+			c.setTime(todayDate);
+			c.add(Calendar.DATE, planDays);
+			expirationDate = c.getTime();
+//SE LE SUMA DIAS 
+			
+			
+			
+			planHistory.setAcquistionDate(todayDate);
+			planHistory.setExpirationDate(expirationDate);
+			planHistory.setTypeCard(typeCardService.findById(40).get());
+
+			planHistoryService.create(planHistory);
+
 		} catch (Exception e) {
 			e.getMessage();
 		}
 
-		return null;
+		return "redirect:/startupinvest/startups/"+planHistory.getStartup().getId().toString()+"/view/profile";
 	}
 
 	@PostMapping("{id}/edit")
@@ -95,5 +120,5 @@ public class PlanHistoryController {
 		}
 		return "redirect:/startupinvest/plansHistory";
 	}
-	
+
 }

@@ -5,7 +5,10 @@
 <meta charset="UTF-8" />
 </head>
 <head>
-<link th:href="@{/css/dashboard-type-card.css}" rel="stylesheet">
+<link th:href="@{/css/administrator-type-card.css}" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap" rel="stylesheet">
 </head>
 
 
@@ -20,15 +23,219 @@
 		</header>
 
 		<div class="right-section">
-			<h1>Categorias de Startup</h1>
-
-
+			<div class="superior-zone">
+				<h1>Tipos de tarjeta</h1>
+				<button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">Agregar nuevo tipo de tarjeta</button>
+					
+			</div>
+			<div class="container">
+      			
+        	<div class="card color-card1">
+            	<div class="titular">
+            		<p>Tipo de tarjeta: Crédito</p>
+            		<p>Código: 40</p>
+            	</div>
+            	<p class="Estado">Estado: Activo</p>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				</div>
+        	</div>
+        
+       		 <div class="card color-card1">
+            	<div class="titular">
+            		<p>Tipo de tarjeta: Débito</p>
+            		<p>Código: 41</p>
+            	</div>
+            	<p class="Estado">Estado: Activo</p>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				</div>
+       		 </div>
+       		  <div class="card color-card1">
+            	<div class="titular">
+            		<p>Tipo de tarjeta: Prepago</p>
+            		<p>Código: 42</p>
+            	</div>
+            	<p class="Estado">Estado: Activo</p>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				</div>
+       		 </div>
+       		  <div class="card color-card1">
+            	<div class="titular">
+            		<p>Tipo de tarjeta: Master Card</p>
+            		<p>Código: 43</p>
+            	</div>
+            	<p class="Estado">Estado: Activo</p>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				</div>
+       		 </div>
+       		  <div class="card color-card1">
+            	<div class="titular">
+            		<p>Tipo de tarjeta: Crédito</p>
+            		<p>Código: 40</p>
+            	</div>
+            	<p class="Estado">Estado: Activo</p>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				</div>
+       		 </div>
+       		  <div class="card color-card1">
+            	<div class="titular">
+            		<p>Tipo de tarjeta: Débito</p>
+            		<p>Código: 41</p>
+            	</div>
+            	<p class="Estado">Estado: Activo</p>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				</div>
+       		 </div>
+       		  <div class="card color-card1">
+            	<div class="titular">
+            		<p>Tipo de tarjeta: Prepago</p>
+            		<p>Código: 42</p>
+            	</div>
+            	<p class="Estado">Estado: Activo</p>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				</div>
+       		 </div>
+       		  <div class="card color-card1">
+            	<div class="titular">
+            		<p>Tipo de tarjeta: Master Card</p>
+            		<p>Código: 43</p>
+            	</div>
+            	<p class="Estado">Estado: Activo</p>
+            	<div class="botones">
+           		 	<button class="btn color-ancho btn-lg" data-toggle="modal" data-target="#modalForm1">Editar</button>
+           		 	<button class="btn color2-ancho btn-lg" data-toggle="modal" data-target="#modalForm2">Deshabilitar</button>
+   				</div>
+       		 </div>
+		</div>
 		</div>
 
 
 	</main>
 
+	<!-- Modal1 -->
+   					<div class="modal fade" id="modalForm" role="dialog">
+      					 <div class="modal-dialog">
+          					 <div class="modal-content">
+               			<!-- Modal Header -->
+              					 <div class="modal-header">
+              					 	<img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
+                 				  <!--<button type="button" class="close" data-dismiss="modal">
+                       				<span aria-hidden="true">×</span>
+                      			 	<span class="sr-only">Cerrar</span>
+                   				  </button>-->
+                  					 <h4 class="modal-title" id="myModalLabel">Nuevo Tipo de tarjeta</h4>
+               					</div>
+               
+               			<!-- Modal Body -->
+              			 <div class="modal-body">
+                  				 <p class="statusMsg"></p>
+                   				<form role="form">
+                      		 <div class="form-group">
+                           			<label for="inputName">Nombre del tipo de tarjeta:</label>
+                           			<input type="text" class="form-control" id="inputName" placeholder="Enter your name"/>
+                       		</div>
+                       		<div class="dropdown form-group ">
+                            		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             			 Estado</button>
+                           			 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              			<p class="dropdown-item">Activo</p>
+                             			<p class="dropdown-item">Desactivado</p>
+                            		</div>
+                         	</div>
+                   			   </form>
+               			</div>
+               
+               			<!-- Modal Footer -->
+               			<div class="modal-footer">
+                  			 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  			 <button type="button" class="btn btn-primary submitBtn" onclick="submitContactForm()">Agregar</button>
+              			</div>
+          			 </div>
+      			 </div>
+   			</div>
 
+	<!-- Modal2 -->
+   					<div class="modal fade" id="modalForm1" role="dialog">
+      					 <div class="modal-dialog">
+          					 <div class="modal-content">
+               			<!-- Modal Header -->
+              					 <div class="modal-header">
+              					 <img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
+                 				  <!--<button type="button" class="close" data-dismiss="modal">
+                       				<span aria-hidden="true">×</span>
+                      			 	<span class="sr-only">Cerrar</span>
+                   				  </button>-->
+                  					 <h4 class="modal-title" id="myModalLabel">Editar Categoría</h4>
+               					</div>
+               
+               			<!-- Modal Body -->
+              			 <div class="modal-body">
+                  				 <p class="statusMsg"></p>
+                   				<form role="form">
+                      		 <div class="form-group">
+                           			<label for="inputName">Nombre del tipo de tarjeta:</label>
+                           			<input type="text" class="form-control" id="inputName" placeholder="Enter your name"/>
+                       		</div>
+                   			   </form>
+               			</div>
+               
+               			<!-- Modal Footer -->
+               			<div class="modal-footer1">
+                  			 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  			 <button type="button" class="btn btn-primary submitBtn" onclick="submitContactForm()">Confirmar</button>
+              				</div>
+          				 </div>
+      			 	</div>
+      			 	</div>
+
+	<!-- Modal3 -->
+   					<div class="modal fade" id="modalForm2" role="dialog">
+      					 <div class="modal-dialog">
+          					 <div class="modal-content2">
+               			<!-- Modal Header -->
+              					 <div class="modal-header">
+              					 <img th:src="@{/dashboard-investor/Bootstrap/img/Logo_StartupInvest.png}">
+                 				  <!--<button type="button" class="close" data-dismiss="modal">
+                       				<span aria-hidden="true">×</span>
+                      			 	<span class="sr-only">Cerrar</span>
+                   				  </button>-->
+                  					 <h4 class="modal-title" id="myModalLabel">Cambio de estado</h4>
+               					</div>
+               
+               			<!-- Modal Body -->
+              			 <div class="modal-body centrar">
+                  				 <p class="statusMsg"></p>
+                   				<form role="form">
+                      		 <div class="form-group">
+                           			<label for="inputName">¿Seguro que quieres cambiar el estado?</label>
+                           			</div>
+                       		<div class="form-group">
+                           			<label for="inputEmail">Los usuarios no podrán ver esta opción</label>
+                           			</div>
+                   			   </form>
+               			</div>
+               
+               			<!-- Modal Footer -->
+               			<div class="modal-footer2">
+                  			 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  			 <button type="button" class="btn btn-primary submitBtn" onclick="submitContactForm()">Confirmar</button>
+              				</div>
+          				 </div>
+      			 	</div>
+      			 	</div>
 
 	<footer th:replace="layout/layout :: frag-footer"></footer>
 

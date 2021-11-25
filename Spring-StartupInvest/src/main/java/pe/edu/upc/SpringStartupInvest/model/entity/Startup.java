@@ -81,8 +81,8 @@ public class Startup {
 	
 	@NotBlank(message = "La descripción no debe estar en blanco")
 	@NotNull(message="La descripción debe contener valor")
-	@Size(max=400,message="El tamaño no debe ser mayor a 400")
-	@Column(name = "startup_description", length = 400, nullable = false)
+	@Size(max=2000,message="El tamaño no debe ser mayor a 2000")
+	@Column(name = "startup_description", length = 2000, nullable = false)
 	private String description;
 	
 	@Transient

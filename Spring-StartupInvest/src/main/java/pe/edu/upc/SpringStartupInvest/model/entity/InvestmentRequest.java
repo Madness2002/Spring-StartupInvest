@@ -45,7 +45,7 @@ public class InvestmentRequest {
 
 	@DecimalMax(value = "9999999999.99")
 	@DecimalMin(value = "0.99")
-	@Column(name = "investment_request_amount", columnDefinition = "DECIMAL(12,2)", nullable = false)
+	@Column(name = "investment_request_amount", nullable = false)
 	private Double amount;
 
 	@Column(name = "investment_request_state")
@@ -57,20 +57,17 @@ public class InvestmentRequest {
 	@Column(name = "investment_request_description", length = 200, nullable = false)
 	private String description;
 
-	@NotNull(message = "La fecha de creación debe contener valor")
-	@NotBlank(message = "La fecha de creación no debe estar en blanco")
+
 	@Column(name = "investment_request_creation_date")
 	@Temporal(TemporalType.DATE)
 	private Date creationDate;
 
-	@NotNull(message = "La fecha de expiracion debe contener valor")
-	@NotBlank(message = "La fecha de expiracion no debe estar en blanco")
+	
 	@Column(name = "investment_request_expiration_date")
 	@Temporal(TemporalType.DATE)
 	private Date expirationDate;
 
-	@NotNull(message = "La fecha de retorno debe contener valor")
-	@NotBlank(message = "La fecha de retorno no debe estar en blanco")
+
 	@Column(name = "investment_request_return_date")
 	@Temporal(TemporalType.DATE)
 	private Date returnDate;
@@ -83,12 +80,22 @@ public class InvestmentRequest {
 	
 	@Transient
 	private int quantityInvestors;
-
+	
+	@Transient
+	private String returnDateText;
+	
+	@Transient
+	private String expirationDateText;
+	
+	
 	public InvestmentRequest() {
 		investorHistories = new ArrayList<InvestorHistory>();
 	}
 
 	
+
+	
+
 
 	public InvestmentRequest(Integer id, Startup startup, TypeInvestment typeInvestment,
 			@DecimalMax("9999999999.99") @DecimalMin("0.99") Double amount, Boolean state,
@@ -96,7 +103,8 @@ public class InvestmentRequest {
 			@NotNull(message = "La fecha de creación debe contener valor") @NotBlank(message = "La fecha de creación no debe estar en blanco") Date creationDate,
 			@NotNull(message = "La fecha de expiracion debe contener valor") @NotBlank(message = "La fecha de expiracion no debe estar en blanco") Date expirationDate,
 			@NotNull(message = "La fecha de retorno debe contener valor") @NotBlank(message = "La fecha de retorno no debe estar en blanco") Date returnDate,
-			List<InvestorHistory> investorHistories, double amountColected, int quantityInvestors) {
+			List<InvestorHistory> investorHistories, double amountColected, int quantityInvestors,
+			String returnDateText, String expirationDateText) {
 		super();
 		this.id = id;
 		this.startup = startup;
@@ -110,7 +118,33 @@ public class InvestmentRequest {
 		this.investorHistories = investorHistories;
 		this.amountColected = amountColected;
 		this.quantityInvestors = quantityInvestors;
+		this.returnDateText = returnDateText;
+		this.expirationDateText = expirationDateText;
 	}
+
+
+
+	public String getReturnDateText() {
+		return returnDateText;
+	}
+
+
+
+	public void setReturnDateText(String returnDateText) {
+		this.returnDateText = returnDateText;
+	}
+
+
+	public String getExpirationDateText() {
+		return expirationDateText;
+	}
+
+
+
+	public void setExpirationDateText(String expirationDateText) {
+		this.expirationDateText = expirationDateText;
+	}
+
 
 
 

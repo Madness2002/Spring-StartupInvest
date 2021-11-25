@@ -21,10 +21,10 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "InvestorHistories",indexes = {@Index(columnList = "investor_history_id", name = "investorHistories_index_investor_history_id")})
-@SequenceGenerator(name = "InvestorHistories_investor_history_id_seq", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "Investor_histories_investor_history_id_seq", initialValue = 1, allocationSize = 1)
 public class InvestorHistory {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "InvestorHistories_investor_history_id_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Investor_histories_investor_history_id_seq")
 	@Column(name = "investor_history_id",length=5,nullable = false)
 	private Integer id;
 
@@ -36,15 +36,12 @@ public class InvestorHistory {
 	@JoinColumn(name = "investment_request_id", nullable = false)
 	private InvestmentRequest investmentRequest;
 
-	@NotNull(message = "La fecha  debe contener valor")
-	@NotBlank(message = "La fecha no debe estar en blanco")
 	@Column(name = "investor_history_date", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
-	@DecimalMax(value="9999999999.99")
-	@DecimalMin(value="0.99")
-	@Column(name = "investor_history_amount", columnDefinition = "DECIMAL(12,2)",nullable =false)
+	
+	@Column(name = "investor_history_amount",nullable =false)
 	private Double amount;
 	
 	@Column(name = "investor_history_state",nullable = false)
@@ -57,7 +54,6 @@ public class InvestorHistory {
 	public InvestorHistory() {
 		
 	}
-	
 	public InvestorHistory(Integer id, Investor investor, InvestmentRequest investmentRequest, Date date, Double amount,
 			Boolean state, TypeCard typeCard) {
 		super();
