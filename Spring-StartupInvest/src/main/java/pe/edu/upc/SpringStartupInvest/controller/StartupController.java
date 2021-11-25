@@ -135,7 +135,7 @@ public class StartupController {
 				for (InvestmentRequest investmentRequest : listInvestmentRequests) {
 
 					int quantityInvestors=investmentRequestService.getInvestorQuantityByInvestmentRequestId(investmentRequest.getId());
-					//TE DEVUELVE EL MONTO RECOLECTADO POR LA SOLICITUD DE INVERSION
+					//TE DEVUELVE EL MONTO RECOLECTADO POR LA RONDA DE INVERSION
 					double amounthColected = investmentRequestService.getAmountColectedByInvestmentRequestId(investmentRequest.getId());
 					
 					
@@ -154,8 +154,11 @@ public class StartupController {
 				model.addAttribute("idStartup", id);
 				
 				//SOLICITUD DE INVERSION
-				List<TypeInvestment> typesInvestment =typeInvestmentService.getAll();						
+				List<TypeInvestment> typesInvestment =typeInvestmentService.getAll();		
+				
+				//Inicializar objeto
 				model.addAttribute("investmentRequest", new InvestmentRequest());
+				
 				model.addAttribute("typesInvestment", typesInvestment);
 				
 				//PLANS

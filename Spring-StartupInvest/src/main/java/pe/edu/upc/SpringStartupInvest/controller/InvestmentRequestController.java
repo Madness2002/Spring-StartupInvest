@@ -27,6 +27,8 @@ import pe.edu.upc.SpringStartupInvest.service.crud.TypeInvestmentService;
 @RequestMapping("/startupinvest/investmentRequests")
 public class InvestmentRequestController {
 
+	//Inyección de Servicio
+	
 	@Autowired
 	private InvestmentRequestService investmentRequestService;
 
@@ -36,21 +38,7 @@ public class InvestmentRequestController {
 
 	@Autowired
 	private StartupService startupService;
-	
-	@GetMapping
-	public String list(Model model) {
 
-		try {
-			List<InvestmentRequest> lista = new ArrayList<>();
-			lista = investmentRequestService.getAll();
-			model.addAttribute("investmentRequests", lista);
-		} catch (Exception e) {
-			e.getMessage();
-		}
-		return null;
-	}
-
-	
 
 	@PostMapping("startups/view/profile/newInvestmentRequest")
 	public String insertar(Model model, @ModelAttribute("investmentRequest") InvestmentRequest investmentRequest) {
@@ -75,6 +63,38 @@ public class InvestmentRequestController {
 		return "redirect:/startupinvest/startups/"+investmentRequest.getStartup().getId().toString()+"/view/profile";
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@GetMapping
+	public String list(Model model) {
+		try {
+			List<InvestmentRequest> lista = new ArrayList<>();
+			lista = investmentRequestService.getAll();
+			model.addAttribute("investmentRequests", lista);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return null;
+	}
+	
+	
+	
+	
 	@PostMapping("{id}/edit")
 	public void actualizar(Model model, @PathVariable("id") Integer id) {
 		try {
@@ -89,10 +109,6 @@ public class InvestmentRequestController {
 
 	}
 
-	
-	
-	
-	
 	
 	
 	@PostMapping("saveEdit")
@@ -113,7 +129,6 @@ public class InvestmentRequestController {
 		try {
 			if (investmentRequestService.existsById(id)) {
 				investmentRequestService.deleteById(id);
-
 			}
 		} catch (Exception e) {
 			e.getMessage();
