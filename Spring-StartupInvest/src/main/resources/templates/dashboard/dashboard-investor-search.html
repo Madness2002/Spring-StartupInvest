@@ -1,4 +1,1522 @@
 <!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: frag-head">
+<meta charset="UTF-8" />
+</head>
+
+<body class="d-flex flex-column">
+	<header th:replace="layout/layout :: frag-header"> </header>
+
+	<!--CONTENIDO-->
+	<main>
+		<div class=" main-container">
+			<div th:replace="layout/layout :: frag-left-bar"></div>
+
+
+
+
+			<div class="right-section">
+				<div class="title-dashboard">
+					<h1>¡Te damos la bienvenida a StartUp Invest!</h1>
+				</div>
+
+
+				<div th:replace="layout/layout :: frag-search"></div>
+
+
+				<div class="popular-startups">
+					<div class="title">
+						<h3
+							th:text="'Se han encontrado '+${size} + ' Startups al buscar usando '+${word}">Más
+							Startups</h3>
+					</div>
+
+					<!--Tarjeta de startups-->
+					<div class="list-startups">
+
+						<a th:each="startup :${startups}"
+							th:href="${'/startupinvest/startups/'+startup.id+'/view'}">
+							<div class="list-card-startup">
+								<div class="img-list-card-startup">
+									<img th:src="@{'/images/startups/'+${startup.image}}" />
+								</div>
+								<div id="barra"></div>
+
+
+								<div class="card-body-startup">
+									<h5 class="card-title" th:text=${startup.name}>startup</h5>
+									<div class="boton-card">
+										<a href="#!" class="btn " style="width: 100%;">Conócenos</a>
+									</div>
+								</div>
+							</div>
+
+						</a>
+					</div>
+
+				</div>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+
+
+
+</body>
+
+</html>
+<!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layout/layout :: frag-head">
